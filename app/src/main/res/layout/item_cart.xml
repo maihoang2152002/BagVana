@@ -43,7 +43,9 @@
             android:layout_height="30dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="35dp"
-            android:backgroundTint="@color/black" />
+            android:layout_marginLeft="0dp"
+            android:backgroundTint="@color/black"
+            />
 
         <TextView
             android:id="@+id/text_price"
@@ -125,4 +127,5 @@
 
         </androidx.cardview.widget.CardView>
 
+</androidx.cardview.widget.CardView>
 </androidx.cardview.widget.CardView>
