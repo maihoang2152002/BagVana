@@ -10,14 +10,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".fargment_cart">
+        tools:context=".fragment_cart">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/cart_activity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="#FFFFF">
+            android:background="@color/white">
 
             <ImageView
                 android:id="@+id/ic_back"
@@ -114,7 +114,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:id="@+id/button_order"
+                    android:id="@+id/btn_order"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center|right"
