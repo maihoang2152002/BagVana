@@ -12,7 +12,7 @@
         android:theme="@style/Theme.BagVana"
         tools:targetApi="31">
         <activity
-            android:name=".ProductInformationActivity"
+            android:name=".Activity.Product.ProductInformationActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Product.CartActivity"

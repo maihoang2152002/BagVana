@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "766395389186",
+    "project_id": "bagvana-7335c",
+    "storage_bucket": "bagvana-7335c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:766395389186:android:0ea6bd21a06f1235a25e1b",
+        "android_client_info": {
+          "package_name": "com.example.bagvana"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "766395389186-0j52mpphufc0q7vt3nauf7rrg90b4ab5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2efT2Z2Vp595gD4IPV6fM1Xcy5YZ-nNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "766395389186-0j52mpphufc0q7vt3nauf7rrg90b4ab5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
