@@ -74,52 +74,6 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/rectangle_9">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ellipse"
-                    android:src="@drawable/img_balo_tomoc"
-                    android:layout_gravity="center">
-                </ImageView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="22sp"
-                    android:textColor="#000000"
-                    android:text="Balo Tomoc"
-                    android:layout_gravity="center_horizontal|top">
-
-                </TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="16sp"
-                    android:textColor="#868686"
-                    android:text="Black"
-                    android:layout_gravity="center_horizontal|top">
-
-                </TextView>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:textSize="17sp"
-                    android:textColor="#5956E9"
-                    android:text="350$"
-                    android:layout_gravity="center_horizontal|top">
-
-                </TextView>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginRight="15dp">
                 <TextView
