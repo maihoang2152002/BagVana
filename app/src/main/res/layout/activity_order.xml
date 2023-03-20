@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.Product.OrderActivity">
+    tools:context=".Activity.Order.OrderActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
@@ -13,13 +13,13 @@
         android:background="@color/white"
         app:title="Payment Order">
 
-        <ImageView
-            android:id="@+id/ic_back"
+        <ImageButton
+            android:id="@+id/imgBtn_back"
             android:layout_width="40dp"
             android:layout_height="36dp"
             android:layout_marginLeft="0dp"
             android:padding="0dp"
-            android:src="@drawable/ic_back" />
+            android:background="@drawable/ic_back" />
 
         <TextView
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
                 android:textSize="20sp" />
 
             <ImageButton
-                android:id="@+id/btn_orderAddress"
+                android:id="@+id/imgBtn_orderAddress"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
@@ -118,7 +118,7 @@
             android:textSize="20sp" />
 
         <ImageButton
-            android:id="@+id/btn_voucher"
+            android:id="@+id/imgBtn_voucher"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
@@ -149,7 +149,7 @@
             android:textSize="20sp" />
 
         <ImageButton
-            android:id="@+id/btn_pay"
+            android:id="@+id/imgBtn_pay"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
@@ -199,6 +199,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/txt_productCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="money"
@@ -220,6 +221,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/txt_shipCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="money"
@@ -241,6 +243,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/txt_voucherCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="money"
@@ -263,6 +266,7 @@
                 android:textSize="15sp" />
 
             <TextView
+                android:id="@+id/txt_totalCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="money"
@@ -294,7 +298,7 @@
 
 
             <TextView
-                android:id="@+id/billCost"
+                android:id="@+id/txt_billCost"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"

@@ -1,4 +1,4 @@
-package com.example.bagvana.Activity.Product;
+package com.example.bagvana.Activity.Order;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.bagvana.R;
 
-public class OrderActivity extends AppCompatActivity {
+public class AddNewOrderAddressActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_add_new_order_address);
     }
 }
