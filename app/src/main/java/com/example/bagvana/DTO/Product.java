@@ -4,7 +4,7 @@ public class Product {
     private String productID;
     private String name;
     private String image;
-    private String catID;
+    private String color;
     private String description;
     private int amount;
     private int price;
@@ -33,12 +33,12 @@ public class Product {
         this.image = image;
     }
 
-    public String getCatID() {
-        return catID;
+    public String getColor() {
+        return color;
     }
 
-    public void setCatID(String catID) {
-        this.catID = catID;
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public String getDescription() {
