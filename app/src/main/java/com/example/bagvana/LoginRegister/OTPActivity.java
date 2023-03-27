@@ -1,6 +1,4 @@
-package com.example.bagvana;
-
-import static android.content.ContentValues.TAG;
+package com.example.bagvana.LoginRegister;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,16 +12,17 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bagvana.R;
+import com.example.bagvana.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -31,27 +30,42 @@ public class OTPActivity extends AppCompatActivity {
     Button btnVerify;
     TextView txtErrorOtp;
     EditText otp;
-    String phoneNumber,otpid;
+    String phoneNumber, phone_forgotpass,type_numbephone,otpid;
     FirebaseAuth mAuth;
+    FirebaseDatabase database ;
+    DatabaseReference databasReference; // = FirebaseDatabase.getInstance().getReferenceFromUrl("https://bagvana-7335c-default-rtdb.firebaseio.com/");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpactivity);
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        databasReference = database.getReference("User");
+
+//        phoneNumber = getIntent().getStringExtra("mobile").toString();
 
         phoneNumber = getIntent().getStringExtra("mobile").toString();
+        type_numbephone = getIntent().getStringExtra("type_numberphone").toString();
+
         otp = (EditText) findViewById(R.id.editOTP);
         btnVerify = (Button) findViewById(R.id.btnVerrify);
         txtErrorOtp = (TextView) findViewById(R.id.txtErrorOtp);
+
+//        phoneNumber = phone_signup;
+
         initOTP();
+        txtErrorOtp.setText("");
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                verrifyCode();
+
+//                 forgotpassword
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(otpid,otp.getText().toString());
                 signInWithPhoneAuthCredential(credential);
 
-//                txtErrorOtp.setText("Sai mã xác minh. Nhập lại! " + phoneNumber );
+
+
+
             }
 
         });
@@ -95,55 +109,33 @@ public class OTPActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            startActivity(new Intent(OTPActivity.this,ChangePassword.class));
+                            if(type_numbephone.equals("signup")){
+                                String resultUsername =  getIntent().getStringExtra("username").toString();
+                                String resultPass =  getIntent().getStringExtra("password").toString();
+                                String id = phoneNumber;
+                                User user = new User(id, phoneNumber, resultUsername,resultPass);
+                                databasReference.child(id).setValue(user);
+                                Toast.makeText(OTPActivity.this,"Đăng ký thành công", Toast.LENGTH_LONG).show();
+                                startActivity(new Intent(OTPActivity.this,SignInActivity.class));
+
+                            }
+                            else if(type_numbephone.equals("forgotpassword")){
+                                startActivity(new Intent(OTPActivity.this,ChangePassword.class));
+
+                            }
+
                             finish();
                             // Update UI
                         } else {
                             // Sign in failed, display a message and update the UI
                             Toast.makeText(getApplicationContext(),"Fail",Toast.LENGTH_LONG).show();
+                            txtErrorOtp.setText("Sai mã xác minh. Nhập lại! " + phone_forgotpass );
+
                         }
                     }
                 });
     }
 
-//    private void senderVerrifyCode(String phoneNumber) {
-//        PhoneAuthOptions options =
-//                PhoneAuthOptions.newBuilder(mAuth)
-//                        .setPhoneNumber("+84" + phoneNumber)       // Phone number to verify
-//                        .setTimeout(60L, TimeUnit.SECONDS) // Timeout and unit
-//                        .setActivity(this)                 // Activity (for callback binding)
-//                        .setCallbacks(mCallbacks)          // OnVerificationStateChangedCallbacks
-//                        .build();
-//        PhoneAuthProvider.verifyPhoneNumber(options);
-//    }
-//    private PhoneAuthProvider.OnVerificationStateChangedCallbacks
-//            mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-//
-//        @Override
-//        public void onVerificationCompleted(@NonNull PhoneAuthCredential credential) {
-//            final String code = credential.getSmsCode();
-//            if(code!= null){
-//                verifyCode(code);
-//            }
-//
-//        }
-//
-//        @Override
-//        public void onVerificationFailed(@NonNull FirebaseException e) {
-//            Toast.makeText(OTPActivity.this,"Verification Failed", Toast.LENGTH_LONG).show();
-//
-//        }
-//        @Override
-//        public void onCodeSent(@NonNull String s,
-//                               @NonNull PhoneAuthProvider.ForceResendingToken token) {
-//            super.onCodeSent(s,  token);
-//            otpId = s;
-//        }
-//    };
-
-//    private void verifyCode(String code) {
-//        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(otpId,code);
-//    }
 
 
 }

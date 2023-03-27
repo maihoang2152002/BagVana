@@ -15,7 +15,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.102"
+        app:layout_constraintVertical_bias="0.053"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <TextView
@@ -47,28 +47,50 @@
         app:layout_constraintTop_toBottomOf="@+id/vwSignIn"
         app:layout_constraintVertical_bias="0.015" />
 
-    <EditText
-        android:id="@+id/inputNumberPhone"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Số điện thoại"
-        android:inputType="textPersonName"
-        android:paddingLeft="5dp"
-        android:textAlignment="viewStart"
-        android:textColor="#004C90"
-        android:textColorLink="#1E88E5"
-        android:textDirection="firstStrongRtl"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/vwdist"
-        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="@+id/vwdist"
         app:layout_constraintTop_toBottomOf="@+id/vwdist"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintVertical_bias="0.06999999">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            app:ccp_defaultNameCode="VN"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/vwdist"
+            app:layout_constraintStart_toStartOf="@+id/vwdist"
+            app:layout_constraintTop_toBottomOf="@+id/vwdist"
+            app:layout_constraintVertical_bias="0.060000002"
+            tools:ignore="MissingConstraints" />
+
+<!--        <Space-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="1" />-->
+
+        <EditText
+            android:id="@+id/txtNumberPhone"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="24dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Số điện thoại"
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp" />
+
+    </LinearLayout>
 
     <EditText
-        android:id="@+id/inputNumberPhone3"
+        android:id="@+id/txtUsername"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:background="@drawable/input_bg"
@@ -76,19 +98,35 @@
         android:hint="Tên đăng nhập"
         android:inputType="textPersonName"
         android:paddingLeft="5dp"
+        android:pointerIcon="wait"
         android:textAlignment="viewStart"
         android:textColor="#004C90"
         android:textColorLink="#1E88E5"
         android:textDirection="firstStrongRtl"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inputNumberPhone"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/inputNumberPhone"
-        app:layout_constraintTop_toBottomOf="@+id/inputNumberPhone"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.06999999" />
 
     <EditText
-        android:id="@+id/inputPassword"
+        android:id="@+id/txtPassword"
+        android:layout_width="330dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/input_bg"
+        android:ems="10"
+        android:hint="Mật khẩu"
+        android:inputType="textPassword"
+        android:paddingLeft="5dp"
+        app:layout_constraintEnd_toEndOf="@+id/txtUsername"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txtUsername"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsername" />
+
+    <EditText
+        android:id="@+id/txtConPassword"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:background="@drawable/input_bg"
@@ -97,10 +135,10 @@
         android:inputType="textPassword"
         android:paddingLeft="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txtPassword"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintStart_toStartOf="@+id/txtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
         app:layout_constraintVertical_bias="0.100000024" />
 
     <Button
@@ -111,9 +149,10 @@
         android:text="Đăng Kí"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inputPassword"
-        app:layout_constraintVertical_bias="0.47000003" />
+        app:layout_constraintTop_toBottomOf="@+id/txtConPassword"
+        app:layout_constraintVertical_bias="0.278" />
 
     <TextView
         android:id="@+id/textView4"
@@ -140,20 +179,5 @@
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/btnSignUp"
         app:layout_constraintVertical_bias="0.32" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:paddingLeft="5dp"
-        app:layout_constraintEnd_toEndOf="@+id/inputNumberPhone3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/inputNumberPhone3"
-        app:layout_constraintTop_toBottomOf="@+id/inputNumberPhone3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

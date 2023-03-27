@@ -46,29 +46,48 @@
         app:layout_constraintTop_toBottomOf="@+id/vwSignIn"
         app:layout_constraintVertical_bias="0.015" />
 
-
-    <EditText
-
-        android:id="@+id/inputNumberPhone"
-        style="@style/Widget.AppCompat.AutoCompleteTextView"
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="330dp"
         android:layout_height="50dp"
         android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Số điện thoại"
-        android:includeFontPadding="false"
-        android:inputType="textPersonName"
-        android:paddingLeft="5dp"
-        android:textAlignment="viewStart"
-        android:textColor="#004C90"
-        android:textColorLink="#1E88E5"
-        android:textDirection="firstStrongRtl"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/vwdist"
-        app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="@+id/vwdist"
         app:layout_constraintTop_toBottomOf="@+id/vwdist"
-        app:layout_constraintVertical_bias="0.145" />
+        app:layout_constraintVertical_bias="0.06999999">
+
+        <com.hbb20.CountryCodePicker
+            android:id="@+id/ccp"
+            android:layout_width="51dp"
+            android:layout_height="match_parent"
+            app:ccp_defaultNameCode="VN"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/vwdist"
+            app:layout_constraintStart_toStartOf="@+id/vwdist"
+            app:layout_constraintTop_toBottomOf="@+id/vwdist"
+            app:layout_constraintVertical_bias="0.060000002"
+            tools:ignore="MissingConstraints" />
+
+        <!--        <Space-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_weight="1" />-->
+
+        <EditText
+            android:id="@+id/inputNumberPhone"
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="24dp"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Số điện thoại"
+            android:inputType="textPersonName"
+            android:paddingLeft="5dp" />
+
+    </LinearLayout>
+
 
     <EditText
         android:id="@+id/inputPassword"
@@ -81,9 +100,10 @@
         android:paddingLeft="5dp"
         android:singleLine="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/inputNumberPhone"
-        app:layout_constraintStart_toStartOf="@+id/inputNumberPhone"
-        app:layout_constraintTop_toBottomOf="@+id/inputNumberPhone"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.06999999" />
 
     <TextView

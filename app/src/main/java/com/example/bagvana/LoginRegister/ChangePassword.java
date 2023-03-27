@@ -1,8 +1,10 @@
-package com.example.bagvana;
+package com.example.bagvana.LoginRegister;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.bagvana.R;
 
 public class ChangePassword extends AppCompatActivity {
 
