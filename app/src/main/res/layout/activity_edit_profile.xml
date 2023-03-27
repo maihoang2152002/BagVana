@@ -1,110 +1,222 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
     tools:context=".EditProfileActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/white">
 
-        <TextView
+        <LinearLayout
             android:id="@+id/txtUpdateProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cập nhật hồ sơ"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:layout_alignParentTop="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="match_parent"
+            android:layout_height="59dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imgBtn_back"
+                android:layout_width="40dp"
+                android:layout_height="36dp"
+                android:layout_marginLeft="0dp"
+                android:padding="0dp"
+                android:background="@drawable/ic_back" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Cập nhật hồ sơ"
+                android:paddingLeft="10dp"
+                android:textSize="30sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_alignParentTop="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_below="@+id/txtUpdateProfile">
-            <EditText
-                android:id="@+id/edtName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nguyễn Văn An"/>
 
             <EditText
-                android:id="@+id/edtNickName"
+                android:id="@+id/editTxt_fullName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="AnSuperHero123"/>
-            <EditText
-                android:id="@+id/edtDOB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="12/08/2002"/>
-            <EditText
-                android:id="@+id/edtEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="andeptrai@gmail.com"/>
-            <EditText
-                android:id="@+id/edtPhoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="+84 1234 5678"/>
-            <EditText
-                android:id="@+id/edtSex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Mail"/>
-
-            <Button
-                android:id="@+id/btnUpdateProfile"
-                android:layout_width="match_parent"
-                android:layout_height="52dp"
-                android:gravity="center"
-                android:text="Cập nhật"
-                android:layout_marginLeft="18dp"
-                android:layout_marginRight="18dp"
+                android:layout_height="50dp"
                 android:layout_marginTop="10dp"
-                android:elevation="4dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint="Nguyễn Văn An"
+                android:paddingLeft="15dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:background="@drawable/rectangle_profile"/>
 
+            <EditText
+                android:id="@+id/editTxt_NickName"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint="AnSuperHero123"
+                android:paddingLeft="15dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:background="@drawable/rectangle_profile"/>
+
+            <EditText
+                android:id="@+id/editTxt_DOB"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint="12/08/2002"
+                android:paddingLeft="15dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:background="@drawable/rectangle_profile"/>
+
+            <EditText
+                android:id="@+id/editTxt_email"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint="andeptrai@gmail.com"
+                android:paddingLeft="15dp"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:background="@drawable/rectangle_profile"/>
+
+            <EditText
+                android:id="@+id/editTxt_phoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:hint="+84 1234 5678"
+                android:paddingLeft="15dp"
+                android:inputType="phone"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:background="@drawable/rectangle_profile"/>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rectangle_profile">
+                <EditText
+                    android:id="@+id/editTxt_gender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="15dp"
+                    android:background="@null"
+                    android:hint="Male"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/black"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"/>
+
+                <ImageButton
+                    android:id="@+id/imgBtn_address"
+                    android:layout_alignBottom="@+id/editTxt_gender"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/ic_down_arrow"
+                    android:contentDescription="Giới tính" />
+
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/btnUpdateProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:gravity="center"
+                    android:text="Cập nhật"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="20dp"
+                    android:elevation="4dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/rectangle_profile"
+                    app:backgroundTint="@color/blue"
+                    />
+            </LinearLayout>
+
         </LinearLayout>
+
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:gravity="center"
             android:layout_alignParentBottom="true">
 
             <ImageButton
-                android:id="@+id/imgBtnHome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imgBtn_home"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
                 android:layout_weight="1"
-                android:minHeight="48dp"
-                android:src="@drawable/img_btn_home"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:src="@drawable/ic_home"
+                android:scaleType="centerInside"
+                android:background="@android:color/transparent"/>
 
             <ImageButton
-                android:id="@+id/imgBtnBag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imgBtn_shopping_cart"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
                 android:layout_weight="1"
-                android:minHeight="48dp"
-                android:src="@drawable/img_btn_bag"
-                tools:ignore="SpeakableTextPresentCheck" />
-
+                android:src="@drawable/ic_shopping_cart"
+                android:scaleType="centerInside"
+                android:background="@android:color/transparent"/>
             <ImageButton
-                android:id="@+id/imgBtnProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/imgBtn_profile"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
                 android:layout_weight="1"
-                android:src="@drawable/img_btn_profile"
-                tools:ignore="SpeakableTextPresentCheck" />
+                android:src="@drawable/ic_profile"
+                android:scaleType="centerInside"
+                android:background="@android:color/transparent"/>
         </LinearLayout>
     </RelativeLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</LinearLayout>
