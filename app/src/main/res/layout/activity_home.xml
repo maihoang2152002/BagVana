@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F2F2"
-    tools:context=".MainActivity">
+    tools:context=".Activity.Home.HomeActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -71,6 +72,35 @@
                 android:layout_gravity="center"
                 android:layout_marginBottom="20dp"
                 tools:ignore="HardcodedText" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="7"
+                tools:ignore="MissingConstraints">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/txt_notice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="Giỏ hàng của bạn đang trống!"
+                        android:visibility="gone"
+                        android:textSize="30sp"></TextView>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recycview_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+                </FrameLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
