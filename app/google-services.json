@@ -1,7 +1,10 @@
 {
   "project_info": {
     "project_number": "766395389186",
+<<<<<<< HEAD
     "firebase_url": "https://bagvana-7335c-default-rtdb.firebaseio.com",
+=======
+>>>>>>> 2e4aea741a73a38761dc4c871f36d783e2f18ebc
     "project_id": "bagvana-7335c",
     "storage_bucket": "bagvana-7335c.appspot.com"
   },
