@@ -1,6 +1,10 @@
 buildscript {
     dependencies {
+<<<<<<< HEAD
+        classpath 'com.google.gms:google-services:4.3.14'
+=======
         classpath 'com.google.gms:google-services:4.3.15'
+>>>>>>> 2e4aea741a73a38761dc4c871f36d783e2f18ebc
     }
 }// Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
