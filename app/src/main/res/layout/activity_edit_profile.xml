@@ -57,11 +57,10 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:hint="Nguyễn Văn An"
+                android:text="Nguyễn Văn An"
                 android:paddingLeft="15dp"
                 android:inputType="text"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
                 android:background="@drawable/rectangle_profile"/>
 
             <EditText
@@ -71,87 +70,144 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:hint="AnSuperHero123"
+                android:text="AnSuperHero123"
                 android:paddingLeft="15dp"
                 android:inputType="text"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
                 android:background="@drawable/rectangle_profile"/>
 
-            <EditText
-                android:id="@+id/editTxt_DOB"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:hint="12/08/2002"
-                android:paddingLeft="15dp"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:background="@drawable/rectangle_profile"/>
-
-            <EditText
-                android:id="@+id/editTxt_email"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:hint="andeptrai@gmail.com"
-                android:paddingLeft="15dp"
-                android:inputType="text"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:background="@drawable/rectangle_profile"/>
-
-            <EditText
-                android:id="@+id/editTxt_phoneNumber"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:hint="+84 1234 5678"
-                android:paddingLeft="15dp"
-                android:inputType="phone"
-                android:textColor="@color/black"
-                android:textColorHint="@color/black"
-                android:background="@drawable/rectangle_profile"/>
-
-
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="15dp"
                 android:background="@drawable/rectangle_profile">
+
                 <EditText
-                    android:id="@+id/editTxt_gender"
+                    android:id="@+id/editTxt_DOB"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="12/08/2002"
                     android:paddingLeft="15dp"
                     android:background="@null"
-                    android:hint="Male"
                     android:inputType="text"
                     android:textColor="@color/black"
-                    android:textColorHint="@color/black"
                     android:layout_centerVertical="true"
-                    android:gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"/>
+
 
                 <ImageButton
-                    android:id="@+id/imgBtn_address"
-                    android:layout_alignBottom="@+id/editTxt_gender"
-                    android:layout_alignParentRight="true"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:id="@+id/imgBtn_pickDate"
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:layout_marginRight="15dp"
-                    android:background="@drawable/ic_down_arrow"
-                    android:contentDescription="Giới tính" />
+                    android:background="@drawable/ic_calendar"
+                    android:contentDescription="Email" />
 
-            </RelativeLayout>
+            </FrameLayout>
+
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rectangle_profile">
+
+                <EditText
+                    android:id="@+id/editTxt_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="andeptrai@gmail.com"
+                    android:paddingLeft="15dp"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"/>
+
+
+                <ImageButton
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/ic_email"
+                    android:contentDescription="Email" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/rectangle_profile">
+
+                <EditText
+                    android:id="@+id/editTxt_phoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+84 1234 5678"
+                    android:paddingLeft="15dp"
+                    android:background="@null"
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_vertical"/>
+
+
+                <ImageButton
+                    android:layout_gravity="end|center_vertical"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="15dp"
+                    android:background="@drawable/ic_phone_call"
+                    android:contentDescription="Email" />
+
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/txtGender"
+                android:layout_marginTop="10dp"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textSize="16sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"/>
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="40dp"
+                    android:text="Male"
+                    android:textColor="@color/black"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rbFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="40dp"
+                    android:text="Female"
+                    android:textColor="@color/black"/>
+            </RadioGroup>
+
 
 
             <LinearLayout
@@ -175,6 +231,8 @@
                     app:backgroundTint="@color/blue"
                     />
             </LinearLayout>
+
+
 
         </LinearLayout>
 
