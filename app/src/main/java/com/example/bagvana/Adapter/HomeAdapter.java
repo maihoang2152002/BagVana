@@ -6,23 +6,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-//import com.bumptech.glide.Glide;
-//import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
+import com.example.bagvana.fragments.HomeFragment;
 
 import java.util.ArrayList;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 
-    private Context context;
-    private ArrayList<Product> productList;
+    private final Context context;
+    private final ArrayList<Product> productList;
 
     public HomeAdapter(Context context, ArrayList<Product> productList) {
         this.context = context;
@@ -32,7 +32,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
     @NonNull
     @Override
     public HomeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_home,parent,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_home, parent, false);
         return new HomeViewHolder(view);
     }
 
@@ -47,10 +47,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
         Log.e("Adapter",product.getName());
 
-//        Glide.with(this.context)
-//                .load(product.getImage())
-//                .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                .into(holder.img_product);
+        Glide.with(this.context)
+                .load(product.getImage())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(holder.img_product);
 
         holder.txt_name.setText(product.getName());
         holder.txt_price.setText(String.valueOf(price));
@@ -65,7 +65,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         return 0;
     }
 
-    public class HomeViewHolder extends RecyclerView.ViewHolder {
+    public static class HomeViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView img_product;
         public TextView txt_name;
@@ -75,7 +75,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
             super(itemView);
 
-//            img_product = itemView.findViewById(R.id.img_product);
+            img_product = itemView.findViewById(R.id.img_product);
             txt_name = itemView.findViewById(R.id.txt_name);
             txt_color = itemView.findViewById(R.id.txt_color);
             txt_price = itemView.findViewById(R.id.txt_price);
