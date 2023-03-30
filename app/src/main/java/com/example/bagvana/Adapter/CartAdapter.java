@@ -3,36 +3,29 @@ package com.example.bagvana.Adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.example.bagvana.DAO.CartDAO;
-import com.example.bagvana.DTO.Cart;
+import com.example.bagvana.DTO.EventBus.BillCostEvent;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
+import com.example.bagvana.Utils.Utils;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.time.Instant;
-import java.time.temporal.TemporalAdjuster;
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder> {
 
@@ -92,6 +85,13 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.txt_total.setText(String.valueOf(total));
         holder.txt_color.setText(product.getColor());
 
+        for(int i = 0; i < Utils.productList.size(); i++) {
+            if(Utils.productList.get(i).getProductID() == product.getProductID()) {
+                holder.checkBox_product.isChecked();
+            }
+            EventBus.getDefault().postSticky(new BillCostEvent());
+        }
+
         // userID = 1
         DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance().getReference("Cart").child("1");
         holder.txt_plus.setOnClickListener(new View.OnClickListener(){
@@ -107,6 +107,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 holder.txt_total.setText(String.valueOf(totalChange));
 
                 databaseReferenceCart.child(product.getProductID()).setValue(product);
+                for(int i = 0; i < Utils.productList.size(); i++) {
+                    if(Utils.productList.get(i).getProductID() == product.getProductID()) {
+                        Utils.productList.get(i).setAmount(amountChanged);
+                    }
+                    EventBus.getDefault().postSticky(new BillCostEvent());
+                }
             }
         });
 
@@ -119,15 +125,24 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 if (amountChanged == 1) {
                     new AlertDialog.Builder(context)
                             .setMessage("Bạn chắc chắn muốn bỏ sản phẩm này?")
-                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     databaseReferenceCart.child(product.getProductID()).removeValue();
+                                    for(int i = 0; i < Utils.productList.size(); i++) {
+                                        if(Utils.productList.get(i).getProductID() == product.getProductID()) {
+                                            Utils.productList.remove(i);
+                                        }
+                                        EventBus.getDefault().postSticky(new BillCostEvent());
+                                    }
                                 }
                             })
 
-                            .setNegativeButton(android.R.string.no, null)
+                            .setNegativeButton("Hủy", null)
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
+
+
+                    EventBus.getDefault().postSticky(new BillCostEvent());
                 }
                 else {
                     amountChanged = amountChanged - 1;
@@ -138,51 +153,33 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     holder.txt_total.setText(String.valueOf(totalChange));
 
                     databaseReferenceCart.child(product.getProductID()).setValue(product);
+                    for(int i = 0; i < Utils.productList.size(); i++) {
+                        if(Utils.productList.get(i).getProductID() == product.getProductID()) {
+                            Utils.productList.get(i).setAmount(amountChanged);
+                        }
+                        EventBus.getDefault().postSticky(new BillCostEvent());
+                    }
                 }
 
             }
         });
 
-//        if(isChooseAll()) { //Event
-//            holder.rad_product.setChecked(true);
-//            holder.rad_product.setSelected(true);
-//
-//            billCost = 100;
-//
-//            Intent intent = new Intent("choose-all-message");
-//            intent.putExtra("billCost",billCost);
-//
-//            LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
-//        }
-
-        holder.rad_product.setOnClickListener(new View.OnClickListener() {
+        holder.checkBox_product.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                if (!holder.rad_product.isSelected()) {
-                    holder.rad_product.setChecked(true);
-                    holder.rad_product.setSelected(true);
-
-                    billCost = billCost + product.getAmount() * product.getPrice();
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b) {
+                    Utils.productList.add(product);
+                    EventBus.getDefault().postSticky(new BillCostEvent());
                 } else {
-                    holder.rad_product.setChecked(false);
-                    holder.rad_product.setSelected(false);
-
-                    billCost = billCost - product.getAmount() * product.getPrice();
+                    for(int i = 0; i < Utils.productList.size(); i++) {
+                        if(Utils.productList.get(i).getProductID() == product.getProductID()) {
+                            Utils.productList.remove(i);
+                        }
+                        EventBus.getDefault().postSticky(new BillCostEvent());
+                    }
                 }
-
-                Intent intent = new Intent("choose-all-message");
-                intent.putExtra("billCost",billCost);
-
-                LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
             }
         });
-
-//        if(holder.rad_product.isSelected()) {
-//            billCost = billCost + product.getAmount() * product.getPrice();
-//        }
-
-
-//        Log.e("Adapter End", String.valueOf(billCost));
     }
 
     @Override
@@ -195,7 +192,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
     public class CartViewHolder extends RecyclerView.ViewHolder {
 
-        public RadioButton rad_product;
+        public CheckBox checkBox_product;
         public ImageView img_product;
         public TextView txt_name;
         public TextView txt_color;
@@ -207,7 +204,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
             super(itemView);
 
-            rad_product = itemView.findViewById(R.id.rad_product);
+            checkBox_product = itemView.findViewById(R.id.checkBox_product);
             img_product = itemView.findViewById(R.id.img_product);
             txt_name = itemView.findViewById(R.id.txt_name);
             txt_color = itemView.findViewById(R.id.txt_color);
