@@ -1,11 +1,10 @@
-package com.example.bagvana.LoginRegister;
+package com.example.bagvana.Activity.LoginRegister;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bagvana.R;
-import com.example.bagvana.User;
+import com.example.bagvana.Activity.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -73,9 +72,6 @@ public class OTPActivity extends AppCompatActivity {
 
     }
 
-    private void verrifyCode() {
-    }
-
     private void initOTP() {
 
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -112,12 +108,11 @@ public class OTPActivity extends AppCompatActivity {
                             if(type_numbephone.equals("signup")){
                                 String resultUsername =  getIntent().getStringExtra("username").toString();
                                 String resultPass =  getIntent().getStringExtra("password").toString();
-                                String id = phoneNumber;
+                                String id = getIntent().getStringExtra("id").toString();
                                 User user = new User(id, phoneNumber, resultUsername,resultPass);
                                 databasReference.child(id).setValue(user);
                                 Toast.makeText(OTPActivity.this,"Đăng ký thành công", Toast.LENGTH_LONG).show();
                                 startActivity(new Intent(OTPActivity.this,SignInActivity.class));
-
                             }
                             else if(type_numbephone.equals("forgotpassword")){
                                 startActivity(new Intent(OTPActivity.this,ChangePassword.class));

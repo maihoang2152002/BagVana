@@ -1,4 +1,4 @@
-package com.example.bagvana;
+package com.example.bagvana.Activity;
 
 public class User {
     private String id,phone, username, password;

@@ -1,4 +1,4 @@
-package com.example.bagvana.LoginRegister;
+package com.example.bagvana.Activity.LoginRegister;
 
 import androidx.appcompat.app.AppCompatActivity;
 
