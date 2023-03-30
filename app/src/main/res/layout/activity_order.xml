@@ -33,6 +33,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linear_orderAddress"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_marginTop="5dp"
@@ -90,13 +91,14 @@
         android:textColor="@color/black"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycview_product"
+        android:id="@+id/recycview_order"
         android:layout_width="match_parent"
         android:layout_height="150dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <LinearLayout
+        android:id="@+id/linear_voucher"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"
@@ -128,6 +130,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linear_pay"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginLeft="20dp"

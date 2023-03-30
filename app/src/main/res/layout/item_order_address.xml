@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <RadioButton
-        android:id="@+id/rad_choose"
+    <CheckBox
+        android:id="@+id/checkBox_address"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:buttonTint="@color/black"
