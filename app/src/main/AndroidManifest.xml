@@ -48,7 +48,11 @@
                 <activity
                     android:name=".Activity.Profile.EditProfileActivity"
                     android:exported="true">
+                            <intent-filter>
+                                <action android:name="android.intent.action.MAIN" />
 
+                                <category android:name="android.intent.category.LAUNCHER" />
+                            </intent-filter>
 
                 </activity>
                 <activity
@@ -79,10 +83,10 @@
         <activity
             android:name=".Activity.LoginRegister.SignInActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
     </application>
 

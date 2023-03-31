@@ -64,7 +64,7 @@
                 android:background="@drawable/rectangle_profile"/>
 
             <EditText
-                android:id="@+id/editTxt_NickName"
+                android:id="@+id/editTxt_username"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
@@ -216,22 +216,21 @@
                 android:layout_marginTop="20dp"
                 android:gravity="center_horizontal">
 
-                <Button
-                    android:id="@+id/btnUpdateProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="52dp"
-                    android:gravity="center"
-                    android:text="Cập nhật"
-                    android:layout_marginLeft="18dp"
-                    android:layout_marginRight="18dp"
-                    android:layout_marginTop="20dp"
-                    android:elevation="4dp"
-                    android:textColor="@color/white"
-                    android:background="@drawable/rectangle_profile"
-                    app:backgroundTint="@color/blue"
-                    />
             </LinearLayout>
 
+            <Button
+                android:id="@+id/btnUpdateProfile"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginLeft="18dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="18dp"
+                android:background="@drawable/rectangle_profile"
+                android:elevation="4dp"
+                android:gravity="center"
+                android:text="Cập nhật"
+                android:textColor="@color/white"
+                app:backgroundTint="@color/blue" />
 
 
         </LinearLayout>
