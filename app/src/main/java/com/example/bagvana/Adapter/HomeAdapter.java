@@ -102,7 +102,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 import com.example.bagvana.listeners.ItemListener;
-import com.example.bagvana.fragments.HomeFragment;
 
 import java.util.ArrayList;
 
@@ -183,12 +182,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             txt_color = itemView.findViewById(R.id.txt_color);
             txt_price = itemView.findViewById(R.id.txt_price);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    itemListener.OnItemPosition(getAdapterPosition());
-                }
-            });
+            itemView.setOnClickListener(view -> itemListener.OnItemPosition(getAdapterPosition()));
         }
     }
 
