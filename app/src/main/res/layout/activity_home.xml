@@ -7,163 +7,26 @@
     android:background="#F2F2F2"
     tools:context=".Activity.Home.HomeActivity">
 
-    <RelativeLayout
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:id="@+id/fragment_container"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="50dp"
-                android:layout_marginBottom="50dp">
-                <ImageView
-                    android:layout_width="50dp"
-                    android:layout_height="36dp"
-                    android:src="@drawable/ic_menu"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_gravity="center">
-                </ImageView>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:background="@drawable/rectangle_7"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    >
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_search"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_gravity="center">
-                    </ImageView>
-
-                    <EditText
-                        android:id="@+id/search_edittext"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_weight="1"
-                        android:hint="Tìm kiếm"
-                        android:inputType="text"
-                        android:minHeight="48dp"
-                        android:autofillHints=""
-                        tools:ignore="HardcodedText" />
-                </LinearLayout>
-            </LinearLayout>
-            <!-- Order online collect in BagVana -->
-            <TextView
-                android:id="@+id/header_title"
-                android:layout_width="319dp"
-                android:layout_height="102dp"
-                android:gravity="top"
-                android:textSize="34sp"
-                android:textColor="#000000"
-                android:text="Order online collect in BagVana"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="159dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                tools:ignore="HardcodedText" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="7"
-                tools:ignore="MissingConstraints">
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/txt_notice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="Giỏ hàng của bạn đang trống!"
-                        android:visibility="gone"
-                        android:textSize="30sp"></TextView>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recycview_home"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginEnd="15dp"
-                tools:ignore="UseCompoundDrawables">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="5dp"
-                    android:textSize="17sp"
-                    android:textColor="#5956E9"
-                    android:text="Xem thêm"
-                    android:layout_gravity="end">
-                </TextView>
-                <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="25dp"
-                    android:src="@drawable/ic_down_right_arrow"
-                    android:layout_gravity="center">
-                </ImageView>
-
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_alignParentBottom="true"
-            >
-
-            <ImageView
-                android:id="@+id/imgBtnHome"
-                android:layout_width="50dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_home" />
-
-            <ImageView
-                android:id="@+id/imgBtnBag"
-                android:layout_width="50dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_favourite_outlined_24dp" />
-
-            <ImageView
-                android:id="@+id/imgBtnProfile"
-                android:layout_width="50dp"
-                android:layout_height="36dp"
-                android:layout_marginEnd="20dp"
-                android:src="@drawable/ic_user" />
-
-            <ImageView
-                android:id="@+id/imgBtnCart"
-                android:layout_width="50dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_cart" />
-        </LinearLayout>
-
-    </RelativeLayout>
+        android:layout_height="70dp"
+        android:id="@+id/bottom_navigation"
+        android:background="@drawable/bottom_bg"
+        app:menu="@menu/view_navbar"
+        app:itemTextColor="@color/black"
+        app:itemIconTint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="VisualLintBottomNav" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
