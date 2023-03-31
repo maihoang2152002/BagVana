@@ -1,4 +1,4 @@
-package com.example.bagvana.Activity;
+package com.example.bagvana.DTO;
 
 public class User {
     private String id,phone, username, password;
