@@ -13,6 +13,8 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.bagvana.R;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -66,7 +68,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         initPickDate();
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("User");
+        databaseReference = database.getReference("User").child("2");
 
         editTxt_fullName  = findViewById(R.id.editTxt_fullName);
         editTxt_NickName  = findViewById(R.id.editTxt_NickName);
@@ -76,46 +78,95 @@ public class EditProfileActivity extends AppCompatActivity {
         rgGender = findViewById(R.id.rgGender);
 
 
-
-        String id = "duydo";
-        Query checkUserDatabase  = databaseReference.orderByChild("id").equalTo(id);
-
-
-        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    String fullnameFromDB = snapshot.child(id).child("fullname").getValue(String.class);
-                    String emailFromDB = snapshot.child(id).child("email").getValue(String.class);
-                    String usernameFromDB = snapshot.child(id).child("username").getValue(String.class);
-                    String dobFromDB = snapshot.child(id).child("dob").getValue(String.class);
-                    String phoneFromDB = snapshot.child(id).child("phone").getValue(String.class);
-                    String genderFromDB = snapshot.child(id).child("gender").getValue(String.class);
-//                        Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
-//                        startActivity(intent);
 
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
 
-                    editTxt_fullName.setText(fullnameFromDB);
-                    editTxt_NickName.setText(usernameFromDB);
-                    editTxt_email.setText(emailFromDB);
-                    editTxt_DOB.setText(dobFromDB);
-                    editTxt_phoneNumber.setText(phoneFromDB);
-                    if (Objects.equals(genderFromDB, "male")){
-                        rgGender.check(R.id.rbMale);
-                    } else {
-                        rgGender.check(R.id.rbFemale);
-                    }
-
-
-                }
-                else {
-                    Toast.makeText(EditProfileActivity.this,"Chưa có dữ liệu", Toast.LENGTH_LONG).show();
+//                    Product product = dataSnapshot.getValue(Product.class);
+//                    productList.add(product);
                 }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+
+        String id = "2";
+//        databaseReference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (task.isSuccessful()) {
+//
+//                    for (DataSnapshot ds : task.getResult().getChildren()) {
+//                        if(Objects.equals(ds.child("id").getValue(String.class), "2")){
+//                            String fullnameFromDB = ds.child("fullname").getValue(String.class);
+//                            String emailFromDB = ds.child("email").getValue(String.class);
+//                            String usernameFromDB = ds.child("username").getValue(String.class);
+//                            String dobFromDB = ds.child("dob").getValue(String.class);
+//                            String phoneFromDB = ds.child("phone").getValue(String.class);
+//                            String genderFromDB = ds.child("gender").getValue(String.class);
+//
+//
+//                            editTxt_fullName.setText(fullnameFromDB);
+//                            editTxt_NickName.setText(usernameFromDB);
+//                            editTxt_email.setText(emailFromDB);
+//                            editTxt_DOB.setText(dobFromDB);
+//                            editTxt_phoneNumber.setText(phoneFromDB);
+//                            if (Objects.equals(genderFromDB, "male")){
+//                                rgGender.check(R.id.rbMale);
+//                            } else {
+//                                rgGender.check(R.id.rbFemale);
+//                            }
+//                            break;
+//                        }
+//                    }
+//
+//                }
+//            }
+//        });
+
+
+
+
+//        Query checkUserDatabase  = databaseReference.orderByChild("id").equalTo(id);
+//        checkUserDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (snapshot.exists()){
+//                    String fullnameFromDB = snapshot.child(id).child("fullname").getValue(String.class);
+//                    String emailFromDB = snapshot.child(id).child("email").getValue(String.class);
+//                    String usernameFromDB = snapshot.child(id).child("username").getValue(String.class);
+//                    String dobFromDB = snapshot.child(id).child("dob").getValue(String.class);
+//                    String phoneFromDB = snapshot.child(id).child("phone").getValue(String.class);
+//                    String genderFromDB = snapshot.child(id).child("gender").getValue(String.class);
+////                        Intent intent = new Intent(EditProfileActivity.this, MainActivity.class);
+////                        startActivity(intent);
+//
+//
+//                    editTxt_fullName.setText(fullnameFromDB);
+//                    editTxt_NickName.setText(usernameFromDB);
+//                    editTxt_email.setText(emailFromDB);
+//                    editTxt_DOB.setText(dobFromDB);
+//                    editTxt_phoneNumber.setText(phoneFromDB);
+//                    if (Objects.equals(genderFromDB, "male")){
+//                        rgGender.check(R.id.rbMale);
+//                    } else {
+//                        rgGender.check(R.id.rbFemale);
+//                    }
+//
+//
+//                }
+//                else {
+//                    Toast.makeText(EditProfileActivity.this,"Chưa có dữ liệu", Toast.LENGTH_LONG).show();
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
 
     }
 }
