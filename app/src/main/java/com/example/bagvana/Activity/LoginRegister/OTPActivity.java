@@ -23,7 +23,12 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.concurrent.TimeUnit;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class OTPActivity extends AppCompatActivity {
     Button btnVerify;
@@ -99,6 +104,15 @@ public class OTPActivity extends AppCompatActivity {
                 }
         );
     }
+    private String convertHashToString(String text) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] hashInBytes = md.digest(text.getBytes(StandardCharsets.UTF_8));
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hashInBytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
     private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -109,10 +123,19 @@ public class OTPActivity extends AppCompatActivity {
                                 String resultUsername =  getIntent().getStringExtra("username").toString();
                                 String resultPass =  getIntent().getStringExtra("password").toString();
                                 String id = getIntent().getStringExtra("id").toString();
-                                User user = new User(id, phoneNumber, resultUsername,resultPass);
-                                databasReference.child(id).setValue(user);
-                                Toast.makeText(OTPActivity.this,"Đăng ký thành công", Toast.LENGTH_LONG).show();
-                                startActivity(new Intent(OTPActivity.this,SignInActivity.class));
+
+                                //ma hoa mat khau
+                                try {
+                                    String pass_convert = convertHashToString(resultPass);
+
+                                    User user = new User(id, phoneNumber, resultUsername,pass_convert,"","","","","");
+                                    databasReference.child(id).setValue(user);
+                                    startActivity(new Intent(OTPActivity.this,SignInActivity.class));
+
+                                } catch (NoSuchAlgorithmException e) {
+                                    throw new RuntimeException(e);
+                                }
+
                             }
                             else if(type_numbephone.equals("forgotpassword")){
                                 startActivity(new Intent(OTPActivity.this,ChangePassword.class));

@@ -121,41 +121,13 @@ public class SignUpActivity extends AppCompatActivity {
                                     noticePhonenumberExit();
                                 }
 
-
                             } else {
                                 Log.e("k ton tai", usernameTxt);
                             }
                         }
                     });
 
-//                    Query checkUser = databasReference.orderByChild("phone").equalTo(numberPhoneTxt);
-//                    checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                            if(snapshot.exists()){
-//                                noticePhonenumberExit();
-//                                Toast.makeText(SignUpActivity.this,"Số điện thoại đã được đăng ký", Toast.LENGTH_LONG).show();
-//                            }
-//                            else{
-//
-//                                Intent intent = new Intent(SignUpActivity.this, OTPActivity.class);
-//                                intent.putExtra("mobile",ccp_su.getFullNumberWithPlus().replace(" ", ""));
-//                                String phoneNumber = ccp_su.getFullNumberWithPlus().replace(" ", "");
-//                                String id = phoneNumber;
-//                                User user = new User(id, phoneNumber, usernameTxt,passwordTxt);
-//                                databasReference.child(id).setValue(user);
-//                                intent.putExtra("type_numberphone","signup");
-//
-//                                intent.putExtra("username", usernameTxt);
-//                                intent.putExtra("password", passwordTxt);
-//                                startActivity(intent);
-//                            }
-//                        }
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
+
                 }
             }
         });
