@@ -26,7 +26,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -87,7 +86,7 @@ public class HomeFragment extends Fragment implements ItemListener {
     @Override
     public void OnItemPosition(int position) {
         Intent intent = new Intent(getContext(), ProductDetailActivity.class);
-        intent.putExtra("product", (Serializable) productList.get(position));
+        intent.putExtra("product", productList.get(position));
         startActivity(intent);
     }
 }

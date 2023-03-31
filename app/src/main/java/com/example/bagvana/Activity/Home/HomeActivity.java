@@ -10,20 +10,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.Activity.Profile.ProfileActivity;
-import com.example.bagvana.Adapter.HomeAdapter;
-import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 
 import com.example.bagvana.fragments.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
-import java.util.ArrayList;
-
 public class HomeActivity extends AppCompatActivity implements NavigationBarView.OnItemSelectedListener {
-
-    private ArrayList<Product> productList;
-    private HomeAdapter homeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

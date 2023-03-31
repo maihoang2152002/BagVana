@@ -152,7 +152,7 @@
         android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -167,7 +167,9 @@
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_back" />
+                    app:srcCompat="@drawable/ic_back"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription,HardcodedText" />
                 <ImageView
                     android:id="@+id/imageView7"
                     android:layout_width="wrap_content"
@@ -176,7 +178,8 @@
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_fav" />
+                    app:srcCompat="@drawable/ic_fav"
+                    tools:ignore="ContentDescription" />
                 <ImageView
                     android:id="@+id/img_selected"
                     android:layout_width="285dp"
@@ -185,7 +188,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                    app:srcCompat="@drawable/img_balo_tomoc" />
+                    app:srcCompat="@drawable/img_balo_tomoc"
+                    tools:ignore="ContentDescription" />
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
@@ -197,7 +201,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/textView5"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_selected" />
+                    app:layout_constraintTop_toBottomOf="@+id/img_selected"
+                    tools:ignore="HardcodedText" />
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
@@ -209,7 +214,8 @@
                     app:layout_constraintEnd_toStartOf="@+id/textView6"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textView3"
-                    app:layout_constraintTop_toTopOf="@+id/textView3" />
+                    app:layout_constraintTop_toTopOf="@+id/textView3"
+                    tools:ignore="HardcodedText" />
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
@@ -221,7 +227,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/textView5"
-                    app:layout_constraintTop_toTopOf="@+id/textView5" />
+                    app:layout_constraintTop_toTopOf="@+id/textView5"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView7"
@@ -233,7 +240,8 @@
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@+id/textView3"
                     app:layout_constraintStart_toStartOf="@+id/textView3"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView3"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView8"
@@ -245,7 +253,8 @@
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@+id/textView5"
                     app:layout_constraintStart_toStartOf="@+id/textView5"
-                    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView5"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/textView9"
@@ -257,7 +266,8 @@
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@+id/textView6"
                     app:layout_constraintStart_toStartOf="@+id/textView6"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView6"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/color_product"
@@ -266,10 +276,11 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:text="VEGITARIAN FOOD"
-                    android:textColor="#FF6813"
+                    android:textColor="#B71C1C"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView7"
+                    tools:ignore="HardcodedText" />
 
                 <TextView
                     android:id="@+id/name_product"
@@ -280,7 +291,8 @@
                     android:textColor="#091020"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="@+id/color_product"
-                    app:layout_constraintTop_toBottomOf="@+id/color_product" />
+                    app:layout_constraintTop_toBottomOf="@+id/color_product"
+                    tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:id="@+id/imageView9"
@@ -289,7 +301,8 @@
                     android:layout_marginEnd="16dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/color_product"
-                    app:srcCompat="@drawable/tagfree" />
+                    app:srcCompat="@drawable/tagfree"
+                    tools:ignore="ContentDescription,ImageContrastCheck" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/description_product"
@@ -307,7 +320,8 @@
                     android:ellipsize="end"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/name_product"/>
+                    app:layout_constraintTop_toBottomOf="@+id/name_product"
+                    tools:ignore="HardcodedText,VisualLintLongText" />
 
                 <ImageView
                     android:id="@+id/imageView10"
@@ -317,7 +331,8 @@
                     android:layout_marginTop="16dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/description_product"
-                    app:srcCompat="@drawable/ic_group_400" />
+                    app:srcCompat="@drawable/ic_group_400"
+                    tools:ignore="ContentDescription,ImageContrastCheck" />
 
                 <TextView
                     android:id="@+id/textView13"
@@ -329,7 +344,8 @@
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView10"
                     app:layout_constraintStart_toEndOf="@+id/imageView10"
-                    app:layout_constraintTop_toTopOf="@+id/imageView10" />
+                    app:layout_constraintTop_toTopOf="@+id/imageView10"
+                    tools:ignore="HardcodedText" />
 
                 <ImageView
                     android:id="@+id/imageView11"
@@ -339,7 +355,8 @@
                     app:layout_constraintBottom_toBottomOf="@+id/textView13"
                     app:layout_constraintStart_toEndOf="@+id/textView13"
                     app:layout_constraintTop_toTopOf="@+id/textView13"
-                    app:srcCompat="@drawable/ic_group_401" />
+                    app:srcCompat="@drawable/ic_group_401"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/price_product"
@@ -351,7 +368,8 @@
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/imageView11"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imageView11" />
+                    app:layout_constraintTop_toTopOf="@+id/imageView11"
+                    tools:ignore="HardcodedText" />
 
 
 
@@ -367,12 +385,13 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_group_1675" />
+                app:srcCompat="@drawable/ic_group_1675"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
 
             <LinearLayout
                 android:id="@+id/recommend"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="7"
                 android:orientation="vertical"
                 tools:ignore="MissingConstraints">
@@ -384,8 +403,9 @@
                     android:layout_marginStart="10dp"
                     android:text="Recommend"
                     android:textColor="#000000"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -420,8 +440,9 @@
                     android:layout_marginStart="10dp"
                     android:text="Comment"
                     android:textColor="#000000"
-                    android:textSize="20dp"
-                    android:textStyle="bold" />
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
 
                 <ListView
                     android:id="@+id/commentListView"
@@ -429,7 +450,8 @@
                     android:layout_height="300dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
-                    android:nestedScrollingEnabled="true" />
+                    android:nestedScrollingEnabled="true"
+                    tools:ignore="NestedScrolling" />
 
             </LinearLayout>
 
