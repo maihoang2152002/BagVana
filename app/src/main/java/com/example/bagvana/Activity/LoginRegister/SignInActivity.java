@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +26,9 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -49,6 +53,22 @@ public class SignInActivity extends AppCompatActivity {
         });
         alert.setMessage("Số điện thoại hoặc mật khẩu không đúng. Vui lòng nhập lại");
         alert.show();
+    }
+    private String convertHashToString(String text) {
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("MD5");
+            byte[] hashInBytes = md.digest(text.getBytes(StandardCharsets.UTF_8));
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashInBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+
+
     }
     private void initLogin(){
         loginButton = (Button) findViewById(R.id.btnSignIn);
@@ -89,7 +109,6 @@ public class SignInActivity extends AppCompatActivity {
     private void checkUser(){
         numberPhone = (EditText) findViewById(R.id.inputNumberPhone);
         password = (EditText) findViewById(R.id.inputPassword);
-
         final CountryCodePicker ccp_su = (CountryCodePicker) findViewById(R.id.ccp);
         ccp_su.registerCarrierNumberEditText(numberPhone);
         String phone = ccp_su.getFullNumberWithPlus().replace(" ", "");
@@ -108,52 +127,27 @@ public class SignInActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
                     if (task.isSuccessful()) {
-                        List<String> posts = new ArrayList<>();
+
                         for (DataSnapshot ds : task.getResult().getChildren()) {
                             String phoneFB = ds.child("phone").getValue(String.class);
                             String passFB = ds.child("password").getValue(String.class);
+                            String pass_convert = convertHashToString(pass);
+                            Log.e("pass", passFB);
+                            if(phone.equals(phoneFB) && pass_convert.equals(passFB)) {
 
-                            if(phone.equals(phoneFB) && pass.equals(passFB)) {
-
-                                Toast.makeText(SignInActivity.this,"dang thanh cong", Toast.LENGTH_LONG).show();
-                                //  Intent intent = new Intent(SignInActivity.this, ForgotPassword.class);
-//                        startActivity(intent);
+                                  Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                            }
+                            else{
+                                noticeNotExitUser();
                             }
                         }
 
-                    } else {
-                        noticeNotExitUser();
                     }
                 }
             });
         }
     }
-
-//        Query check = databasReference.orderByChild("phone").equalTo(phone);
-//        check.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                if(snapshot.exists()){
-//
-//                    String passwordValue = snapshot.child("password").getValue(String.class);
-//                    if(!Objects.equals(passwordValue,pass)){
-//                        Intent intent = new Intent(SignInActivity.this, ForgotPassword.class);
-//                        startActivity(intent);
-//                    }
-//                    else{
-//                        password.setError("Mật khẩu không đúng");
-//                    }
-//                }
-//                else{
-//                    Toast.makeText(SignInActivity.this,"dang nhap that bai", Toast.LENGTH_LONG).show();
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
 
     private void initComponents() {
 
