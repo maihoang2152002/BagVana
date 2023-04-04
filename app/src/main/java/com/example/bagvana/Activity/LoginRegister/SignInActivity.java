@@ -1,7 +1,6 @@
 package com.example.bagvana.Activity.LoginRegister;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.bagvana.Utils.Utils._user;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -12,26 +11,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bagvana.Activity.Home.HomeActivity;
+import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -127,22 +123,32 @@ public class SignInActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
                     if (task.isSuccessful()) {
-
+                        boolean existUser = false;
                         for (DataSnapshot ds : task.getResult().getChildren()) {
+                            String avatarFB = ds.child("avatar").getValue(String.class);
+                            String dobFB = ds.child("dob").getValue(String.class);
+                            String emailFB = ds.child("email").getValue(String.class);
+                            String fullnameFB = ds.child("fullname").getValue(String.class);
+                            String genderFB = ds.child("gender").getValue(String.class);
+                            String typeUserFB = ds.child("typeUser").getValue(String.class);
+                            String usernameFB = ds.child("username").getValue(String.class);
                             String phoneFB = ds.child("phone").getValue(String.class);
                             String passFB = ds.child("password").getValue(String.class);
                             String pass_convert = convertHashToString(pass);
+                            String idFB = ds.child("id").getValue(String.class);
                             Log.e("pass", passFB);
                             if(phone.equals(phoneFB) && pass_convert.equals(passFB)) {
-
-                                  Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                existUser = true;
+                                _user = new User(idFB, phoneFB, usernameFB, passFB, dobFB, genderFB, typeUserFB, emailFB, avatarFB, fullnameFB);
+                                Log.e("user",_user.toString());
+                                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                                 startActivity(intent);
-                            }
-                            else{
-                                noticeNotExitUser();
+                                break;
                             }
                         }
-
+                        if (existUser == false) {
+                            noticeNotExitUser();
+                        }
                     }
                 }
             });

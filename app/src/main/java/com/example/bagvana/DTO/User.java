@@ -1,21 +1,33 @@
 package com.example.bagvana.DTO;
 
 public class User {
-    private String id,phone, username, password,BoD,gender,typeUser = "1",email, avatar;
+    private String id, phone, username, password, dob, gender, typeUser, email, avatar, fullname;
+
 
     public User() {
+        this.id = "";
+        this.phone = "";
+        this.username = "";
+        this.password = "";
+        this.dob = "";
+        this.gender = "";
+        this.typeUser = "1";
+        this.email = "";
+        this.avatar = "";
+        this.fullname = "";
     }
 
-    public User(String id, String phone, String username, String password, String boD, String gender, String typeUser, String email, String avatar) {
+    public User(String id, String phone, String username, String password, String dob, String gender, String typeUser, String email, String avatar, String fullname) {
         this.id = id;
         this.phone = phone;
         this.username = username;
         this.password = password;
-        BoD = boD;
+        this.dob = dob;
         this.gender = gender;
         this.typeUser = typeUser;
         this.email = email;
         this.avatar = avatar;
+        this.fullname = fullname;
     }
 
     public String getId() {
@@ -50,12 +62,12 @@ public class User {
         this.password = password;
     }
 
-    public String getBoD() {
-        return BoD;
+    public String getDob() {
+        return dob;
     }
 
-    public void setBoD(String boD) {
-        BoD = boD;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public String getGender() {
@@ -88,6 +100,18 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar;
+    }
+
+    public String getFullname() {
+        return fullname;
+    }
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public String toString(){
+        return avatar + '\n' + dob + '\n' + email + '\n' + fullname + '\n' + gender + '\n' + id + '\n' + password + '\n' + phone + '\n' + typeUser + '\n' + username + '\n';
     }
 }
 

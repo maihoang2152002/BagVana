@@ -1,8 +1,5 @@
 package com.example.bagvana.Activity.LoginRegister;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,8 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bagvana.R;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.bagvana.DTO.User;
+import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -25,10 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.util.concurrent.TimeUnit;
-
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.concurrent.TimeUnit;
 
 public class OTPActivity extends AppCompatActivity {
     Button btnVerify;
@@ -128,7 +126,7 @@ public class OTPActivity extends AppCompatActivity {
                                 try {
                                     String pass_convert = convertHashToString(resultPass);
 
-                                    User user = new User(id, phoneNumber, resultUsername,pass_convert,"","","","","");
+                                    User user = new User(id, phoneNumber, resultUsername,pass_convert,"","","","","","");
                                     databasReference.child(id).setValue(user);
                                     startActivity(new Intent(OTPActivity.this,SignInActivity.class));
 
@@ -139,7 +137,6 @@ public class OTPActivity extends AppCompatActivity {
                             }
                             else if(type_numbephone.equals("forgotpassword")){
                                 startActivity(new Intent(OTPActivity.this,ChangePassword.class));
-
                             }
 
                             finish();
