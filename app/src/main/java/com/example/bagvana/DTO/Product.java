@@ -93,4 +93,8 @@ public class Product implements Serializable {
     }
 
     public ArrayList<Comment> getComments() { return listComment; }
+
+    public boolean hasNameSimilarTo(String text) {
+        return this.name.toLowerCase().contains(text.toLowerCase());
+    }
 }
