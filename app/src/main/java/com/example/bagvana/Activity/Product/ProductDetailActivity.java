@@ -1,27 +1,26 @@
 package com.example.bagvana.Activity.Product;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.example.bagvana.Adapter.HomeAdapter;
+import com.example.bagvana.Adapter.ReviewAdapter;
 import com.example.bagvana.DTO.Comment;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
-import com.example.bagvana.Adapter.ReviewAdapter;
 import com.example.bagvana.listeners.ItemListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,11 +28,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ProductDetailActivity extends AppCompatActivity implements ItemListener {
-    private ImageView imageSelected;
     Product curProduct;
     TextView name, color, price, description;
 
@@ -46,15 +43,15 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
     ReviewAdapter reviewAdapter;
     private HomeAdapter homeAdapter;
     private ArrayList<Product> productList;
-    private RecyclerView recyclerview_home;
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
-        imageSelected = findViewById(R.id.img_selected);
+        ImageView imageSelected = findViewById(R.id.img_selected);
         name = findViewById(R.id.name_product);
         color = findViewById(R.id.color_product);
         price = findViewById(R.id.price_product);
@@ -82,7 +79,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Comment comment = dataSnapshot.getValue(Comment.class);
-                    Log.e("comment", comment.getContent());
                     listComment.add(comment);
                 }
 
@@ -99,12 +95,10 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         commentListView = findViewById(R.id.commentListView);
         commentListView.setAdapter(reviewAdapter);
 
-        recyclerview_home = findViewById(R.id.recyclerview_home);
+        RecyclerView recyclerview_home = findViewById(R.id.recyclerview_home);
 
         recyclerview_home.setHasFixedSize(true);
         recyclerview_home.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-//        recyclerview_home.setLayoutManager(new GridLayoutManager(this, 2));
-//        recyclerview_home.setLayoutManager(new LinearLayoutManager(this));
 
         productList = new ArrayList<>();
 
@@ -117,7 +111,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
                     Product product = dataSnapshot.getValue(Product.class);
                     productList.add(product);
-                    Log.e("product", product.getName());
                 }
 
                 homeAdapter.notifyDataSetChanged();
@@ -146,7 +139,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
     @Override
     public void OnItemPosition(int position) {
         Intent intent = new Intent(this, ProductDetailActivity.class);
-        intent.putExtra("product", (Serializable) productList.get(position));
+        intent.putExtra("product", productList.get(position));
         startActivity(intent);
     }
 }

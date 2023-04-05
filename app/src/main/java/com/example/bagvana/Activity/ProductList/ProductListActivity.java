@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -34,6 +33,7 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
     private ProductListAdapter mainAdapter;
     private ArrayList<Product> productList;
 
+    private String textSearchFirst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,6 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
 
                     Product product = dataSnapshot.getValue(Product.class);
                     productList.add(product);
-                    Log.e("product", product.getName());
                 }
 
                 mainAdapter.notifyDataSetChanged();
@@ -69,7 +68,6 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
 
             }
         });
-
         mainAdapter = new ProductListAdapter(this, productList, this);
         recyclerView.setAdapter(mainAdapter);
     }
@@ -80,18 +78,22 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
         getMenuInflater().inflate(R.menu.menu_item,menu);
         MenuItem item = menu.findItem(R.id.searchId);
         SearchView searchView = (SearchView) item.getActionView();
+        if (textSearchFirst == null) {
+            textSearchFirst = getIntent().getStringExtra("query");
+            mySearch(textSearchFirst);
+        }
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextSubmit(String newText) {
-                mySearch(newText);
-                return false;
+            public boolean onQueryTextSubmit(String query) {
+                mySearch(query);
+                return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                mySearch(newText);
-                return false;
+//                mySearch(newText);
+                return true;
             }
         });
 
