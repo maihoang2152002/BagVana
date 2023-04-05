@@ -87,7 +87,6 @@
 package com.example.bagvana.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,7 +108,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     private final Context context;
     private final ArrayList<Product> productList;
-    private ItemListener itemListener;
+    private final ItemListener itemListener;
 
     public HomeAdapter(Context context, ArrayList<Product> productList, ItemListener itemListener) {
         this.context = context;
@@ -132,8 +131,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
         }
 
         int price = product.getPrice();
-
-        Log.e("Adapter", product.getName());
 
         Glide.with(this.context)
                 .load(product.getImage())

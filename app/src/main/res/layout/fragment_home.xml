@@ -45,29 +45,24 @@
                         android:background="@drawable/rectangle_7"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_height="36dp"
-                            android:layout_gravity="center"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:src="@drawable/ic_search"
-                            tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck"
-                            android:contentDescription="TODO" />
+<!--                        <ImageView-->
+<!--                            android:layout_width="50dp"-->
+<!--                            android:layout_height="36dp"-->
+<!--                            android:layout_gravity="center"-->
+<!--                            android:layout_marginLeft="10dp"-->
+<!--                            android:layout_marginRight="10dp"-->
+<!--                            android:src="@drawable/ic_search"-->
+<!--                            tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck"-->
+<!--                            android:contentDescription="TODO" />-->
 
-                        <EditText
-                            android:id="@+id/search_edittext"
-                            android:layout_width="0dp"
+                        <androidx.appcompat.widget.SearchView
+                            android:id="@+id/search_view"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
                             android:autofillHints=""
-                            android:hint="Tìm kiếm"
-                            android:inputType="text"
-                            android:minHeight="48dp"
-                            android:textColor="#000000"
-                            android:textColorHint="#020202"
-                            tools:ignore="HardcodedText,VisualLintTextFieldSize" />
+                            android:queryHint="Tìm kiếm" />
                     </LinearLayout>
                 </LinearLayout>
                 <!-- Order online collect in BagVana -->
