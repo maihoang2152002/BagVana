@@ -49,6 +49,7 @@
                 android:layout_gravity="center"/>
 
             <TextView
+                android:id="@+id/txt_fullName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Reggie James"
