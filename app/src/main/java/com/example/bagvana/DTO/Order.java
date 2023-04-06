@@ -11,6 +11,15 @@ public class Order {
     private int totalPrice;
     private String status;
     private String paymentMethod;
+    private HashMap<String, Integer> usedVoucher;
+
+    public HashMap<String, Integer> getUsedVoucher() {
+        return usedVoucher;
+    }
+
+    public void setUsedVoucher(HashMap<String, Integer> usedVoucher) {
+        this.usedVoucher = usedVoucher;
+    }
 
     public String getPaymentMethod() {
         return paymentMethod;
@@ -20,7 +29,6 @@ public class Order {
         this.paymentMethod = paymentMethod;
     }
 
-    private HashMap<String, Integer> usedVoucher;
     private ArrayList<Product> itemsOrdered;
 
     public ReceiverInfo getReceiverInfo() {
@@ -73,13 +81,6 @@ public class Order {
         this.status = status;
     }
 
-    public HashMap<String, Integer> getUsedVoucher() {
-        return usedVoucher;
-    }
-
-    public void setUsedVoucher(HashMap<String, Integer> usedVoucher) {
-        this.usedVoucher = usedVoucher;
-    }
 
     public ArrayList<Product> getItemsOrdered() {
         return itemsOrdered;

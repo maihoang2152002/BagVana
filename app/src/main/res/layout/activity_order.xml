@@ -85,7 +85,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycview_order"
         android:layout_width="match_parent"
-        android:layout_height="160dp">
+        android:layout_height="140dp">
 
     </androidx.recyclerview.widget.RecyclerView>
 

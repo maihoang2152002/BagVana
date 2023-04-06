@@ -179,11 +179,12 @@ public class OrderActivity extends AppCompatActivity {
                     HashMap<String, Integer> usedVoucher = new HashMap<>();
 
                     for (Voucher voucher: Utils.voucherList) {
-                        if(voucher.getType() == 2) {
-                            usedVoucher.put(voucher.getId(), freeshipCost);
+                        if (voucher.getType() == 2) {
+                            usedVoucher.put(voucher.getId(),freeshipCost);
                         } else {
                             usedVoucher.put(voucher.getId(), discountCost);
                         }
+                        Log.e("voucher", String.valueOf(usedVoucher.get(voucher.getId())));
                     }
 
                     databaseReferenceOrder.child("usedVoucher").setValue(usedVoucher);
