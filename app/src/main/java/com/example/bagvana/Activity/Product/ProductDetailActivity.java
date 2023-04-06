@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -43,6 +44,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
     TextView name, color, price, description;
 
     ArrayList<Comment> listComment;
+    private Toolbar toolbar;
 
     private RatingBar ratingBar;
     private Button addToCartButton;
@@ -59,6 +61,8 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         imageBtn_fav = findViewById(R.id.imageBtn_fav);
 
 
@@ -72,23 +76,20 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
         DatabaseReference databaseReferenceWishlist = FirebaseDatabase.getInstance().getReference("Wishlist/" + _user.getId() + "/List");
         loadFavIconStatus(imageBtn_fav,databaseReferenceWishlist);
-        imageBtn_fav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (imageBtn_fav.getTag() == "false"){
-                    imageBtn_fav.setImageResource(R.drawable.ic_red_fav);
-                    imageBtn_fav.setTag("true");
+        imageBtn_fav.setOnClickListener(v -> {
+            if (imageBtn_fav.getTag() == "false"){
+                imageBtn_fav.setImageResource(R.drawable.ic_red_fav);
+                imageBtn_fav.setTag("true");
 
-                    //thêm vào list
-                    databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).setValue(curProduct);
-                }
-                else {
-                    imageBtn_fav.setImageResource(R.drawable.ic_fav);
-                    imageBtn_fav.setTag("false");
+                //thêm vào list
+                databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).setValue(curProduct);
+            }
+            else {
+                imageBtn_fav.setImageResource(R.drawable.ic_fav);
+                imageBtn_fav.setTag("false");
 
-                    // xóa khỏi list
-                    databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).removeValue();
-                }
+                // xóa khỏi list
+                databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).removeValue();
             }
         });
 
@@ -158,6 +159,12 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
         recyclerview_home.setAdapter(homeAdapter);
     }
+
+    public void setSupportActionBar(Toolbar toolbar) {
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view -> finish());
+    }
+
     private void toggleTextView(TextView textView) {
         if (textView.getMaxLines() == 4) {
             textView.setMaxLines(Integer.MAX_VALUE);

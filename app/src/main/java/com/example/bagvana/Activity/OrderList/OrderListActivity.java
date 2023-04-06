@@ -7,6 +7,7 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,11 +30,15 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
     private RecyclerView recyclerView;
     private OrderListAdapter orderListAdapter;
     private ArrayList<Order> orderList;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_list);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         recyclerView = findViewById(R.id.recyclerviewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -48,34 +53,9 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Order order = dataSnapshot.getValue(Order.class);
-                    order.getItemsOrdered().remove(0);
                     orderList.add(order);
-                    Log.e("test", order.getItemsOrdered().get(1).getName());
                 }
-//                for (Order order: orderList) {
-//                    DatabaseReference databaseReferenceHome2 = FirebaseDatabase.getInstance().getReference("Order").child(order.getOrderID()).child("itemsOrdered");
-//                    databaseReferenceHome2.addValueEventListener(new ValueEventListener() {
-//                        @SuppressLint("NotifyDataSetChanged")
-//                        @Override
-//                        public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                            ArrayList<Product> productArrayList = new ArrayList<>();
-//                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//
-//                                Product product = dataSnapshot.getValue(Product.class);
-//                                productArrayList.add(product);
-//                            }
-//
-//                            order.setItemsOrdered(productArrayList);
-//                            Log.e("test", "123");
-//                            Log.e("test", order.getItemsOrdered().get(1).getName());
-//                        }
-//
-//                        @Override
-//                        public void onCancelled(@NonNull DatabaseError error) {
-//
-//                        }
-//                    });
-//                }
+
                 orderListAdapter.notifyDataSetChanged();
             }
 
@@ -91,8 +71,13 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
 
     @Override
     public void OnItemPosition(int position) {
+        Log.e("test", orderList.get(position).getReceiverInfo().getAddress());
         Intent intent = new Intent(this, OrderDetailActivity.class);
         intent.putExtra("order", orderList.get(position));
         startActivity(intent);
+    }
+    public void setSupportActionBar(Toolbar toolbar) {
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view -> finish());
     }
 }

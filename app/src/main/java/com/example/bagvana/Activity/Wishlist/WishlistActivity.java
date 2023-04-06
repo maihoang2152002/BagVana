@@ -30,15 +30,15 @@ public class WishlistActivity extends AppCompatActivity implements ItemListener 
     private RecyclerView recyclerView;
     private ProductListAdapter mainAdapter;
     private ArrayList<Product> productList;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wishlist);
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
 
         recyclerView = findViewById(R.id.recyclerviewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -76,5 +76,9 @@ public class WishlistActivity extends AppCompatActivity implements ItemListener 
         Intent intent = new Intent(this, ProductDetailActivity.class);
         intent.putExtra("product", productList.get(position));
         startActivity(intent);
+    }
+    public void setSupportActionBar(Toolbar toolbar) {
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view -> finish());
     }
 }

@@ -1,5 +1,6 @@
 package com.example.bagvana.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.example.bagvana.R;
 import com.example.bagvana.listeners.ItemListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.MainViewHolder> {
@@ -34,6 +36,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Main
         return new MainViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MainViewHolder holder, int position) {
         Order order = orderList.get(position);
@@ -46,15 +49,14 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Main
 //        }
         holder.orderID.setText("Order #" + order.getOrderID());
         holder.orderDate.setText("Date: " + order.getOrderDate());
-        if (order.getStatus() == "1") {
+        if (Objects.equals(order.getStatus(), "1")) {
             holder.status.setText("Status: Processing");
-        } else if (order.getStatus() == "2") {
+        } else if (Objects.equals(order.getStatus(), "2")) {
             holder.status.setText("Status: In Delivery");
         } else {
             holder.status.setText("Status: Delivered");
         }
-        holder.totalPrice.setText("Total price: " + Integer.toString(order.getTotalPrice()));
-        holder.address.setText("Address: " + order.getAddress());
+        holder.totalPrice.setText("Total price: " + order.getTotalPrice());
     }
 
     @Override
@@ -67,7 +69,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Main
 
     public class MainViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView orderID, orderDate, status, totalPrice, address;
+        public TextView orderID, orderDate, status, totalPrice;
 
         public MainViewHolder(@NonNull View itemView) {
 
@@ -76,7 +78,6 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Main
             orderID = itemView.findViewById(R.id.order_number);
             orderDate = itemView.findViewById(R.id.order_date);
             status = itemView.findViewById(R.id.order_status);
-            address = itemView.findViewById(R.id.order_address);
             totalPrice = itemView.findViewById(R.id.order_total);
 
             itemView.setOnClickListener(view -> itemListener.OnItemPosition(getAdapterPosition()));

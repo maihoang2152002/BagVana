@@ -1,6 +1,8 @@
 package com.example.bagvana.DTO;
 
-public class ReceiverInfo {
+import java.io.Serializable;
+
+public class ReceiverInfo implements Serializable {
     private String userID;
     private String addressID;
     private String address;

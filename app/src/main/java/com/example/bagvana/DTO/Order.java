@@ -1,9 +1,9 @@
 package com.example.bagvana.DTO;
 
-import java.util.ArrayList;
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Order {
+public class Order implements Serializable {
     private String orderID;
     private String userID;
     private String orderDate;
@@ -12,6 +12,9 @@ public class Order {
     private String status;
     private String paymentMethod;
     private HashMap<String, Integer> usedVoucher;
+
+    private HashMap<String, Product> itemsOrdered;
+
 
     public HashMap<String, Integer> getUsedVoucher() {
         return usedVoucher;
@@ -28,9 +31,7 @@ public class Order {
     public void setPaymentMethod(String paymentMethod) {
         this.paymentMethod = paymentMethod;
     }
-
-    private ArrayList<Product> itemsOrdered;
-
+    
     public ReceiverInfo getReceiverInfo() {
         return receiverInfo;
     }
@@ -63,8 +64,6 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-
-
     public int getTotalPrice() {
         return totalPrice;
     }
@@ -82,11 +81,11 @@ public class Order {
     }
 
 
-    public ArrayList<Product> getItemsOrdered() {
+    public HashMap<String, Product> getItemsOrdered() {
         return itemsOrdered;
     }
 
-    public void setItemsOrdered(ArrayList<Product> itemsOrdered) {
+    public void setItemsOrdered(HashMap<String, Product> itemsOrdered) {
         this.itemsOrdered = itemsOrdered;
     }
 }
