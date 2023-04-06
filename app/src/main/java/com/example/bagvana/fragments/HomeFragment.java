@@ -3,6 +3,7 @@ package com.example.bagvana.fragments;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,10 +63,12 @@ public class HomeFragment extends Fragment implements ItemListener {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.e("123", "123");
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Product product = dataSnapshot.getValue(Product.class);
                     productList.add(product);
+                    Log.e("test", product.getName());
                 }
 
                 homeAdapter.notifyDataSetChanged();

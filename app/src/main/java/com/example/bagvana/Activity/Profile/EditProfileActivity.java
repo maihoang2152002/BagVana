@@ -15,6 +15,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.bagvana.R;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +38,7 @@ public class EditProfileActivity extends AppCompatActivity {
     RadioGroup rgGender;
     RadioButton rbMale, rbFemale;
     Button btnUpdateProfile;
+    private Toolbar toolbar;
 
     String fullnameUser, emailUser, usernameUser, dobUser, phoneUser, genderUser;
 
@@ -131,6 +133,9 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("User").child(_user.getId());
         editTxt_fullName  = findViewById(R.id.editTxt_fullName);
@@ -219,5 +224,10 @@ public class EditProfileActivity extends AppCompatActivity {
         } else {
             return false;
         }
+    }
+
+    public void setSupportActionBar(Toolbar toolbar) {
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view -> finish());
     }
 }

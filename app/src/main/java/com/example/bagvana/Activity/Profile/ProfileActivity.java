@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.bagvana.R;
 
@@ -16,10 +17,15 @@ public class ProfileActivity extends AppCompatActivity {
 
     LinearLayout linear_editProfile;
     TextView txt_fullName;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         txt_fullName = findViewById(R.id.txt_fullName);
         txt_fullName.setText(_user.getFullname());
@@ -32,6 +38,10 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    public void setSupportActionBar(Toolbar toolbar) {
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view -> finish());
     }
 
 }

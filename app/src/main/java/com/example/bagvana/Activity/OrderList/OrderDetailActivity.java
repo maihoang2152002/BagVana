@@ -3,38 +3,30 @@ package com.example.bagvana.Activity.OrderList;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
-import com.example.bagvana.Adapter.HomeAdapter;
 import com.example.bagvana.Adapter.ProductListAdapter;
-import com.example.bagvana.Adapter.ReviewAdapter;
-import com.example.bagvana.DTO.Comment;
 import com.example.bagvana.DTO.Order;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 import com.example.bagvana.listeners.ItemListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class OrderDetailActivity extends AppCompatActivity implements ItemListener {
     private Order curOrder;
-    private TextView orderID, orderDate, totalPrice;
+    private TextView orderID, orderDate, totalPrice, address;
     private ProductListAdapter productListAdapter;
     private RecyclerView recyclerView;
-
+    private Toolbar toolbar;
+    ArrayList<Product> productArrayList;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -42,11 +34,14 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_detail);
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         curOrder = (Order) getIntent().getSerializableExtra("order");
 
         orderID = findViewById(R.id.order_number);
         orderDate = findViewById(R.id.order_date);
-//        status = itemView.findViewById(R.id.order_status);
+//        status = findViewById(R.id.order_status);
 //        address = itemView.findViewById(R.id.order_address);
         totalPrice = findViewById(R.id.order_total);
 
@@ -59,12 +54,19 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
 //        } else {
 //            status.setText("Status: Delivered");
 //        }
-        totalPrice.setText("Total price: " + Integer.toString(curOrder.getTotalPrice()));
-//        address.setText("Address: " + curOrder.getAddress());
+        totalPrice.setText("Total price: " + curOrder.getTotalPrice());
+        address.setText("Address: " + curOrder.getReceiverInfo().getAddress());
 
         recyclerView = findViewById(R.id.recyclerviewId);
+
+        productArrayList = new ArrayList<>();
+        Set<String> keySet = curOrder.getItemsOrdered().keySet();
+        for (String key : keySet) {
+            Product temp = curOrder.getItemsOrdered().get(key);
+            productArrayList.add(temp);
+        }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        productListAdapter = new ProductListAdapter(this, curOrder.getItemsOrdered(), this);
+        productListAdapter = new ProductListAdapter(this, productArrayList, this);
 
         recyclerView.setAdapter(productListAdapter);
     }
@@ -72,7 +74,11 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
     @Override
     public void OnItemPosition(int position) {
         Intent intent = new Intent(this, ProductDetailActivity.class);
-        intent.putExtra("product", curOrder.getItemsOrdered().get(position));
+        intent.putExtra("product", productArrayList.get(position));
         startActivity(intent);
+    }
+    public void setSupportActionBar(Toolbar toolbar) {
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view -> finish());
     }
 }
