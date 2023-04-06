@@ -38,7 +38,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class OrderActivity extends AppCompatActivity {
 
@@ -53,6 +56,7 @@ public class OrderActivity extends AppCompatActivity {
     private TextView txt_totalCost;
     private TextView txt_orderAddress;
     private TextView txt_delivery;
+    private TextView txt_billCost;
     private LinearLayout linear_orderAddress;
     private LinearLayout linear_voucher;
     private LinearLayout linear_pay;
@@ -62,6 +66,8 @@ public class OrderActivity extends AppCompatActivity {
     private Toolbar toolbar_order;
     private int billCost;
     private int voucherCost;
+    private int freeshipCost;
+    private int discountCost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +85,7 @@ public class OrderActivity extends AppCompatActivity {
         txt_totalCost = findViewById(R.id.txt_totalCost);
         txt_orderAddress = findViewById(R.id.txt_orderAddress);
         txt_delivery = findViewById(R.id.txt_delivery);
+        txt_billCost = findViewById(R.id.txt_billCost);
 
         txt_delivery.setVisibility(View.GONE);
 
@@ -155,7 +162,46 @@ public class OrderActivity extends AppCompatActivity {
                             .setPositiveButton("Đồng ý", null)
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
+                } else {
+                    LocalDateTime localDateTime = LocalDateTime.now();
+                    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                    String formattedDate = localDateTime.format(myFormatObj);
+
+                    DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order").child("1").child(formattedDate);
+
+                    //OrderID
+                    databaseReferenceOrder.child(formattedDate);
+
+                    for (Product product: Utils.productList) {
+                        databaseReferenceOrder.child("itemsOrdered").child(product.getProductID()).setValue(product);
+                    }
+
+                    HashMap<String, Integer> usedVoucher = new HashMap<>();
+
+                    for (Voucher voucher: Utils.voucherList) {
+                        if(voucher.getType() == 2) {
+                            usedVoucher.put(voucher.getId(), freeshipCost);
+                        } else {
+                            usedVoucher.put(voucher.getId(), discountCost);
+                        }
+                    }
+
+                    databaseReferenceOrder.child("usedVoucher").setValue(usedVoucher);
+
+
+                    // UpdateUserID
+                    databaseReferenceOrder.child("orderID").setValue(formattedDate);
+                    databaseReferenceOrder.child("receiverInfo").setValue(Utils.receiverInfo);
+                    databaseReferenceOrder.child("totalPrice").setValue(txt_totalCost.getText().toString());
+                    databaseReferenceOrder.child("orderDate").setValue(formattedDate);
+                    databaseReferenceOrder.child("status").setValue("1");
+                    databaseReferenceOrder.child("userID").setValue("1");
+                    databaseReferenceOrder.child("paymentMethod").setValue(txt_delivery.getText().toString());
+
+
                 }
+
+
 
             }
         });
@@ -172,6 +218,7 @@ public class OrderActivity extends AppCompatActivity {
                 if(discount > voucher.getMaxValueDiscount()) {
                     discount = voucher.getMaxValueDiscount();
                     voucherCost =  voucherCost + discount;
+                    freeshipCost = discount;
                 }
                 String money = "-" + discount;
                 txt_discountShipCost.setText(money);
@@ -184,6 +231,7 @@ public class OrderActivity extends AppCompatActivity {
                     int discount = voucher.getRange();
                     voucherCost =  voucherCost + discount;
                     String money = "-" + discount;
+                    discountCost = discount;
                     txt_voucherCost.setText(money);
                 } else {
 
@@ -193,12 +241,14 @@ public class OrderActivity extends AppCompatActivity {
                         discount = voucher.getMaxValueDiscount();
                     }
                     String money = "-" + discount;
+                    discountCost = discount;
                     txt_voucherCost.setText(money);
                 }
             }
 
             int totalCost = billCost + 30 - voucherCost;
             txt_totalCost.setText(String.valueOf(totalCost));
+            txt_billCost.setText(txt_totalCost.getText().toString());
         }
     }
 
@@ -273,6 +323,7 @@ public class OrderActivity extends AppCompatActivity {
         txt_productCost.setText(String.valueOf(billCost));
         int totalCost = billCost + 30 - voucherCost;
         txt_totalCost.setText(String.valueOf(totalCost));
+        txt_billCost.setText(txt_totalCost.getText().toString());
     }
 
     @Override
