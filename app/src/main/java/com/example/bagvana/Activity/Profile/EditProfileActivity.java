@@ -170,6 +170,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!fullnameUser.equals(editTxt_fullName.getText().toString())){
             databaseReference.child("fullname").setValue(editTxt_fullName.getText().toString());
             fullnameUser = editTxt_fullName.getText().toString();
+            _user.setFullname(editTxt_fullName.getText().toString());
             return true;
         } else {
             return false;
@@ -179,6 +180,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!emailUser.equals(editTxt_email.getText().toString())){
             databaseReference.child("email").setValue(editTxt_email.getText().toString());
             emailUser = editTxt_email.getText().toString();
+            _user.setEmail(editTxt_email.getText().toString());
             return true;
         } else {
             return false;
@@ -188,6 +190,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!dobUser.equals(editTxt_DOB.getText().toString())){
             databaseReference.child("dob").setValue(editTxt_DOB.getText().toString());
             dobUser = editTxt_DOB.getText().toString();
+            _user.setDob(editTxt_DOB.getText().toString());
             return true;
         } else {
             return false;
@@ -197,6 +200,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!phoneUser.equals(editTxt_phoneNumber.getText().toString())){
             databaseReference.child("phone").setValue(editTxt_phoneNumber.getText().toString());
             phoneUser = editTxt_phoneNumber.getText().toString();
+            _user.setPhone(editTxt_phoneNumber.getText().toString());
             return true;
         } else {
             return false;
@@ -210,6 +214,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!genderUser.equals(temp)){
             databaseReference.child("gender").setValue(temp);
             genderUser = temp;
+            _user.setGender(temp);
             return true;
         } else {
             return false;

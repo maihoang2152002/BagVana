@@ -170,8 +170,8 @@
                     app:srcCompat="@drawable/ic_back"
                     android:contentDescription="TODO"
                     tools:ignore="ContentDescription,HardcodedText" />
-                <ImageView
-                    android:id="@+id/imageView7"
+                <ImageButton
+                    android:id="@+id/imageBtn_fav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -179,6 +179,8 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:srcCompat="@drawable/ic_fav"
+                    android:tag="false"
+                    android:background="#E5E5E5"
                     tools:ignore="ContentDescription" />
                 <ImageView
                     android:id="@+id/img_selected"

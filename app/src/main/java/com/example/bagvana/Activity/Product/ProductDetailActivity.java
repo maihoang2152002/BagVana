@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
@@ -22,6 +23,8 @@ import com.example.bagvana.DTO.Comment;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 import com.example.bagvana.listeners.ItemListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,7 +54,10 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
-        ImageView imageSelected = findViewById(R.id.img_selected);
+        imageBtn_fav = findViewById(R.id.imageBtn_fav);
+
+
+        imageSelected = findViewById(R.id.img_selected);
         name = findViewById(R.id.name_product);
         color = findViewById(R.id.color_product);
         price = findViewById(R.id.price_product);
@@ -59,6 +65,27 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
         curProduct = (Product) getIntent().getSerializableExtra("product");
 
+        DatabaseReference databaseReferenceWishlist = FirebaseDatabase.getInstance().getReference("Wishlist/" + _user.getId() + "/List");
+        loadFavIconStatus(imageBtn_fav,databaseReferenceWishlist);
+        imageBtn_fav.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (imageBtn_fav.getTag() == "false"){
+                    imageBtn_fav.setImageResource(R.drawable.ic_red_fav);
+                    imageBtn_fav.setTag("true");
+
+                    //thêm vào list
+                    databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).setValue(curProduct);
+                }
+                else {
+                    imageBtn_fav.setImageResource(R.drawable.ic_fav);
+                    imageBtn_fav.setTag("false");
+
+                    // xóa khỏi list
+                    databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).removeValue();
+                }
+            }
+        });
 
         price.setText("$" + curProduct.getPrice());
         description.setText(curProduct.getDescription());
@@ -142,4 +169,23 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         intent.putExtra("product", productList.get(position));
         startActivity(intent);
     }
+
+    public void loadFavIconStatus(ImageButton imageBtn_fav, DatabaseReference databaseReferenceWishlist){
+        databaseReferenceWishlist.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()) {
+                    for (DataSnapshot ds : task.getResult().getChildren()) {
+                        String productId_Fb = ds.child("productID").getValue(String.class);
+                        if(curProduct.getProductID().equals(productId_Fb)) {
+                            imageBtn_fav.setTag("true");
+                            imageBtn_fav.setImageResource(R.drawable.ic_red_fav);
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+    }
+
 }
