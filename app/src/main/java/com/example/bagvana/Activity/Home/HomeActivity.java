@@ -39,7 +39,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationBarView
                 fragment = new HomeFragment();
                 break;
             case R.id.menu_fav:
-//                fragment = new FavFragment();
                 Intent myIntent3 = new Intent(HomeActivity.this, WishlistActivity.class);
 //                myIntent.putExtras(myBundle);
                 startActivity(myIntent3);

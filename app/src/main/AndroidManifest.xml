@@ -94,6 +94,14 @@
 <!--                <category android:name="android.intent.category.LAUNCHER" />-->
 <!--            </intent-filter>-->
         </activity>
+        <activity
+            android:name=".Activity.OrderList.OrderListActivity"
+            android:exported="true">
+        </activity>
+        <activity
+            android:name=".Activity.OrderList.OrderDetailActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
