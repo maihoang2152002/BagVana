@@ -102,6 +102,10 @@
             android:name=".Activity.OrderList.OrderDetailActivity"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".Activity.Wishlist.WishlistActivity"
+            android:exported="true">
+        </activity>
     </application>
 
 </manifest>
