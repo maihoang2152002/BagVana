@@ -1,4 +1,4 @@
-package com.example.bagvana.Activity.Product;
+package com.example.bagvana.Activity.Profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.bagvana.R;
 
-public class ProductInformationActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_product_information);
+        setContentView(R.layout.activity_change_password);
     }
 }

@@ -90,7 +90,6 @@ public class CartActivity extends AppCompatActivity {
                     Product product = dataSnapshot.getValue(Product.class);
                     productList.add(product);
                 }
-
                 cartAdapter.notifyDataSetChanged();
             }
             @Override

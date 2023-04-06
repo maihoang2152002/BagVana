@@ -1,6 +1,9 @@
 package com.example.bagvana.DTO;
 
-public class Product {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Product implements Serializable {
     private String productID;
     private String name;
     private String image;
@@ -8,6 +11,29 @@ public class Product {
     private String description;
     private int amount;
     private int price;
+
+    private ArrayList<Comment> listComment;
+
+    public Product() {
+        this.listComment = null;
+        this.productID = "";
+        this.name = "";
+        this.image = "";
+        this.color = "";
+        this.description = "";
+        this.amount = 0;
+        this.price = 0;
+    }
+    public Product(String productID, String name, String image, String color, String description, int amount, int price, ArrayList<Comment> listComment) {
+        this.productID = productID;
+        this.name = name;
+        this.image = image;
+        this.color = color;
+        this.description = description;
+        this.amount = amount;
+        this.price = price;
+        this.listComment = listComment;
+    }
 
     public String getProductID() {
         return productID;
@@ -63,5 +89,11 @@ public class Product {
 
     public void setPrice(int price) {
         this.price = price;
+    }
+
+    public ArrayList<Comment> getComments() { return listComment; }
+
+    public boolean hasNameSimilarTo(String text) {
+        return this.name.toLowerCase().contains(text.toLowerCase());
     }
 }

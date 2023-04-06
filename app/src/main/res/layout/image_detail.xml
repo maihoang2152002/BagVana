@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Activity.Product.ProductDetailActivity">
+
+
+    <ImageView
+        android:id="@+id/single_image"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        android:layout_weight="2"
+        android:src="@drawable/ic_launcher_background"
+        android:background="@drawable/image_selector"
+        tools:ignore="ContentDescription" />
+
+
+
+</LinearLayout>
