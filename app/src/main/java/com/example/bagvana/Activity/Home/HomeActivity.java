@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.bagvana.Activity.ProductList.ProductListActivity;
+import com.example.bagvana.Activity.OrderList.OrderListActivity;
 import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.Activity.Profile.ProfileActivity;
 import com.example.bagvana.R;
@@ -41,7 +41,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationBarView
                 break;
             case R.id.menu_fav:
 //                fragment = new FavFragment();
-                Intent myIntent3 = new Intent(HomeActivity.this, ProductListActivity.class);
+                Intent myIntent3 = new Intent(HomeActivity.this, OrderListActivity.class);
 //                myIntent.putExtras(myBundle);
                 startActivity(myIntent3);
                 break;

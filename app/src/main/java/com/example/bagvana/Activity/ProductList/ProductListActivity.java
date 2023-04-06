@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class ProductListActivity extends AppCompatActivity implements ItemListener {
 
     private RecyclerView recyclerView;
-    private ProductListAdapter mainAdapter;
+    private ProductListAdapter productListAdapter;
     private ArrayList<Product> productList;
 
     private String textSearchFirst;
@@ -60,7 +60,7 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
                     productList.add(product);
                 }
 
-                mainAdapter.notifyDataSetChanged();
+                productListAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -68,8 +68,8 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
 
             }
         });
-        mainAdapter = new ProductListAdapter(this, productList, this);
-        recyclerView.setAdapter(mainAdapter);
+        productListAdapter = new ProductListAdapter(this, productList, this);
+        recyclerView.setAdapter(productListAdapter);
     }
 
     @Override
@@ -105,19 +105,19 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
         ArrayList<Product> productListSearch = new ArrayList<>();
 
         if (TextUtils.isEmpty(str)) {
-            mainAdapter.notifyDataSetChanged();
+            productListAdapter.notifyDataSetChanged();
 
-            mainAdapter = new ProductListAdapter(this, productList, this);
-            recyclerView.setAdapter(mainAdapter);
+            productListAdapter = new ProductListAdapter(this, productList, this);
+            recyclerView.setAdapter(productListAdapter);
         } else {
             for (Product product : productList) {
                 if (product.hasNameSimilarTo(str))
                     productListSearch.add(product);
             }
-            mainAdapter.notifyDataSetChanged();
+            productListAdapter.notifyDataSetChanged();
 
-            mainAdapter = new ProductListAdapter(this, productListSearch, this);
-            recyclerView.setAdapter(mainAdapter);
+            productListAdapter = new ProductListAdapter(this, productListSearch, this);
+            recyclerView.setAdapter(productListAdapter);
         }
 
     }
