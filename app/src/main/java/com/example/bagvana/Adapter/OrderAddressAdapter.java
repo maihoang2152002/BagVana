@@ -1,18 +1,23 @@
 package com.example.bagvana.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bagvana.Activity.Order.OrderActivity;
 import com.example.bagvana.DTO.ReceiverInfo;
 import com.example.bagvana.R;
+import com.example.bagvana.Utils.Utils;
 
 import java.util.ArrayList;
 
@@ -44,9 +49,22 @@ public class OrderAddressAdapter extends RecyclerView.Adapter<OrderAddressAdapte
             holder.txt_defaultAddress.setVisibility(View.INVISIBLE);
         }
 
+        if(Utils.receiverInfo.getAddressID() == receiverInfo.getAddressID()) {
+            holder.rad_address.setChecked(true);
+        }
+
         holder.txt_fullName.setText(receiverInfo.getFullName());
-        holder.txt_phone.setText(String.valueOf(receiverInfo.getPhoneNumber()));
+        holder.txt_phone.setText(receiverInfo.getPhone());
         holder.txt_address.setText(receiverInfo.getAddress());
+
+        holder.rad_address.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Utils.receiverInfo = receiverInfo;
+
+                context.startActivity(new Intent(context, OrderActivity.class));
+            }
+        });
     }
 
     @Override
@@ -59,7 +77,7 @@ public class OrderAddressAdapter extends RecyclerView.Adapter<OrderAddressAdapte
 
     public class OrderAddressViewHolder extends RecyclerView.ViewHolder {
 
-        private CheckBox checkBox_address;
+        private RadioButton rad_address;
         private TextView txt_fullName;
         private TextView txt_address;
         private TextView txt_phone;
@@ -69,7 +87,7 @@ public class OrderAddressAdapter extends RecyclerView.Adapter<OrderAddressAdapte
         public OrderAddressViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            checkBox_address = itemView.findViewById(R.id.checkBox_address);
+            rad_address = itemView.findViewById(R.id.rad_address);
             txt_fullName = itemView.findViewById(R.id.txt_fullName);
             txt_address = itemView.findViewById(R.id.txt_address);
             txt_phone = itemView.findViewById(R.id.txt_phone);

@@ -3,118 +3,991 @@
 
     <string-array name="array_vietnam_city">
         <item>Lựa chọn Tỉnh hoặc Thành Phố</item>
-        <item>An Giang</item> <item>Bà Rịa-Vũng Tàu</item> <item>Bạc Liêu</item> <item>Bắc Kạn</item>
-        <item>Bắc Giang</item> <item>Bắc Ninh</item> <item>Bến Tre</item> <item>Bình Dương</item>
-        <item>Bình Định</item> <item>Bình Phước</item> <item>Bình Thuận </item> <item>Cà Mau</item>
-        <item>Cao Bằng</item> <item>TP. Cần Thơ</item> <item>TP. Đà Nẵng</item> <item>Đắk Lắk</item>
-        <item>Đắk Nông</item> <item>Điện Biên</item> <item>Đồng Nai</item> <item>Đồng Tháp</item>
-        <item>Gia Lai</item> <item>Hà Giang</item> <item>Hà Nam</item> <item>TP. Hà Nội</item>
-        <item>Hà Tây</item> <item>Hà Tĩnh</item> <item>Hải Dương</item> <item>TP. Hải Phòng</item>
-        <item>Hòa Bình</item> <item>TP. Hồ Chí Minh</item> <item>Hậu Giang</item> <item>Hưng Yên</item>
-        <item>Khánh Hòa</item> <item>Kiên Giang</item> <item>Kon Tum</item> <item>Lai Châu</item>
-        <item>Lào Cai</item> <item>Lạng Sơn</item> <item>Lâm Đồng</item> <item>Long An</item>
-        <item>Nam Định</item> <item>Nghệ An</item> <item>Ninh Bình</item> <item>Ninh Thuận</item>
-        <item>Phú Thọ</item> <item>Phú Yên</item> <item>Quảng Bình</item> <item>Quảng Nam</item>
-        <item>Quảng Ngãi</item> <item>Quảng Ninh</item> <item>Quảng Trị</item> <item>Sóc Trăng</item>
-        <item>Sơn La</item> <item>Tây Ninh</item> <item>Thái Bình</item> <item>Thái Nguyên</item>
-        <item>Thanh Hóa</item> <item>Thừa Thiên Huế</item> <item>Tiền Giang</item> <item>Trà Vinh</item>
-        <item>Tuyên Quang</item> <item>Vĩnh Long</item> <item>Vĩnh Phúc</item> <item>Yên Bái</item>
+        <item>An Giang</item>
+        <item>Bà Rịa-Vũng Tàu</item>
+        <item>Bắc Giang</item>
+        <item>Bắc Kạn</item>
+        <item>Bạc Liêu</item>
+        <item>Bắc Ninh</item>
+        <item>Bến Tre</item>
+        <item>Bình Định</item>
+        <item>Bình Dương</item>
+        <item>Bình Phước</item>
+        <item>Bình Thuận</item>
+        <item>Cà Mau</item>
+        <item>Cần Thơ</item>
+        <item>Cao Bằng</item>
+        <item>Đà Nẵng</item>
+        <item>Đắk Lắk</item>
+        <item>Đắk Nông</item>
+        <item>Điện Biên</item>
+        <item>Đồng Nai</item>
+        <item>Đồng Tháp</item>
+        <item>Gia Lai</item>
+        <item>Hà Giang</item>
+        <item>Hà Nam</item>
+        <item>Hà Nội</item>
+        <item>Hà Tĩnh</item>
+        <item>Hải Dương</item>
+        <item>Hải Phòng</item>
+        <item>Hậu Giang</item>
+        <item>Hòa Bình</item>
+        <item>Hưng Yên</item>
+        <item>Khánh Hòa</item>
+        <item>Kiên Giang</item>
+        <item>Kon Tum</item>
+        <item>Lai Châu</item>
+        <item>Lâm Đồng</item>
+        <item>Lạng Sơn</item>
+        <item>Lào Cai</item>
+        <item>Long An</item>
+        <item>Nam Định</item>
+        <item>Nghệ An</item>
+        <item>Ninh Bình</item>
+        <item>Ninh Thuận</item>
+        <item>Phú Thọ</item>
+        <item>Phú Yên</item>
+        <item>Quảng Bình</item>
+        <item>Quảng Nam</item>
+        <item>Quảng Ngãi</item>
+        <item>Quảng Ninh</item>
+        <item>Quảng Trị</item>
+        <item>Sóc Trăng</item>
+        <item>Sơn La</item>
+        <item>Tây Ninh</item>
+        <item>Thái Bình</item>
+        <item>Thái Nguyên</item>
+        <item>Thanh Hóa</item>
+        <item>Thừa Thiên Huế</item>
+        <item>Tiền Giang</item>
+        <item>TP. Hồ Chí Minh</item>
+        <item>Trà Vinh</item>
+        <item>Tuyên Quang</item>
+        <item>Vĩnh Long</item>
+        <item>Vĩnh Phúc</item>
+        <item>Yên Bái</item>
     </string-array>
 
     <string-array name="array_default_district">
         <item>Lựa chọn Quận hoặc Huyện</item>
     </string-array>
 
+    <string-array name="array_default_ward">
+        <item>Lựa chọn Phường hoặc Xã</item>
+    </string-array>
+
     <string-array name="array_an_giang_district">
-        <item>TP. Long Xuyên</item> <item>TP. Châu Đốc</item> <item>Huyện An Phú</item> <item>Huyện Châu Phú</item>
-        <item>Huyện Châu Thành</item> <item>Huyện Chợ Mới</item> <item>Huyện Phú Tân</item> <item>Thị xã Tân Châu</item>
-        <item>Huyện Tịnh Biên</item> <item>Huyện Thoại Sơn</item> <item>Huyện Tri Tôn</item>
+        <item>TP. Châu Đốc</item>
+        <item>TP. Long Xuyên</item>
+        <item>Thị xã Tân Châu</item>
+        <item>Huyện An Phú</item>
+        <item>Huyện Châu Phú</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Chợ Mới</item>
+        <item>Huyện Phú Tân</item>
+        <item>Huyện Thoại Sơn</item>
+        <item>Huyện Tịnh Biên</item>
+        <item>Huyện Tri Tôn</item>
+    </string-array>
+
+    <string-array name="array_long_xuyen_ward_an_giang_district">
+        <item>Phường Bình Đức</item>
+        <item>Phường Bình Khánh</item>
+        <item>Phường Đông Xuyên</item>
+        <item>Phường Mỹ Bình</item>
+        <item>Phường Mỹ Hòa</item>
+        <item>Phường Mỹ Long</item>
+        <item>Phường Mỹ Phước</item>
+        <item>Phường Mỹ Quý</item>
+        <item>Phường Mỹ Thạnh</item>
+        <item>Phường Mỹ Thới</item>
+        <item>Phường Mỹ Xuyên</item>
+        <item>Xã Mỹ Hòa Hưng</item>
+        <item>Xã Mỹ Khánh</item>
     </string-array>
 
     <string-array name="array_ba_ria_vung_tau_district">
-        <item>TP. Bà Rịa</item> <item>TP. Vũng Tàu</item> <item>Thị xã Phú Mỹ</item> <item>Huyện Châu Đức</item>
-        <item>Huyện Côn Đảo</item> <item>Huyện Đất Đỏ</item> <item>Huyện Long Điền</item> <item>Huyện Xuyên Mộc</item>
+        <item>TP. Bà Rịa</item>
+        <item>TP. Vũng Tàu</item>
+        <item>Thị xã Châu Đức</item>
+        <item>Thị xã Côn Đảo</item>
+        <item>Thị xã Đất Đỏ</item>
+        <item>Huyện Long Điền</item>
+        <item>Huyện Tân Thành</item>
+        <item>Huyện Xuyên Mộc</item>
     </string-array>
 
     <string-array name="array_bac_lieu_district">
-        <item>TP. Bạc Liêu</item> <item>Huyện Hồng Dân</item> <item>Huyện Phước Long</item> <item>Huyện Vĩnh Lợi</item>
-        <item>Thị xã Giá Rai</item> <item>Huyện Đông Hải</item> <item>Huyện Hoà Bình</item>
+        <item>Thành phố Bạc Liêu</item>
+        <item>Thị xã Giá Rai</item>
+        <item>Huyện Đông Hải</item>
+        <item>Huyện Hòa Bình</item>
+        <item>Huyện Hồng Dân</item>
+        <item>Huyện Phước Long</item>
+        <item>Huyện Vĩnh Lợi</item>
     </string-array>
 
     <string-array name="array_bac_kan_district">
-        <item>TP. Bắc Kạn</item> <item>Huyện Ba Bể</item> <item>Huyện Bạch Thông</item> <item>Huyện Chợ Đồn</item>
-        <item>Huyện Chợ Mới</item> <item>Huyện Na Rì</item> <item>Huyện Ngân Sơn</item> <item>Huyện Pác Nặm</item>
+        <item>TP. Bắc Kạn</item>
+        <item>Thị xã Ba Bể</item>
+        <item>Huyện Bạch Thông</item>
+        <item>Huyện Chợ Đồn</item>
+        <item>Huyện Chợ Mới</item>
+        <item>Huyện Na Rì</item>
+        <item>Huyện Ngân Sơn</item>
+        <item>Huyện Pác Nặm</item>
     </string-array>
 
     <string-array name="array_bac_giang_district">
-        <item>TP. Bắc Giang</item> <item>Huyện Sơn Động</item> <item>Huyện Lục Ngạn</item> <item>Huyện Lục Nam</item>
-        <item>Huyện Yên Thế</item> <item>Huyện Lạng Giang</item> <item>Huyện Yên Dũng</item> <item>Huyện Việt Yên</item>
-        <item>Huyện Tân Yên</item> <item>Huyện Hiệp Hoà</item>
+        <item>TP. Bắc Giang</item>
+        <item>Thị xã Yên Dũng</item>
+        <item>Thị xã Lạng Giang</item>
+        <item>Huyện Hiệp Hoà</item>
+        <item>Huyện Lục Nam</item>
+        <item>Huyện Lục Ngạn</item>
+        <item>Huyện Sơn Động</item>
+        <item>Huyện Tân Yên</item>
+        <item>Huyện Việt Yên</item>
+        <item>Huyện Hiệp Sơn</item>
     </string-array>
 
     <string-array name="array_bac_ninh_district">
-        <item>Thị xã Từ Sơn</item> <item>Huyện Yên Phong</item> <item>Huyện Quế Võ</item> <item>Huyện Tiên Du</item>
-        <item>Huyện Thuận Thành</item> <item>Huyện Gia Bình</item> <item>Huyện Lương Tài</item>
+        <item>Thành phố Bắc Ninh</item>
+        <item>Thị xã Từ Sơn</item>
+        <item>Huyện Ân Thi</item>
+        <item>Huyện Gia Bình</item>
+        <item>Huyện Lương Tài</item>
+        <item>Huyện Quế Võ</item>
+        <item>Huyện Tiên Du</item>
+        <item>Huyện Yên Phong</item>
     </string-array>
 
     <string-array name="array_ben_tre_district">
-        <item>Thị xã Bến Tre</item> <item>Huyện Ba Tri</item> <item>Huyện Bình Đại</item> <item>Huyện Châu Thành</item>
-        <item>Huyện Chợ Lách</item> <item>Huyện Giồng Trôm</item> <item>Huyện Mỏ Cày</item> <item>Huyện Thạnh Phú</item>
+        <item>Thành phố Bến Tre</item>
+        <item>Thị xã Ba Tri</item>
+        <item>Thị xã Bình Đại</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Chợ Lách</item>
+        <item>Huyện Giồng Trôm</item>
+        <item>Huyện Mỏ Cày Bắc</item>
+        <item>Huyện Mỏ Cày Nam</item>
+        <item>Huyện Thạnh Phú</item>
     </string-array>
 
     <string-array name="array_binh_duong_district">
-        <item>TP. Thủ Dầu Một</item> <item>TP. Dĩ An</item> <item>TP. Thuận An</item> <item>Thị xã Bến Cát</item>
-        <item>Thị xã Tân Uyên</item> <item>Huyện Dầu Tiếng</item> <item>Huyện Bàu Bàng</item> <item>Huyện Phú Giáo</item>
-        <item>	Huyện Bắc Tân Uyên</item>
+        <item>TP. Bến Cát</item>
+        <item>TP. Dĩ An</item>
+        <item>TP. Tân Uyên</item>
+        <item>TP. Thuận An</item>
+        <item>Thị xã Bàu Bàng</item>
+        <item>Thị xã Phú Giáo</item>
+        <item>Huyện Bắc Tân Uyên</item>
+        <item>Huyện Đại Từ</item>
+        <item>Huyện Định Quán</item>
+        <item>Huyện Tân Thành</item>
     </string-array>
 
     <string-array name="array_binh_dinh_district">
-        <item>TP. Quy Nhơn</item> <item>Huyện An Lão</item> <item>Huyện Hoài Ân</item> <item>Huyện Hoài Nhơn</item>
-        <item>Huyện Phù Mỹ</item> <item>Huyện Phù Cát</item> <item>Huyện Vĩnh Thạnh</item> <item>Huyện Tây Sơn</item>
-        <item>Huyện Vân Canh</item> <item>Huyện An Nhơn</item> <item>Huyện Tuy Phước</item>
+        <item>Thành phố Quy Nhơn</item>
+        <item>Thị xã An Nhơn</item>
+        <item>Huyện An Lão</item>
+        <item>Huyện Hoài Ân</item>
+        <item>Huyện Hoài Nhơn</item>
+        <item>Huyện Phù Cát</item>
+        <item>Huyện Phù Mỹ</item>
+        <item>Huyện Tây Sơn</item>
+        <item>Huyện Tuy Phước</item>
+        <item>Huyện Vân Canh</item>
     </string-array>
 
     <string-array name="array_binh_phuoc_district">
-        <item>TP. Đồng Xoài</item> <item>Huyện Đồng Phú</item> <item>Huyện Chơn Thành</item> <item>Huyện Bình Long</item>
-        <item>Huyện Lộc Ninh</item> <item>Huyện Bù Đốp</item> <item>Huyện Phước Long</item> <item>Huyện Bù Đăng</item>
+        <item>TP. Đồng Xoài</item>
+        <item>Thị xã Bình Long</item>
+        <item>Huyện Bù Đăng</item>
+        <item>Huyện Bù Đốp</item>
+        <item>Huyện Bù Gia Mập</item>
+        <item>Huyện Chơn Thành</item>
+        <item>Huyện Đồng Phú</item>
+        <item>Huyện Hớn Quản</item>
+        <item>Huyện Lộc Ninh</item>
     </string-array>
 
     <string-array name="array_binh_thuan_district">
-        <item>TP. Phan Thiết</item> <item>Huyện Tuy Phong</item> <item>Huyện Bắc Bình</item> <item>Huyện Hàm Thuận Bắc</item>
-        <item>Huyện Hàm Thuận Nam</item> <item>Huyện Hàm Tân</item> <item>Huyện Đức Linh</item> <item>Huyện Tánh Linh</item>
-        <item>Huyện đảo Phú Quý</item> <item>Thị xã LaGi</item>
+        <item>TP. Phan Thiết</item>
+        <item>Thị xã La Gi</item>
+        <item>Huyện Tuy Phong</item>
+        <item>Huyện Bắc Bình</item>
+        <item>Huyện Hàm Thuận Bắc</item>
+        <item>Huyện Hàm Thuận Nam</item>
+        <item>Huyện Hàm Tân</item>
+        <item>Huyện Đức Linh</item>
     </string-array>
 
     <string-array name="array_ca_mau_district">
-        <item>TP. Cà Mau</item> <item>Huyện Thới Bình</item> <item>Huyện U Minh</item> <item>Huyện Trần Văn Thời</item>
-        <item>Huyện Cái Nước</item> <item>Huyện Đầm Dơi</item> <item>Huyện Ngọc Hiển</item> <item>Huyện Năm Căn</item>
+        <item>Tp. Cà Mau</item>
+        <item>Thị xã Đầm Dơi</item>
+        <item>Thị xã Ngọc Hiển</item>
+        <item>Huyện Cái Nước</item>
+        <item>Huyện Đầm Dơi</item>
+        <item>Huyện Năm Căn</item>
+        <item>Huyện Ngọc Hiển</item>
         <item>Huyện Phú Tân</item>
+        <item>Huyện Thới Bình</item>
+        <item>Huyện Trần Văn Thời</item>
+        <item>Huyện U Minh</item>
     </string-array>
 
     <string-array name="array_cao_bang_district">
-        <item>TP. Cao Bằng</item> <item>Huyện Bảo Lạc</item> <item>Huyện Bảo Lâm</item> <item>Huyện Hạ Lang</item>
-        <item>Huyện Hà Quảng</item> <item>Huyện Hòa An</item> <item>Huyện Nguyên Bình</item> <item>	Huyện Quảng Hòa</item>
-        <item>Huyện Thạch An</item> <item>Huyện Trùng Khánh</item>
+        <item>TP. Bảo Lâm</item>
+        <item>TP. Cao Bằng</item>
+        <item>TP. Hà Quảng</item>
+        <item>TP. Thạch An</item>
+        <item>Thị xã Bảo Lạc</item>
+        <item>Thị xã Hạ Lang</item>
+        <item>Thị xã Quảng Uyên</item>
+        <item>Thị xã Thông Nông</item>
+        <item>Thị xã Trà Lĩnh</item>
+        <item>Thị xã Trùng Khánh</item>
+        <item>Huyện Hạ Hòa</item>
+        <item>Huyện Hòa An</item>
+        <item>Huyện Nguyên Bình</item>
+        <item>Huyện Phục Hòa</item>
+        <item>Huyện Quang Hán</item>
+        <item>Huyện Thạch An</item>
+        <item>Huyện Thạch Bình</item>
+        <item>Huyện Thống Nhất</item>
+        <item>Huyện Trà Lĩnh</item>
+        <item>Huyện Trùng Khánh</item>
     </string-array>
 
     <string-array name="array_can_tho_district">
-        <item></item> <item></item> <item></item> <item></item>
-        <item></item> <item></item> <item></item> <item></item>
+        <item>Thành phố Cần Thơ</item>
+        <item>Thị xã Vĩnh Long</item>
+        <item>Huyện Cờ Đỏ</item>
+        <item>Huyện Phong Điền</item>
+        <item>Huyện Thới Lai</item>
+        <item>Huyện Vĩnh Thạnh</item>
+        <item>Huyện Ô Môn</item>
+        <item>Huyện Thốt Nốt</item>
+        <item>Huyện Thot Not</item>
     </string-array>
 
     <string-array name="array_da_nang_district">
-        <item></item> <item></item> <item></item> <item></item>
-        <item></item> <item></item> <item></item> <item></item>
+        <item>TP. Đà Nẵng</item>
+        <item>Thị xã Hòa Vang</item>
+        <item>Huyện Hòa Vang</item>
+        <item>Huyện Hoàng Sa</item>
+        <item>Huyện Ngũ Hành Sơn</item>
+        <item>Huyện Sơn Trà</item>
+        <item>Huyện Thanh Khê</item>
     </string-array>
 
     <string-array name="array_dak_lak_district">
-        <item></item> <item></item> <item></item> <item></item>
-        <item></item> <item></item> <item></item> <item></item>
+        <item>TP. Buôn Ma Thuột</item>
+        <item>Thị xã Buôn Hồ</item>
+        <item>Huyện Buôn Đôn</item>
+        <item>Huyện Cư Kuin</item>
+        <item>Huyện Cư M’gar</item>
+        <item>Huyện Ea H’leo</item>
+        <item>Huyện Ea Kar</item>
+        <item>Huyện Ea Súp</item>
+        <item>Huyện Krông Ana</item>
+        <item>Huyện Krông Bông</item>
+        <item>Huyện Krông Búk</item>
+        <item>Huyện Krông Năng</item>
+        <item>Huyện Krông Pắk</item>
+        <item>Huyện Lắk</item>
+        <item>Huyện M’Đrắk</item>
     </string-array>
 
     <string-array name="array_dak_nong_district">
-        <item></item> <item></item> <item></item> <item></item>
-        <item></item> <item></item> <item></item> <item></item>
+        <item>Thành phố Gia Nghĩa</item>
+        <item>Thị xã Đắk Mil</item>
+        <item>Huyện Cư Jút</item>
+        <item>Huyện Đắk Glong</item>
+        <item>Huyện Đắk Mil</item>
+        <item>Huyện Đắk R’lấp</item>
+        <item>Huyện Đắk Song</item>
+        <item>Huyện KRông Nô</item>
+        <item>Huyện Tuy Đức</item>
+    </string-array>
+
+    <string-array name="array_dien_bien_district">
+        <item>TP. Điện Biên Phủ</item>
+        <item>Thị xã Mường Lay</item>
+        <item>Huyện Điện Biên</item>
+        <item>Huyện Điện Biên Đông</item>
+        <item>Huyện Mường Ảng</item>
+        <item>Huyện Mường Chà</item>
+        <item>Huyện Mường Nhé</item>
+        <item>Huyện Mường Lay</item>
+        <item>Huyện Tủa Chùa</item>
+        <item>Huyện Tuần Giáo</item>
+    </string-array>
+
+    <string-array name="array_dong_nai_district">
+        <item>TP. Biên Hòa</item>
+        <item>Thị xã Long Khánh</item>
+        <item>Huyện Cẩm Mỹ</item>
+        <item>Huyện Định Quán</item>
+        <item>Huyện Long Thành</item>
+        <item>Huyện Nhơn Trạch</item>
+        <item>Huyện Tân Phú</item>
+        <item>Huyện Thống Nhất</item>
+        <item>Huyện Trảng Bom</item>
+        <item>Huyện Vĩnh Cửu</item>
+        <item>Huyện Xuân Lộc</item>
+    </string-array>
+
+    <string-array name="array_dong_thap_district">
+        <item>TP. Cao Lãnh</item>
+        <item>TP. Sa Đéc</item>
+        <item>Thị xã Hồng Ngự</item>
+        <item>Huyện Cao Lãnh</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Hồng Ngự</item>
+        <item>Huyện Lai Vung</item>
+        <item>Huyện Lấp Vò</item>
+        <item>Huyện Tam Nông</item>
+        <item>Huyện Tân Hồng</item>
+        <item>Huyện Thanh Bình</item>
+        <item>Huyện Tháp Mười</item>
+    </string-array>
+
+    <string-array name="array_gia_lai_district">
+        <item>TP. Pleiku</item>
+        <item>Thị xã An Khê</item>
+        <item>Thị xã Ayun Pa</item>
+        <item>Thị xã Kon Tum</item>
+        <item>Huyện Chư Păh</item>
+        <item>Huyện Chư Prông</item>
+        <item>Huyện Chư Pưh</item>
+        <item>Huyện Chư Sê</item>
+        <item>Huyện Đắk Đoa</item>
+        <item>Huyện Đak Pơ</item>
+        <item>Huyện Đức Cơ</item>
+        <item>Huyện Ia Grai</item>
+        <item>Huyện Ia Pa</item>
+        <item>Huyện K’Bang</item>
+        <item>Huyện Kông Chro</item>
+        <item>Huyện Krông Pa</item>
+        <item>Huyện Mang Yang</item>
+        <item>Huyện Phú Thiện</item>
+    </string-array>
+
+    <string-array name="array_ha_giang_district">
+        <item>TP. Hà Giang</item>
+        <item>Thị xã Đồng Văn</item>
+        <item>Thị xã Mèo Vạc</item>
+        <item>Huyện Bắc Mê</item>
+        <item>Huyện Bắc Quang</item>
+        <item>Huyện Đồng Văn</item>
+        <item>Huyện Hoàng Su Phì</item>
+        <item>Huyện Mèo Vạc</item>
+        <item>Huyện Quản Bạ</item>
+        <item>Huyện Quang Bình</item>
+        <item>Huyện Vị Xuyên</item>
+        <item>Huyện Xín Mần</item>
+        <item>Huyện Yên Minh</item>
+    </string-array>
+
+    <string-array name="array_ha_nam_district">
+        <item>Thành phố Phủ Lý</item>
+        <item>Thị xã Duy Tiên</item>
+        <item>Huyện Bình Lục</item>
+        <item>Huyện Kim Bảng</item>
+        <item>Huyện Lý Nhân</item>
+        <item>Huyện Thanh Liêm</item>
+    </string-array>
+
+    <string-array name="array_ha_noi_district">
+        <item>Quận Ba Đình</item>
+        <item>Quận Bắc Từ Liêm</item>
+        <item>Quận Cầu Giấy</item>
+        <item>Quận Đống Đa</item>
+        <item>Quận Hà Đông</item>
+        <item>Quận Hai Bà Trưng</item>
+        <item>Quận Hoàn Kiếm</item>
+        <item>Quận Hoàng Mai</item>
+        <item>Quận Long Biên</item>
+        <item>Quận Nam Từ Liêm</item>
+        <item>Quận Tây Hồ</item>
+        <item>Quận Thanh Xuân</item>
+        <item>Thị xã Sơn Tây</item>
+        <item>Huyện Ba Vì</item>
+        <item>Huyện Chương Mỹ</item>
+        <item>Huyện Đan Phượng</item>
+        <item>Huyện Đông Anh</item>
+        <item>Huyện Gia Lâm</item>
+        <item>Huyện Hoài Đức</item>
+        <item>Huyện Mê Linh</item>
+        <item>Huyện Mỹ Đức</item>
+        <item>Huyện Phú Xuyên</item>
+        <item>Huyện Phúc Thọ</item>
+        <item>Huyện Quốc Oai</item>
+        <item>Huyện Sóc Sơn</item>
+        <item>Huyện Thạch Thất</item>
+        <item>Huyện Thanh Oai</item>
+        <item>Huyện Thanh Trì</item>
+        <item>Huyện Thường Tín</item>
+        <item>Huyện Ứng Hoà</item>
+    </string-array>
+
+    <string-array name="array_ha_tinh_district">
+        <item>TP. Hà Tĩnh</item>
+        <item>Thị xã Hồng Lĩnh</item>
+        <item>Thị xã Kỳ Anh</item>
+        <item>Huyện Can Lộc</item>
+        <item>Huyện Cẩm Xuyên</item>
+        <item>Huyện Đức Thọ</item>
+        <item>Huyện Hương Khê</item>
+        <item>Huyện Hương Sơn</item>
+        <item>Huyện Kỳ Anh</item>
+        <item>Huyện Lộc Hà</item>
+        <item>Huyện Nghi Xuân</item>
+        <item>Huyện Thạch Hà</item>
+        <item>Huyện Vũ Quang</item>
+    </string-array>
+
+    <string-array name="array_hai_duong_district">
+        <item>TP. Hải Dương</item>
+        <item>Thị xã Chí Linh</item>
+        <item>Thị xã Kinh Môn</item>
+        <item>Huyện Bình Giang</item>
+        <item>Huyện Cẩm Giàng</item>
+        <item>Huyện Gia Lộc</item>
+        <item>Huyện Kim Thành</item>
+        <item>Huyện Nam Sách</item>
+        <item>Huyện Ninh Giang</item>
+        <item>Huyện Thanh Hà</item>
+        <item>Huyện Thanh Miện</item>
+        <item>Huyện Tứ Kỳ</item>
+    </string-array>
+
+    <string-array name="array_hai_phong_district">
+        <item>Quận Đồ Sơn</item>
+        <item>Quận Dương Kinh</item>
+        <item>Quận Hải An</item>
+        <item>Quận Hồng Bàng</item>
+        <item>Quận Kiến An</item>
+        <item>Quận Lê Chân</item>
+        <item>Quận Ngô Quyền</item>
+        <item>Huyện An Dương</item>
+        <item>Huyện An Lão</item>
+        <item>Huyện Bạch Long Vĩ</item>
+        <item>Huyện Cát Hải</item>
+        <item>Huyện Kiến Thuỵ</item>
+        <item>Huyện Thủy Nguyên</item>
+        <item>Huyện Tiên Lãng</item>
+        <item>Huyện Vĩnh Bảo</item>
+    </string-array>
+
+    <string-array name="array_hoa_binh_district">
+        <item>TP. Hòa Bình</item>
+        <item>Huyện Cao Phong</item>
+        <item>Huyện Đà Bắc</item>
+        <item>Huyện Kim Bôi</item>
+        <item>Huyện Lạc Sơn</item>
+        <item>Huyện Lạc Thủy</item>
+        <item>Huyện Lương Sơn</item>
+        <item>Huyện Mai Châu</item>
+        <item>Huyện Tân Lạc</item>
+        <item>Huyện Yên Thủy</item>
+    </string-array>
+
+    <string-array name="array_ho_chi_minh_district">
+        <item>TP. Thủ Đức</item>
+        <item>Quận 1</item>
+        <item>Quận 2</item>
+        <item>Quận 3</item>
+        <item>Quận 4</item>
+        <item>Quận 5</item>
+        <item>Quận 6</item>
+        <item>Quận 7</item>
+        <item>Quận 8</item>
+        <item>Quận 9</item>
+        <item>Quận 10</item>
+        <item>Quận 11</item>
+        <item>Quận 12</item>
+        <item>Quận Bình Tân</item>
+        <item>Quận Bình Thạnh</item>
+        <item>Quận Gò Vấp</item>
+        <item>Quận Phú Nhuận</item>
+        <item>Quận Tân Bình</item>
+        <item>Quận Tân Phú</item>
+        <item>Huyện Bình Chánh</item>
+        <item>Huyện Cần Giờ</item>
+        <item>Huyện Củ Chi</item>
+        <item>Huyện Hóc Môn</item>
+        <item>Huyện Nhà Bè</item>
+    </string-array>
+
+    <string-array name="array_hau_giang_district">
+        <item>TP. Vị Thanh</item>
+        <item>Thị xã Ngã Bảy</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Châu Thành A</item>
+        <item>Huyện Long Mỹ</item>
+        <item>Huyện Long Mỹ</item>
+        <item>Huyện Phụng Hiệp</item>
+        <item>Huyện Vị Thủy</item>
+    </string-array>
+
+    <string-array name="array_hung_yen_district">
+        <item>TP. Hưng Yên</item>
+        <item>Thị xã Mỹ Hào</item>
+        <item>Huyện Ân Thi</item>
+        <item>Huyện Khoái Châu</item>
+        <item>Huyện Kim Động</item>
+        <item>Huyện Phù Cừ</item>
+        <item>Huyện Tiên Lữ</item>
+        <item>Huyện Văn Giang</item>
+        <item>Huyện Văn Lâm</item>
+        <item>Huyện Yên Mỹ</item>
+    </string-array>
+
+    <string-array name="array_khanh_hoa_district">
+        <item>TP. Cam Ranh</item>
+        <item>TP. Nha Trang</item>
+        <item>Thị xã Ninh Hòa</item>
+        <item>Huyện Cam Lâm</item>
+        <item>Huyện đảo Trường Sa</item>
+        <item>Huyện Diên Khánh</item>
+        <item>Huyện Khánh Sơn</item>
+        <item>Huyện Khánh Vĩnh</item>
+        <item>Huyện Vạn Ninh</item>
+    </string-array>
+
+    <string-array name="array_kien_giang_district">
+        <item>TP. Rạch Giá</item>
+        <item>Thị xã Hà Tiên</item>
+        <item>Huyện An Biên</item>
+        <item>Huyện An Minh</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Giang Thành</item>
+        <item>Huyện Giồng Riềng</item>
+        <item>Huyện Gò Quao</item>
+        <item>Huyện Hòn Đất</item>
+        <item>Huyện Kiên Hải</item>
+        <item>Huyện Kiên Lương</item>
+        <item>Huyện Phú Quốc</item>
+        <item>Huyện Tân Hiệp</item>
+        <item>Huyện U Minh Thượng</item>
+        <item>Huyện Vĩnh Thuận</item>
+    </string-array>
+
+    <string-array name="array_kon_tum_district">
+        <item>TP. Kon Tum</item>
+        <item>Huyện Đắk Glei</item>
+        <item>Huyện Đắk Hà</item>
+        <item>Huyện Đắk Tô</item>
+        <item>Huyện Ia H’Drai</item>
+        <item>Huyện Kon Plông</item>
+        <item>Huyện Kon Rẫy</item>
+        <item>Huyện Ngọc Hồi</item>
+        <item>Huyện Sa Thầy</item>
+        <item>Huyện Tu Mơ Rông</item>
+    </string-array>
+
+    <string-array name="array_lai_chau_district">
+        <item>TP. Lai Châu</item>
+        <item>Huyện Mường Tè</item>
+        <item>Huyện Nậm Nhùn</item>
+        <item>Huyện Phong Thổ</item>
+        <item>Huyện Sìn Hồ</item>
+        <item>Huyện Tam Đường</item>
+        <item>Huyện Tân Uyên</item>
+        <item>Huyện Than Uyên</item>
+    </string-array>
+
+    <string-array name="array_lao_cai_district">
+        <item>Thành phố Lào Cai</item>
+        <item>Huyện Bảo Thắng</item>
+        <item>Huyện Bảo Yên</item>
+        <item>Huyện Bát Xát</item>
+        <item>Huyện Bắc Hà</item>
+        <item>Huyện Mường Khương</item>
+        <item>Huyện Sa Pa</item>
+        <item>Huyện Si Ma Cai</item>
+        <item>Huyện Văn Bàn</item>
+    </string-array>
+
+    <string-array name="array_lang_son_district">
+        <item>TP. Lạng Sơn</item>
+        <item>Thị xã Đình Lập</item>
+        <item>Thị xã Hữu Lũng</item>
+        <item>Thị xã Tràng Định</item>
+        <item>Huyện Bắc Sơn</item>
+        <item>Huyện Bình Gia</item>
+        <item>Huyện Cao Lộc</item>
+        <item>Huyện Chi Lăng</item>
+        <item>Huyện Đình Lập</item>
+        <item>Huyện Hữu Lũng</item>
+        <item>Huyện Lộc Bình</item>
+        <item>Huyện Tràng Định</item>
+        <item>Huyện Văn Lãng</item>
+        <item>Huyện Văn Quan</item>
+    </string-array>
+
+    <string-array name="array_lam_dong_district">
+        <item>TP. Bảo Lộc</item>
+        <item>TP. Đà Lạt</item>
+        <item>Thị xã Bảo Lâm</item>
+        <item>Huyện Bảo Lâm</item>
+        <item>Huyện Cát Tiên</item>
+        <item>Huyện Đạ Huoai</item>
+        <item>Huyện Đạ Tẻh</item>
+        <item>Huyện Đam Rông</item>
+        <item>Huyện Di Linh</item>
+        <item>Huyện Đơn Dương</item>
+        <item>Huyện Đức Trọng</item>
+        <item>Huyện Lạc Dương</item>
+    </string-array>
+
+    <string-array name="array_long_an_district">
+        <item>TP. Tân An</item>
+        <item>Huyện Bến Lức</item>
+        <item>Huyện Cần Đước</item>
+        <item>Huyện Cần Giuộc</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Đức Hòa</item>
+        <item>Huyện Đức Huệ</item>
+        <item>Huyện Mộc Hóa</item>
+        <item>Huyện Tân Hưng</item>
+        <item>Huyện Tân Thạnh</item>
+        <item>Huyện Tân Trụ</item>
+        <item>Huyện Thạnh Hóa</item>
+        <item>Huyện Thủ Thừa</item>
+        <item>Huyện Vĩnh Hưng</item>
+    </string-array>
+
+    <string-array name="array_nam_dinh_district">
+        <item>TP. Nam Định</item>
+        <item>Thị xã Mỹ Lộc</item>
+        <item>Thị xã Vụ Bản</item>
+        <item>Huyện Giao Thủy</item>
+        <item>Huyện Hải Hậu</item>
+        <item>Huyện Nam Trực</item>
+        <item>Huyện Trực Ninh</item>
+        <item>Huyện Xuân Trường</item>
+        <item>Huyện Ý Yên</item>
+    </string-array>
+
+    <string-array name="array_nghe_an_district">
+        <item>TP. Nghi Lộc</item>
+        <item>TP. Vinh</item>
+        <item>Thị xã Cửa Lò</item>
+        <item>Thị xã Quế Phong</item>
+        <item>Thị xã Quỳnh Lưu</item>
+        <item>Thị xã Thái Hòa</item>
+        <item>Huyện Anh Sơn</item>
+        <item>Huyện Con Cuông</item>
+        <item>Huyện Diễn Châu</item>
+        <item>Huyện Đô Lương</item>
+        <item>Huyện Hưng Nguyên</item>
+        <item>Huyện Kỳ Sơn</item>
+        <item>Huyện Nam Đàn</item>
+        <item>Huyện Nghi Ân</item>
+        <item>Huyện Quế Phong</item>
+        <item>Huyện Quỳ Châu</item>
+        <item>Huyện Quỳ Hợp</item>
+        <item>Huyện Quỳnh Thạch</item>
+        <item>Huyện Tân Kỳ</item>
+        <item>Huyện Thanh Chương</item>
+        <item>Huyện Tương Dương</item>
+        <item>Huyện Yên Thành</item>
+    </string-array>
+
+    <string-array name="array_ninh_binh_district">
+        <item>TP. Ninh Bình</item>
+        <item>Thành phố Tam Điệp</item>
+        <item>Huyện Nho Quan</item>
+        <item>Huyện Gia Viễn</item>
+        <item>Huyện Hoa Lư</item>
+        <item>Huyện Yên Khánh</item>
+        <item>Huyện Kim Sơn</item>
+    </string-array>
+
+    <string-array name="array_ninh_thuan_district">
+        <item>TP. Bác Ái</item>
+        <item>TP. Phan Rang-Tháp Chàm</item>
+        <item>Thị xã Ninh Hải</item>
+        <item>Huyện Ninh Phước</item>
+        <item>Huyện Ninh Sơn</item>
+        <item>Huyện Ninh Thuận</item>
+        <item>Huyện Thuận Bắc</item>
+        <item>Huyện Thuận Nam</item>
+    </string-array>
+
+    <string-array name="array_phu_tho_district">
+        <item>TP. Việt Trì</item>
+        <item>Thị xã Phú Thọ</item>
+        <item>Huyện Thanh Ba</item>
+        <item>Huyện Hạ Hoà</item>
+        <item>Huyện Đoan Hùng</item>
+        <item>Huyện Thanh Sơn</item>
+        <item>Huyện Phù Ninh</item>
+        <item>Huyện Yên Lập</item>
+        <item>Huyện Cẩm Khê</item>
+        <item>Huyện Tam Nông</item>
+        <item>Huyện Lâm Thao</item>
+        <item>Huyện Thanh Thủy</item>
+    </string-array>
+
+    <string-array name="array_phu_yen_district">
+        <item>TP. Tuy Hòa</item>
+        <item>Thị xã Sông Cầu</item>
+        <item>Thị xã Đồng Xuân</item>
+        <item>Huyện Đồng Xuân</item>
+        <item>Huyện Phú Hòa</item>
+        <item>Huyện Sông Hinh</item>
+        <item>Huyện Sơn Hòa</item>
+        <item>Huyện Tây Hòa</item>
+        <item>Huyện Tuy An</item>
+    </string-array>
+
+    <string-array name="array_quang_binh_district">
+        <item>TP. Đồng Hới</item>
+        <item>Thị xã Ba Đồn</item>
+        <item>Huyện Quảng Trạch</item>
+        <item>Huyện Quảng Ninh</item>
+        <item>Huyện Lệ Thủy</item>
+        <item>Huyện Minh Hóa</item>
+        <item>Huyện Tuyên Hóa</item>
+    </string-array>
+
+    <string-array name="array_quang_nam_district">
+        <item>TP. Tam Kỳ</item>
+        <item>TP. Hội An</item>
+        <item>Thị xã Điện Bàn</item>
+        <item>Huyện Duy Xuyên</item>
+        <item>Huyện Thăng Bình</item>
+        <item>Huyện Tiên Phước</item>
+        <item>Huyện Bắc Trà My</item>
+        <item>Huyện Nam Trà My</item>
+        <item>Huyện Núi Thành</item>
+        <item>Huyện Phú Ninh</item>
+        <item>Huyện Nông Sơn</item>
+    </string-array>
+
+    <string-array name="array_quang_ngai_district">
+        <item>TP. Quảng Ngãi</item>
+        <item>Thị xã Đức Phổ</item>
+        <item>Huyện Ba Tơ</item>
+        <item>Huyện Bình Sơn</item>
+        <item>Huyện Minh Long</item>
+        <item>Huyện Mộ Đức</item>
+        <item>Huyện Nghĩa Hành</item>
+        <item>Huyện Sơn Hà</item>
+        <item>Huyện Sơn Tây</item>
+        <item>Huyện Sơn Tịnh</item>
+        <item>Huyện Tây Trà</item>
+        <item>Huyện Trà Bồng</item>
+        <item>Huyện Tư Nghĩa</item>
+    </string-array>
+
+    <string-array name="array_quang_ninh_district">
+        <item>TP. Hạ Long</item>
+        <item>TP. Cẩm Phả</item>
+        <item>Thị xã Uông Bí</item>
+        <item>Thị xã Đông Triều</item>
+        <item>Huyện Bình Liêu</item>
+        <item>Huyện Tiên Yên</item>
+        <item>Huyện Đầm Hà</item>
+        <item>Huyện Hải Hà</item>
+        <item>Huyện Ba Chẽ</item>
+        <item>Huyện Vân Đồn</item>
+        <item>Huyện Hoành Bồ</item>
+        <item>Huyện Quảng Yên</item>
+        <item>Huyện Cô Tô</item>
+    </string-array>
+
+    <string-array name="array_quang_tri_district">
+        <item>TP. Đông Hà</item>
+        <item>Thị xã Quảng Trị</item>
+        <item>Huyện Cam Lộ</item>
+        <item>Huyện Cồn Cỏ</item>
+        <item>Huyện Đa Krông</item>
+        <item>Huyện Gio Linh</item>
+        <item>Huyện Hải Lăng</item>
+        <item>Huyện Hướng Hóa</item>
+        <item>Huyện Triệu Phong</item>
+        <item>Huyện Vĩnh Linh</item>
+    </string-array>
+
+    <string-array name="array_soc_trang_district">
+        <item>TP. Sóc Trăng</item>
+        <item>Thị xã Vĩnh Châu</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Cù Lao Dung</item>
+        <item>Huyện Kế Sách</item>
+        <item>Huyện Long Phú</item>
+        <item>Huyện Mỹ Tú</item>
+        <item>Huyện Mỹ Xuyên</item>
+        <item>Huyện Ngã Năm</item>
+        <item>Huyện Thạnh Trị</item>
+        <item>Huyện Trần Đề</item>
+    </string-array>
+
+    <string-array name="array_son_la_district">
+        <item>TP. Bắc Yên</item>
+        <item>TP. Mai Sơn</item>
+        <item>TP. Sơn La</item>
+        <item>Thị xã Mộc Châu</item>
+        <item>Thị xã Sông Mã</item>
+        <item>Thị xã Yên Châu</item>
+        <item>Huyện Mai Châu</item>
+        <item>Huyện Mường La</item>
+        <item>Huyện Phù Yên</item>
+        <item>Huyện Quỳnh Nhai</item>
+        <item>Huyện Sông Hinh</item>
+        <item>Huyện Sốp Cộp</item>
+        <item>Huyện Vân Hồ</item>
+    </string-array>
+
+    <string-array name="array_tay_ninh_district">
+        <item>TP. Tây Ninh</item>
+        <item>Thị xã Trảng Bàng</item>
+        <item>Huyện Bến Cầu</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Dương Minh Châu</item>
+        <item>Huyện Gò Dầu</item>
+        <item>Huyện Hòa Thành</item>
+        <item>Huyện Tân Biên</item>
+        <item>Huyện Tân Châu</item>
+    </string-array>
+
+    <string-array name="array_thai_binh_district">
+        <item>TP. Thái Bình</item>
+        <item>Huyện Đông Hưng</item>
+        <item>Huyện Hưng Hà</item>
+        <item>Huyện Kiến Xương</item>
+        <item>Huyện Quỳnh Thụ</item>
+        <item>Huyện Thái Thụy</item>
+        <item>Huyện Tiền Hải</item>
+        <item>Huyện Vũ Thư</item>
+    </string-array>
+
+    <string-array name="array_thai_nguyen_district">
+        <item>TP. Thái Nguyên</item>
+        <item>Thị xã Phổ Yên</item>
+        <item>Huyện Đại Từ</item>
+        <item>Huyện Định Hóa</item>
+        <item>Huyện Đồng Hỷ</item>
+        <item>Huyện Phú Bình</item>
+        <item>Huyện Phú Lương</item>
+        <item>Huyện Võ Nhai</item>
+    </string-array>
+
+    <string-array name="array_thanh_hoa_district">
+        <item>TP. Thanh Hóa</item>
+        <item>TP. Bỉm Sơn</item>
+        <item>Thị xã Sầm Sơn</item>
+        <item>Huyện Bá Thước</item>
+        <item>Huyện Cẩm Thủy</item>
+        <item>Huyện Đông Sơn</item>
+        <item>Huyện Hà Trung</item>
+        <item>Huyện Hậu Lộc</item>
+        <item>Huyện Hoằng Hóa</item>
+        <item>Huyện Lang Chánh</item>
+        <item>Huyện Mường Lát</item>
+        <item>Huyện Nga Sơn</item>
+        <item>Huyện Ngọc Lặc</item>
+        <item>Huyện Như Thanh</item>
+        <item>Huyện Như Xuân</item>
+        <item>Huyện Nông Cống</item>
+        <item>Huyện Quan Hóa</item>
+        <item>Huyện Quan Sơn</item>
+        <item>Huyện Quảng Xương</item>
+        <item>Huyện Thạch Thành</item>
+        <item>Huyện Thiệu Hóa</item>
+        <item>Huyện Thọ Xuân</item>
+        <item>Huyện Thường Xuân</item>
+        <item>Huyện Tĩnh Gia</item>
+        <item>Huyện Triệu Sơn</item>
+        <item>Huyện Vĩnh Lộc</item>
+        <item>Huyện Yên Định</item>
+    </string-array>
+
+    <string-array name="array_thua_thien_hue_district">
+        <item>TP. Huế</item>
+        <item>Thị xã Hương Thủy</item>
+        <item>Thị xã Hương Trà</item>
+        <item>Huyện A Lưới</item>
+        <item>Huyện Nam Đông</item>
+        <item>Huyện Phong Điền</item>
+        <item>Huyện Phú Lộc</item>
+        <item>Huyện Quảng Điền</item>
+    </string-array>
+
+    <string-array name="array_tien_giang_district">
+        <item>TP. Mỹ Tho</item>
+        <item>Thị xã Gò Công</item>
+        <item>Thị xã Cai Lậy</item>
+        <item>Huyện Cái Bè</item>
+        <item>Huyện Cai Lậy</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Chợ Gạo</item>
+        <item>Huyện Gò Công Tây</item>
+        <item>Huyện Gò Công Đông</item>
+        <item>Huyện Tân Phú Đông</item>
+        <item>Huyện Tân Phước</item>
+    </string-array>
+
+    <string-array name="array_tra_vinh_district">
+        <item>TP. Trà Vinh</item>
+        <item>Thị xã Duyên Hải</item>
+        <item>Huyện Càng Long</item>
+        <item>Huyện Cầu Kè</item>
+        <item>Huyện Tiểu Cần</item>
+        <item>Huyện Châu Thành</item>
+        <item>Huyện Trà Cú</item>
+        <item>Huyện Cầu Ngang</item>
+    </string-array>
+
+    <string-array name="array_tuyen_quang_district">
+        <item>TP. Tuyên Quang</item>
+        <item>Huyện Chiêm Hóa</item>
+        <item>Huyện Hàm Yên</item>
+        <item>Huyện Lâm Bình</item>
+        <item>Huyện Na Hang</item>
+        <item>Huyện Sơn Dương</item>
+        <item>Huyện Yên Sơn</item>
+    </string-array>
+
+    <string-array name="array_vinh_long_district">
+        <item>TP. Vĩnh Long</item>
+        <item>Thị xã Bình Minh</item>
+        <item>Huyện Bình Minh</item>
+        <item>Huyện Long Hồ</item>
+        <item>Huyện Mang Thít</item>
+        <item>Huyện Tam Bình</item>
+        <item>Huyện Trà Ôn</item>
+        <item>Huyện Vũng Liêm</item>
+    </string-array>
+
+    <string-array name="array_vinh_phuc_district">
+        <item>TP. Phúc Yên</item>
+        <item>TP. Vĩnh Yên</item>
+        <item>Huyện Bình Xuyên</item>
+        <item>Huyện Lập Thạch</item>
+        <item>Huyện Sông Lô</item>
+        <item>Huyện Tam Đảo</item>
+        <item>Huyện Tam Dương</item>
+        <item>Huyện Vĩnh Tường</item>
+        <item>Huyện Yên Lạc</item>
+    </string-array>
+
+    <string-array name="array_yen_bai_district">
+        <item>TP. Yên Bái</item>
+        <item>Thị xã Nghĩa Lộ</item>
+        <item>Huyện Lục Yên</item>
+        <item>Huyện Mù Cang Chải</item>
+        <item>Huyện Trạm Tấu</item>
+        <item>Huyện Trấn Yên</item>
+        <item>Huyện Văn Chấn</item>
+        <item>Huyện Văn Yên</item>
+        <item>Huyện Yên Bình</item>
     </string-array>
 
 </resources>

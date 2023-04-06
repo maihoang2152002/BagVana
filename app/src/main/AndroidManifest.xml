@@ -14,34 +14,51 @@
         android:theme="@style/Theme.BagVana"
         tools:targetApi="31">
         <activity
+            android:name=".Activity.Order.ChooseVoucherActivity"
+            android:exported="false"
+            android:parentActivityName=".Activity.Order.OrderActivity"/>
+        <activity
             android:name=".Activity.Order.OrderAddressActivity"
-            android:exported="true">
+            android:exported="true"
+            android:parentActivityName=".Activity.Order.OrderActivity">
 
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".Activity.Order.AddNewOrderAddressActivity"
-            android:exported="true" >
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:exported="true"
+            android:parentActivityName=".Activity.Order.OrderAddressActivity">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".Activity.Order.OrderActivity"
-            android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            android:exported="true"
+            android:parentActivityName=".Activity.Order.CartActivity">
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         <activity
             android:name=".Activity.Product.ProductInformationActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.Order.CartActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

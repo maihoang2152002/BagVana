@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,10 +14,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.util.Util;
 import com.example.bagvana.Adapter.OrderAddressAdapter;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.DTO.ReceiverInfo;
 import com.example.bagvana.R;
+import com.example.bagvana.Utils.Utils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,10 +34,14 @@ public class OrderAddressActivity extends AppCompatActivity {
     private OrderAddressAdapter orderAddressAdapter;
     private RecyclerView recycview_receiverInfo;
     private LinearLayout linear_newOrderAddress;
+    private Toolbar toolbar_order_address;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_address);
+
+        toolbar_order_address = findViewById(R.id.toolbar_order_address);
+        setSupportActionBar(toolbar_order_address);
 
         recycview_receiverInfo = findViewById(R.id.recycview_receiverInfo);
         linear_newOrderAddress = findViewById(R.id.linear_newOrderAddress);
@@ -66,18 +73,33 @@ public class OrderAddressActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 receiverInfos.clear();
+                int max = 1;
 
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
 
                     ReceiverInfo receiverInfo = dataSnapshot.getValue(ReceiverInfo.class);
                     receiverInfos.add(receiverInfo);
+                    if(max < Integer.parseInt(receiverInfo.getAddressID())) {
+                        max = Integer.parseInt(receiverInfo.getAddressID());
+                    }
                 }
+                Utils.newAddressID = String.valueOf(max + 1);
 
                 orderAddressAdapter.notifyDataSetChanged();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
                 Log.e("Error:", error.getDetails());
+            }
+        });
+    }
+
+    private void setSupportActionBar(Toolbar toolbar_order_address) {
+        toolbar_order_address.setNavigationIcon(R.drawable.ic_back);
+        toolbar_order_address.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
