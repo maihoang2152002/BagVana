@@ -126,7 +126,7 @@ public class OTPActivity extends AppCompatActivity {
                                 try {
                                     String pass_convert = convertHashToString(resultPass);
 
-                                    User user = new User(id, phoneNumber, resultUsername,pass_convert,"","","","","","");
+                                    User user = new User(id, phoneNumber, resultUsername,pass_convert,"","","1","","","");
                                     databasReference.child(id).setValue(user);
                                     startActivity(new Intent(OTPActivity.this,SignInActivity.class));
 

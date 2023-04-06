@@ -125,21 +125,12 @@ public class SignInActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         boolean existUser = false;
                         for (DataSnapshot ds : task.getResult().getChildren()) {
-                            String avatarFB = ds.child("avatar").getValue(String.class);
-                            String dobFB = ds.child("dob").getValue(String.class);
-                            String emailFB = ds.child("email").getValue(String.class);
-                            String fullnameFB = ds.child("fullname").getValue(String.class);
-                            String genderFB = ds.child("gender").getValue(String.class);
-                            String typeUserFB = ds.child("typeUser").getValue(String.class);
-                            String usernameFB = ds.child("username").getValue(String.class);
-                            String phoneFB = ds.child("phone").getValue(String.class);
-                            String passFB = ds.child("password").getValue(String.class);
+                            User user = ds.getValue(User.class);
                             String pass_convert = convertHashToString(pass);
-                            String idFB = ds.child("id").getValue(String.class);
-                            Log.e("pass", passFB);
-                            if(phone.equals(phoneFB) && pass_convert.equals(passFB)) {
+                            Log.e("pass", user.getPassword());
+                            if(phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
                                 existUser = true;
-                                _user = new User(idFB, phoneFB, usernameFB, passFB, dobFB, genderFB, typeUserFB, emailFB, avatarFB, fullnameFB);
+                                _user = user;
                                 Log.e("user",_user.toString());
                                 Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                                 startActivity(intent);
