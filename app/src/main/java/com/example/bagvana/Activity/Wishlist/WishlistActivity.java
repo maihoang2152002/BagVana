@@ -1,5 +1,7 @@
 package com.example.bagvana.Activity.Wishlist;
 
+import static com.example.bagvana.Utils.Utils._user;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,8 +45,8 @@ public class WishlistActivity extends AppCompatActivity implements ItemListener 
 
         productList = new ArrayList<>();
 
-        DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Product");
-        databaseReferenceHome.addValueEventListener(new ValueEventListener() {
+        DatabaseReference databaseReferenceWishlist = FirebaseDatabase.getInstance().getReference("Wishlist/" + _user.getId() + "/List");
+        databaseReferenceWishlist.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
