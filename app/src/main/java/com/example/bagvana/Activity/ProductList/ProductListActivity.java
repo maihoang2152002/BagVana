@@ -164,7 +164,7 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
                 startActivity(myIntent);
                 break;
         }
-        return loadFragment(fragment);
+        return true;
     }
 
     private boolean loadFragment(Fragment fragment) {
