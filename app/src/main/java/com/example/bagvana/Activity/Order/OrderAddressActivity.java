@@ -14,9 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.util.Util;
 import com.example.bagvana.Adapter.OrderAddressAdapter;
-import com.example.bagvana.DTO.Product;
 import com.example.bagvana.DTO.ReceiverInfo;
 import com.example.bagvana.R;
 import com.example.bagvana.Utils.Utils;
@@ -83,7 +81,7 @@ public class OrderAddressActivity extends AppCompatActivity {
                         max = Integer.parseInt(receiverInfo.getAddressID());
                     }
                 }
-                Utils.newAddressID = String.valueOf(max + 1);
+                Utils._newAddressID = String.valueOf(max + 1);
 
                 orderAddressAdapter.notifyDataSetChanged();
             }

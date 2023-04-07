@@ -1,10 +1,5 @@
 package com.example.bagvana.Activity.Order;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +7,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bagvana.Adapter.CartAdapter;
 import com.example.bagvana.DTO.EventBus.BillCostEvent;
@@ -62,7 +62,7 @@ public class CartActivity extends AppCompatActivity {
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Utils.productList.size() != 0) {
+                if(Utils._productList.size() != 0) {
                     Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
                     startActivity(intent);
                 } else {
@@ -101,8 +101,8 @@ public class CartActivity extends AppCompatActivity {
 
     private void calBillCost() {
         int billCost = 0;
-        for(int i = 0; i < Utils.productList.size(); i++) {
-            billCost += Utils.productList.get(i).getAmount() * Utils.productList.get(i).getPrice();
+        for(int i = 0; i < Utils._productList.size(); i++) {
+            billCost += Utils._productList.get(i).getAmount() * Utils._productList.get(i).getPrice();
         }
         txt_billCost.setText(String.valueOf(billCost));
     }

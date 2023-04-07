@@ -1,11 +1,5 @@
 package com.example.bagvana.Activity.Order;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -13,14 +7,16 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
-import com.example.bagvana.Adapter.CartAdapter;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.bagvana.Adapter.OrderAdapter;
-import com.example.bagvana.DTO.EventBus.BillCostEvent;
 import com.example.bagvana.DTO.EventBus.VoucherCostEvent;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.DTO.ReceiverInfo;
@@ -100,9 +96,9 @@ public class OrderActivity extends AppCompatActivity {
 
         btn_order = findViewById(R.id.btn_order);
 
-        if(Utils.receiverInfo.getAddress() != null) {
+        if(Utils._receiverInfo.getAddress() != null) {
 
-            String txt_address = Utils.receiverInfo.getFullName() + " | " + Utils.receiverInfo.getPhone() + '\n' + Utils.receiverInfo.getAddress();
+            String txt_address = Utils._receiverInfo.getFullName() + " | " + Utils._receiverInfo.getPhone() + '\n' + Utils._receiverInfo.getAddress();
             txt_orderAddress.setText(txt_address);
             txt_shipCost.setText("30");
 
@@ -115,7 +111,7 @@ public class OrderActivity extends AppCompatActivity {
         recycview_order.setHasFixedSize(true);
         recycview_order.setLayoutManager(new LinearLayoutManager(this));
 
-        productList = (ArrayList<Product>) Utils.productList;
+        productList = (ArrayList<Product>) Utils._productList;
 
         orderAdapter = new OrderAdapter((Context) this, productList);
 
@@ -156,7 +152,7 @@ public class OrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(Utils.receiverInfo.getAddress() == null || txt_delivery.getText().equals("")) {
+                if(Utils._receiverInfo.getAddress() == null || txt_delivery.getText().equals("")) {
                     new AlertDialog.Builder(view.getContext())
                             .setMessage("Bạn chưa điền đầy đủ thông tin địa chỉ hoặc chọn phương thức thanh toán!")
                             .setPositiveButton("Đồng ý", null)
@@ -172,13 +168,13 @@ public class OrderActivity extends AppCompatActivity {
                     //OrderID
                     databaseReferenceOrder.child(formattedDate);
 
-                    for (Product product: Utils.productList) {
+                    for (Product product: Utils._productList) {
                         databaseReferenceOrder.child("itemsOrdered").child(product.getProductID()).setValue(product);
                     }
 
                     HashMap<String, Integer> usedVoucher = new HashMap<>();
 
-                    for (Voucher voucher: Utils.voucherList) {
+                    for (Voucher voucher: Utils._voucherList) {
                         if (voucher.getType() == 2) {
                             usedVoucher.put(voucher.getId(),freeshipCost);
                         } else {
@@ -192,7 +188,7 @@ public class OrderActivity extends AppCompatActivity {
 
                     // UpdateUserID
                     databaseReferenceOrder.child("orderID").setValue(formattedDate);
-                    databaseReferenceOrder.child("receiverInfo").setValue(Utils.receiverInfo);
+                    databaseReferenceOrder.child("receiverInfo").setValue(Utils._receiverInfo);
                     databaseReferenceOrder.child("totalPrice").setValue(txt_totalCost.getText().toString());
                     databaseReferenceOrder.child("orderDate").setValue(formattedDate);
                     databaseReferenceOrder.child("status").setValue("1");
@@ -210,7 +206,7 @@ public class OrderActivity extends AppCompatActivity {
 
     private void calVoucherCost() {
         voucherCost = 0;
-        for(Voucher voucher: Utils.voucherList) {
+        for(Voucher voucher: Utils._voucherList) {
             if(voucher.getType() == 2) {
 
                 linear_discountShipCost.setVisibility(View.VISIBLE);
@@ -297,8 +293,8 @@ public class OrderActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
 
                     ReceiverInfo receiverInfo = dataSnapshot.getValue(ReceiverInfo.class);
-                    if(Utils.receiverInfo.getFullName() == null && receiverInfo.isDefaultAddress()) {
-                        Utils.receiverInfo = receiverInfo;
+                    if(Utils._receiverInfo.getFullName() == null && receiverInfo.isDefaultAddress()) {
+                        Utils._receiverInfo = receiverInfo;
                         String txt_address = receiverInfo.getFullName() + " | " + receiverInfo.getPhone() + '\n' + receiverInfo.getAddress();
                         txt_orderAddress.setText(txt_address);
                         break;
@@ -318,8 +314,8 @@ public class OrderActivity extends AppCompatActivity {
 
     private void calBillCost() {
         billCost = 0;
-        for(int i = 0; i < Utils.productList.size(); i++) {
-            billCost += Utils.productList.get(i).getAmount() * Utils.productList.get(i).getPrice();
+        for(int i = 0; i < Utils._productList.size(); i++) {
+            billCost += Utils._productList.get(i).getAmount() * Utils._productList.get(i).getPrice();
         }
         txt_productCost.setText(String.valueOf(billCost));
         int totalCost = billCost + 30 - voucherCost;

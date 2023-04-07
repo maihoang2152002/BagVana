@@ -1,11 +1,9 @@
 package com.example.bagvana.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -58,7 +56,7 @@ public class DiscountVoucherAdapter extends RecyclerView.Adapter<DiscountVoucher
         holder.txt_endDate.setText(voucher.getEnd());
 
         if(checked == false) {
-            for(Voucher vou: Utils.voucherList) {
+            for(Voucher vou: Utils._voucherList) {
                 if(vou.getId() == voucher.getId()) {
                     lastCheckedPosition = holder.getAdapterPosition();
                     checked = true;
@@ -102,16 +100,16 @@ public class DiscountVoucherAdapter extends RecyclerView.Adapter<DiscountVoucher
                     notifyItemChanged(lastCheckedPosition);
 
                     boolean isExist = false;
-                    for(Voucher voucher: Utils.voucherList) {
+                    for(Voucher voucher: Utils._voucherList) {
                         if(voucher.getType() == 0 || voucher.getType() == 1) {
                             isExist = true;
-                            Utils.voucherList.remove(voucher);
-                            Utils.voucherList.add(vouchers.get(lastCheckedPosition));
+                            Utils._voucherList.remove(voucher);
+                            Utils._voucherList.add(vouchers.get(lastCheckedPosition));
                         }
                     }
 
                     if(isExist == false) {
-                        Utils.voucherList.add(vouchers.get(lastCheckedPosition));
+                        Utils._voucherList.add(vouchers.get(lastCheckedPosition));
                     }
 
                     EventBus.getDefault().postSticky(new VoucherCostEvent());

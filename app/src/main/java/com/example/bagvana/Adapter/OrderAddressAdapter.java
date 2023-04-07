@@ -2,12 +2,9 @@ package com.example.bagvana.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -49,7 +46,7 @@ public class OrderAddressAdapter extends RecyclerView.Adapter<OrderAddressAdapte
             holder.txt_defaultAddress.setVisibility(View.INVISIBLE);
         }
 
-        if(Utils.receiverInfo.getAddressID() == receiverInfo.getAddressID()) {
+        if(Utils._receiverInfo.getAddressID() == receiverInfo.getAddressID()) {
             holder.rad_address.setChecked(true);
         }
 
@@ -60,7 +57,7 @@ public class OrderAddressAdapter extends RecyclerView.Adapter<OrderAddressAdapte
         holder.rad_address.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Utils.receiverInfo = receiverInfo;
+                Utils._receiverInfo = receiverInfo;
 
                 context.startActivity(new Intent(context, OrderActivity.class));
             }
