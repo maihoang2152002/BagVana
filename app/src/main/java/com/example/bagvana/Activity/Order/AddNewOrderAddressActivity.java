@@ -1,6 +1,5 @@
 package com.example.bagvana.Activity.Order;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -20,15 +19,6 @@ import com.example.bagvana.DAO.ReveiverInfoDAO;
 import com.example.bagvana.DTO.ReceiverInfo;
 import com.example.bagvana.R;
 import com.example.bagvana.Utils.Utils;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
 
 public class AddNewOrderAddressActivity extends AppCompatActivity {
 
@@ -145,7 +135,7 @@ public class AddNewOrderAddressActivity extends AppCompatActivity {
 
                 if(success) {
                     ReveiverInfoDAO reveiverInfoDAO = new ReveiverInfoDAO("1");
-                    String newAddressID = Utils.newAddressID;
+                    String newAddressID = Utils._newAddressID;
 
                     Log.e("activity", newAddressID);
 
