@@ -139,7 +139,7 @@ public class EditProfileActivity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("User").child(_user.getId());
         editTxt_fullName  = findViewById(R.id.editTxt_fullName);
-        editTxt_username  = findViewById(R.id.editTxt_username);editTxt_username.setEnabled(false);
+        editTxt_username  = findViewById(R.id.editTxt_username);
         editTxt_DOB = findViewById(R.id.editTxt_DOB);
         editTxt_email = findViewById(R.id.editTxt_email);
         editTxt_phoneNumber = findViewById(R.id.editTxt_phoneNumber);
@@ -160,7 +160,7 @@ public class EditProfileActivity extends AppCompatActivity {
         btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isFullnameChanged() || isEmailChanged() || isDobChanged() || isPhoneChanged() || isGenderChanged()){
+                if (isFullnameChanged() || isUsernameChanged() || isEmailChanged() || isDobChanged() || isPhoneChanged() || isGenderChanged()){
                     Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(EditProfileActivity.this, "No Changes Found", Toast.LENGTH_SHORT).show();
@@ -176,6 +176,16 @@ public class EditProfileActivity extends AppCompatActivity {
             databaseReference.child("fullname").setValue(editTxt_fullName.getText().toString());
             fullnameUser = editTxt_fullName.getText().toString();
             _user.setFullname(editTxt_fullName.getText().toString());
+            return true;
+        } else {
+            return false;
+        }
+    }
+    private boolean isUsernameChanged() {
+        if (!usernameUser.equals(editTxt_username.getText().toString())){
+            databaseReference.child("username").setValue(editTxt_username.getText().toString());
+            usernameUser = editTxt_username.getText().toString();
+            _user.setFullname(editTxt_username.getText().toString());
             return true;
         } else {
             return false;

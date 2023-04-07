@@ -11,11 +11,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.bagvana.Activity.OrderList.OrderListActivity;
 import com.example.bagvana.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    LinearLayout linear_editProfile;
+    LinearLayout linear_editProfile, linear_waitConfirmation;
     TextView txt_fullName;
     Toolbar toolbar;
 
@@ -35,6 +36,15 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        linear_waitConfirmation = findViewById(R.id.linear_waitConfirmation);
+        linear_waitConfirmation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
                 startActivity(intent);
             }
         });

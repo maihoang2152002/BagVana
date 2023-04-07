@@ -62,6 +62,7 @@
                 android:gravity="top"/>
 
             <LinearLayout
+                android:id="@+id/linear_waitConfirmation"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -90,7 +91,9 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_right_arrow" />
+                    android:background="@drawable/ic_right_arrow"
+                    android:contentDescription="This is just the icon"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -122,7 +125,9 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_right_arrow" />
+                    android:background="@drawable/ic_right_arrow"
+                    android:contentDescription="This is just the icon"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -154,7 +159,9 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_right_arrow" />
+                    android:background="@drawable/ic_right_arrow"
+                    android:contentDescription="This is just the icon"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -187,7 +194,9 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_right_arrow" />
+                    android:background="@drawable/ic_right_arrow"
+                    android:contentDescription="This is just the icon"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -220,7 +229,9 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_right_arrow" />
+                    android:background="@drawable/ic_right_arrow"
+                    android:contentDescription="This is just the icon"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout
                 >
 
@@ -253,7 +264,9 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_right_arrow" />
+                    android:background="@drawable/ic_right_arrow"
+                    android:contentDescription="This is just the icon"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -285,7 +298,9 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/ic_right_arrow" />
+                    android:background="@drawable/ic_right_arrow"
+                    android:contentDescription="This is just the icon"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
