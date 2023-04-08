@@ -2,6 +2,7 @@ package com.example.bagvana.Activity.LoginRegister;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,6 +48,7 @@ public class OTPActivity extends AppCompatActivity {
 //        phoneNumber = getIntent().getStringExtra("mobile").toString();
 
         phoneNumber = getIntent().getStringExtra("mobile").toString();
+        Log.e("number", phoneNumber);
         type_numbephone = getIntent().getStringExtra("type_numberphone").toString();
 
         otp = (EditText) findViewById(R.id.editOTP);
@@ -126,7 +128,7 @@ public class OTPActivity extends AppCompatActivity {
                                 try {
                                     String pass_convert = convertHashToString(resultPass);
 
-                                    User user = new User(id, phoneNumber, resultUsername,pass_convert,"","","","","","");
+                                    User user = new User(id, phoneNumber, resultUsername,pass_convert,"","","1","","","");
                                     databasReference.child(id).setValue(user);
                                     startActivity(new Intent(OTPActivity.this,SignInActivity.class));
 

@@ -8,6 +8,5 @@ import java.util.List;
 
 public class Utils {
     public static List<Product> productList = new ArrayList<>();
-
     public static User _user;
 }
