@@ -48,6 +48,13 @@
                 android:text="Date: April 6, 2023"
                 android:textSize="14sp"/>
 
+            <TextView
+                android:id="@+id/order_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hà Nội"
+                android:textSize="14sp"/>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -73,6 +80,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Order Total: $20.00"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/order_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/purple_200"
+                android:text="Processing"
                 android:textSize="16sp"
                 android:textStyle="bold"/>
 
