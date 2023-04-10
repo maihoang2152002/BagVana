@@ -4,19 +4,20 @@ import static com.example.bagvana.Utils.Utils._user;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,6 +27,7 @@ import com.example.bagvana.Adapter.ReviewAdapter;
 import com.example.bagvana.DTO.Comment;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
+import com.example.bagvana.Utils.Utils;
 import com.example.bagvana.listeners.ItemListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -61,6 +63,8 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
+
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         imageBtn_fav = findViewById(R.id.imageBtn_fav);
@@ -72,7 +76,74 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         price = findViewById(R.id.price_product);
         description = findViewById(R.id.description_product);
 
-        curProduct = (Product) getIntent().getSerializableExtra("product");
+        if (getIntent().hasExtra("product")) {
+            curProduct = (Product) getIntent().getSerializableExtra("product");
+        }
+        else {
+            Uri uri = getIntent().getData();
+            if (uri != null)
+            {
+                String path = uri.toString();
+                String[] params = path.split("/");
+                Log.e("ProductID", params[params.length-1]);
+
+                for (Product t : Utils._productList) {
+                    if (params[params.length-1].equals(t.getProductID())) {
+                        curProduct = t;
+                        break;
+                    }
+                }
+
+//                DatabaseReference databaseReferenceProduct = FirebaseDatabase.getInstance().getReference("Product");
+//                Log.e("ProductID", "123");
+//
+//                databaseReferenceProduct.addValueEventListener(new ValueEventListener() {
+//                    @SuppressLint("NotifyDataSetChanged")
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                        Log.e("ProductID", "123");
+//
+//                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//
+//                            Product temp = dataSnapshot.getValue(Product.class);
+//
+//                            if(params[params.length-1].equals(temp.getProductID())) {
+//                                curProduct = temp;
+//                                break;
+//                            }
+//
+//                        }
+//
+////                        homeAdapter.notifyDataSetChanged();
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+
+//                DatabaseReference databaseReferenceProduct = FirebaseDatabase.getInstance().getReference("Product");
+//                databaseReferenceProduct.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                        Log.e("ProductID", params[params.length-1]);
+//
+//                        if (task.isSuccessful()) {
+//                            for (DataSnapshot ds : task.getResult().getChildren()) {
+//                                String productId_Fb = ds.child("productID").getValue(String.class);
+//                                if(params[params.length-1].equals(productId_Fb)) {
+//                                    curProduct = ds.getValue(Product.class);
+//                                    break;
+//                                }
+//                            }
+//                            Log.e("productName", String.valueOf(curProduct.getPrice()));
+//                        }
+//                    }
+//                });
+            }
+        }
+
 
         DatabaseReference databaseReferenceWishlist = FirebaseDatabase.getInstance().getReference("Wishlist/" + _user.getId() + "/List");
         loadFavIconStatus(imageBtn_fav,databaseReferenceWishlist);
@@ -158,6 +229,8 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         homeAdapter = new HomeAdapter(this, productList, this);
 
         recyclerview_home.setAdapter(homeAdapter);
+
+
     }
 
     public void setSupportActionBar(Toolbar toolbar) {
