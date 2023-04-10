@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
-import com.example.bagvana.Adapter.ProductListAdapter;
+import com.example.bagvana.Adapter.PListOrderAdapter;
 import com.example.bagvana.DTO.Order;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
@@ -22,8 +22,8 @@ import java.util.Set;
 
 public class OrderDetailActivity extends AppCompatActivity implements ItemListener {
     private Order curOrder;
-    private TextView orderID, orderDate, totalPrice, address;
-    private ProductListAdapter productListAdapter;
+    private TextView orderID, orderDate, totalPrice, address, status;
+    private PListOrderAdapter pListOrderAdapter;
     private RecyclerView recyclerView;
     private Toolbar toolbar;
     ArrayList<Product> productArrayList;
@@ -41,19 +41,19 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
 
         orderID = findViewById(R.id.order_number);
         orderDate = findViewById(R.id.order_date);
-//        status = findViewById(R.id.order_status);
-//        address = itemView.findViewById(R.id.order_address);
+        status = findViewById(R.id.order_status);
+        address = findViewById(R.id.order_address);
         totalPrice = findViewById(R.id.order_total);
 
         orderID.setText("Order #" + curOrder.getOrderID());
         orderDate.setText("Date: " + curOrder.getOrderDate());
-//        if (curOrder.getStatus() == "1") {
-//            status.setText("Status: Processing");
-//        } else if (curOrder.getStatus() == "2") {
-//            status.setText("Status: In Delivery");
-//        } else {
-//            status.setText("Status: Delivered");
-//        }
+        if (curOrder.getStatus().equals("1")) {
+            status.setText("Status: Processing");
+        } else if (curOrder.getStatus().equals("2")) {
+            status.setText("Status: In Delivery");
+        } else {
+            status.setText("Status: Delivered");
+        }
         totalPrice.setText("Total price: " + curOrder.getTotalPrice());
         address.setText("Address: " + curOrder.getReceiverInfo().getAddress());
 
@@ -66,9 +66,9 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
             productArrayList.add(temp);
         }
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        productListAdapter = new ProductListAdapter(this, productArrayList, this);
+        pListOrderAdapter = new PListOrderAdapter(this, productArrayList, this);
 
-        recyclerView.setAdapter(productListAdapter);
+        recyclerView.setAdapter(pListOrderAdapter);
     }
 
     @Override

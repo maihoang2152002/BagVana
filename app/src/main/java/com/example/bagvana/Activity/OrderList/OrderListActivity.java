@@ -3,7 +3,6 @@ package com.example.bagvana.Activity.OrderList;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +15,7 @@ import com.example.bagvana.Adapter.OrderListAdapter;
 import com.example.bagvana.DTO.Order;
 import com.example.bagvana.R;
 import com.example.bagvana.listeners.ItemListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,7 +71,6 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
 
     @Override
     public void OnItemPosition(int position) {
-        Log.e("test", orderList.get(position).getReceiverInfo().getAddress());
         Intent intent = new Intent(this, OrderDetailActivity.class);
         intent.putExtra("order", orderList.get(position));
         startActivity(intent);
