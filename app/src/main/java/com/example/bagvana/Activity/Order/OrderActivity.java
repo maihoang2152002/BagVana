@@ -120,7 +120,7 @@ public class OrderActivity extends AppCompatActivity {
         linear_orderAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), OrderAddressActivity.class);
+                Intent intent = new Intent(OrderActivity.this, OrderAddressActivity.class);
                 startActivity(intent);
             }
         });
@@ -128,7 +128,7 @@ public class OrderActivity extends AppCompatActivity {
         linear_voucher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), ChooseVoucherActivity.class);
+                Intent intent = new Intent(OrderActivity.this, ChooseVoucherActivity.class);
                 startActivity(intent);
             }
         });

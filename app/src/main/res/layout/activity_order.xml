@@ -101,7 +101,7 @@
         <ImageView
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:background="@drawable/ic_gift" />
+            android:background="@drawable/ic_voucher_order" />
 
         <TextView
             android:layout_width="270dp"

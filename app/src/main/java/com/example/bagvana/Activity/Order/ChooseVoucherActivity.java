@@ -80,7 +80,7 @@ public class ChooseVoucherActivity extends AppCompatActivity {
         btn_complete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+                Intent intent = new Intent(ChooseVoucherActivity.this, OrderActivity.class);
                 startActivity(intent);
             }
         });

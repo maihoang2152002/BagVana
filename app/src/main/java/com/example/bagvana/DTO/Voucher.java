@@ -14,6 +14,19 @@ public class Voucher {
 
     public Voucher() {}
 
+    public Voucher(String id, String name, int type, String start, String end, int maxValueDiscount, int minValueOfItem, int range, int amount, int amountOnPerson) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.start = start;
+        this.end = end;
+        this.maxValueDiscount = maxValueDiscount;
+        this.minValueOfItem = minValueOfItem;
+        this.range = range;
+        this.amount = amount;
+        this.amountOnPerson = amountOnPerson;
+    }
+
     public String getId() {
         return id;
     }

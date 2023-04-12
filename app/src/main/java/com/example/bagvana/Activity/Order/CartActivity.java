@@ -63,7 +63,7 @@ public class CartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(Utils._productList.size() != 0) {
-                    Intent intent = new Intent(getApplicationContext(), OrderActivity.class);
+                    Intent intent = new Intent(CartActivity.this, OrderActivity.class);
                     startActivity(intent);
                 } else {
                     new AlertDialog.Builder(view.getContext())
