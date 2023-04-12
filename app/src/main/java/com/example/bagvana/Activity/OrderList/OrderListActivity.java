@@ -31,6 +31,7 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
     private OrderListAdapter orderListAdapter;
     private ArrayList<Order> orderList;
     private Toolbar toolbar;
+    private String status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
 
         orderList = new ArrayList<>();
 
+        status = getIntent().getStringExtra("status");
+
         DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Order");
         databaseReferenceHome.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -53,7 +56,9 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Order order = dataSnapshot.getValue(Order.class);
-                    orderList.add(order);
+                    if (order.getStatus().equals(status)) {
+                        orderList.add(order);
+                    }
                 }
 
                 orderListAdapter.notifyDataSetChanged();
