@@ -97,6 +97,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear_waitDelivery"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -131,6 +132,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/linear_delivered"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -212,7 +214,7 @@
                     android:layout_marginLeft="20dp"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
-                    android:background="@drawable/ic_voucher"
+                    android:background="@drawable/ic_gift"
                     android:layout_gravity="left|center_vertical"/>
 
                 <TextView

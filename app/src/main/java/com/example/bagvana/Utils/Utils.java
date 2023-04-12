@@ -6,11 +6,16 @@ import com.example.bagvana.DTO.User;
 import com.example.bagvana.DTO.Voucher;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Utils {
-    public static ArrayList<Product> _productList = new ArrayList<>();
-    public static ReceiverInfo _receiverInfo = new ReceiverInfo();
-    public static String _newAddressID;
-    public static ArrayList<Voucher> _voucherList = new ArrayList<>();
+
+    // Order
+    public static ArrayList<Product> _productList = new ArrayList<>(); // sản phẩm chọn mua
+    public static ReceiverInfo _receiverInfo = new ReceiverInfo(); // địa chỉ mua hàng (để mặc định cho đến khi khách hàng thay đổi)
+    public static String _newAddressID; // id dể tạo địa chỉ mới
+    public static ArrayList<Voucher> _voucherList = new ArrayList<>(); // voucher được áp dụng cho đơn hàng
+
+    public static HashMap<String, Integer> _vouchersOfUser = new HashMap<>();
     public static User _user = new User();
 }

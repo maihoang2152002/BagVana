@@ -142,7 +142,7 @@ public class AddNewOrderAddressActivity extends AppCompatActivity {
                     ReceiverInfo receiverInfo = new ReceiverInfo("1", newAddressID, address, name, phone, isDefault);
                     reveiverInfoDAO.addReceiverInfoFirebase(receiverInfo);
 
-                    Intent intent = new Intent(getApplicationContext(), OrderAddressActivity.class);
+                    Intent intent = new Intent(AddNewOrderAddressActivity.this, OrderAddressActivity.class);
                     startActivity(intent);
                 }
             }

@@ -1,5 +1,6 @@
 package com.example.bagvana.Activity.Order;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,7 +59,7 @@ public class OrderAddressActivity extends AppCompatActivity {
         linear_newOrderAddress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), AddNewOrderAddressActivity.class);
+                Intent intent = new Intent(OrderAddressActivity.this, AddNewOrderAddressActivity.class);
                 startActivity(intent);
             }
         });

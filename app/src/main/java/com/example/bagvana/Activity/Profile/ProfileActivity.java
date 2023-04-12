@@ -16,7 +16,8 @@ import com.example.bagvana.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    LinearLayout linear_editProfile, linear_waitConfirmation;
+    LinearLayout linear_editProfile, linear_waitConfirmation,
+            linear_waitDelivery, linear_delivered;
     TextView txt_fullName;
     Toolbar toolbar;
 
@@ -41,10 +42,32 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
         linear_waitConfirmation = findViewById(R.id.linear_waitConfirmation);
+        linear_waitDelivery = findViewById(R.id.linear_waitDelivery);
+        linear_delivered = findViewById(R.id.linear_delivered);
+
         linear_waitConfirmation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
+                intent.putExtra("status", "1");
+                startActivity(intent);
+            }
+        });
+
+        linear_waitDelivery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
+                intent.putExtra("status", "2");
+                startActivity(intent);
+            }
+        });
+
+        linear_delivered.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
+                intent.putExtra("status", "3");
                 startActivity(intent);
             }
         });

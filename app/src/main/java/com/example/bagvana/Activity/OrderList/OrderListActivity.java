@@ -3,7 +3,6 @@ package com.example.bagvana.Activity.OrderList;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +15,7 @@ import com.example.bagvana.Adapter.OrderListAdapter;
 import com.example.bagvana.DTO.Order;
 import com.example.bagvana.R;
 import com.example.bagvana.listeners.ItemListener;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,6 +31,7 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
     private OrderListAdapter orderListAdapter;
     private ArrayList<Order> orderList;
     private Toolbar toolbar;
+    private String status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,8 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
 
         orderList = new ArrayList<>();
 
+        status = getIntent().getStringExtra("status");
+
         DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Order");
         databaseReferenceHome.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -53,7 +56,9 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Order order = dataSnapshot.getValue(Order.class);
-                    orderList.add(order);
+                    if (order.getStatus().equals(status)) {
+                        orderList.add(order);
+                    }
                 }
 
                 orderListAdapter.notifyDataSetChanged();
@@ -71,7 +76,6 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
 
     @Override
     public void OnItemPosition(int position) {
-        Log.e("test", orderList.get(position).getReceiverInfo().getAddress());
         Intent intent = new Intent(this, OrderDetailActivity.class);
         intent.putExtra("order", orderList.get(position));
         startActivity(intent);

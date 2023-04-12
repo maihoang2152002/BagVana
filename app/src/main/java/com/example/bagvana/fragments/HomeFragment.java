@@ -83,24 +83,6 @@ public class HomeFragment extends Fragment implements ItemListener {
         homeAdapter = new HomeAdapter(getContext(), productList, this);
 
         recyclerview_home.setAdapter(homeAdapter);
-
-        SearchView searchView = view.findViewById(R.id.search_view);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Handle search query submission
-                Intent intent = new Intent(getContext(), ProductListActivity.class);
-                intent.putExtra("query", query);
-                startActivity(intent);
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Handle search query text changes
-                return true;
-            }
-        });
     }
 
     @Override
