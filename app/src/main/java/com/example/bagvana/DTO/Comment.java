@@ -14,14 +14,16 @@ public class Comment {
         reviewID = "";
         productID = "";
     }
-    public Comment(String reviewID, String content, String userID, String prodductID, String avatar,double rating, boolean incognito) {
+    public Comment(String reviewID, String content, String userID, String productID,
+                   String avatar, double rating, boolean incognito, String username) {
         this.content = content;
         this.rating = rating;
         this.avatar = avatar;
         this.userID = userID;
         this.incognito = incognito;
         this.reviewID = reviewID;
-        this.productID = prodductID;
+        this.productID = productID;
+        this.username = username;
     }
 
     public String getContent() {
@@ -53,5 +55,9 @@ public class Comment {
     public String getUserName() {
         return username;
     }
+
+    public String getProductID() { return productID; }
+
+    public boolean getIncognito() { return incognito; }
 
 }
