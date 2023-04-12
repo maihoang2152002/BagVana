@@ -192,6 +192,7 @@
                             android:minHeight="48dp"
                             android:src="@drawable/ic_fav"
                             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+                        
 
                     </RelativeLayout>
 
