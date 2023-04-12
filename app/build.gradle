@@ -65,4 +65,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.0.4'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.firebaseui:firebase-ui-database:8.0.1'
+
+    // scalable size unit
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 }
