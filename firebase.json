@@ -1,0 +1,14 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "appAssociation": "AUTO",
+    "rewrites": [
+      {
+        "source": "/product/**",
+        "dynamicLinks": true
+      }
+    ]
+  }
+}

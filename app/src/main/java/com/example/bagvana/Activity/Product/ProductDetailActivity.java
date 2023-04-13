@@ -26,11 +26,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Adapter.HomeAdapter;
 import com.example.bagvana.Adapter.ReviewAdapter;
 import com.example.bagvana.DTO.Comment;
 import com.example.bagvana.DTO.EventBus.BillCostEvent;
 import com.example.bagvana.DTO.Product;
+import com.example.bagvana.MainActivity;
 import com.example.bagvana.R;
 import com.example.bagvana.Utils.Utils;
 import com.example.bagvana.listeners.ItemListener;
@@ -49,6 +51,8 @@ import java.util.ArrayList;
 public class ProductDetailActivity extends AppCompatActivity implements ItemListener {
     private ImageView imageSelected, txt_minus, txt_plus, btn_add_to_cart;
     private ImageButton imageBtn_fav;
+    private ImageView imageSelected;
+    private ImageButton imageBtn_fav, imageBtn_share;
     Product curProduct;
     TextView name, color, price, description, txt_amount;
 
@@ -74,7 +78,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         imageBtn_fav = findViewById(R.id.imageBtn_fav);
-
+        imageBtn_share = findViewById(R.id.imageBtn_share);
 
         imageSelected = findViewById(R.id.img_selected);
         txt_minus = findViewById(R.id.txt_minus);
@@ -126,7 +130,14 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
                 databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).removeValue();
             }
         });
-
+        imageBtn_share.setOnClickListener(v -> {
+            final String appPakageName = ProductDetailActivity.this.getPackageName();
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, curProduct.getName() + " : https://example.com/product/" + curProduct.getProductID() );
+            sendIntent.setType("text/plain");
+            ProductDetailActivity.this.startActivity(sendIntent);
+        });
         price.setText("$" + curProduct.getPrice());
         description.setText(curProduct.getDescription());
         name.setText(curProduct.getName());
@@ -232,7 +243,14 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
     public void setSupportActionBar(Toolbar toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(view -> finish());
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProductDetailActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void toggleTextView(TextView textView) {
