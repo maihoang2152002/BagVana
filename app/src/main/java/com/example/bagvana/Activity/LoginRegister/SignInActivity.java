@@ -1,5 +1,6 @@
 package com.example.bagvana.Activity.LoginRegister;
 
+import static com.example.bagvana.Utils.Utils._list_user;
 import static com.example.bagvana.Utils.Utils._user;
 
 import android.app.AlertDialog;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bagvana.Activity.Chatbot.ChatActivity;
 import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
@@ -137,13 +139,17 @@ public class SignInActivity extends AppCompatActivity {
                             String pass_convert = convertHashToString(pass);
                             String idFB = ds.child("id").getValue(String.class);
                             Log.e("pass", passFB);
+                            User current_user = new User(idFB, phoneFB, usernameFB, passFB, dobFB, genderFB, typeUserFB, emailFB, avatarFB, fullnameFB);
+                            _list_user.add(current_user);
+                            Log.e("list user",_list_user.get(0).getId());
+
                             if(phone.equals(phoneFB) && pass_convert.equals(passFB)) {
                                 existUser = true;
-                                _user = new User(idFB, phoneFB, usernameFB, passFB, dobFB, genderFB, typeUserFB, emailFB, avatarFB, fullnameFB);
+                                _user = current_user;
                                 Log.e("user",_user.toString());
-                                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
                                 startActivity(intent);
-                                break;
+//                                break;
                             }
                         }
                         if (existUser == false) {
