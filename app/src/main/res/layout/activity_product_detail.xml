@@ -164,7 +164,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@color/white"
+                    android:background="@android:color/transparent"
                     tools:ignore="MissingConstraints"
                     app:title="Chi tiết sản phẩm">
 
@@ -175,24 +175,42 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
                             android:padding="10dp"
                             android:text="Chi tiết sản phẩm"
                             android:textColor="@color/black"
                             android:textSize="30sp"/>
 
-                        <ImageButton
-                            android:id="@+id/imageBtn_fav"
+                        <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="16dp"
-                            android:background="#ffffff"
-                            android:minWidth="48dp"
-                            android:minHeight="48dp"
-                            android:src="@drawable/ic_fav"
-                            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
-                        
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true">
+
+                            <ImageButton
+                                android:id="@+id/imageBtn_fav"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:minWidth="30dp"
+                                android:minHeight="30dp"
+                                android:src="@drawable/ic_fav"
+                                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+                            <ImageButton
+                                android:id="@+id/imageBtn_share"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:background="@android:color/transparent"
+                                android:minWidth="30dp"
+                                android:minHeight="30dp"
+                                android:src="@drawable/ic_share"
+                                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+                        </LinearLayout>
+
+
 
                     </RelativeLayout>
 

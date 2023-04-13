@@ -2,9 +2,11 @@ package com.example.bagvana.Activity.LoginRegister;
 
 import static com.example.bagvana.Utils.Utils._user;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,13 +18,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bagvana.Activity.Home.HomeActivity;
+import com.example.bagvana.Activity.Product.ProductDetailActivity;
+import com.example.bagvana.Activity.Product.ShareProcessingActivity;
+import com.example.bagvana.DTO.Product;
 import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
 
 import java.nio.charset.StandardCharsets;
@@ -81,8 +88,12 @@ public class SignInActivity extends AppCompatActivity {
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                Product temp = new Product();
+                if (getIntent().hasExtra("GetProductFromDeepLink")) {
+                    temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+                    intent.putExtra("GetProductFromDeepLink", temp);
+                }
                 startActivity(intent);
             }
 
@@ -132,9 +143,17 @@ public class SignInActivity extends AppCompatActivity {
                                 existUser = true;
                                 _user = user;
                                 Log.e("user",_user.toString());
-                                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
-                                startActivity(intent);
-                                break;
+                                if (getIntent().hasExtra("GetProductFromDeepLink")) {
+                                    Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+                                    Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
+                                    intent.putExtra("product", temp);
+                                    startActivity(intent);
+                                }
+                                else {
+                                    Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                    break;
+                                }
                             }
                         }
                         if (existUser == false) {
@@ -153,10 +172,15 @@ public class SignInActivity extends AppCompatActivity {
         initLogin();
     }
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+
+
         initComponents();
     }
 }
