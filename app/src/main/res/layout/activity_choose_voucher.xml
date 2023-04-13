@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -23,7 +23,8 @@
                 android:layout_height="match_parent"
                 android:text="Chọn voucher"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                tools:ignore="HardcodedText" />
         </android.widget.Toolbar>
 
         <LinearLayout
@@ -37,16 +38,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:inputType="text"
+                android:background="@drawable/custome_border_radius_shape"
                 android:hint="Nhập mã voucher"
-                android:background="@drawable/custome_border_radius_shape"/>
+                android:inputType="text"
+                tools:ignore="Autofill,HardcodedText,TouchTargetSizeCheck" />
 
             <Button
                 android:id="@+id/btn_apply"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Áp dụng"
-                android:backgroundTint="@color/blue"/>
+                android:backgroundTint="@color/blue"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
@@ -56,7 +59,8 @@
             android:layout_margin="20dp"
             android:text="Ưu đãi phí vận chuyển"
             android:textSize="18sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycview_freeshipVoucher"
@@ -69,7 +73,8 @@
             android:layout_margin="20dp"
             android:text="Mã giảm giá"
             android:textSize="18sp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            tools:ignore="HardcodedText" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycview_discountVoucher"
@@ -87,10 +92,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Đồng ý"
-                android:backgroundTint="@color/blue"/>
+                android:backgroundTint="@color/blue"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
