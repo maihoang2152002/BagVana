@@ -37,7 +37,7 @@
 
 
     </com.google.android.material.appbar.AppBarLayout>
-    
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view"
         android:layout_width="match_parent"
@@ -47,7 +47,7 @@
         android:layout_above="@+id/bottom"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 
-    />
+        />
 
     <RelativeLayout
         android:id="@+id/bottom"

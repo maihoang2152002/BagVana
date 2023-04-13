@@ -1,5 +1,6 @@
 package com.example.bagvana.Activity.LoginRegister;
 
+import static com.example.bagvana.Utils.Utils._list_user;
 import static com.example.bagvana.Utils.Utils._user;
 
 import android.app.AlertDialog;
@@ -130,6 +131,7 @@ public class SignInActivity extends AppCompatActivity {
                             User user = ds.getValue(User.class);
                             String passFB = ds.child("password").getValue(String.class);
                             String pass_convert = convertHashToString(pass);
+                            _list_user.add(user);
                             Log.e("pass", user.getPassword());
                             if(phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
                                 existUser = true;

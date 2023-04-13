@@ -21,4 +21,6 @@ public class Utils {
     public static Product _product_current = new Product();
     public static HashMap<String, Integer> _vouchersOfUser = new HashMap<>();
     public static User _user = new User();
+    public static List<User> _list_user = new ArrayList<>();
+
 }
