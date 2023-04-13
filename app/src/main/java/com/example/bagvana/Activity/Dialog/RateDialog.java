@@ -1,5 +1,7 @@
 package com.example.bagvana.Activity.Dialog;
 
+import static com.example.bagvana.Utils.Utils._user;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -56,8 +58,8 @@ public class RateDialog extends Dialog {
 //                String data = "Hello, Firebase!";
             DatabaseReference newRef = myRef.push();
 
-            Comment comment = new Comment(newRef.getKey(), content, "1",
-                    product.getProductID(), "", userRate, false, "NgocHai");
+            Comment comment = new Comment(newRef.getKey(), content, _user.getId(),
+                    product.getProductID(), "", userRate, false, _user.getUsername());
 
             newRef.setValue(comment);
             dismiss();

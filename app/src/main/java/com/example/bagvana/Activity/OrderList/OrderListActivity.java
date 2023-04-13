@@ -1,5 +1,7 @@
 package com.example.bagvana.Activity.OrderList;
 
+import static com.example.bagvana.Utils.Utils._user;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -56,7 +58,7 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Order order = dataSnapshot.getValue(Order.class);
-                    if (order.getStatus().equals(status)) {
+                    if (order.getStatus().equals(status) && order.getUserID().equals(_user.getId())) {
                         orderList.add(order);
                     }
                 }
