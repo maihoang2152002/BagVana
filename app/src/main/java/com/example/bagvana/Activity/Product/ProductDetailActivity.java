@@ -50,8 +50,6 @@ import java.util.ArrayList;
 
 public class ProductDetailActivity extends AppCompatActivity implements ItemListener {
     private ImageView imageSelected, txt_minus, txt_plus, btn_add_to_cart;
-    private ImageButton imageBtn_fav;
-    private ImageView imageSelected;
     private ImageButton imageBtn_fav, imageBtn_share;
     Product curProduct;
     TextView name, color, price, description, txt_amount;
