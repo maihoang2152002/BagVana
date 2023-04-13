@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
 import com.example.bagvana.Activity.ProductList.ProductListActivity;
 import com.example.bagvana.Adapter.HomeAdapter;
@@ -50,6 +52,13 @@ public class HomeFragment extends Fragment implements ItemListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerview_home = view.findViewById(R.id.recyclerview_home);
+        TextView view_more = view.findViewById(R.id.view_more);
+
+        view_more.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), ProductListActivity.class);
+            intent.putExtra("query", "");
+            startActivity(intent);
+        });
 
         recyclerview_home.setHasFixedSize(true);
         recyclerview_home.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -63,12 +72,13 @@ public class HomeFragment extends Fragment implements ItemListener {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Log.e("123", "123");
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Product product = dataSnapshot.getValue(Product.class);
                     productList.add(product);
-                    Log.e("test", product.getName());
+                    if (productList.size() > 2) {
+                        break;
+                    }
                 }
 
                 homeAdapter.notifyDataSetChanged();

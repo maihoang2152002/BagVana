@@ -33,7 +33,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
     Menu menu;
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
