@@ -18,7 +18,7 @@ public class Utils {
     public static ReceiverInfo _receiverInfo = new ReceiverInfo(); // địa chỉ mua hàng (để mặc định cho đến khi khách hàng thay đổi)
     public static String _newAddressID; // id dể tạo địa chỉ mới
     public static ArrayList<Voucher> _voucherList = new ArrayList<>(); // voucher được áp dụng cho đơn hàng
-
+    public static Product _product_current = new Product();
     public static HashMap<String, Integer> _vouchersOfUser = new HashMap<>();
     public static User _user = new User();
 }
