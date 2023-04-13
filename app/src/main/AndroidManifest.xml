@@ -27,6 +27,9 @@
             android:name=".Activity.Order.OrderAddressActivity"
             android:exported="true" />
         <activity
+            android:name=".Activity.Order.ChooseVoucherActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.Order.AddNewOrderAddressActivity"
             android:exported="true">
 
@@ -114,11 +117,11 @@
         <activity
             android:name=".Activity.Home.HomeActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
         <activity
             android:name=".Activity.LoginRegister.OTPActivity"
@@ -133,10 +136,10 @@
             android:name=".Activity.LoginRegister.SignInActivity"
             android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
         </activity>
         <activity
             android:name=".Activity.OrderList.OrderListActivity"
