@@ -189,7 +189,7 @@ public class OrderActivity extends AppCompatActivity {
                     // UpdateUserID
                     databaseReferenceOrder.child("orderID").setValue(formattedDate);
                     databaseReferenceOrder.child("receiverInfo").setValue(Utils._receiverInfo);
-                    databaseReferenceOrder.child("totalPrice").setValue(txt_totalCost.getText().toString());
+                    databaseReferenceOrder.child("totalPrice").setValue(Integer.valueOf(txt_totalCost.getText().toString()));
                     databaseReferenceOrder.child("orderDate").setValue(formattedDate);
                     databaseReferenceOrder.child("status").setValue("1");
                     databaseReferenceOrder.child("userID").setValue(Utils._user.getId());
