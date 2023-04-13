@@ -163,7 +163,7 @@ public class OrderActivity extends AppCompatActivity {
                     DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                     String formattedDate = localDateTime.format(myFormatObj);
 
-                    DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order").child(Utils._user.getId()).child(formattedDate);
+                    DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order").child(formattedDate);
 
                     //OrderID
                     databaseReferenceOrder.child(formattedDate);

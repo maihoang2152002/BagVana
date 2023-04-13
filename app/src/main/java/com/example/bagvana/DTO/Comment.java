@@ -1,7 +1,7 @@
 package com.example.bagvana.DTO;
 
 public class Comment {
-    private String content, userID, productID, avatar, reviewID, username;
+    private String content, userID, productID, avatar, reviewID, userName;
     private double rating;
     boolean incognito;
 
@@ -15,7 +15,7 @@ public class Comment {
         productID = "";
     }
     public Comment(String reviewID, String content, String userID, String productID,
-                   String avatar, double rating, boolean incognito, String username) {
+                   String avatar, double rating, boolean incognito, String userName) {
         this.content = content;
         this.rating = rating;
         this.avatar = avatar;
@@ -23,7 +23,7 @@ public class Comment {
         this.incognito = incognito;
         this.reviewID = reviewID;
         this.productID = productID;
-        this.username = username;
+        this.userName = userName;
     }
 
     public String getContent() {
@@ -53,7 +53,7 @@ public class Comment {
     }
 
     public String getUserName() {
-        return username;
+        return userName;
     }
 
     public String getProductID() { return productID; }
