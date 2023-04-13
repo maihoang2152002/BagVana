@@ -43,8 +43,8 @@ public class OrderActivity extends AppCompatActivity {
 
     private ArrayList<Product> productList;
     private OrderAdapter orderAdapter;
-    private RecyclerView recycview_order;
-    private ArrayList<ReceiverInfo> receiverInfos;
+    private RecyclerView recyclerview_order;
+    private ArrayList<ReceiverInfo> receiverInfo;
     private TextView txt_productCost;
     private TextView txt_shipCost;
     private TextView txt_discountShipCost;
@@ -62,7 +62,7 @@ public class OrderActivity extends AppCompatActivity {
     private Toolbar toolbar_order;
     private int billCost;
     private int voucherCost;
-    private int freeshipCost;
+    private int freeShipCost;
     private int discountCost;
 
     @Override
@@ -73,7 +73,7 @@ public class OrderActivity extends AppCompatActivity {
         toolbar_order = findViewById(R.id.toolbar_order);
         setSupportActionBar(toolbar_order);
 
-        recycview_order = findViewById(R.id.recycview_order);
+        recyclerview_order = findViewById(R.id.recycview_order);
         txt_productCost = findViewById(R.id.txt_productCost);
         txt_shipCost = findViewById(R.id.txt_shipCost);
         txt_discountShipCost = findViewById(R.id.txt_discountShipCost);
@@ -108,14 +108,14 @@ public class OrderActivity extends AppCompatActivity {
         }
 
 
-        recycview_order.setHasFixedSize(true);
-        recycview_order.setLayoutManager(new LinearLayoutManager(this));
+        recyclerview_order.setHasFixedSize(true);
+        recyclerview_order.setLayoutManager(new LinearLayoutManager(this));
 
         productList = (ArrayList<Product>) Utils._productList;
 
         orderAdapter = new OrderAdapter((Context) this, productList);
 
-        recycview_order.setAdapter(orderAdapter);
+        recyclerview_order.setAdapter(orderAdapter);
 
         linear_orderAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +163,7 @@ public class OrderActivity extends AppCompatActivity {
                     DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
                     String formattedDate = localDateTime.format(myFormatObj);
 
-                    DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order").child("1").child(formattedDate);
+                    DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order").child(Utils._user.getId()).child(formattedDate);
 
                     //OrderID
                     databaseReferenceOrder.child(formattedDate);
@@ -176,7 +176,7 @@ public class OrderActivity extends AppCompatActivity {
 
                     for (Voucher voucher: Utils._voucherList) {
                         if (voucher.getType() == 2) {
-                            usedVoucher.put(voucher.getId(),freeshipCost);
+                            usedVoucher.put(voucher.getId(), freeShipCost);
                         } else {
                             usedVoucher.put(voucher.getId(), discountCost);
                         }
@@ -192,7 +192,7 @@ public class OrderActivity extends AppCompatActivity {
                     databaseReferenceOrder.child("totalPrice").setValue(txt_totalCost.getText().toString());
                     databaseReferenceOrder.child("orderDate").setValue(formattedDate);
                     databaseReferenceOrder.child("status").setValue("1");
-                    databaseReferenceOrder.child("userID").setValue("1");
+                    databaseReferenceOrder.child("userID").setValue(Utils._user.getId());
                     databaseReferenceOrder.child("paymentMethod").setValue(txt_delivery.getText().toString());
 
 
@@ -215,7 +215,7 @@ public class OrderActivity extends AppCompatActivity {
                 if(discount > voucher.getMaxValueDiscount()) {
                     discount = voucher.getMaxValueDiscount();
                     voucherCost =  voucherCost + discount;
-                    freeshipCost = discount;
+                    freeShipCost = discount;
                 }
                 String money = "-" + discount;
                 txt_discountShipCost.setText(money);
@@ -281,14 +281,14 @@ public class OrderActivity extends AppCompatActivity {
     }
 
     private void initOrderAddress() {
-        receiverInfos = new ArrayList<>();
+        receiverInfo = new ArrayList<>();
 
         // userID = 1
         DatabaseReference databaseReferenceReceiverInfo = FirebaseDatabase.getInstance().getReference("ReceiverInfo").child("1");
         databaseReferenceReceiverInfo.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                receiverInfos.clear();
+                receiverInfo.clear();
 
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
 
@@ -300,7 +300,7 @@ public class OrderActivity extends AppCompatActivity {
                         break;
                     }
 
-                    receiverInfos.add(receiverInfo);
+                    OrderActivity.this.receiverInfo.add(receiverInfo);
                 }
             }
             @Override

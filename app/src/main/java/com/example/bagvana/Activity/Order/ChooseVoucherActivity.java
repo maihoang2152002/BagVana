@@ -15,7 +15,6 @@ import android.widget.Toolbar;
 
 import com.example.bagvana.Adapter.DiscountVoucherAdapter;
 import com.example.bagvana.Adapter.FreeshipVoucherAdapter;
-import com.example.bagvana.Adapter.OrderAddressAdapter;
 import com.example.bagvana.DTO.User_Voucher;
 import com.example.bagvana.DTO.Voucher;
 import com.example.bagvana.R;
@@ -30,12 +29,12 @@ import java.util.HashMap;
 
 public class ChooseVoucherActivity extends AppCompatActivity {
 
-    private ArrayList<Voucher> freeshipVouchers;
+    private ArrayList<Voucher> freeShipVouchers;
     private ArrayList<Voucher> discountVouchers;
     private FreeshipVoucherAdapter freeshipVoucherAdapter;
     private DiscountVoucherAdapter discountVoucherAdapter;
-    private RecyclerView recycview_freeshipVoucher;
-    private RecyclerView recycview_discountVoucher;
+    private RecyclerView recyclerview_freeShipVoucher;
+    private RecyclerView recyclerview_discountVoucher;
 
     private Button btn_complete;
     private Button btn_apply;
@@ -46,8 +45,8 @@ public class ChooseVoucherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_voucher);
 
-        recycview_freeshipVoucher = findViewById(R.id.recycview_freeshipVoucher);
-        recycview_discountVoucher = findViewById(R.id.recycview_discountVoucher);
+        recyclerview_freeShipVoucher = findViewById(R.id.recycview_freeshipVoucher);
+        recyclerview_discountVoucher = findViewById(R.id.recycview_discountVoucher);
 
         toolbar_chooseVoucher = findViewById(R.id.toolbar_chooseVoucher);
         setSupportActionBar(toolbar_chooseVoucher);
@@ -56,24 +55,24 @@ public class ChooseVoucherActivity extends AppCompatActivity {
         btn_apply = findViewById(R.id.btn_apply);
 
         // Freeship Voucher
-        recycview_freeshipVoucher.setHasFixedSize(true);
-        recycview_freeshipVoucher.setLayoutManager(new LinearLayoutManager(this));
+        recyclerview_freeShipVoucher.setHasFixedSize(true);
+        recyclerview_freeShipVoucher.setLayoutManager(new LinearLayoutManager(this));
 
-        freeshipVouchers = new ArrayList<>();
+        freeShipVouchers = new ArrayList<>();
 
-        freeshipVoucherAdapter = new FreeshipVoucherAdapter((Context) this, freeshipVouchers);
+        freeshipVoucherAdapter = new FreeshipVoucherAdapter((Context) this, freeShipVouchers);
 
-        recycview_freeshipVoucher.setAdapter(freeshipVoucherAdapter);
+        recyclerview_freeShipVoucher.setAdapter(freeshipVoucherAdapter);
 
         // Discount Voucher
-        recycview_discountVoucher.setHasFixedSize(true);
-        recycview_discountVoucher.setLayoutManager(new LinearLayoutManager(this));
+        recyclerview_discountVoucher.setHasFixedSize(true);
+        recyclerview_discountVoucher.setLayoutManager(new LinearLayoutManager(this));
 
         discountVouchers = new ArrayList<>();
 
         discountVoucherAdapter = new DiscountVoucherAdapter((Context) this, discountVouchers);
 
-        recycview_discountVoucher.setAdapter(discountVoucherAdapter);
+        recyclerview_discountVoucher.setAdapter(discountVoucherAdapter);
 
         initData();
 
@@ -127,7 +126,7 @@ public class ChooseVoucherActivity extends AppCompatActivity {
                         if(voucher.getType() == 2) {
                             int count = user_vouchers.get(voucher.getId());
                             while (count > 0) {
-                                freeshipVouchers.add(voucher);
+                                freeShipVouchers.add(voucher);
                                 count -- ;
                             }
 
