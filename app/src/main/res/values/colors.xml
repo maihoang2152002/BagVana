@@ -14,4 +14,8 @@
     <color name="grey">#D9D9D9</color>
     <color name="bg_chat">#ccc</color>
 
+    <color name="red">#FF0000</color>
+
+    <color name="dialog_color_1">#FDD736</color>
+    <color name="dialog_color_2">#3B5796</color>
 </resources>

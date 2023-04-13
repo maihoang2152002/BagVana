@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bagvana.DTO.Product;
 import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -130,7 +131,14 @@ public class OTPActivity extends AppCompatActivity {
 
                                     User user = new User(id, phoneNumber, resultUsername,pass_convert,"","","1","","","");
                                     databasReference.child(id).setValue(user);
-                                    startActivity(new Intent(OTPActivity.this,SignInActivity.class));
+
+                                    Intent intent = new Intent(OTPActivity.this,SignInActivity.class);
+                                    Product temp = new Product();
+                                    if (getIntent().hasExtra("GetProductFromDeepLink")) {
+                                        temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+                                        intent.putExtra("GetProductFromDeepLink", temp);
+                                    }
+                                    startActivity(intent);
 
                                 } catch (NoSuchAlgorithmException e) {
                                     throw new RuntimeException(e);

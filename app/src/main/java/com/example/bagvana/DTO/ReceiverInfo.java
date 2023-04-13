@@ -1,21 +1,23 @@
 package com.example.bagvana.DTO;
 
-public class ReceiverInfo {
+import java.io.Serializable;
+
+public class ReceiverInfo implements Serializable {
     private String userID;
     private String addressID;
     private String address;
     private String fullName;
-    private int phoneNumber;
+    private String phone;
     private boolean defaultAddress;
 
     public ReceiverInfo() {}
 
-    public ReceiverInfo(String userID, String addressID, String address, String fullName, int phoneNumber, boolean isDefault) {
+    public ReceiverInfo(String userID, String addressID, String address, String fullName, String phone, boolean isDefault) {
         this.userID = userID;
         this.addressID = addressID;
         this.address = address;
         this.fullName = fullName;
-        this.phoneNumber = phoneNumber;
+        this.phone = phone;
         this.defaultAddress = isDefault;
     }
 
@@ -51,12 +53,12 @@ public class ReceiverInfo {
         this.fullName = fullName;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public boolean isDefaultAddress() {

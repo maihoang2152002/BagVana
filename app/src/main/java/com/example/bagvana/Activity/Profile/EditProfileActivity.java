@@ -1,10 +1,10 @@
 package com.example.bagvana.Activity.Profile;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.bagvana.Utils.Utils._user;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -14,12 +14,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.example.bagvana.R;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.Calendar;
 import java.util.Objects;
@@ -38,6 +38,7 @@ public class EditProfileActivity extends AppCompatActivity {
     RadioGroup rgGender;
     RadioButton rbMale, rbFemale;
     Button btnUpdateProfile;
+    private Toolbar toolbar;
 
     String fullnameUser, emailUser, usernameUser, dobUser, phoneUser, genderUser;
 
@@ -66,59 +67,79 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void showUserData() {
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//        databaseReference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+//
+//                    String valueOfDataSnapshot = dataSnapshot.getValue().toString();
+//                    switch (dataSnapshot.getKey()){
+//                        case "fullname":
+//                            editTxt_fullName.setText(valueOfDataSnapshot);
+//                            fullnameUser = valueOfDataSnapshot;
+//                            break;
+//                        case "username":
+//                            editTxt_username.setText(valueOfDataSnapshot);
+//                            usernameUser = valueOfDataSnapshot;
+//                            break;
+//                        case "email":
+//                            editTxt_email.setText(valueOfDataSnapshot);
+//                            emailUser = valueOfDataSnapshot;
+//                            break;
+//                        case "dob":
+//                            editTxt_DOB.setText(valueOfDataSnapshot);
+//                            dobUser = valueOfDataSnapshot;
+//                            break;
+//                        case "phone":
+//                            editTxt_phoneNumber.setText(valueOfDataSnapshot);
+//                            phoneUser = valueOfDataSnapshot;
+//                            break;
+//                        case "gender":
+//                            if (Objects.equals(valueOfDataSnapshot, "male")) {
+//                                rgGender.check(R.id.rbMale);
+//                            } else {
+//                                rgGender.check(R.id.rbFemale);
+//                            }
+//                            genderUser = valueOfDataSnapshot;
+//                            break;
+//                    }
+//                }
+//            }
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//            }
+//        });
 
-                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-
-                    String valueOfDataSnapshot = dataSnapshot.getValue().toString();
-                    switch (dataSnapshot.getKey()){
-                        case "fullname":
-                            editTxt_fullName.setText(valueOfDataSnapshot);
-                            fullnameUser = valueOfDataSnapshot;
-                            break;
-                        case "username":
-                            editTxt_username.setText(valueOfDataSnapshot);
-                            usernameUser = valueOfDataSnapshot;
-                            break;
-                        case "email":
-                            editTxt_email.setText(valueOfDataSnapshot);
-                            emailUser = valueOfDataSnapshot;
-                            break;
-                        case "dob":
-                            editTxt_DOB.setText(valueOfDataSnapshot);
-                            dobUser = valueOfDataSnapshot;
-                            break;
-                        case "phone":
-                            editTxt_phoneNumber.setText(valueOfDataSnapshot);
-                            phoneUser = valueOfDataSnapshot;
-                            break;
-                        case "gender":
-                            if (Objects.equals(valueOfDataSnapshot, "male")) {
-                                rgGender.check(R.id.rbMale);
-                            } else {
-                                rgGender.check(R.id.rbFemale);
-                            }
-                            genderUser = valueOfDataSnapshot;
-                            break;
-                    }
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-            }
-        });
+        editTxt_fullName.setText(_user.getFullname());
+        fullnameUser = _user.getFullname();
+        editTxt_username.setText(_user.getUsername());
+        usernameUser = _user.getUsername();
+        editTxt_email.setText(_user.getEmail());
+        emailUser = _user.getEmail();
+        editTxt_DOB.setText(_user.getDob());
+        dobUser = _user.getDob();
+        editTxt_phoneNumber.setText(_user.getPhone());
+        phoneUser = _user.getPhone();
+        if (Objects.equals(_user.getGender(), "male")) {
+            rgGender.check(R.id.rbMale);
+        } else {
+            rgGender.check(R.id.rbFemale);
+        }
+        genderUser = _user.getGender();
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
 
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("User").child("2");
+        databaseReference = database.getReference("User").child(_user.getId());
         editTxt_fullName  = findViewById(R.id.editTxt_fullName);
-        editTxt_username  = findViewById(R.id.editTxt_username);editTxt_username.setEnabled(false);
+        editTxt_username  = findViewById(R.id.editTxt_username);
         editTxt_DOB = findViewById(R.id.editTxt_DOB);
         editTxt_email = findViewById(R.id.editTxt_email);
         editTxt_phoneNumber = findViewById(R.id.editTxt_phoneNumber);
@@ -130,10 +151,16 @@ public class EditProfileActivity extends AppCompatActivity {
         showUserData();
         initPickDate();
 
+        editTxt_email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e("email", "onClick: pressing emailEditText");
+            }
+        });
         btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isFullnameChanged() || isEmailChanged() || isDobChanged() || isPhoneChanged() || isGenderChanged()){
+                if (isFullnameChanged() || isUsernameChanged() || isEmailChanged() || isDobChanged() || isPhoneChanged() || isGenderChanged()){
                     Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(EditProfileActivity.this, "No Changes Found", Toast.LENGTH_SHORT).show();
@@ -148,6 +175,17 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!fullnameUser.equals(editTxt_fullName.getText().toString())){
             databaseReference.child("fullname").setValue(editTxt_fullName.getText().toString());
             fullnameUser = editTxt_fullName.getText().toString();
+            _user.setFullname(editTxt_fullName.getText().toString());
+            return true;
+        } else {
+            return false;
+        }
+    }
+    private boolean isUsernameChanged() {
+        if (!usernameUser.equals(editTxt_username.getText().toString())){
+            databaseReference.child("username").setValue(editTxt_username.getText().toString());
+            usernameUser = editTxt_username.getText().toString();
+            _user.setFullname(editTxt_username.getText().toString());
             return true;
         } else {
             return false;
@@ -157,6 +195,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!emailUser.equals(editTxt_email.getText().toString())){
             databaseReference.child("email").setValue(editTxt_email.getText().toString());
             emailUser = editTxt_email.getText().toString();
+            _user.setEmail(editTxt_email.getText().toString());
             return true;
         } else {
             return false;
@@ -166,6 +205,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!dobUser.equals(editTxt_DOB.getText().toString())){
             databaseReference.child("dob").setValue(editTxt_DOB.getText().toString());
             dobUser = editTxt_DOB.getText().toString();
+            _user.setDob(editTxt_DOB.getText().toString());
             return true;
         } else {
             return false;
@@ -175,6 +215,7 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!phoneUser.equals(editTxt_phoneNumber.getText().toString())){
             databaseReference.child("phone").setValue(editTxt_phoneNumber.getText().toString());
             phoneUser = editTxt_phoneNumber.getText().toString();
+            _user.setPhone(editTxt_phoneNumber.getText().toString());
             return true;
         } else {
             return false;
@@ -188,9 +229,15 @@ public class EditProfileActivity extends AppCompatActivity {
         if (!genderUser.equals(temp)){
             databaseReference.child("gender").setValue(temp);
             genderUser = temp;
+            _user.setGender(temp);
             return true;
         } else {
             return false;
         }
+    }
+
+    public void setSupportActionBar(Toolbar toolbar) {
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view -> finish());
     }
 }

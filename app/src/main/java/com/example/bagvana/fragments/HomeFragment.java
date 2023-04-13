@@ -3,19 +3,22 @@ package com.example.bagvana.fragments;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
+import com.example.bagvana.Activity.ProductList.ProductListActivity;
 import com.example.bagvana.Adapter.HomeAdapter;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
@@ -49,6 +52,13 @@ public class HomeFragment extends Fragment implements ItemListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerview_home = view.findViewById(R.id.recyclerview_home);
+        TextView view_more = view.findViewById(R.id.view_more);
+
+        view_more.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), ProductListActivity.class);
+            intent.putExtra("query", "");
+            startActivity(intent);
+        });
 
         recyclerview_home.setHasFixedSize(true);
         recyclerview_home.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -66,7 +76,9 @@ public class HomeFragment extends Fragment implements ItemListener {
 
                     Product product = dataSnapshot.getValue(Product.class);
                     productList.add(product);
-                    Log.e("product", product.getName());
+                    if (productList.size() > 2) {
+                        break;
+                    }
                 }
 
                 homeAdapter.notifyDataSetChanged();

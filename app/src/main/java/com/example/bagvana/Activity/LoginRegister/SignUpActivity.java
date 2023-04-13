@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -57,9 +58,15 @@ public class SignUpActivity extends AppCompatActivity {
          conPassword = (EditText) findViewById(R.id.txtConPassword);
          btnSignUp  = (Button) findViewById(R.id.btnSignUp);
 
+        Product temp = new Product();
+        if (getIntent().hasExtra("GetProductFromDeepLink")) {
+            temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+        }
+
         final CountryCodePicker ccp_su = (CountryCodePicker) findViewById(R.id.ccp);
         ccp_su.registerCarrierNumberEditText(numberPhone);
 
+        Product finalTemp = temp;
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,6 +118,7 @@ public class SignUpActivity extends AppCompatActivity {
                                     intent.putExtra("id",id);
                                     intent.putExtra("username", usernameTxt);
                                     intent.putExtra("password", passwordTxt);
+                                    intent.putExtra("GetProductFromDeepLink", finalTemp);
                                     startActivity(intent);
                                 }
                                 else{
@@ -131,7 +139,7 @@ public class SignUpActivity extends AppCompatActivity {
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SignUpActivity.this,"ddang nhan text", Toast.LENGTH_LONG).show();
+                Toast.makeText(SignUpActivity.this,"dang nhan text", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                 startActivity(intent);
             }

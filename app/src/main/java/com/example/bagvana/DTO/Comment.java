@@ -1,20 +1,7 @@
 package com.example.bagvana.DTO;
 
-import android.annotation.SuppressLint;
-
-import androidx.annotation.NonNull;
-
-import com.example.bagvana.Adapter.ReviewAdapter;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-
 public class Comment {
-    private String content, userID, productID, avatar, reviewID, username;
+    private String content, userID, productID, avatar, reviewID, userName;
     private double rating;
     boolean incognito;
 
@@ -27,14 +14,16 @@ public class Comment {
         reviewID = "";
         productID = "";
     }
-    public Comment(String reviewID, String content, String userID, String prodductID, String avatar,double rating, boolean incognito) {
+    public Comment(String reviewID, String content, String userID, String productID,
+                   String avatar, double rating, boolean incognito, String userName) {
         this.content = content;
         this.rating = rating;
         this.avatar = avatar;
         this.userID = userID;
         this.incognito = incognito;
         this.reviewID = reviewID;
-        this.productID = prodductID;
+        this.productID = productID;
+        this.userName = userName;
     }
 
     public String getContent() {
@@ -64,7 +53,11 @@ public class Comment {
     }
 
     public String getUserName() {
-        return username;
+        return userName;
     }
+
+    public String getProductID() { return productID; }
+
+    public boolean getIncognito() { return incognito; }
 
 }

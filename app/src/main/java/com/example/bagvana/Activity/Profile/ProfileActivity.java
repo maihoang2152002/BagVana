@@ -1,21 +1,36 @@
 package com.example.bagvana.Activity.Profile;
 
-import androidx.appcompat.app.AppCompatActivity;
+import static com.example.bagvana.Utils.Utils._user;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.example.bagvana.Activity.OrderList.OrderListActivity;
 import com.example.bagvana.R;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    LinearLayout linear_editProfile;
+    LinearLayout linear_editProfile, linear_waitConfirmation,
+            linear_waitDelivery, linear_delivered;
+    TextView txt_fullName;
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        txt_fullName = findViewById(R.id.txt_fullName);
+        txt_fullName.setText(_user.getFullname());
 
         linear_editProfile = findViewById(R.id.linear_editProfile);
         linear_editProfile.setOnClickListener(new View.OnClickListener() {
@@ -25,6 +40,41 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        linear_waitConfirmation = findViewById(R.id.linear_waitConfirmation);
+        linear_waitDelivery = findViewById(R.id.linear_waitDelivery);
+        linear_delivered = findViewById(R.id.linear_delivered);
+
+        linear_waitConfirmation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
+                intent.putExtra("status", "1");
+                startActivity(intent);
+            }
+        });
+
+        linear_waitDelivery.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
+                intent.putExtra("status", "2");
+                startActivity(intent);
+            }
+        });
+
+        linear_delivered.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
+                intent.putExtra("status", "3");
+                startActivity(intent);
+            }
+        });
+    }
+    public void setSupportActionBar(Toolbar toolbar) {
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(view -> finish());
     }
 
 }

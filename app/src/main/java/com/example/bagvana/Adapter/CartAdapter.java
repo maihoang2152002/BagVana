@@ -85,15 +85,16 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         holder.txt_total.setText(String.valueOf(total));
         holder.txt_color.setText(product.getColor());
 
-        for(int i = 0; i < Utils.productList.size(); i++) {
-            if(Utils.productList.get(i).getProductID() == product.getProductID()) {
+        for(int i = 0; i < Utils._productList.size(); i++) {
+            if(Utils._productList.get(i).getProductID() == product.getProductID()) {
                 holder.checkBox_product.isChecked();
             }
             EventBus.getDefault().postSticky(new BillCostEvent());
         }
 
         // userID = 1
-        DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance().getReference("Cart").child("1");
+        DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance()
+                .getReference("Cart").child(Utils._user.getId());
         holder.txt_plus.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -107,9 +108,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                 holder.txt_total.setText(String.valueOf(totalChange));
 
                 databaseReferenceCart.child(product.getProductID()).setValue(product);
-                for(int i = 0; i < Utils.productList.size(); i++) {
-                    if(Utils.productList.get(i).getProductID() == product.getProductID()) {
-                        Utils.productList.get(i).setAmount(amountChanged);
+                for(int i = 0; i < Utils._productList.size(); i++) {
+                    if(Utils._productList.get(i).getProductID() == product.getProductID()) {
+                        Utils._productList.get(i).setAmount(amountChanged);
                     }
                     EventBus.getDefault().postSticky(new BillCostEvent());
                 }
@@ -128,9 +129,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                             .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     databaseReferenceCart.child(product.getProductID()).removeValue();
-                                    for(int i = 0; i < Utils.productList.size(); i++) {
-                                        if(Utils.productList.get(i).getProductID() == product.getProductID()) {
-                                            Utils.productList.remove(i);
+                                    for(int i = 0; i < Utils._productList.size(); i++) {
+                                        if(Utils._productList.get(i).getProductID() == product.getProductID()) {
+                                            Utils._productList.remove(i);
                                         }
                                         EventBus.getDefault().postSticky(new BillCostEvent());
                                     }
@@ -153,9 +154,9 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
                     holder.txt_total.setText(String.valueOf(totalChange));
 
                     databaseReferenceCart.child(product.getProductID()).setValue(product);
-                    for(int i = 0; i < Utils.productList.size(); i++) {
-                        if(Utils.productList.get(i).getProductID() == product.getProductID()) {
-                            Utils.productList.get(i).setAmount(amountChanged);
+                    for(int i = 0; i < Utils._productList.size(); i++) {
+                        if(Utils._productList.get(i).getProductID() == product.getProductID()) {
+                            Utils._productList.get(i).setAmount(amountChanged);
                         }
                         EventBus.getDefault().postSticky(new BillCostEvent());
                     }
@@ -168,12 +169,12 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b) {
-                    Utils.productList.add(product);
+                    Utils._productList.add(product);
                     EventBus.getDefault().postSticky(new BillCostEvent());
                 } else {
-                    for(int i = 0; i < Utils.productList.size(); i++) {
-                        if(Utils.productList.get(i).getProductID() == product.getProductID()) {
-                            Utils.productList.remove(i);
+                    for(int i = 0; i < Utils._productList.size(); i++) {
+                        if(Utils._productList.get(i).getProductID() == product.getProductID()) {
+                            Utils._productList.remove(i);
                         }
                         EventBus.getDefault().postSticky(new BillCostEvent());
                     }

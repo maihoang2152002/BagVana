@@ -4,8 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <CheckBox
-        android:id="@+id/checkBox_address"
+    <RadioButton
+        android:id="@+id/rad_address"
         android:layout_width="wrap_content"
         android:layout_height="100dp"
         android:buttonTint="@color/black"
@@ -21,7 +21,7 @@
         android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="280dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 

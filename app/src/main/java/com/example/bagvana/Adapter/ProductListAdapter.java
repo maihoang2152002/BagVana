@@ -1,13 +1,14 @@
 package com.example.bagvana.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.bagvana.DTO.Product;
@@ -21,7 +22,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.MainViewHolder> {
     private final Context context;
     private final ArrayList<Product> productList;
-    private ItemListener itemListener;
+    private final ItemListener itemListener;
 
     public ProductListAdapter(Context context, ArrayList<Product> productList, ItemListener itemListener) {
         this.context = context;
@@ -42,10 +43,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         if (product == null) {
             return;
         }
-
-        int price = product.getPrice();
-
-        Log.e("Adapter", product.getName());
 
         Glide.with(this.context)
                 .load(product.getImage())

@@ -1,6 +1,5 @@
 package com.example.bagvana.Activity.LoginRegister;
 
-import static com.example.bagvana.Utils.Utils._list_user;
 import static com.example.bagvana.Utils.Utils._user;
 
 import android.app.AlertDialog;
@@ -16,8 +15,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.bagvana.Activity.Chatbot.ChatActivity;
 import com.example.bagvana.Activity.Home.HomeActivity;
+import com.example.bagvana.Activity.Product.ProductDetailActivity;
+import com.example.bagvana.DTO.Product;
 import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -127,29 +127,25 @@ public class SignInActivity extends AppCompatActivity {
                     if (task.isSuccessful()) {
                         boolean existUser = false;
                         for (DataSnapshot ds : task.getResult().getChildren()) {
-                            String avatarFB = ds.child("avatar").getValue(String.class);
-                            String dobFB = ds.child("dob").getValue(String.class);
-                            String emailFB = ds.child("email").getValue(String.class);
-                            String fullnameFB = ds.child("fullname").getValue(String.class);
-                            String genderFB = ds.child("gender").getValue(String.class);
-                            String typeUserFB = ds.child("typeUser").getValue(String.class);
-                            String usernameFB = ds.child("username").getValue(String.class);
-                            String phoneFB = ds.child("phone").getValue(String.class);
+                            User user = ds.getValue(User.class);
                             String passFB = ds.child("password").getValue(String.class);
                             String pass_convert = convertHashToString(pass);
-                            String idFB = ds.child("id").getValue(String.class);
-                            Log.e("pass", passFB);
-                            User current_user = new User(idFB, phoneFB, usernameFB, passFB, dobFB, genderFB, typeUserFB, emailFB, avatarFB, fullnameFB);
-                            _list_user.add(current_user);
-                            Log.e("list user",_list_user.get(0).getId());
-
-                            if(phone.equals(phoneFB) && pass_convert.equals(passFB)) {
+                            Log.e("pass", user.getPassword());
+                            if(phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
                                 existUser = true;
-                                _user = current_user;
+                                _user = user;
                                 Log.e("user",_user.toString());
-                                Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
-                                startActivity(intent);
-//                                break;
+                                if (getIntent().hasExtra("GetProductFromDeepLink")) {
+                                    Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+                                    Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
+                                    intent.putExtra("product", temp);
+                                    startActivity(intent);
+                                }
+                                else {
+                                    Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                    startActivity(intent);
+                                    break;
+                                }
                             }
                         }
                         if (existUser == false) {

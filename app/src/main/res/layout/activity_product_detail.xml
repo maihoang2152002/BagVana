@@ -7,146 +7,6 @@
     android:background="#E5E5E5"
     tools:context=".Activity.Product.ProductDetailActivity">
 
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="24dp"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/ic_back" />-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/imageView5"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:layout_marginEnd="24dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/ic_fav" />-->
-
-
-<!--    <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="450dp"-->
-<!--        android:background="@drawable/detail_page_bg"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent">-->
-
-
-<!--        <TextView-->
-<!--            android:id="@+id/color_product"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginStart="24dp"-->
-<!--            android:layout_marginTop="120dp"-->
-<!--            android:background="@drawable/ic_cat_bg"-->
-<!--            android:gravity="center"-->
-<!--            android:text="Body"-->
-<!--            android:textColor="@android:color/background_dark"-->
-<!--            android:textSize="15sp"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/name_product"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:layout_marginEnd="32dp"-->
-<!--            android:text="Japanese Cherry Blossom"-->
-<!--            android:textColor="@android:color/background_dark"-->
-<!--            android:textSize="20sp"-->
-<!--            app:layout_constraintEnd_toStartOf="@+id/price_product"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/color_product"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/color_product" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/price_product"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginEnd="24dp"-->
-<!--            android:text="$ 15.00"-->
-<!--            android:textColor="#42995C"-->
-<!--            android:textSize="20sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/name_product"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/name_product" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/description_product"-->
-<!--            android:layout_width="0dp"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="24dp"-->
-<!--            android:lineSpacingExtra="2dp"-->
-<!--            android:text="A moisturizing body with a sweet and refreshing aroma of Japanese cherry blossom, peony, musk, and strawberry. Will make the skin feel moist and smooth. The combination also makes long-lasting fragrance."-->
-<!--            android:textColor="@android:color/background_dark"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/price_product"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/name_product"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/name_product" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView8"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/description_product"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/button2"-->
-<!--            app:srcCompat="@drawable/ic_minus" />-->
-
-<!--        <TextView-->
-<!--            android:id="@+id/textView14"-->
-<!--            android:layout_width="50dp"-->
-<!--            android:layout_height="53dp"-->
-<!--            android:gravity="center"-->
-<!--            android:text="1"-->
-<!--            android:textColor="@android:color/background_dark"-->
-<!--            android:textSize="20sp"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/imageView8"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/imageView8"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/imageView8"-->
-<!--            app:layout_constraintVertical_bias="0.0" />-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imageView9"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintBottom_toBottomOf="@+id/textView14"-->
-<!--            app:layout_constraintStart_toEndOf="@+id/textView14"-->
-<!--            app:layout_constraintTop_toTopOf="@+id/textView14"-->
-<!--            app:srcCompat="@drawable/ic_plus2" />-->
-
-<!--        <Button-->
-<!--            android:id="@+id/button2"-->
-<!--            android:layout_width="180dp"-->
-<!--            android:layout_height="80dp"-->
-<!--            android:background="@drawable/detail_page_cart_button_bg"-->
-<!--            android:drawableRight="@drawable/ic_arrow_forward_black_24dp"-->
-<!--            android:padding="16dp"-->
-<!--            android:paddingRight="16dp"-->
-<!--            android:text="Add to Cart"-->
-<!--            android:textAllCaps="false"-->
-<!--            android:textColor="#FFFFFF"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent" />-->
-<!--    </androidx.constraintlayout.widget.ConstraintLayout>-->
-
-<!--    <ImageView-->
-<!--        android:id="@+id/img_selected"-->
-<!--        android:layout_width="256dp"-->
-<!--        android:layout_height="447dp"-->
-<!--        android:layout_marginTop="16dp"-->
-<!--        android:adjustViewBounds="true"-->
-<!--        android:scaleType="fitCenter"-->
-<!--        android:transitionName="image"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        app:srcCompat="@drawable/img_balo_tomoc" />-->
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -159,27 +19,63 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/imageView5"
-                    android:layout_width="wrap_content"
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_back"
-                    android:contentDescription="TODO"
-                    tools:ignore="ContentDescription,HardcodedText" />
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_fav"
-                    tools:ignore="ContentDescription" />
+                    android:layout_gravity="center"
+                    android:background="@android:color/transparent"
+                    tools:ignore="MissingConstraints"
+                    app:title="Chi tiết sản phẩm">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentTop="true"
+                            android:padding="10dp"
+                            android:text="Chi tiết sản phẩm"
+                            android:textColor="@color/black"
+                            android:textSize="30sp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true">
+
+                            <ImageButton
+                                android:id="@+id/imageBtn_fav"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:minWidth="30dp"
+                                android:minHeight="30dp"
+                                android:src="@drawable/ic_fav"
+                                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+                            <ImageButton
+                                android:id="@+id/imageBtn_share"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:background="@android:color/transparent"
+                                android:minWidth="30dp"
+                                android:minHeight="30dp"
+                                android:src="@drawable/ic_share"
+                                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+                        </LinearLayout>
+
+
+
+                    </RelativeLayout>
+
+                </androidx.appcompat.widget.Toolbar>
+
                 <ImageView
                     android:id="@+id/img_selected"
                     android:layout_width="285dp"
@@ -187,7 +83,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView5"
+                    app:layout_constraintTop_toBottomOf="@+id/toolbar"
                     app:srcCompat="@drawable/img_balo_tomoc"
                     tools:ignore="ContentDescription" />
                 <TextView
@@ -324,7 +220,7 @@
                     tools:ignore="HardcodedText,VisualLintLongText" />
 
                 <ImageView
-                    android:id="@+id/imageView10"
+                    android:id="@+id/txt_minus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="21dp"
@@ -335,26 +231,26 @@
                     tools:ignore="ContentDescription,ImageContrastCheck" />
 
                 <TextView
-                    android:id="@+id/textView13"
+                    android:id="@+id/txt_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:text="01"
                     android:textColor="#272670"
                     android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView10"
-                    app:layout_constraintStart_toEndOf="@+id/imageView10"
-                    app:layout_constraintTop_toTopOf="@+id/imageView10"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_minus"
+                    app:layout_constraintStart_toEndOf="@+id/txt_minus"
+                    app:layout_constraintTop_toTopOf="@+id/txt_minus"
                     tools:ignore="HardcodedText" />
 
                 <ImageView
-                    android:id="@+id/imageView11"
+                    android:id="@+id/txt_plus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginStart="4dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/textView13"
-                    app:layout_constraintStart_toEndOf="@+id/textView13"
-                    app:layout_constraintTop_toTopOf="@+id/textView13"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_amount"
+                    app:layout_constraintStart_toEndOf="@+id/txt_amount"
+                    app:layout_constraintTop_toTopOf="@+id/txt_amount"
                     app:srcCompat="@drawable/ic_group_401"
                     tools:ignore="ContentDescription" />
 
@@ -366,9 +262,9 @@
                     android:text="$5.78"
                     android:textColor="#272670"
                     android:textSize="24sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageView11"
+                    app:layout_constraintBottom_toBottomOf="@+id/txt_plus"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/imageView11"
+                    app:layout_constraintTop_toTopOf="@+id/txt_plus"
                     tools:ignore="HardcodedText" />
 
 
@@ -376,7 +272,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <ImageView
-                android:id="@+id/imageView12"
+                android:id="@+id/btn_add_to_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
