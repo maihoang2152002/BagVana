@@ -22,18 +22,25 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.bumptech.glide.Glide;
 import com.example.bagvana.Activity.OrderList.OrderListActivity;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 public class ProfileActivity extends AppCompatActivity {
+    DatabaseReference databaseReferenceUser;
+    ValueEventListener eventListener;
 
     LinearLayout linear_editProfile, linear_waitConfirmation,
             linear_waitDelivery, linear_delivered;
@@ -48,13 +55,39 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+        builder.setCancelable(false);
+        builder.setView(R.layout.progress_layout);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
+        img_avatar = findViewById(R.id.img_avatar);
+        // Retrieve Avatar from Firebase and Display
+        databaseReferenceUser = FirebaseDatabase.getInstance().getReference("User").child(_user.getId()).child("avatar");
+        dialog.show();
+        databaseReferenceUser.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String avatarUrl = dataSnapshot.getValue(String.class);
+                Glide.with(ProfileActivity.this).load(avatarUrl).into(img_avatar);
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                dialog.dismiss();
+            }
+        });
+
+
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         txt_fullName = findViewById(R.id.txt_fullName);
         txt_fullName.setText(_user.getFullname());
 
-        img_avatar = findViewById(R.id.img_avatar);
+        // Upload Avatar in Firebase Storage
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {
@@ -79,6 +112,8 @@ public class ProfileActivity extends AppCompatActivity {
                 activityResultLauncher.launch(photoPicker);
             }
         });
+
+
         linear_editProfile = findViewById(R.id.linear_editProfile);
         linear_editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +161,7 @@ public class ProfileActivity extends AppCompatActivity {
                     .child(uri.getLastPathSegment());
             AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
             builder.setCancelable(false);
-//        builder.setView(R.layout.progress_layout);
+            builder.setView(R.layout.progress_layout);
             AlertDialog dialog = builder.create();
             dialog.show();
             storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
