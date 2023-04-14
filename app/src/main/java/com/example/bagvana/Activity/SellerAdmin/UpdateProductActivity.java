@@ -275,10 +275,6 @@ public class UpdateProductActivity extends AppCompatActivity {
 
         return hashMap;
     }
-    public void init(){
-
-
-    }
 
 
 }

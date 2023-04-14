@@ -1,6 +1,6 @@
 package com.example.bagvana.Activity.SellerAdmin;
 
-import static com.example.bagvana.Utils.Utils._product_current;
+import static com.example.bagvana.Utils.Utils._new_product;
 import static com.example.bagvana.Utils.Utils._productList;
 
 import android.app.ProgressDialog;
@@ -42,9 +42,9 @@ import java.util.Map;
 
 public class AddProductActivity extends AppCompatActivity {
     ActivityAddProductBinding binding;
-    public ImageButton image_product;
+    public ImageButton imageProduct;
 
-    private EditText name_product,color_product,price_product,description_product,quantity_product;
+    private EditText nameProduct,colorProduct,priceProduct,descriptionProduct,quantityProduct;
     private Button addBtn,cancelBtn;
     StorageReference storageReference;
     Uri imageUri;
@@ -52,6 +52,7 @@ public class AddProductActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     FirebaseDatabase database ;
     DatabaseReference databasReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +67,6 @@ public class AddProductActivity extends AppCompatActivity {
             }
         });
 
-        init();
-
-
-
 
         database = FirebaseDatabase.getInstance();
         databasReference = database.getReference().child("Product");
@@ -78,25 +75,49 @@ public class AddProductActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 uploadImage();
-                Log.e("link2 ",""+image);
+                boolean check = true;
+                if (binding.nameProduct.getText().toString().trim().isEmpty()) {
+                    binding.nameProduct.setError("Thông tin không được bỏ trống");
+                    check = false;
+                }
+                if (binding.colorProduct.getText().toString().trim().isEmpty()) {
+                    binding.colorProduct.setError("Thông tin không được bỏ trống");
+                    check = false;
+                }
+                if (binding.descriptionProduct.getText().toString().trim().isEmpty()) {
+                    binding.descriptionProduct.setError("Thông tin không được bỏ trống");
+                    check = false;
+                }
+                if (binding.quantityProduct.getText().toString().trim().isEmpty()) {
+                    binding.quantityProduct.setError("Thông tin không được bỏ trống");
+                    check = false;
+                }
 
+
+                imageProduct = binding.imageProduct;
+                nameProduct = binding.nameProduct;
+                colorProduct = binding.colorProduct;
+                priceProduct = binding.priceProduct;
+                descriptionProduct = binding.descriptionProduct;
+                quantityProduct = binding.quantityProduct;
+                addBtn =binding.addBtn;
+                cancelBtn = binding.cancelBtn;
+
+
+                String id = Integer.toString(_productList.size()+1);
+                if(check){
+                    Product product =  new Product("p"+id,nameProduct.getText().toString().trim(),_new_product.getImage(),
+                            colorProduct.getText().toString().trim(),descriptionProduct.getText().toString().trim(),
+                            Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()));
+                    Map<String,Object> hashMap = insertProduct(product);
+                    databasReference.child("p"+id).setValue(hashMap);
+                }
 
             }
         });
 
     }
     private void uploadImage() {
-
-        String name = name_product.getText().toString().trim();
-        String color = color_product.getText().toString().trim();
-        String description = description_product.getText().toString().trim();
-        String price = price_product.getText().toString().trim();;
-
-        String quanlity = quantity_product.getText().toString().trim();
-
-        String id = Integer.toString(_productList.size()+1);
-        int amount = Integer.parseInt(quanlity);
-        int gia = Integer.parseInt(price);
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Uploading File....");
@@ -127,7 +148,7 @@ public class AddProductActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                                     Bitmap bitmap = BitmapFactory.decodeFile(localFile.getAbsolutePath());
-                                    image_product.setImageBitmap(bitmap);
+                                    imageProduct.setImageBitmap(bitmap);
                                 }
                             });
                         } catch (IOException e) {
@@ -138,10 +159,8 @@ public class AddProductActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 image = uri.toString();
-                                Log.e("link",image);
-                                _product_current = new Product("p9",name,image,color,description,amount,gia);
-                                Map<String,Object> hashMap = insertProduct(_product_current);
-                                databasReference.child(_product_current.getProductID()).setValue(hashMap);
+                                _new_product.setImage(image);
+
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -171,7 +190,7 @@ public class AddProductActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,2);
+        startActivityForResult(intent,1);
 
     }
 
@@ -179,7 +198,7 @@ public class AddProductActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 2 && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null){
 
             imageUri = data.getData();
             binding.imageProduct.setImageURI(imageUri);
@@ -190,9 +209,9 @@ public class AddProductActivity extends AppCompatActivity {
     public Map<String,Object> insertProduct(Product product){
 
         Map<String,Object> hashMap = new HashMap<>();
-        hashMap.put("amount", Integer.toString(product.getAmount()));
+        hashMap.put("amount", product.getAmount());
         hashMap.put("color", product.getColor());
-        hashMap.put("price", Integer.toString(product.getPrice()));
+        hashMap.put("price", product.getPrice());
         hashMap.put("description", product.getDescription());
         hashMap.put("image",product.getImage());
         hashMap.put("name", product.getName());
@@ -200,15 +219,5 @@ public class AddProductActivity extends AppCompatActivity {
 
         return hashMap;
     }
-    public void init(){
-        image_product = (ImageButton) findViewById(R.id.image_product);
-        name_product = (EditText) findViewById(R.id.name_product);
-        color_product = (EditText) findViewById(R.id.color_product);
-        price_product = (EditText) findViewById(R.id.price_product);
-        description_product = (EditText) findViewById(R.id.description_product);
-        quantity_product = (EditText) findViewById(R.id.quantity_product);
-        addBtn = (Button) findViewById(R.id.addBtn);
-        cancelBtn = (Button) findViewById(R.id.cancelBtn);
 
-    }
 }
