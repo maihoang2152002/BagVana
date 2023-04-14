@@ -3,7 +3,9 @@ package com.example.bagvana.Activity.SellerAdmin;
 import static com.example.bagvana.Utils.Utils._new_product;
 import static com.example.bagvana.Utils.Utils._productList;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -111,7 +113,9 @@ public class AddProductActivity extends AppCompatActivity {
                             Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()));
                     Map<String,Object> hashMap = insertProduct(product);
                     databasReference.child("p"+id).setValue(hashMap);
+                    noticeSuccess();
                 }
+
 
             }
         });
@@ -218,6 +222,28 @@ public class AddProductActivity extends AppCompatActivity {
         hashMap.put("productID", product.getProductID());
 
         return hashMap;
+    }
+    private void noticeSuccess(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alert.setMessage("Chỉnh sửa sản phẩm thành công ");
+        alert.show();
+    }
+    private void noticeFail(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alert.setMessage("Thất bại");
+        alert.show();
     }
 
 }

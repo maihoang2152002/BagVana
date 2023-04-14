@@ -5,7 +5,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -109,7 +111,6 @@ public class UpdateProductActivity extends AppCompatActivity {
 
             }
         });
-
         binding.selectImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -117,8 +118,6 @@ public class UpdateProductActivity extends AppCompatActivity {
                 selectImage();
             }
         });
-
-
         binding.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,45 +129,65 @@ public class UpdateProductActivity extends AppCompatActivity {
         binding.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("link2 ", "" + image);
+         ;
                 if (imageUri == null) {
                     image = _product_current.getImage();
-                    Log.e("image", image);
+
                 }
+                uploadImage();
+                boolean check = true;
+                if (binding.nameProduct.getText().toString().trim().isEmpty()) {
+                    binding.nameProduct.setError("Thông tin không được bỏ trống");
+                    check = false;
+                }
+                if (binding.colorProduct.getText().toString().trim().isEmpty()) {
+                    binding.colorProduct.setError("Thông tin không được bỏ trống");
+                    check = false;
+                }
+                if (binding.descriptionProduct.getText().toString().trim().isEmpty()) {
+                    binding.descriptionProduct.setError("Thông tin không được bỏ trống");
+                    check = false;
+                }
+                if (binding.quantityProduct.getText().toString().trim().isEmpty()) {
+                    binding.quantityProduct.setError("Thông tin không được bỏ trống");
+                    check = false;
+                }
+
                 imageProduct = binding.imageProduct;
                 nameProduct = binding.nameProduct;
                 colorProduct = binding.colorProduct;
                 priceProduct = binding.priceProduct;
                 descriptionProduct = binding.descriptionProduct;
                 quantityProduct = binding.quantityProduct;
-                Product product = new Product(_product_current.getProductID(),nameProduct.getText().toString().trim(),image,
-                        colorProduct.getText().toString().trim(),descriptionProduct.getText().toString().trim(),
-                        Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()));
+                if(check){
+                    Product product = new Product(_product_current.getProductID(),nameProduct.getText().toString().trim(),image,
+                            colorProduct.getText().toString().trim(),descriptionProduct.getText().toString().trim(),
+                            Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()));
 
-                Map<String, Object> updateValues = insertProduct(product);
-                Log.e("new product", image);
-                databasReference = FirebaseDatabase.getInstance().getReference("Product").child("p4");
+                    Map<String, Object> updateValues = insertProduct(product);
 
-//                databasReference.setValue(updateValues);
-//                 // Chuyển selectedBook thành Map và thêm vào một đối tượng Map mới
-                databasReference.updateChildren(updateValues)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(getApplicationContext(), "Successful Saved", Toast.LENGTH_SHORT).show();
+                    databasReference = FirebaseDatabase.getInstance().getReference("Product").child("p4");
 
-                            }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-
-                            }
-                        });
+                    databasReference.updateChildren(updateValues)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Successful Saved", Toast.LENGTH_SHORT).show();
+                                    noticeSuccess();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                                    noticeFail();
+                                }
+                            });
 
 
-            }
+                }
+                }
+
         });
 
     }
@@ -274,6 +293,28 @@ public class UpdateProductActivity extends AppCompatActivity {
         hashMap.put("productID", product.getProductID());
 
         return hashMap;
+    }
+    private void noticeSuccess(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alert.setMessage("Chỉnh sửa sản phẩm thành công ");
+        alert.show();
+    }
+    private void noticeFail(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alert.setMessage("Thất bại");
+        alert.show();
     }
 
 
