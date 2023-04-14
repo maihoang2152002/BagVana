@@ -39,6 +39,7 @@ public class MessageActivity extends AppCompatActivity {
     MessageAdapter messageAdapter;
     List<Chat>   mchat;
     DatabaseReference reference;
+    int countMessage = 0;
 
     RecyclerView recyclerView;
     @SuppressLint("MissingInflatedId")
@@ -64,11 +65,10 @@ public class MessageActivity extends AppCompatActivity {
                 .findAny()
                 .orElse(null);
         if(userChat == null){
-            Log.e("object","null");
+
 
         }else{
             fullname.setText(userChat.getFullname());
-            Log.e("do tin","");
         }
         readMessage(_user.getId(),userChat.getId(),"anh");
         // body
@@ -77,7 +77,8 @@ public class MessageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String msg = inputMessage.getText().toString();
                 if(!msg.equals("")){
-                    sendMessage(_user.getId(),id,inputMessage.getText().toString());
+
+                    sendMessage(_user.getId(),userChat.getId(),inputMessage.getText().toString());
                 }
                 else{
                     inputMessage.setError("Bạn không thể gửi tin nhắn rỗng");
@@ -87,8 +88,6 @@ public class MessageActivity extends AppCompatActivity {
             }
 
         });
-
-
 
 
     }
@@ -108,16 +107,16 @@ public class MessageActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
         reference.addValueEventListener(new ValueEventListener() {
 
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                mchat.clear();
+                mchat.clear();
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()){
+
                     Chat chat = snapshot.getValue(Chat.class);
                     if(chat.getReceiver().equals(receiverId)  && chat.getSender().equals(myId) ||
-                            chat.getReceiver().equals(myId)  && chat.getSender().equals(receiverId)){
+                            chat.getReceiver().equals(myId)  && chat.getSender().equals(receiverId))
+                    {
                         mchat.add(chat);
-
                     }
                     messageAdapter = new MessageAdapter(MessageActivity.this,mchat,imageUrl);
 
@@ -125,7 +124,6 @@ public class MessageActivity extends AppCompatActivity {
 
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
