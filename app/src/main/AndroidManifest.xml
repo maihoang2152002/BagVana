@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,17 +14,25 @@
         android:theme="@style/Theme.BagVana"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.SellerAdmin.CreateVoucherActivity"
             android:exported="true">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".Activity.ProductList.ProductListActivity"
-            android:exported="true" />
+            android:name=".Activity.SellerAdmin.VoucherDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.SellerAdmin.VoucherShopActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activity.Voucher.VoucherUserActivity"
+            android:exported="true"></activity>
         <activity
             android:name=".Activity.Order.OrderAddressActivity"
             android:exported="true" />
@@ -50,56 +60,42 @@
         </activity>
         <activity
             android:name=".Activity.Product.ProductDetailActivity"
-            android:exported="true">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.VIEW" />-->
-
-            <!--                <category android:name="android.intent.category.DEFAULT" />-->
-            <!--                <category android:name="android.intent.category.BROWSABLE" />-->
-
-            <!--                <data-->
-            <!--                    android:host="www.example.com"-->
-            <!--                    android:pathPrefix="/product/p1"-->
-            <!--                    android:scheme="https" />-->
-            <!--            </intent-filter>-->
-        </activity>
+            android:exported="false" />
         <activity
-            android:name=".Activity.Product.ShareProcessingActivity"
+            android:name=".Activity.Order.CartActivity"
             android:exported="true">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.VIEW" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <!--                <category android:name="android.intent.category.DEFAULT" />-->
-            <!--                <category android:name="android.intent.category.BROWSABLE" />-->
-
-            <!--                <data-->
-            <!--                    android:host="www.example.com"-->
-            <!--                    android:pathPrefix="/product/p1"-->
-            <!--                    android:scheme="https" />-->
-            <!--            </intent-filter>-->
-
-
-            <intent-filter android:autoVerify="true">
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:scheme="http"
-                    android:host="www.example.com"
-                    android:pathPrefix="/product" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity.Order.CartActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activity.Profile.EditProfileActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activity.Profile.ChangePasswordActivity"
-            android:exported="true" />
+            android:name=".MainActivity"
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity> <!-- <activity -->
+        <!-- android:name=".Activity.Profile.EditProfileActivity" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <!-- <activity -->
+        <!-- android:name=".Activity.Profile.ChangePasswordActivity" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
         <activity
             android:name=".Activity.Profile.ProfileActivity"
             android:exported="true">
@@ -113,39 +109,6 @@
         </activity>
         <activity
             android:name=".Activity.Home.HomeActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".Activity.LoginRegister.OTPActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activity.LoginRegister.ForgotPassword"
-            android:exported="true" />
-        <activity
-            android:name=".Activity.LoginRegister.SignUpActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activity.LoginRegister.SignInActivity"
-            android:exported="true">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity
-            android:name=".Activity.OrderList.OrderListActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activity.OrderList.OrderDetailActivity"
-            android:exported="true" />
-        <activity
-            android:name=".Activity.Wishlist.WishlistActivity"
             android:exported="true" />
     </application>
 

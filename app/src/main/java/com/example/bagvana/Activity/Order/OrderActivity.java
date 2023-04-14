@@ -180,7 +180,7 @@ public class OrderActivity extends AppCompatActivity {
                         } else {
                             usedVoucher.put(voucher.getId(), discountCost);
                         }
-                        Log.e("voucher", String.valueOf(usedVoucher.get(voucher.getId())));
+
                     }
 
                     databaseReferenceOrder.child("usedVoucher").setValue(usedVoucher);
@@ -195,9 +195,7 @@ public class OrderActivity extends AppCompatActivity {
                     databaseReferenceOrder.child("userID").setValue("1");
                     databaseReferenceOrder.child("paymentMethod").setValue(txt_delivery.getText().toString());
 
-
                 }
-
 
 
             }

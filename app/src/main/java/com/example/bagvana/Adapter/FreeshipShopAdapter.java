@@ -61,7 +61,11 @@ public class FreeshipShopAdapter extends RecyclerView.Adapter<FreeshipShopAdapte
         holder.txt_description.setText(description);
         holder.txt_endDate.setText(voucher.getEnd());
 
-        if(this.type.equals("user") || (Utils._vouchersOfUser.get(voucher.getId()) >= voucher.getAmountOnPerson())) {
+        if(Utils._vouchersOfUser.get(voucher.getId()) != null && (Utils._vouchersOfUser.get(voucher.getId()) >= voucher.getAmountOnPerson())) {
+            holder.btn_choose.setText("Sử dụng");
+        }
+
+        if(this.type.equals("user")) {
             holder.btn_choose.setText("Sử dụng");
         } else {
             holder.btn_choose.setText("Lưu");
@@ -72,7 +76,13 @@ public class FreeshipShopAdapter extends RecyclerView.Adapter<FreeshipShopAdapte
             public void onClick(View view) {
                 if(holder.btn_choose.getText().equals("Lưu")) {
                     DatabaseReference databaseReferenceUser_Voucher = FirebaseDatabase.getInstance().getReference("User_Voucher").child("1");
-                    int amount = Utils._vouchersOfUser.get(voucher.getId());
+
+                    int amount = 0;
+
+                    if(Utils._vouchersOfUser.get(voucher.getId()) != null) {
+                        amount = Utils._vouchersOfUser.get(voucher.getId());
+                    }
+
                     int newAmount = amount + 1;
                     databaseReferenceUser_Voucher.child(voucher.getId()).child("amount").setValue(newAmount);
 

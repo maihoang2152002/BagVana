@@ -147,13 +147,8 @@ public class CreateVoucherActivity extends AppCompatActivity {
 
         String date = mDay + "/" + (mMonth + 1) + "/" + mYear;
 
-        int mHour = c.get(Calendar.HOUR_OF_DAY);
-        int mMinute = c.get(Calendar.MINUTE);
-
-        String time = mHour + ":" + mMinute;
-
-        txt_startDate.setText(date + " " + time);
-        txt_endDate.setText(date + " " + time);
+        txt_startDate.setText(date);
+        txt_endDate.setText(date);
 
     }
     private void chooseDate() {
@@ -175,28 +170,7 @@ public class CreateVoucherActivity extends AppCompatActivity {
                                                   int monthOfYear, int dayOfMonth) {
 
                                 String date = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
-
-                                // Get Current Time
-                                final Calendar c = Calendar.getInstance();
-                                int mHour = c.get(Calendar.HOUR_OF_DAY);
-                                int mMinute = c.get(Calendar.MINUTE);
-
-                                // Launch Time Picker Dialog
-                                TimePickerDialog timePickerDialog = new TimePickerDialog(CreateVoucherActivity.this,
-                                        new TimePickerDialog.OnTimeSetListener() {
-
-                                            @Override
-                                            public void onTimeSet(TimePicker view, int hourOfDay,
-                                                                  int minute) {
-
-                                                String time = hourOfDay + ":" + minute;
-
-                                                txt_startDate.setText(date +" " + time);
-                                            }
-                                        }, mHour, mMinute, false);
-                                timePickerDialog.show();
-
-
+                                txt_startDate.setText(date);
 
                             }
                         }, mYear, mMonth, mDay);
@@ -223,28 +197,7 @@ public class CreateVoucherActivity extends AppCompatActivity {
 
                                 String date = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
 
-                                // Get Current Time
-                                final Calendar c = Calendar.getInstance();
-                                int mHour = c.get(Calendar.HOUR_OF_DAY);
-                                int mMinute = c.get(Calendar.MINUTE);
-
-                                // Launch Time Picker Dialog
-                                TimePickerDialog timePickerDialog = new TimePickerDialog(CreateVoucherActivity.this,
-                                        new TimePickerDialog.OnTimeSetListener() {
-
-                                            @Override
-                                            public void onTimeSet(TimePicker view, int hourOfDay,
-                                                                  int minute) {
-
-                                                String time = hourOfDay + ":" + minute;
-
-                                                txt_endDate.setText(date +" " + time);
-                                            }
-                                        }, mHour, mMinute, false);
-                                timePickerDialog.show();
-
-
-
+                                txt_endDate.setText(date);
                             }
                         }, mYear, mMonth, mDay);
                 datePickerDialog.show();
