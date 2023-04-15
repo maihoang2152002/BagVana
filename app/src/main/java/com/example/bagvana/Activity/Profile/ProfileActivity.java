@@ -7,7 +7,6 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -48,7 +47,7 @@ public class ProfileActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     ImageView img_avatar;
-    String imageURL;
+    String imageURL, oldImageURL = "";
     Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +68,9 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String avatarUrl = dataSnapshot.getValue(String.class);
+//                if(oldImageURL == ""){
+//                    oldImageURL = avatarUrl;
+//                }
                 Glide.with(ProfileActivity.this).load(avatarUrl).into(img_avatar);
                 dialog.dismiss();
             }
@@ -189,6 +191,11 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()){
+//                            if (oldImageURL != "") {
+//                                StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(oldImageURL);
+//                                reference.delete();
+//                                oldImageURL = "";
+//                            }
                             Toast.makeText(ProfileActivity.this, "Saved Avatar", Toast.LENGTH_SHORT).show();
                         }
                     }

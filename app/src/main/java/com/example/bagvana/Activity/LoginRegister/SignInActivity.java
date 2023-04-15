@@ -149,15 +149,15 @@ public class SignInActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                             else {
-                                Intent intent = new Intent(SignInActivity.this, ChatActivity.class);
+                                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                                 startActivity(intent);
 
                             }
                         }
 
-                        if (existUser == false) {
-                            noticeNotExitUser();
-                        }
+                    }
+                    if (existUser == false) {
+                        noticeNotExitUser();
                     }
                 }
 
