@@ -34,7 +34,7 @@
             android:name=".Activity.Order.ChooseVoucherActivity"
             android:exported="true" />
         <activity
-            android:name=".Activity.Order.AddNewOrderAddressActivity"
+            android:name=".Activity.Order.AddNewOrderAddressActivity"/>
         <activity
             android:name=".Activity.Product.ShareProcessingActivity"
             android:exported="true">
@@ -78,32 +78,18 @@
             android:exported="true">
 
         </activity>
-        <activity
-            android:name=".Activity.Order.ChooseVoucherActivity"
-            android:parentActivityName=".Activity.Order.OrderActivity"
-            android:exported="true" />
+
 
         <activity
             android:name=".Activity.Order.OrderAddressActivity"
             android:exported="true" />
-        <activity
-            android:name=".Activity.Order.AddNewOrderAddressActivity"
-            android:exported="true">
 
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
         <activity
 
             android:name=".Activity.Order.OrderActivity"
             android:parentActivityName=".Activity.Order.CartActivity"
             android:exported="false"/>
 
-        </activity>
         <activity
             android:name=".Activity.Product.ProductDetailActivity"
             android:exported="true">
