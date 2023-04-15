@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Adapter.OrderAdapter;
 import com.example.bagvana.DTO.EventBus.VoucherCostEvent;
 import com.example.bagvana.DTO.Product;
@@ -192,6 +193,10 @@ public class OrderActivity extends AppCompatActivity {
                     databaseReferenceOrder.child("status").setValue("1");
                     databaseReferenceOrder.child("userID").setValue(Utils._user.getId());
                     databaseReferenceOrder.child("paymentMethod").setValue(txt_delivery.getText().toString());
+
+                    Intent myIntent = new Intent(OrderActivity.this, CartActivity.class);
+//                myIntent.putExtras(myBundle);
+                    startActivity(myIntent);
 
                 }
 
