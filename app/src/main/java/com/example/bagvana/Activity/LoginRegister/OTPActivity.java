@@ -95,7 +95,7 @@ public class OTPActivity extends AppCompatActivity {
                     @Override
 
                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-                        signInWithPhoneAuthCredential(phoneAuthCredential);
+//                        signInWithPhoneAuthCredential(phoneAuthCredential);
                     }
 
                     @Override

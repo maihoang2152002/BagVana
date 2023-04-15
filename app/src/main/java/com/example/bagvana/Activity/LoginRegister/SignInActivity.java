@@ -42,10 +42,10 @@ public class SignInActivity extends AppCompatActivity {
     Button loginButton;
     TextView signUp, forgotPass;
 
-    FirebaseDatabase database ;
+    FirebaseDatabase database;
     DatabaseReference databasReference;
 
-    private void noticeNotExitUser(){
+    private void noticeNotExitUser() {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
@@ -56,6 +56,7 @@ public class SignInActivity extends AppCompatActivity {
         alert.setMessage("Số điện thoại hoặc mật khẩu không đúng. Vui lòng nhập lại");
         alert.show();
     }
+
     private String convertHashToString(String text) {
         MessageDigest md = null;
         try {
@@ -72,32 +73,39 @@ public class SignInActivity extends AppCompatActivity {
 
 
     }
-    private void initLogin(){
+
+    private void initLogin() {
         loginButton = (Button) findViewById(R.id.btnSignIn);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             checkUser();
-             Log.e("nhan","");
+                checkUser();
+                Log.e("nhan", "");
             }
 
         });
-    };
-    private void initSignUp(){
-        signUp= (TextView) findViewById(R.id.textSignUp);
+    }
+
+    private void initSignUp() {
+        signUp = (TextView) findViewById(R.id.textSignUp);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(SignInActivity.this, SignUpActivity.class);
+                Product temp;
+                if (getIntent().hasExtra("GetProductFromDeepLink")) {
+                    temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+                    intent.putExtra("GetProductFromDeepLink", temp);
+                }
                 startActivity(intent);
             }
 
         });
-    };
+    }
 
-    private void initForgotPass(){
-        forgotPass= (TextView) findViewById(R.id.forgotPass);
+    private void initForgotPass() {
+        forgotPass = (TextView) findViewById(R.id.forgotPass);
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,46 +117,42 @@ public class SignInActivity extends AppCompatActivity {
         });
     }
 
-    private void checkUser(){
+    private void checkUser() {
         numberPhone = (EditText) findViewById(R.id.inputNumberPhone);
         password = (EditText) findViewById(R.id.inputPassword);
         final CountryCodePicker ccp_su = (CountryCodePicker) findViewById(R.id.ccp);
         ccp_su.registerCarrierNumberEditText(numberPhone);
         String phone = ccp_su.getFullNumberWithPlus().replace(" ", "");
         String pass = password.getText().toString();
-        if( pass.isEmpty() ){
+        if (pass.isEmpty()) {
             password.setError("Mật khẩu không được bỏ trống");
-        }
-        else if(phone.isEmpty()){
+        } else if (phone.isEmpty()) {
             numberPhone.setError("Số điện thoại không thể trống");
 
-        }
-        else{
+        } else {
 
             //            database = FirebaseDatabase.getInstance();
             databasReference = FirebaseDatabase.getInstance().getReference().child("User");
 
-            databasReference.addValueEventListener(new ValueEventListener() {
+            databasReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     boolean existUser = false;
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         User user = dataSnapshot.getValue(User.class);
 //                        String passFB = dataSnapshot.child("password").getValue(String.class);
                         String pass_convert = convertHashToString(pass);
                         _list_user.add(user);
-
-                        if(phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
+                        if (phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
                             existUser = true;
                             _user = user;
-                            Log.e("user",_user.toString());
+                            Log.e("user", _user.toString());
                             if (getIntent().hasExtra("GetProductFromDeepLink")) {
                                 Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
                                 Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
                                 intent.putExtra("product", temp);
                                 startActivity(intent);
-                            }
-                            else {
+                            } else {
                                 Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                                 startActivity(intent);
 

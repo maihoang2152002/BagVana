@@ -23,7 +23,6 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.bagvana.Activity.OrderList.OrderListActivity;
-import com.example.bagvana.Activity.Product.ProductDetailActivity;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -65,7 +64,7 @@ public class ProfileActivity extends AppCompatActivity {
         // Retrieve Avatar from Firebase and Display
         databaseReferenceUser = FirebaseDatabase.getInstance().getReference("User").child(_user.getId()).child("avatar");
         dialog.show();
-        databaseReferenceUser.addValueEventListener(new ValueEventListener() {
+        databaseReferenceUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String avatarUrl = dataSnapshot.getValue(String.class);
@@ -101,7 +100,6 @@ public class ProfileActivity extends AppCompatActivity {
                             uri = data.getData();
                             img_avatar.setImageURI(uri);
                             saveData();
-
                         } else {
                             Toast.makeText(ProfileActivity.this, "No Image Selected", Toast.LENGTH_SHORT).show();
                         }
