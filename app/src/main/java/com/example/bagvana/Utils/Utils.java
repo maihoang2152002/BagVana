@@ -19,8 +19,11 @@ public class Utils {
     public static String _newAddressID; // id dể tạo địa chỉ mới
     public static ArrayList<Voucher> _voucherList = new ArrayList<>(); // voucher được áp dụng cho đơn hàng
     public static Product _product_current = new Product();
+    public static Product _new_product = new Product();
     public static HashMap<String, Integer> _vouchersOfUser = new HashMap<>();
     public static User _user = new User();
+
     public static List<User> _list_user = new ArrayList<>();
+
 
 }

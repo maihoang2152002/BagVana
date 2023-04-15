@@ -16,6 +16,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bagvana.Activity.Chatbot.ChatActivity;
 import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
 import com.example.bagvana.DTO.Product;
@@ -24,8 +25,10 @@ import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.hbb20.CountryCodePicker;
 
 import java.nio.charset.StandardCharsets;
@@ -75,6 +78,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
              checkUser();
+             Log.e("nhan","");
             }
 
         });
@@ -120,42 +124,49 @@ public class SignInActivity extends AppCompatActivity {
 
         }
         else{
-            database = FirebaseDatabase.getInstance();
-            databasReference = database.getReference().child("User");
-            databasReference.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+
+            //            database = FirebaseDatabase.getInstance();
+            databasReference = FirebaseDatabase.getInstance().getReference().child("User");
+
+            databasReference.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onComplete(@NonNull Task<DataSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        boolean existUser = false;
-                        for (DataSnapshot ds : task.getResult().getChildren()) {
-                            User user = ds.getValue(User.class);
-                            String passFB = ds.child("password").getValue(String.class);
-                            String pass_convert = convertHashToString(pass);
-                            _list_user.add(user);
-                            Log.e("pass", user.getPassword());
-                            if(phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
-                                existUser = true;
-                                _user = user;
-                                Log.e("user",_user.toString());
-                                if (getIntent().hasExtra("GetProductFromDeepLink")) {
-                                    Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
-                                    Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
-                                    intent.putExtra("product", temp);
-                                    startActivity(intent);
-                                }
-                                else {
-                                    Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
-                                    startActivity(intent);
-                                    break;
-                                }
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    boolean existUser = false;
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                        User user = dataSnapshot.getValue(User.class);
+//                        String passFB = dataSnapshot.child("password").getValue(String.class);
+                        String pass_convert = convertHashToString(pass);
+                        _list_user.add(user);
+
+                        if(phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
+                            existUser = true;
+                            _user = user;
+                            Log.e("user",_user.toString());
+                            if (getIntent().hasExtra("GetProductFromDeepLink")) {
+                                Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+                                Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
+                                intent.putExtra("product", temp);
+                                startActivity(intent);
+                            }
+                            else {
+                                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                startActivity(intent);
+
                             }
                         }
-                        if (existUser == false) {
-                            noticeNotExitUser();
-                        }
+
+                    }
+                    if (existUser == false) {
+                        noticeNotExitUser();
                     }
                 }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
             });
+
         }
     }
 

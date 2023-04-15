@@ -27,6 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 public class ChatsFragment extends Fragment {
@@ -56,10 +57,10 @@ public class ChatsFragment extends Fragment {
                 usersList.clear();
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
-                    if(chat.getSender().equals(_user.getId())){
-                        usersList.add(chat.getReceiver());
-                        Log.e("receiver",chat.getReceiver());
-                    }
+//                    if(chat.getSender().equals(_user.getId())){
+//                        usersList.add(chat.getReceiver());
+//                        Log.e("receiver",chat.getReceiver());
+//                    }
                     if(chat.getReceiver().equals(_user.getId())){
                         usersList.add(chat.getSender());
                         Log.e("sender",chat.getSender());
@@ -81,10 +82,14 @@ public class ChatsFragment extends Fragment {
     private void readChats() {
         mUsers = new ArrayList<>();
         int i = 0;
-        for(String id:usersList){
-            Log.e("id userlist",id);
+        List<String> newList = usersList.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        for(String idUserChat:newList){
+
             User userChat = _list_user.stream()
-                    .filter(user -> id.equals(user.getId()))
+                    .filter(user -> idUserChat.equals(user.getId()))
                     .findAny()
                     .orElse(null);
             if(userChat == null){
@@ -92,14 +97,9 @@ public class ChatsFragment extends Fragment {
 
             }else{
                 mUsers.add(userChat);
-                i++;
-                Log.e("add lan ","" + i);
             }
         }
-
         userAdapter = new ChatBotAdapter(getContext(),mUsers);
         recyclerView.setAdapter(userAdapter);
-
-
     }
 }

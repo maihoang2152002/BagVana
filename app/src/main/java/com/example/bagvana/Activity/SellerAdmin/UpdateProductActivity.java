@@ -1,7 +1,9 @@
 package com.example.bagvana.Activity.SellerAdmin;
-
-import static com.example.bagvana.Utils.Utils._new_product;
 import static com.example.bagvana.Utils.Utils._productList;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -11,24 +13,34 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.bagvana.Activity.Home.HomeActivity;
 
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
+
 import com.example.bagvana.databinding.ActivityAddProductBinding;
+import com.example.bagvana.databinding.ActivityUpdateProductBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -42,9 +54,9 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class AddProductActivity extends AppCompatActivity {
-    ActivityAddProductBinding binding;
-    public ImageButton imageProduct;
+public class UpdateProductActivity extends AppCompatActivity {
+    ActivityUpdateProductBinding binding;
+    public ImageView imageProduct;
 
     private EditText nameProduct,colorProduct,priceProduct,descriptionProduct,quantityProduct;
     private Button addBtn,cancelBtn;
@@ -54,28 +66,74 @@ public class AddProductActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     FirebaseDatabase database ;
     DatabaseReference databasReference;
-
+    Product _product_current;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityAddProductBinding.inflate(getLayoutInflater());
+
+        binding = ActivityUpdateProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        imageProduct = binding.imageProduct;
+        nameProduct = binding.nameProduct;
+        colorProduct = binding.colorProduct;
+        priceProduct = binding.priceProduct;
+        descriptionProduct = binding.descriptionProduct;
+        quantityProduct = binding.quantityProduct;
+        addBtn =binding.addBtn;
+        cancelBtn = binding.cancelBtn;
+
+        databasReference = FirebaseDatabase.getInstance().getReference("Product").child("p4");
+        databasReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+               _product_current = snapshot.getValue(Product.class);
+//                Log.e("tyoe", ""+ _product_current.getPrice());
+//                _product_current =_product_current;
+
+
+                Glide.with(UpdateProductActivity.this)
+                        .load(_product_current.getImage())
+                        .diskCacheStrategy(DiskCacheStrategy.ALL)
+                        .into(binding.imageProduct);
+
+                binding.nameProduct.setText(_product_current.getName());
+                binding.colorProduct.setText(_product_current.getColor());
+                binding.priceProduct.setText(String.valueOf(_product_current.getPrice()));
+                binding.descriptionProduct.setText(_product_current.getDescription());
+                binding.quantityProduct.setText(String.valueOf(_product_current.getAmount()));
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         binding.selectImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 selectImage();
             }
         });
-
-
-        database = FirebaseDatabase.getInstance();
-        databasReference = database.getReference().child("Product");
+        binding.deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                databasReference = FirebaseDatabase.getInstance().getReference("Product").child("p9");
+                databasReference.removeValue();
+                Toast.makeText(UpdateProductActivity.this,"Xoa san pham thanh cong",Toast.LENGTH_LONG).show();
+            }
+        });
         binding.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+         ;
+                if (imageUri == null) {
+                    image = _product_current.getImage();
 
+                }
                 uploadImage();
                 boolean check = true;
                 if (binding.nameProduct.getText().toString().trim().isEmpty()) {
@@ -95,29 +153,41 @@ public class AddProductActivity extends AppCompatActivity {
                     check = false;
                 }
 
-
                 imageProduct = binding.imageProduct;
                 nameProduct = binding.nameProduct;
                 colorProduct = binding.colorProduct;
                 priceProduct = binding.priceProduct;
                 descriptionProduct = binding.descriptionProduct;
                 quantityProduct = binding.quantityProduct;
-                addBtn =binding.addBtn;
-                cancelBtn = binding.cancelBtn;
-
-
-                String id = Integer.toString(_productList.size()+1);
                 if(check){
-                    Product product =  new Product("p"+id,nameProduct.getText().toString().trim(),_new_product.getImage(),
+                    Product product = new Product(_product_current.getProductID(),nameProduct.getText().toString().trim(),image,
                             colorProduct.getText().toString().trim(),descriptionProduct.getText().toString().trim(),
                             Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()));
-                    Map<String,Object> hashMap = insertProduct(product);
-                    databasReference.child("p"+id).setValue(hashMap);
-                    noticeSuccess();
+
+                    Map<String, Object> updateValues = insertProduct(product);
+
+                    databasReference = FirebaseDatabase.getInstance().getReference("Product").child("p4");
+
+                    databasReference.updateChildren(updateValues)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(getApplicationContext(), "Successful Saved", Toast.LENGTH_SHORT).show();
+                                    noticeSuccess();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
+                                    noticeFail();
+                                }
+                            });
+
+
+                }
                 }
 
-
-            }
         });
 
     }
@@ -143,7 +213,7 @@ public class AddProductActivity extends AppCompatActivity {
                         binding.imageProduct.setImageURI(null);
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();
-                        Toast.makeText(AddProductActivity.this,"Successfully Uploaded",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateProductActivity.this,"Successfully Uploaded",Toast.LENGTH_SHORT).show();
 
                         File localFile;
                         try {
@@ -163,8 +233,7 @@ public class AddProductActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 image = uri.toString();
-                                _new_product.setImage(image);
-
+                                Log.e("link image", image);
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -181,7 +250,7 @@ public class AddProductActivity extends AppCompatActivity {
 
                         if (progressDialog.isShowing())
                             progressDialog.dismiss();
-                        Toast.makeText(AddProductActivity.this,"Failed to Upload",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(UpdateProductActivity.this,"Failed to Upload",Toast.LENGTH_SHORT).show();
 
 
                     }
@@ -194,7 +263,7 @@ public class AddProductActivity extends AppCompatActivity {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(intent,1);
+        startActivityForResult(intent,2);
 
     }
 
@@ -202,18 +271,20 @@ public class AddProductActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null){
+        if (requestCode == 2 && resultCode == RESULT_OK && data != null && data.getData() != null){
 
             imageUri = data.getData();
             binding.imageProduct.setImageURI(imageUri);
-
+            uploadImage();
         }
     }
+    private void uploadData() {
 
+    }
     public Map<String,Object> insertProduct(Product product){
 
         Map<String,Object> hashMap = new HashMap<>();
-        hashMap.put("amount", product.getAmount());
+        hashMap.put("amount",product.getAmount());
         hashMap.put("color", product.getColor());
         hashMap.put("price", product.getPrice());
         hashMap.put("description", product.getDescription());
@@ -245,5 +316,6 @@ public class AddProductActivity extends AppCompatActivity {
         alert.setMessage("Thất bại");
         alert.show();
     }
+
 
 }

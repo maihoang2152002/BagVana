@@ -24,7 +24,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class VoucherUserActivity extends AppCompatActivity {
@@ -164,6 +167,22 @@ public class VoucherUserActivity extends AppCompatActivity {
         });
     }
 
+    public boolean compareDate(String start, String end) throws  ParseException {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date strDateStart = sdf.parse(start);
+        if (new Date().before(strDateStart)) {
+            return false;
+        }
+
+        Date strDateEnd = sdf.parse(end);
+        if (new Date().after(strDateEnd)) {
+            return false;
+        }
+
+        return true;
+    }
+
     private void initData() {
         vouchers = new ArrayList<>();
         DatabaseReference databaseReferenceVoucher = FirebaseDatabase.getInstance().getReference("Voucher");
@@ -177,13 +196,18 @@ public class VoucherUserActivity extends AppCompatActivity {
 
                     vouchers.add(voucher);
 
-                    // check người dùng có lớn hơn amountOnPerson
-
-                    if(voucher.getType() == 2) {
-                        freeshipVouchers.add(voucher);
-                    } else {
-                        discountVouchers.add(voucher);
+                    try {
+                        if(compareDate(voucher.getStart(), voucher.getEnd())) {
+                            if(voucher.getType() == 2) {
+                                freeshipVouchers.add(voucher);
+                            } else {
+                                discountVouchers.add(voucher);
+                            }
+                        }
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
                     }
+
                 }
 
                 freeshipShopAdapter.notifyDataSetChanged();
