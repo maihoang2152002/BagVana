@@ -13,6 +13,10 @@
             android:id="@+id/menu_cart"
             android:icon="@drawable/ic_cart"
             android:title="Cart" />
+        <item
+            android:id="@+id/menu_chat"
+            android:icon="@drawable/ic_chat"
+            android:title="Chat" />
     </group>
 
     <group android:checkableBehavior="single">

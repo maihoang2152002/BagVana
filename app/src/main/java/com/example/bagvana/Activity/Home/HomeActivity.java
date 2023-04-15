@@ -16,6 +16,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.example.bagvana.Activity.Chatbot.ChatActivity;
 import com.example.bagvana.Activity.LoginRegister.SignInActivity;
 import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.Activity.OrderList.OrderListActivity;
@@ -104,6 +105,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 break;
             case R.id.menu_login:
                 myIntent = new Intent(HomeActivity.this, SignInActivity.class);
+//                myIntent.putExtras(myBundle);
+                startActivity(myIntent);
+                break;
+            case R.id.menu_chat:
+                myIntent = new Intent(HomeActivity.this, ChatActivity.class);
 //                myIntent.putExtras(myBundle);
                 startActivity(myIntent);
                 break;
