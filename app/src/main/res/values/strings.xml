@@ -90,21 +90,219 @@
         <item>Huyện Tri Tôn</item>
     </string-array>
 
-    <string-array name="array_long_xuyen_ward_an_giang_district">
-        <item>Phường Bình Đức</item>
-        <item>Phường Bình Khánh</item>
-        <item>Phường Đông Xuyên</item>
-        <item>Phường Mỹ Bình</item>
-        <item>Phường Mỹ Hòa</item>
-        <item>Phường Mỹ Long</item>
-        <item>Phường Mỹ Phước</item>
-        <item>Phường Mỹ Quý</item>
-        <item>Phường Mỹ Thạnh</item>
-        <item>Phường Mỹ Thới</item>
-        <item>Phường Mỹ Xuyên</item>
-        <item>Xã Mỹ Hòa Hưng</item>
-        <item>Xã Mỹ Khánh</item>
-    </string-array>
+        <string-array name="array_long_xuyen_ward_an_giang_district">
+            <item>Phường Bình Đức</item>
+            <item>Phường Bình Khánh</item>
+            <item>Phường Đông Xuyên</item>
+            <item>Phường Mỹ Bình</item>
+            <item>Phường Mỹ Hòa</item>
+            <item>Phường Mỹ Long</item>
+            <item>Phường Mỹ Phước</item>
+            <item>Phường Mỹ Quý</item>
+            <item>Phường Mỹ Thạnh</item>
+            <item>Phường Mỹ Thới</item>
+            <item>Phường Mỹ Xuyên</item>
+            <item>Xã Mỹ Hòa Hưng</item>
+            <item>Xã Mỹ Khánh</item>
+        </string-array>
+
+        <string-array name="array_chau_doc_ward_an_giang_district">
+            <item>Phường Châu Phú A</item>
+            <item>Phường Châu Phú B</item>
+            <item>Phường Núi Sam</item>
+            <item>Phường Vĩnh Mỹ</item>
+            <item>Phường Mỹ Ngương</item>
+            <item>Xã Vĩnh Tế</item>
+            <item>Xã Vĩnh Châu</item>
+        </string-array>
+
+        <string-array name="array_tan_chau_ward_an_giang_district">
+            <item>Phường Long Châu</item>
+            <item>Phường Long Hưng</item>
+            <item>Phường Long Phú</item>
+            <item>Phường Long Sơn</item>
+            <item>Phường Long Thạch</item>
+            <item>Xã Châu Phong</item>
+            <item>Xã Lê Chánh</item>
+            <item>Xã Long An</item>
+            <item>Xã Phú Lộc</item>
+            <item>Xã Phú Vĩnh</item>
+            <item>Xã Tân An</item>
+            <item>Xã Tân Thạnh</item>
+            <item>Xã Vĩnh Hòa</item>
+            <item>Xã Vĩnh Xương</item>
+        </string-array>
+
+        <string-array name="array_an_phu_ward_an_giang_district">
+            <item>Thị Trấn An Phú</item>
+            <item>Thị Trấn Long Bình</item>
+            <item>Phường Đa Phước</item>
+            <item>Phường Khánh An</item>
+            <item>Phường Khánh Bình</item>
+            <item>Phường Nhơn Hội</item>
+            <item>Xã Phú Hội</item>
+            <item>Xã Phú Hữu</item>
+            <item>Xã Phước Hưng</item>
+            <item>Xã Quốc Thái</item>
+            <item>Xã Vĩnh Hậu</item>
+            <item>Xã Vĩnh Hội Đông</item>
+            <item>Xã Vĩnh Lộc</item>
+            <item>Xã Vĩnh Trường</item>
+        </string-array>
+
+        <string-array name="array_chau_phu_ward_an_giang_district">
+            <item>Thị Trấn Cái Dầu</item>
+            <item>Thị Trấn Long Bình</item>
+            <item>Xã Bình Mỹ</item>
+            <item>Xã Bình Long</item>
+            <item>Xã Bình Chánh</item>
+            <item>Xã Bình Phú</item>
+            <item>Xã Vĩnh Thạch Trung</item>
+            <item>Xã Mỹ Phú</item>
+            <item>Xã Mỹ Đức</item>
+            <item>Xã Khánh Hòa</item>
+            <item>Xã Thạch Mỹ Tây</item>
+            <item>Xã Ô Long Vĩ</item>
+            <item>Xã Đào Hữu Cảnh</item>
+        </string-array>
+
+        <string-array name="array_chau_thanh_ward_an_giang_district">
+            <item>Thị Trấn Châu Thành</item>
+            <item>Thị Trấn Phú Hội</item>
+            <item>Xã An Phước</item>
+            <item>Xã Bình Chánh Tây</item>
+            <item>Xã Bình Chánh Đông</item>
+            <item>Xã Giao Long</item>
+            <item>Xã Hòa Bình</item>
+            <item>Xã Hòa An</item>
+            <item>Xã Hòa Đông</item>
+            <item>Xã Long Đức</item>
+            <item>Xã Phú Văn</item>
+            <item>Xã Phú Thành</item>
+            <item>Xã Tam Phước</item>
+            <item>Xã Vĩnh Hòa</item>
+            <item>Xã Vĩnh An</item>
+            <item>Xã Vĩnh Lợi</item>
+        </string-array>
+
+        <string-array name="array_cho_moi_ward_an_giang_district">
+            <item>Thị Trấn Chợ Mới</item>
+            <item>Thị Trấn Mỹ Luông</item>
+            <item>Xã Long Điền B</item>
+            <item>Xã Hội An</item>
+            <item>Xã Đức Lợi</item>
+            <item>Xã Núi Voi</item>
+            <item>Xã An Thạnh Trung</item>
+            <item>Xã Hòa Bình</item>
+            <item>Xã Hòa An</item>
+            <item>Xã Thới Sơn</item>
+            <item>Xã Trường Xuân</item>
+            <item>Xã Hòa Thuận</item>
+            <item>Xã Phú Lợi</item>
+            <item>Xã Phú Văn</item>
+            <item>Xã Đại Hưng</item>
+            <item>Xã Thạnh Phú</item>
+            <item>Xã Kinh Cùng</item>
+            <item>Xã An Hiệp</item>
+            <item>Xã An Nông</item>
+            <item>Xã Năm Căn</item>
+        </string-array>
+
+        <string-array name="array_phu_tan_ward_an_giang_district">
+            <item>Thị Trấn Tân Châu</item>
+            <item>Xã An Hòa</item>
+            <item>Xã Tân Phú</item>
+            <item>Xã Phú Lợi</item>
+            <item>Xã Vĩnh Hòa</item>
+            <item>Xã Tân Hòa</item>
+            <item>Xã Tân Thạnh</item>
+            <item>Xã Tân Hiệp</item>
+            <item>Xã Tân An</item>
+            <item>Xã Long Thạnh</item>
+            <item>Xã Lê Chánh</item>
+            <item>Xã Vĩnh Xương</item>
+            <item>Xã Vĩnh Hưng</item>
+            <item>Xã Vĩnh Bình</item>
+            <item>Xã Tân Phước</item>
+            <item>Xã Long An</item>
+            <item>Xã Tân Quới</item>
+            <item>Xã Hòa Thạnh</item>
+            <item>Xã Vĩnh Thành</item>
+            <item>Xã Vĩnh Phú</item>
+        </string-array>
+
+        <string-array name="array_thoai_son_ward_an_giang_district">
+            <item>Thị Trấn Tịnh Biên</item>
+            <item>Thị Trấn Nhà Bàng</item>
+            <item>Xã Văn Giáo</item>
+            <item>Xã An Phú</item>
+            <item>Xã Vĩnh Trung</item>
+            <item>Xã Vĩnh Hòa</item>
+            <item>Xã Vĩnh Chơn</item>
+            <item>Xã Vĩnh Nguơn</item>
+            <item>Xã Tân Lập</item>
+            <item>Xã Tân Thạnh</item>
+            <item>Xã Định Mỹ</item>
+            <item>Xã Ô Lâm</item>
+            <item>Xã An Cư</item>
+            <item>Xã An Nông</item>
+            <item>Xã Vĩnh Hưng</item>
+            <item>Xã Vĩnh Xuân</item>
+            <item>Xã Tân Lợi</item>
+            <item>Xã Tân Lộc</item>
+            <item>Xã Tân Hưng</item>
+            <item>Xã An Hảo Tây</item>
+            <item>Xã An Hảo Đông</item>
+        </string-array>
+
+        <string-array name="array_tinh_bien_ward_an_giang_district">
+            <item>Thị Trấn Tịnh Biên</item>
+            <item>Thị Trấn Nhà Bàng</item>
+            <item>Xã Văn Giáo</item>
+            <item>Xã An Phú</item>
+            <item>Xã Vĩnh Trung</item>
+            <item>Xã Vĩnh Hòa</item>
+            <item>Xã Vĩnh Chơn</item>
+            <item>Xã Vĩnh Nguơn</item>
+            <item>Xã Tân Lập</item>
+            <item>Xã Tân Thạnh</item>
+            <item>Xã Định Mỹ</item>
+            <item>Xã Ô Lâm</item>
+            <item>Xã An Cư</item>
+            <item>Xã An Nông</item>
+            <item>Xã Vĩnh Hưng</item>
+            <item>Xã Vĩnh Xuân</item>
+            <item>Xã Tân Lợi</item>
+            <item>Xã Tân Lộc</item>
+            <item>Xã Tân Hưng</item>
+            <item>Xã An Hảo Tây</item>
+            <item>Xã An Hảo Đông</item>
+        </string-array>
+
+        <string-array name="array_tri_ton_ward_an_giang_district">
+            <item>Thị Trấn Tri Tôn</item>
+            <item>Xã Ba Chúc</item>
+            <item>Xã Lê Trung</item>
+            <item>Xã Lương An Trà</item>
+            <item>Xã Lương Phi</item>
+            <item>Xã Vĩnh Gia</item>
+            <item>Xã Vĩnh Phước</item>
+            <item>Xã Vĩnh Trạch</item>
+            <item>Xã Châu Lăng</item>
+            <item>Xã Lương Điền</item>
+            <item>Xã Lương Hòa</item>
+            <item>Xã Tà Đảnh</item>
+            <item>Xã Tân Tuyến</item>
+            <item>Xã Vĩnh Bình</item>
+            <item>Xã Đồng Tâm</item>
+            <item>Xã Hòa Bình</item>
+            <item>Xã Khánh Tân</item>
+            <item>Xã Núi Tô</item>
+            <item>Xã Tân Lợi Thạnh</item>
+            <item>Xã Vĩnh Lợi</item>
+            <item>Xã Vĩnh Thành</item>
+            <item>Xã Yên Lạc</item>
+        </string-array>
 
     <string-array name="array_ba_ria_vung_tau_district">
         <item>TP. Bà Rịa</item>
@@ -117,6 +315,141 @@
         <item>Huyện Xuyên Mộc</item>
     </string-array>
 
+        <string-array name="array_ba_ria_ward_ba_ria_vung_tau_district">
+            <item>Phường 1</item>
+            <item>Phường 2</item>
+            <item>Phường 3</item>
+            <item>Phường 4</item>
+            <item>Phường Long Toàn</item>
+            <item>Phường Phước Hiệp</item>
+            <item>Phường Phước Nguyên</item>
+            <item>Phường Phước Trung</item>
+            <item>Phường Vũng Tàu</item>
+        </string-array>
+
+        <string-array name="array_vung_tau_ward_ba_ria_vung_tau_district">
+            <item>Phường 1</item>
+            <item>Phường 2</item>
+            <item>Phường 3</item>
+            <item>Phường 4</item>
+            <item>Phường 5</item>
+            <item>Phường 6</item>
+            <item>Phường 7</item>
+            <item>Phường 8</item>
+            <item>Phường 9</item>
+            <item>Phường 10</item>
+            <item>Phường 11</item>
+            <item>Phường 12</item>
+            <item>Phường Thắng Tam</item>
+            <item>Phường Thắng Nhất</item>
+            <item>Phường Rạch Dừa</item>
+            <item>Phường Vũng Tàu</item>
+            <item>Phường Bình Gia</item>
+        </string-array>
+
+        <string-array name="array_chau_duc_ward_ba_ria_vung_tau_district">
+            <item>Thị Trấn Ngãi Giao</item>
+            <item>Thị Trấn Phước Hải</item>
+            <item>Xã Phước Tân</item>
+            <item>Xã Xuyên Mộc</item>
+            <item>Xã Bàu Lâm</item>
+            <item>Xã Bình Ba</item>
+            <item>Xã Bình Giã</item>
+            <item>Xã Bình Trung</item>
+            <item>Xã Suối Nghệ</item>
+            <item>Xã Sơn Bình</item>
+            <item>Xã Suối Rao</item>
+            <item>Xã Đá Bạc</item>
+            <item>Xã Nghĩa Thành</item>
+            <item>Xã Phước Hưng</item>
+        </string-array>
+
+        <string-array name="array_con_dao_ward_ba_ria_vung_tau_district">
+            <item>Thị Trấn Côn Đảo</item>
+            <item>Xã Đồng Hòa</item>
+            <item>Xã Phước Thới</item>
+            <item>Xã Hòa đông</item>
+            <item>Xã Hòa Hội</item>
+            <item>Xã Lô Vô Tư</item>
+            <item>Xã Thành Lễ</item>
+            <item>Xã Vân Đồn</item>
+        </string-array>
+
+        <string-array name="array_dat_do_ward_ba_ria_vung_tau_district">
+            <item>Thị Trấn Ngãi Giao</item>
+            <item>Thị Trấn Đất Đỏ</item>
+            <item>Xã Phước Hòa</item>
+            <item>Xã Long Định</item>
+            <item>Xã Long Hải</item>
+            <item>Xã Phước Tân</item>
+            <item>Xã Phước Thuận</item>
+            <item>Xã Phước Hưng</item>
+            <item>Xã Phước Mỹ</item>
+            <item>Xã Phước Lộc</item>
+            <item>Xã Phước Đại</item>
+            <item>Xã Nguyễn Thái Bình</item>
+            <item>Xã Phước Nghĩa</item>
+            <item>Xã Phước Sang</item>
+            <item>Xã Sông Nhạn</item>
+            <item>Xã Bàu Chinh</item>
+            <item>Xã Bình Ba</item>
+            <item>Xã Xuyên Mỹ</item>
+        </string-array>
+
+        <string-array name="array_long_dien_ward_ba_ria_vung_tau_district">
+            <item>Thị Trấn Phú Mỹ</item>
+            <item>Xã Tam Phước</item>
+            <item>Xã Phước Tỉnh</item>
+            <item>Xã Hắc Dịch</item>
+            <item>Xã Châu Pha</item>
+            <item>Xã Bình Ba</item>
+            <item>Xã Tân Hải</item>
+            <item>Xã Tân Hưng</item>
+            <item>Xã Tân Thành</item>
+            <item>Xã Tóc Tiên</item>
+            <item>Xã Phước Hậu</item>
+        </string-array>
+
+        <string-array name="array_xuyen_moc_ward_ba_ria_vung_tau_district">
+            <item>Thị Trấn Long Hải</item>
+            <item>Thị Trấn Hòa Bình</item>
+            <item>Thị Trấn Phước Hải</item>
+            <item>Xã An Ngãi Trung</item>
+            <item>Xã An Ngãi Tây</item>
+            <item>Xã An Ngãi Đông</item>
+            <item>Xã Phước Tỉnh Đông</item>
+            <item>Xã Phước Tỉnh Tây</item>
+            <item>Xã Phước Thái</item>
+            <item>Xã Bàu Lâm</item>
+            <item>Xã Bưng Riềng</item>
+            <item>Xã Tân Lâm</item>
+            <item>Xã Lâm Hải</item>
+            <item>Xã Đất Đỏ</item>
+            <item>Xã Lộc An</item>
+            <item>Xã Bình Châu</item>
+            <item>Xã Xuân Sơn Nam</item>
+            <item>Xã Xuyên Mộc</item>
+            <item>Xã Bông Trang</item>
+            <item>Xã Hòa Hiệp</item>
+            <item>Xã Hòa Hội</item>
+        </string-array>
+
+        <string-array name="array_tan_thanh_ward_ba_ria_vung_tau_district">
+            <item>Thị trấn Tân Thành</item>
+            <item>Thị trấn Châu Pha</item>
+            <item>Xã Phước Hưng</item>
+            <item>Xã Bình Thành</item>
+            <item>Xã Tóc Tiên</item>
+            <item>Xã Đất Đỏ</item>
+            <item>Xã Phước Thắng</item>
+            <item>Xã Phước Đông</item>
+            <item>Xã Long Mỹ</item>
+            <item>Xã Láng Lớn</item>
+            <item>Xã Bình Tâm</item>
+        </string-array>
+
+
+
     <string-array name="array_bac_lieu_district">
         <item>Thành phố Bạc Liêu</item>
         <item>Thị xã Giá Rai</item>
@@ -126,6 +459,115 @@
         <item>Huyện Phước Long</item>
         <item>Huyện Vĩnh Lợi</item>
     </string-array>
+
+        <string-array name="array_bac_lieu_ward_bac_lieu_district">
+            <item>Phường 1</item>
+            <item>Phường 2</item>
+            <item>Phường 3</item>
+            <item>Phường 4</item>
+            <item>Phường 5</item>
+            <item>Phường 6</item>
+            <item>Phường 7</item>
+            <item>Phường 8</item>
+            <item>Phường 9</item>
+            <item>Phường 10</item>
+            <item>Phường Đông Hải</item>
+            <item>Phường Vĩnh Trạch</item>
+            <item>Phường Vĩnh Lợi</item>
+            <item>Phường Hiệp Thành</item>
+        </string-array>
+
+        <string-array name="array_gia_rai_ward_bac_lieu_district">
+            <item>Thị Trấn Gia Rai</item>
+            <item>Xã Hộ Phòng</item>
+            <item>Xã Đại Mỹ</item>
+            <item>Xã Tân Phú</item>
+            <item>Xã Tân Phong</item>
+            <item>Xã Tân Thành</item>
+            <item>Xã Viên An</item>
+            <item>Xã Viên Bình</item>
+            <item>Xã Vĩnh Thịnh</item>
+            <item>Xã Vĩnh Phú Đông</item>
+            <item>Xã Vĩnh Phú Tây</item>
+            <item>Xã Phú Lợi</item>
+            <item>Xã Phú Đông</item>
+            <item>Xã Phú Tân</item>
+            <item>Xã Phú Mỹ</item>
+            <item>Xã Phú Xuân</item>
+        </string-array>
+
+        <string-array name="array_dong_hai_ward_bac_lieu_district">
+            <item>Thị Trấn Đông Hải</item>
+            <item>Xã Nhơn Hội</item>
+            <item>Xã Long Điền A</item>
+            <item>Xã Long Điền B</item>
+            <item>Xã Long Điền Tây</item>
+            <item>Xã Long Hưng</item>
+            <item>Xã Tân Hưng</item>
+            <item>Xã Điền Hải</item>
+            <item>Xã Điền Môn</item>
+            <item>Xã Đông Thạnh</item>
+            <item>Xã Đông Hưng</item>
+            <item>Xã Phú Đông</item>
+            <item>Xã Vân Hồ</item>
+        </string-array>
+
+        <string-array name="array_hoa_binh_ward_bac_lieu_district">
+            <item>Thị Trấn Liên Hội</item>
+            <item>Xã Vĩnh Trạch</item>
+            <item>Xã Vĩnh Trạch Đông</item>
+            <item>Xã Vĩnh Phú Đông</item>
+            <item>Xã Vĩnh Khúc</item>
+            <item>Xã Vĩnh Hòa Phú</item>
+            <item>Xã Vĩnh Hiệp</item>
+            <item>Xã Vĩnh Bình Bắc</item>
+            <item>Xã Vĩnh Hưng</item>
+            <item>Xã Vĩnh Bình Nam</item>
+            <item>Xã Vĩnh Bình Tây</item>
+        </string-array>
+
+        <string-array name="array_hong_dan_ward_bac_lieu_district">
+            <item>Thị Trấn Tân Quới</item>
+            <item>Xã Đoàn Kết</item>
+            <item>Xã Trí Lực</item>
+            <item>Xã Liên Hiệp</item>
+            <item>Xã Hội Thành</item>
+            <item>Xã Tân Hiệp</item>
+            <item>Xã Đại Thành</item>
+            <item>Xã Ngã Lâu</item>
+            <item>Xã Hồng Phong</item>
+            <item>Xã Tân Tiến</item>
+            <item>Xã Viên An</item>
+            <item>Xã Tân An</item>
+        </string-array>
+
+        <string-array name="array_phuoc_long_ward_bac_lieu_district">
+            <item>Thị Trấn Phước Long</item>
+            <item>Xã Vĩnh Phú</item>
+            <item>Xã Vĩnh Châu Bắc</item>
+            <item>Xã Vĩnh Châu Nam</item>
+            <item>Xã Vĩnh Hưng A</item>
+            <item>Xã Vĩnh Hưng B</item>
+            <item>Xã Lâm Tân</item>
+            <item>Xã Phong Thạnh Tây A</item>
+            <item>Xã Phong Thạnh Tây B</item>
+            <item>Xã Phong Thạnh Đông</item>
+            <item>Xã Tân Thạnh</item>
+        </string-array>
+
+        <string-array name="array_vinh_loi_ward_bac_lieu_district">
+            <item>Thị Trấn Vĩnh Lợi</item>
+            <item>Xã Vĩnh Hòa Phú</item>
+            <item>Xã Vĩnh Tường</item>
+            <item>Xã Vĩnh Bình Bắc</item>
+            <item>Xã Vĩnh Bình Nam</item>
+            <item>Xã Vĩnh Phú Đông</item>
+            <item>Xã Vĩnh Phú Tây</item>
+            <item>Xã Vĩnh Thanh</item>
+            <item>Xã Vĩnh Hậu</item>
+            <item>Xã Vĩnh Hiệp</item>
+        </string-array>
+
 
     <string-array name="array_bac_kan_district">
         <item>TP. Bắc Kạn</item>
@@ -137,6 +579,233 @@
         <item>Huyện Ngân Sơn</item>
         <item>Huyện Pác Nặm</item>
     </string-array>
+
+        <string-array name="array_bac_kan_ward_bac_kan_district">
+            <item>Thị trấn Chợ Mới</item>
+            <item>Thị trấn Sông Cầu</item>
+            <item>Phường Nguyễn Thị Minh Khai</item>
+            <item>Phường Duyệt Trung</item>
+            <item>Phường Xuất Hóa</item>
+            <item>Phường Chợ Mới</item>
+            <item>Xã Vũ Đình</item>
+            <item>Xã Bằng La</item>
+            <item>Xã Nam Mẫu</item>
+            <item>Xã Cốc Đán</item>
+            <item>Xã Nông Thượng</item>
+            <item>Xã Xuân Lạc</item>
+            <item>Xã Bằng Thành</item>
+            <item>Xã Yên Thịnh</item>
+            <item>Xã Phúc Lộc</item>
+            <item>Xã Đồng Lạc</item>
+            <item>Xã Nam Xuân</item>
+            <item>Xã Bình Long</item>
+            <item>Xã Ngọc Động</item>
+            <item>Xã Thượng Ân</item>
+            <item>Xã Đức Thượng</item>
+            <item>Xã Kim Cúc</item>
+            <item>Xã An Thắng</item>
+            <item>Xã An Khánh</item>
+            <item>Xã Hương Ngải</item>
+        </string-array>
+
+        <string-array name="array_ba_be_ward_bac_kan_district">
+            <item>Phường Phúc Lộc</item>
+            <item>Phường Đồng Thịnh</item>
+            <item>Xã Thượng Giáo</item>
+            <item>Xã Nam Mẫu</item>
+            <item>Xã Cao Thượng</item>
+            <item>Xã Phúc Lộc</item>
+            <item>Xã Địa Linh</item>
+            <item>Xã Hà Hiệu</item>
+            <item>Xã Hà Vị</item>
+            <item>Xã Yến Dương</item>
+            <item>Xã Cao Tân</item>
+            <item>Xã Khang Ninh</item>
+            <item>Xã Bằng Lãng</item>
+            <item>Xã Bằng Lũng</item>
+            <item>Xã Na Ngoi</item>
+            <item>Xã Phúc An</item>
+            <item>Xã Phúc Khánh</item>
+            <item>Xã Nam Tiến</item>
+            <item>Xã Xuân Lai</item>
+            <item>Xã Hà Thanh</item>
+            <item>Xã Hà Tiên</item>
+            <item>Xã Quảng Khe</item>
+            <item>Xã Đồng Tân</item>
+            <item>Xã Bản Nếp</item>
+            <item>Xã Cao Kỳ</item>
+        </string-array>
+
+        <string-array name="array_bach_thong_ward_bac_kan_district">
+            <item>Thị trấn Phủ Thông</item>
+            <item>Thị trấn Chợ Mới</item>
+            <item>Xã Đồng Bẩm</item>
+            <item>Xã Vũ Muộn</item>
+            <item>Xã Lục Bình</item>
+            <item>Xã Quang Khải</item>
+            <item>Xã Tiên Yên</item>
+            <item>Xã Xuân Lập</item>
+            <item>Xã Ngọc Động</item>
+            <item>Xã Yên Cư</item>
+            <item>Xã Tân Dương</item>
+            <item>Xã Bản Thi</item>
+            <item>Xã Bằng Thành</item>
+            <item>Xã Hoàng Trĩ</item>
+            <item>Xã Nông Hạ</item>
+            <item>Xã Tân Thanh</item>
+            <item>Xã Đức Ninh Đông</item>
+            <item>Xã Yên Thắng</item>
+            <item>Xã Xuân Bình</item>
+            <item>Xã Đông Viên</item>
+            <item>Xã Tiến Thắng</item>
+            <item>Xã Kim Loan</item>
+            <item>Xã Đức Ninh</item>
+            <item>Xã Đức Thành</item>
+            <item>Xã Vũ Lăng</item>
+            <item>Xã Đồng Thịnh</item>
+            <item>Xã Kim Lư</item>
+            <item>Xã Lương Thành</item>
+            <item>Xã Hùng Sơn</item>
+            <item>Xã Đại Đức</item>
+            <item>Xã Đức Lương</item>
+            <item>Xã Đức Thượng</item>
+            <item>Xã Phúc Khánh</item>
+            <item>Xã An Bình</item>
+            <item>Xã Cẩm Giàng</item>
+            <item>Xã Hương Lâm</item>
+            <item>Xã Kim Quan</item>
+            <item>Xã Tân Lập</item>
+            <item>Xã Thanh Vân</item>
+            <item>Xã Vũ Sơn</item>
+        </string-array>
+
+        <string-array name="array_cho_don_ward_bac_kan_district">
+            <item>Thị trấn Chợ Đồn</item>
+            <item>Xã Yên Lạc</item>
+            <item>Xã Bằng Lãng</item>
+            <item>Xã Bằng Lũng</item>
+            <item>Xã Bằng Phúc</item>
+            <item>Xã Bằng Thái</item>
+            <item>Xã Đại Tự</item>
+            <item>Xã Đồng Thắng</item>
+            <item>Xã Lương Thiện</item>
+            <item>Xã Ngọc Phái</item>
+            <item>Xã Phương Viên</item>
+            <item>Xã Thanh Đức</item>
+            <item>Xã Vũ Nông</item>
+            <item>Xã Yên Khoái</item>
+            <item>Xã Yên Phong</item>
+            <item>Xã Yên Thuận</item>
+            <item>Xã Yên Thắng</item>
+            <item>Xã Yên Thịnh</item>
+            <item>Xã Yên Thọ</item>
+            <item>Xã Yên Trạch</item>
+            <item>Xã Yên Bình</item>
+            <item>Xã Yên Hùng</item>
+            <item>Xã Yên Lâm</item>
+            <item>Xã Yên Nguyên</item>
+            <item>Xã Yên Phú</item>
+            <item>Xã Yên Phương</item>
+            <item>Xã Yên Tâm</item>
+            <item>Xã Yên Tân</item>
+            <item>Xã Yên Thái</item>
+            <item>Xã Yên Thịnh Đông</item>
+            <item>Xã Yên Thịnh Tây</item>
+        </string-array>
+
+        <string-array name="array_na_ri_ward_bac_kan_district">
+            <item>Thị trấn Na Rì</item>
+            <item>Xã Bản Nguyên</item>
+            <item>Xã Bằng Vuốt</item>
+            <item>Xã Chiềng Ken</item>
+            <item>Xã Côn Lôn</item>
+            <item>Xã Cường Lợi</item>
+            <item>Xã Đản Khê</item>
+            <item>Xã Hồng Thái</item>
+            <item>Xã Khánh Xuân</item>
+            <item>Xã Kim Đức</item>
+            <item>Xã Lạng San</item>
+            <item>Xã Liêm Thuỷ</item>
+            <item>Xã Mường Lầm</item>
+            <item>Xã Mường Lựm</item>
+            <item>Xã Mường Ngọc</item>
+            <item>Xã Mường Thanh</item>
+            <item>Xã Na Sáy</item>
+            <item>Xã Nam An</item>
+            <item>Xã Nam La</item>
+            <item>Xã Phiêng Ân</item>
+            <item>Xã Phiêng Drang</item>
+            <item>Xã Phiêng Kôn</item>
+            <item>Xã Quang Phong</item>
+            <item>Xã Tân Lập</item>
+            <item>Xã Tân Minh</item>
+            <item>Xã Tân Tiến</item>
+            <item>Xã Thượng Bằng La</item>
+            <item>Xã Thượng Cốc</item>
+            <item>Xã Thượng Lâm</item>
+            <item>Xã Văn Học</item>
+        </string-array>
+
+        <string-array name="array_ngan_son_ward_bac_kan_district">
+            <item>Thị trấn Nà Phặc</item>
+            <item>Xã Bằng Vân</item>
+            <item>Xã Côn Minh</item>
+            <item>Xã Cư Lễ</item>
+            <item>Xã Đức Vân</item>
+            <item>Xã Giáp Lễ</item>
+            <item>Xã Lãng Ngâm</item>
+            <item>Xã Lương Phú</item>
+            <item>Xã Minh Thanh</item>
+            <item>Xã Minh Tiến</item>
+            <item>Xã Mộng Sơn</item>
+            <item>Xã Na Hang</item>
+            <item>Xã Quang Chu</item>
+            <item>Xã Quang Phong</item>
+            <item>Xã Thanh Lương</item>
+            <item>Xã Thượng Ân</item>
+            <item>Xã Thượng Nông</item>
+            <item>Xã Trung Hà</item>
+            <item>Xã Trung Lương</item>
+            <item>Xã Trung Minh</item>
+            <item>Xã Vi Hương</item>
+            <item>Xã Vĩnh Lộc</item>
+            <item>Xã Vũ Chấn</item>
+            <item>Xã Xuân Áng</item>
+            <item>Xã Yên Lập</item>
+            <item>Xã Yên Nguyên</item>
+            <item>Xã Yên Thắng</item>
+            <item>Xã Yên Thành</item>
+            <item>Xã Yên Viên</item>
+        </string-array>
+
+        <string-array name="array_pac_nam_ward_bac_kan_district">
+            <item>Thị trấn Tân Yên</item>
+            <item>Xã Bản Nguyên</item>
+            <item>Xã Bằng Vân</item>
+            <item>Xã Đức Lương</item>
+            <item>Xã Đức Ninh</item>
+            <item>Xã Hà Lang</item>
+            <item>Xã Hương Vĩ</item>
+            <item>Xã Khánh Vĩnh</item>
+            <item>Xã Lạng San</item>
+            <item>Xã Lương Thượng</item>
+            <item>Xã Mậu Long</item>
+            <item>Xã Minh Tân</item>
+            <item>Xã Minh Thuận</item>
+            <item>Xã Nà Sác</item>
+            <item>Xã Phúc Tán</item>
+            <item>Xã Quân Chu</item>
+            <item>Xã Tân Lang</item>
+            <item>Xã Thượng Ân</item>
+            <item>Xã Tiên Kiều</item>
+            <item>Xã Trung Minh</item>
+            <item>Xã Văn Lang</item>
+            <item>Xã Vĩnh Lộc</item>
+            <item>Xã Vũ Loan</item>
+            <item>Xã Xuân Tầm</item>
+            <item>Xã Yên Lạc</item>
+            <item>Xã Yên Nguyên</item>
+        </string-array>
 
     <string-array name="array_bac_giang_district">
         <item>TP. Bắc Giang</item>
@@ -151,21 +820,521 @@
         <item>Huyện Hiệp Sơn</item>
     </string-array>
 
+        <string-array name="array_bac_giang_ward_bac_giang_district">
+            <item>Phường Dĩnh Kế</item>
+            <item>Phường Dĩnh Trì</item>
+            <item>Phường Tân Thịnh</item>
+            <item>Phường Thọ Xương</item>
+            <item>Phường Tân Tiến</item>
+            <item>Phường Đồng Tiến</item>
+            <item>Phường Tiền An</item>
+            <item>Phường Mỹ Độ</item>
+            <item>Phường Kỳ Sơn</item>
+            <item>Phường Đa Mai</item>
+            <item>Phường Song Mai</item>
+            <item>Phường Xuân Hương</item>
+            <item>Xã Dĩnh Gia</item>
+            <item>Xã Sơn Lôi</item>
+            <item>Xã Vân Sơn</item>
+            <item>Xã Yên Thế</item>
+            <item>Xã Tân Mỹ</item>
+            <item>Xã Đồng Sơn</item>
+            <item>Xã Cao Thượng</item>
+            <item>Xã Nhân Mục</item>
+            <item>Xã Song Khê</item>
+            <item>Xã Đức Giang</item>
+            <item>Xã Đào Mỹ</item>
+            <item>Xã Đông Sơn</item>
+            <item>Xã Tân Tiến</item>
+            <item>Xã Đông Fgần</item>
+        </string-array>
+
+        <string-array name="array_yen_dung_ward_bac_giang_district">
+            <item>Phường Tiền Phong</item>
+            <item>Phường Minh Khai</item>
+            <item>Phường Đồng Tâm</item>
+            <item>Phường Trần Phú</item>
+            <item>Xã Tiền Tiến</item>
+            <item>Xã Tiền Giang</item>
+            <item>Xã Đồng Việt</item>
+            <item>Xã Đức Giang</item>
+            <item>Xã Bảo Hiệu</item>
+            <item>Xã Hồng Thái</item>
+            <item>Xã Hồng Dụ</item>
+            <item>Xã Quang Châu</item>
+            <item>Xã Phù Lương</item>
+            <item>Xã Đồng Phúc</item>
+            <item>Xã Nội Hoàng</item>
+            <item>Xã Tiến Dũng</item>
+            <item>Xã Tây Yên Tử</item>
+            <item>Xã An Thượng</item>
+            <item>Xã Văn Phú</item>
+            <item>Xã Phú Lạc</item>
+            <item>Xã Trung Nghĩa</item>
+            <item>Xã Yên Phong</item>
+            <item>Xã Phúc Sơn</item>
+        </string-array>
+
+        <string-array name="array_lang_giang_ward_bac_giang_district">
+            <item>Phường Hoàng Văn Thụ</item>
+            <item>Phường Hoàng Đồng</item>
+            <item>Phường Hợp Giang</item>
+            <item>Phường Hưng Thành</item>
+            <item>Phường Tân Thịnh</item>
+            <item>Xã Bắc An</item>
+            <item>Xã Bắc Lý</item>
+            <item>Xã Châu Sơn</item>
+            <item>Xã Hòa Lạc</item>
+            <item>Xã Hợp Đức</item>
+            <item>Xã Hợp Thịnh</item>
+            <item>Xã Liên Hòa</item>
+            <item>Xã Quang Châu</item>
+            <item>Xã Thái Đào</item>
+            <item>Xã Thanh Hải</item>
+            <item>Xã Tiền Thắng</item>
+            <item>Xã Văn Sơn</item>
+            <item>Xã Xuân Lương</item>
+        </string-array>
+
+        <string-array name="array_hiep_hoa_ward_bac_giang_district">
+            <item>Thị trấn Vôi</item>
+            <item>Thị trấn Xuân Lục</item>
+            <item>Xã Bắc Lý</item>
+            <item>Xã Châu Minh</item>
+            <item>Xã Chi Thiết</item>
+            <item>Xã Cương Sơn</item>
+            <item>Xã Đại Thành</item>
+            <item>Xã Đan Hội</item>
+            <item>Xã Đồng Tân</item>
+            <item>Xã Đức Thắng</item>
+            <item>Xã Lương Phong</item>
+            <item>Xã Mai Đình</item>
+            <item>Xã Nghi Sơn</item>
+            <item>Xã Tân Minh</item>
+            <item>Xã Thanh Vân</item>
+            <item>Xã Thiện Kế</item>
+            <item>Xã Thượng Vực</item>
+            <item>Xã Toàn Sơn</item>
+            <item>Xã Trường Thành</item>
+            <item>Xã Vân Hội</item>
+            <item>Xã Xuân Lập</item>
+        </string-array>
+
+        <string-array name="array_luc_nam_ward_bac_giang_district">
+            <item>Thị trấn Kiên Lao</item>
+            <item>Xã An Dục</item>
+            <item>Xã Bình Sơn</item>
+            <item>Xã Cấm Sơn</item>
+            <item>Xã Đồi Ngô</item>
+            <item>Xã Đông Hưng</item>
+            <item>Xã Đông Phú</item>
+            <item>Xã Giáp Sơn</item>
+            <item>Xã Hương Lâm</item>
+            <item>Xã Khám Lạng</item>
+            <item>Xã Lệ Viễn</item>
+            <item>Xã Liễu Đô</item>
+            <item>Xã Lục Sơn</item>
+            <item>Xã Mỹ An</item>
+            <item>Xã Nam Dương</item>
+            <item>Xã Ngọc Động</item>
+            <item>Xã Ngọc Lý</item>
+            <item>Xã Phong Minh</item>
+            <item>Xã Phú Nhuận</item>
+            <item>Xã Quang Thịnh</item>
+            <item>Xã Tân Lập</item>
+            <item>Xã Tân Mộc</item>
+            <item>Xã Thanh Lâm</item>
+            <item>Xã Tiên Hưng</item>
+            <item>Xã Trí Yên</item>
+            <item>Xã Trường Giang</item>
+            <item>Xã Tử Đà</item>
+            <item>Xã Văn Nghĩa</item>
+            <item>Xã Xuân Lương</item>
+            <item>Xã Yên Sơn</item>
+        </string-array>
+
+        <string-array name="array_luc_ngan_ward_bac_giang_district">
+            <item>Thị trấn Lục Ngạn</item>
+            <item>Thị trấn Vôi</item>
+            <item>Xã Bảo Đài</item>
+            <item>Xã Cấm Sơn</item>
+            <item>Xã Cẩm Đàn</item>
+            <item>Xã Cẩm Giàng</item>
+            <item>Xã Châu Sơn</item>
+            <item>Xã Chiên Sơn</item>
+            <item>Xã Cương Sơn</item>
+            <item>Xã Đồng Cốc</item>
+            <item>Xã Đông Hưng</item>
+            <item>Xã Giáp Sơn</item>
+            <item>Xã Hữu Sản</item>
+            <item>Xã Lạng San</item>
+            <item>Xã Lục Sơn</item>
+            <item>Xã Mãn Đức</item>
+            <item>Xã Mỹ Yên</item>
+            <item>Xã Nhã Nam</item>
+            <item>Xã Phúc Sơn</item>
+            <item>Xã Phúc Yên</item>
+            <item>Xã Phượng Sơn</item>
+            <item>Xã Quý Sơn</item>
+            <item>Xã Sơn Hải</item>
+            <item>Xã Tân Lập</item>
+            <item>Xã Tân Mỹ</item>
+            <item>Xã Tân Sơn</item>
+            <item>Xã Thanh Sơn</item>
+            <item>Xã Thiên Lai</item>
+            <item>Xã Thiên Sơn</item>
+            <item>Xã Trù Hựu</item>
+            <item>Xã Trường Sơn</item>
+            <item>Xã Vôi</item>
+            <item>Xã Yên Định</item>
+            <item>Xã Yên Lạc</item>
+            <item>Xã Yên Ngựa</item>
+        </string-array>
+
+        <string-array name="array_son_dong_ward_bac_giang_district">
+            <item>Thị trấn Sơn Động</item>
+            <item>Xã Bình Yên</item>
+            <item>Xã Cáo Thượng</item>
+            <item>Xã Đồng Đăng</item>
+            <item>Xã Đức Vân</item>
+            <item>Xã Giáp Đắt</item>
+            <item>Xã Hương Gián</item>
+            <item>Xã Lập Lễ</item>
+            <item>Xã Lão Hộ</item>
+            <item>Xã Mẫu Sơn</item>
+            <item>Xã Minh Đức</item>
+            <item>Xã Minh Sơn</item>
+            <item>Xã Phúc Thắng</item>
+            <item>Xã Phương Sơn</item>
+            <item>Xã Tân Minh</item>
+            <item>Xã Thanh Hộ</item>
+            <item>Xã Thiên Lộc</item>
+            <item>Xã Thuận Đức</item>
+            <item>Xã Tiên Sơn</item>
+            <item>Xã Trường Sơn</item>
+            <item>Xã Tùng Lộc</item>
+            <item>Xã Vân Sơn</item>
+            <item>Xã Vĩnh Lợi</item>
+        </string-array>
+
+        <string-array name="array_tan_yen_ward_bac_giang_district">
+            <item>Thị trấn Tân Yên</item>
+            <item>Xã An Dương</item>
+            <item>Xã Bắc Hợp Phú</item>
+            <item>Xã Bắc Lý</item>
+            <item>Xã Cấp Tiến</item>
+            <item>Xã Cộng Hòa</item>
+            <item>Xã Đại Hưng</item>
+            <item>Xã Đào Viên</item>
+            <item>Xã Đền Công</item>
+            <item>Xã Đồng Tiến</item>
+            <item>Xã Đông Lỗ</item>
+            <item>Xã Đông Ngàn</item>
+            <item>Xã Đông Viên</item>
+            <item>Xã Đông Xá</item>
+            <item>Xã Hương Vĩ</item>
+            <item>Xã Khánh Hoà</item>
+            <item>Xã Khúc Xuyên</item>
+            <item>Xã Liên Hiệp</item>
+            <item>Xã Phúc Hòa</item>
+            <item>Xã Phúc Sơn</item>
+            <item>Xã Quang Tiến</item>
+            <item>Xã Tân Tiến</item>
+            <item>Xã Tân Việt</item>
+            <item>Xã Thái Hòa</item>
+            <item>Xã Thái Sơn</item>
+            <item>Xã Thắng Lợi</item>
+            <item>Xã Tiến Đức</item>
+            <item>Xã Tri Yên</item>
+            <item>Xã Trung Nguyên</item>
+            <item>Xã Trung Tâm</item>
+            <item>Xã Trường Thành</item>
+            <item>Xã Vân Hội</item>
+            <item>Xã Vĩnh Hào</item>
+            <item>Xã Vĩnh Sơn</item>
+            <item>Xã Yên Lư</item>
+            <item>Xã Yên Phú</item>
+        </string-array>
+
+        <string-array name="array_viet_yen_ward_bac_giang_district">
+            <item>Thị trấn Việt Tiến</item>
+            <item>Thị trấn Hương Mai</item>
+            <item>Xã Bích Động</item>
+            <item>Xã Cách Linh</item>
+            <item>Xã Đức Giang</item>
+            <item>Xã Đức Lạng</item>
+            <item>Xã Đức Thắng</item>
+            <item>Xã Lãng Sơn</item>
+            <item>Xã Lão Hộ</item>
+            <item>Xã Lục Hồn</item>
+            <item>Xã Mỹ Yên</item>
+            <item>Xã Nhân Mục</item>
+            <item>Xã Nhạo Sơn</item>
+            <item>Xã Phong Minh</item>
+            <item>Xã Phúc Lộc</item>
+            <item>Xã Phúc Trìu</item>
+            <item>Xã Tân Dân</item>
+            <item>Xã Thắng Lợi</item>
+            <item>Xã Tiên Nha</item>
+            <item>Xã Trung Sơn</item>
+            <item>Xã Tự Lập</item>
+            <item>Xã Việt Lâm</item>
+            <item>Xã Vũ Xá</item>
+            <item>Xã Yên Mỹ</item>
+        </string-array>
+
+        <string-array name="array_hiep_son_ward_bac_giang_district">
+            <item>Thị trấn Sơn Thịnh</item>
+            <item>Xã Cấp Tiến</item>
+            <item>Xã Đại Đồng</item>
+            <item>Xã Đông Hưng</item>
+            <item>Xã Đông Lợi</item>
+            <item>Xã Hà Lương</item>
+            <item>Xã Hà Thái</item>
+            <item>Xã Hồng Đà</item>
+            <item>Xã Hợp Đồng</item>
+            <item>Xã Hợp Thành</item>
+            <item>Xã Kim Đồng</item>
+            <item>Xã Liêm Tuyền</item>
+            <item>Xã Nghinh Tường</item>
+            <item>Xã Phú Lương</item>
+            <item>Xã Phúc Thịnh</item>
+            <item>Xã Phúc Ứng</item>
+            <item>Xã Quý Thuận</item>
+            <item>Xã Tân Thịnh</item>
+            <item>Xã Tân Tiến</item>
+            <item>Xã Thị Hoa</item>
+            <item>Xã Thịnh Đức</item>
+            <item>Xã Trung Hà</item>
+            <item>Xã Trung Hòa</item>
+            <item>Xã Vân Hội</item>
+            <item>Xã Văn Lăng</item>
+            <item>Xã Văn Quán</item>
+            <item>Xã Văn Sơn</item>
+            <item>Xã Vĩnh Lợi</item>
+        </string-array>
+
     <string-array name="array_bac_ninh_district">
         <item>Thành phố Bắc Ninh</item>
         <item>Thị xã Từ Sơn</item>
         <item>Huyện Ân Thi</item>
         <item>Huyện Gia Bình</item>
-        <item>Huyện Lương Tài</item>
         <item>Huyện Quế Võ</item>
         <item>Huyện Tiên Du</item>
         <item>Huyện Yên Phong</item>
     </string-array>
 
+        <string-array name="array_bac_ninh_ward_bac_ninh_district">
+            <item>Phường Đại Phúc</item>
+            <item>Phường Đáp Cầu</item>
+            <item>Phường Khắc Niệm</item>
+            <item>Phường Kinh Bắc</item>
+            <item>Phường Nam Sơn</item>
+            <item>Phường Ninh Xá</item>
+            <item>Phường Suối Hoa</item>
+            <item>Phường Thị Cầu</item>
+            <item>Phường Thanh Khương</item>
+            <item>Phường Tiền An</item>
+            <item>Phường Vạn An</item>
+            <item>Phường Vệ An</item>
+            <item>Phường Võ Cường</item>
+            <item>Phường Vũ Ninh</item>
+            <item>Phường Đồng Nguyên</item>
+            <item>Phường Hạp Lĩnh</item>
+            <item>Phường Hòa Long</item>
+            <item>Phường Khúc Xuyên</item>
+            <item>Phường Nam Sơn</item>
+            <item>Phường Phong Khê</item>
+            <item>Phường Phù Chẩn</item>
+            <item>Phường Suối Hoa</item>
+            <item>Phường Thị Cầu</item>
+            <item>Phường Vân Dương</item>
+            <item>Phường Vệ Sơn</item>
+            <item>Phường Võ Cường</item>
+            <item>Phường Vũ Ninh</item>
+            <item>Xã Đông Ngàn</item>
+            <item>Xã Tam Sơn</item>
+            <item>Xã Vân Hà</item>
+            <item>Xã Vĩnh Tường</item>
+        </string-array>
+
+        <string-array name="array_tu_son_ward_bac_ninh_district">
+            <item>Phường Đình Bảng</item>
+            <item>Phường Đồng Nguyên</item>
+            <item>Phường Đồng Kỵ</item>
+            <item>Phường Nghĩa Đạo</item>
+            <item>Phường Ngọc Xá</item>
+            <item>Phường Tam Sơn</item>
+            <item>Phường Tân Hồng</item>
+            <item>Phường Trang Hạ</item>
+            <item>Phường Vạn An</item>
+            <item>Phường Vệ An</item>
+            <item>Phường Yên Phụ</item>
+            <item>Xã Bắc Sơn</item>
+            <item>Xã Bằng Binh</item>
+            <item>Xã Đại Đồng Thành</item>
+            <item>Xã Đình Tổ</item>
+            <item>Xã Đồng Ngọc</item>
+            <item>Xã Hòa Tiến</item>
+            <item>Xã Khúc Xuyên</item>
+            <item>Xã Phù Lương</item>
+            <item>Xã Tân Hưng</item>
+            <item>Xã Thanh Khương</item>
+            <item>Xã Tiền An</item>
+            <item>Xã Trung Nghĩa</item>
+        </string-array>
+
+        <string-array name="array_an_thi_ward_bac_ninh_district">
+            <item>Thị trấn An Thị</item>
+            <item>Thị trấn Bình Minh</item>
+            <item>Xã Bồng Lai</item>
+            <item>Xã Cẩm Giang</item>
+            <item>Xã Cao Thượng</item>
+            <item>Xã Đại Đồng Thành</item>
+            <item>Xã Đại Xuân</item>
+            <item>Xã Hồng Đà</item>
+            <item>Xã Hợp Hải</item>
+            <item>Xã Hương Mạc</item>
+            <item>Xã Lai Hạ</item>
+            <item>Xã Lệ Viễn</item>
+            <item>Xã Mỹ Thái</item>
+            <item>Xã Nguyệt Đức</item>
+            <item>Xã Phù Lãng</item>
+            <item>Xã Quảng Lãng</item>
+            <item>Xã Quang Vinh</item>
+            <item>Xã Song Trung</item>
+            <item>Xã Tân Chi</item>
+            <item>Xã Thanh Ninh</item>
+            <item>Xã Thụy Hương</item>
+            <item>Xã Trung Lương</item>
+            <item>Xã Trường Thịnh</item>
+            <item>Xã Vân Trục</item>
+            <item>Xã Xuân Phú</item>
+            <item>Xã Yên Nội</item>
+        </string-array>
+
+        <string-array name="array_gia_binh_ward_bac_ninh_district">
+            <item>Thị trấn Gia Bình</item>
+            <item>Xã Bình Định</item>
+            <item>Xã Cao Đức</item>
+            <item>Xã Đại Bái</item>
+            <item>Xã Đông Cứu</item>
+            <item>Xã Đông Kỳ</item>
+            <item>Xã Đông La</item>
+            <item>Xã Đông Ngàn</item>
+            <item>Xã Đồng Sơn</item>
+            <item>Xã Đức Chính</item>
+            <item>Xã Gia Đông</item>
+            <item>Xã Hà Ninh</item>
+            <item>Xã Hưng Thịnh</item>
+            <item>Xã Lãng Ngâm</item>
+            <item>Xã Nhân Thắng</item>
+            <item>Xã Quỳnh Phú</item>
+            <item>Xã Quỳnh Tân</item>
+            <item>Xã Song Giang</item>
+            <item>Xã Thái Bảo</item>
+            <item>Xã Thái Dương</item>
+            <item>Xã Thái Hòa</item>
+            <item>Xã Thái Học</item>
+            <item>Xã Thúc Kháng</item>
+            <item>Xã Vạn Ninh</item>
+            <item>Xã Xuân Lai</item>
+            <item>Xã Xuân Lâm</item>
+            <item>Xã Xuân Lộc</item>
+            <item>Xã Xuân Ngọc</item>
+            <item>Xã Xuân Phúc</item>
+            <item>Xã Xuân Sinh</item>
+            <item>Xã Xuân Tân</item>
+            <item>Xã Xuân Thành</item>
+            <item>Xã Xuân Thủy</item>
+            <item>Xã Xuân Trung</item>
+            <item>Xã Yên Thắng</item>
+            <item>Xã Yên Trung</item>
+        </string-array>
+
+        <string-array name="array_que_vo_ward_bac_ninh_district">
+            <item>Thị trấn Phố Mới</item>
+            <item>Thị trấn Đại Đồng Thành</item>
+            <item>Xã Minh Đức</item>
+            <item>Xã Phù Lãng</item>
+            <item>Xã Trung Mỹ</item>
+            <item>Xã Đào Viên</item>
+            <item>Xã Việt Hùng</item>
+            <item>Xã Hòa Long</item>
+            <item>Xã Văn Minh</item>
+            <item>Xã Cộng Hòa</item>
+            <item>Xã Phượng Mao</item>
+            <item>Xã Văn Giang</item>
+            <item>Xã Phù Lương</item>
+            <item>Xã Việt Thuận</item>
+            <item>Xã Ngọc Xá</item>
+            <item>Xã Tam Sơn</item>
+            <item>Xã Đại Xuân</item>
+            <item>Xã Tân Viên</item>
+            <item>Xã Hoàng Tân</item>
+            <item>Xã Nam Sơn</item>
+            <item>Xã Bằng An</item>
+            <item>Xã Ngọc Thanh</item>
+            <item>Xã Phú Phương</item>
+            <item>Xã Bồng Lai</item>
+            <item>Xã Đông Tiến</item>
+            <item>Xã Đông Ngàn</item>
+            <item>Xã Tam Đa</item>
+            <item>Xã Hương Mạc</item>
+            <item>Xã Quang Phục</item>
+            <item>Xã Văn Tân</item>
+        </string-array>
+
+        <string-array name="array_tien_du_ward_bac_ninh_district">
+            <item>Thị trấn Tiên Du</item>
+            <item>Xã Đại Đồng Thành</item>
+            <item>Xã Minh Khai</item>
+            <item>Xã Tân Phúc</item>
+            <item>Xã Phú Lâm</item>
+            <item>Xã Xuân Phú</item>
+            <item>Xã Hoàng Hanh</item>
+            <item>Xã Kim Khê</item>
+            <item>Xã Việt Lâm</item>
+            <item>Xã Đồng Nguyên</item>
+            <item>Xã Đồng Ngọc</item>
+            <item>Xã Châu Phong</item>
+            <item>Xã Đông Ngàn</item>
+            <item>Xã Trung Nghĩa</item>
+            <item>Xã Đông Hưng</item>
+            <item>Xã Vân Hà</item>
+            <item>Xã Nguyệt Đức</item>
+            <item>Xã Ninh Xá</item>
+        </string-array>
+
+        <string-array name="array_yen_phong_ward_bac_ninh_district">
+            <item>Thị trấn Yên Phong</item>
+            <item>Xã Đông Phong</item>
+            <item>Xã Trung Sơn Trầm</item>
+            <item>Xã Tiền Phong</item>
+            <item>Xã Tây Tiến</item>
+            <item>Xã Hàm Đức</item>
+            <item>Xã Tiến Thắng</item>
+            <item>Xã Tiến Thịnh</item>
+            <item>Xã Hồng Thái Tây</item>
+            <item>Xã Hồng Thái Đông</item>
+            <item>Xã Trung Kênh</item>
+            <item>Xã Liên Phương</item>
+            <item>Xã Đại Đồng</item>
+            <item>Xã Tự Tiến</item>
+            <item>Xã Thụy Hòa</item>
+            <item>Xã Đồng Kỳ</item>
+            <item>Xã Đông Ngàn</item>
+            <item>Xã Đông Hưng</item>
+            <item>Xã Tân Phong</item>
+            <item>Xã Đông Sơn</item>
+            <item>Xã Tiến Thành</item>
+            <item>Xã Phong Khê</item>
+            <item>Xã Đông Các</item>
+        </string-array>
+
     <string-array name="array_ben_tre_district">
         <item>Thành phố Bến Tre</item>
         <item>Thị xã Ba Tri</item>
-        <item>Thị xã Bình Đại</item>
         <item>Huyện Châu Thành</item>
         <item>Huyện Chợ Lách</item>
         <item>Huyện Giồng Trôm</item>
@@ -173,6 +1342,197 @@
         <item>Huyện Mỏ Cày Nam</item>
         <item>Huyện Thạnh Phú</item>
     </string-array>
+
+        <string-array name="array_ben_tre_ward_ben_tre_district">
+            <item>Phường 1</item>
+            <item>Phường 2</item>
+            <item>Phường 3</item>
+            <item>Phường 4</item>
+            <item>Phường 5</item>
+            <item>Phường 6</item>
+            <item>Phường 7</item>
+            <item>Phường 8</item>
+            <item>Phường 9</item>
+            <item>Phường 10</item>
+            <item>Phường 11</item>
+            <item>Phường 12</item>
+            <item>Phường 13</item>
+            <item>Phường 14</item>
+            <item>Phường 15</item>
+            <item>Phường 16</item>
+        </string-array>
+
+        <string-array name="array_ba_tri_ward_ben_tre_district">
+            <item>Phường 1</item>
+            <item>Phường 2</item>
+            <item>Phường 3</item>
+            <item>Phường 4</item>
+            <item>Phường 5</item>
+            <item>Phường 6</item>
+            <item>Phường Ba Tri</item>
+            <item>Phường Tân Mỹ</item>
+            <item>Phường Mỹ Nhơn</item>
+            <item>Phường An Ngãi Trung</item>
+            <item>Phường An Phú Trung</item>
+            <item>Xã An Ngãi Tây</item>
+            <item>Xã Tân Phú</item>
+            <item>Xã Vĩnh Đại</item>
+            <item>Xã An Ngãi Ðông</item>
+            <item>Xã Phú Lợi</item>
+            <item>Xã An Đức</item>
+            <item>Xã An Hòa Tây</item>
+            <item>Xã An Ngãi Tây</item>
+            <item>Xã An Hòa Đông</item>
+            <item>Xã An Ngãi Nam</item>
+            <item>Xã An Bình Tây</item>
+            <item>Xã Bảo Thạnh</item>
+            <item>Xã An Bình Đông</item>
+            <item>Xã An Ngãi Bắc</item>
+            <item>Xã An Thuận</item>
+        </string-array>
+
+        <string-array name="array_chau_thanh_ward_ben_tre_district">
+            <item>Thị trấn Châu Thành</item>
+            <item>Thị trấn Tân Thạnh</item>
+            <item>Xã An Hiệp</item>
+            <item>Xã An Khánh</item>
+            <item>Xã Giao Long</item>
+            <item>Xã Hữu Định</item>
+            <item>Xã Phú An Hòa</item>
+            <item>Xã Phú Đức</item>
+            <item>Xã Phú Tâm</item>
+            <item>Xã Sơn Hòa</item>
+            <item>Xã Tân Phú</item>
+            <item>Xã Tân Thành</item>
+            <item>Xã Tân Thông</item>
+            <item>Xã Thành Triệu</item>
+            <item>Xã Thiện Mỹ</item>
+            <item>Xã Trung Hiệp</item>
+        </string-array>
+
+        <string-array name="array_cho_lach_ward_ben_tre_district">
+            <item>Thị trấn Chợ Lách</item>
+            <item>Xã Phú Phụng</item>
+            <item>Xã Sơn Đông</item>
+            <item>Xã 1</item>
+            <item>Xã Hòa Nghĩa</item>
+            <item>Xã Long Thới</item>
+            <item>Xã Phú Sơn</item>
+            <item>Xã Tân Thiềng</item>
+            <item>Xã Vĩnh Bình</item>
+            <item>Xã Vĩnh Hòa</item>
+            <item>Xã Vĩnh Thành</item>
+            <item>Xã Vĩnh Viễn</item>
+            <item>Xã Thạnh Phú Đông</item>
+            <item>Xã Tân Hiệp</item>
+            <item>Xã Thành Triệu</item>
+            <item>Xã 2</item>
+        </string-array>
+
+        <string-array name="array_giong_trom_ward_ben_tre_district">
+            <item>Thị trấn Giồng Trôm</item>
+            <item>Thị trấn Cái Đôi Vàm</item>
+            <item>Thị trấn Bình Hoà Đông</item>
+            <item>Xã Tân Xã Tây</item>
+            <item>Xã Tân Hào</item>
+            <item>Xã Tân Thành Bình</item>
+            <item>Xã Tân Phú Đông</item>
+            <item>Xã Mỹ Thạnh</item>
+            <item>Xã Mỹ An</item>
+            <item>Xã Phú Khánh</item>
+            <item>Xã An Phước Tân</item>
+            <item>Xã Tân Thanh Tây</item>
+            <item>Xã Tân Thanh Đông</item>
+            <item>Xã Thạnh Phú Đông</item>
+            <item>Xã Hưng Lễ</item>
+            <item>Xã Hưng Nhượng</item>
+            <item>Xã Thạnh Ngãi</item>
+            <item>Xã Thạnh Đông</item>
+            <item>Xã Thạnh Lợi</item>
+            <item>Xã Thạnh Trị</item>
+            <item>Xã Bình Thành</item>
+            <item>Xã Ngãi Đăng</item>
+            <item>Xã Đại Điền</item>
+            <item>Xã Phước Long Thọ</item>
+            <item>Xã Phong Nẫm</item>
+            <item>Xã Vũng Đông</item>
+            <item>Xã Vũng Liêm</item>
+        </string-array>
+
+        <string-array name="array_mo_cay_bac_ward_ben_tre_district">
+            <item>Thị trấn Mỏ Cày</item>
+            <item>Thị trấn Tân Hội</item>
+            <item>Xã An Định</item>
+            <item>Xã An Thạnh</item>
+            <item>Xã Bình Khánh Đông</item>
+            <item>Xã Bình Khánh Tây</item>
+            <item>Xã Đa Phước Hội</item>
+            <item>Xã Hưng Khánh Trung A</item>
+            <item>Xã Hưng Khánh Trung B</item>
+            <item>Xã Phước Mỹ Trung</item>
+            <item>Xã Tân Trung</item>
+            <item>Xã Thành Thới A</item>
+            <item>Xã Thành Thới B</item>
+            <item>Xã Thạnh Ngãi</item>
+            <item>Xã Thạnh Trị</item>
+        </string-array>
+
+        <string-array name="array_mo_cay_nam_ward_ben_tre_district">
+            <item>Thị trấn Mỏ Cày</item>
+            <item>Xã Đa Phước</item>
+            <item>Xã Ngãi Đăng</item>
+            <item>Xã Phước Hiệp</item>
+            <item>Xã Tân Hội</item>
+            <item>Xã Bình Khánh Đông</item>
+            <item>Xã Bình Khánh Tây</item>
+            <item>Xã Hưng Khánh Trung B</item>
+            <item>Xã Hưng Khánh Trung A</item>
+            <item>Xã Thành Thới A</item>
+            <item>Xã Thành Thới B</item>
+            <item>Xã Tân Trung</item>
+            <item>Xã Tân Bình</item>
+            <item>Xã Hưng Thành</item>
+            <item>Xã An Thạnh</item>
+            <item>Xã An Định</item>
+            <item>Xã An Phú Tân</item>
+            <item>Xã An Ngãi Trung</item>
+            <item>Xã An Hóa</item>
+            <item>Xã Đại Hưng</item>
+            <item>Xã Phú Nhuận</item>
+            <item>Xã Phú Lợi</item>
+            <item>Xã Thanh Tân</item>
+            <item>Xã Tân Thành Bình</item>
+            <item>Xã Tân Thanh Tây</item>
+            <item>Xã Tân Thanh Đông</item>
+            <item>Xã Tân Phú Tây</item>
+            <item>Xã Tân Phú Đông</item>
+            <item>Xã Định Thủy</item>
+            <item>Xã Hòa Lộc</item>
+            <item>Xã Tân Đức</item>
+        </string-array>
+
+        <string-array name="array_thach_phu_ward_ben_tre_district">
+            <item>Thị trấn Thạnh Phú</item>
+            <item>Xã An Điền</item>
+            <item>Xã An Nhơn Tây</item>
+            <item>Xã An Quy Đông</item>
+            <item>Xã An Thạnh</item>
+            <item>Xã Bình Thạnh Đông</item>
+            <item>Xã Bình Thạnh Tây</item>
+            <item>Xã Đại Điền</item>
+            <item>Xã Đại Phúc</item>
+            <item>Xã Giao Thạnh</item>
+            <item>Xã Mỹ An</item>
+            <item>Xã Nhơn Thạnh Trung</item>
+            <item>Xã Phú Khánh</item>
+            <item>Xã Phú Tân</item>
+            <item>Xã Tân Hưng</item>
+            <item>Xã Tân Phú</item>
+            <item>Xã Thanh An</item>
+            <item>Xã Thạnh Hải</item>
+            <item>Xã Thới Thạnh</item>
+        </string-array>
+
 
     <string-array name="array_binh_duong_district">
         <item>TP. Bến Cát</item>
@@ -186,6 +1546,84 @@
         <item>Huyện Định Quán</item>
         <item>Huyện Tân Thành</item>
     </string-array>
+
+        <string-array name="array_ben_cat_ward_binh_duong_district">
+            <item>Phường An Điền</item>
+            <item>Phường An Tân</item>
+            <item>Phường Bình Hòa</item>
+            <item>Phường Chánh Phú Hòa</item>
+            <item>Phường Đồng Khởi</item>
+            <item>Phường Hưng Định</item>
+            <item>Phường Lạc Đạo</item>
+            <item>Phường Lợi Hải</item>
+            <item>Phường Mỹ Phước</item>
+            <item>Phường Thới Hòa</item>
+            <item>Phường Thuận Giao</item>
+            <item>Phường Vĩnh Phú</item>
+        </string-array>
+
+        <string-array name="array_di_an_ward_binh_duong_district">
+            <item>Phường Dĩ An</item>
+            <item>Phường Tân Bình</item>
+            <item>Phường Tân Đông Hiệp</item>
+            <item>Phường Tân Đông Hiệp B</item>
+            <item>Phường Bình An</item>
+            <item>Phường Bình Thắng</item>
+            <item>Phường Đông Hòa</item>
+            <item>Phường An Bình</item>
+            <item>Phường An Thạnh</item>
+        </string-array>
+
+        <string-array name="array_tan_uyen_ward_binh_duong_district">
+            <item>Phường Uyên Hưng</item>
+            <item>Phường Tân Phước Khánh</item>
+            <item>Phường Đất Cuốc</item>
+            <item>Phường Phú Chánh</item>
+            <item>Xã Tân Vĩnh Hiệp</item>
+            <item>Xã Thái Hòa</item>
+            <item>Xã Bình Mỹ</item>
+            <item>Xã Thạnh Phước</item>
+            <item>Xã Lạc An</item>
+            <item>Xã Vĩnh Tân</item>
+            <item>Xã Tân Long</item>
+            <item>Xã Bạch Đằng</item>
+            <item>Xã Tân Hiệp</item>
+            <item>Xã Phú Lợi</item>
+        </string-array>
+
+        <string-array name="array_thuan_an_ward_binh_duong_district">
+            <item>Phường An Phú</item>
+            <item>Phường An Sơn</item>
+            <item>Phường Bình Chuẩn</item>
+            <item>Phường Bình Hòa</item>
+            <item>Phường Bình Nhâm</item>
+            <item>Phường Bình Thắng</item>
+            <item>Phường Hưng Định</item>
+            <item>Phường Lái Thiêu</item>
+            <item>Phường Thuận Giao</item>
+            <item>Phường Vĩnh Phú</item>
+        </string-array>
+
+        <string-array name="array_bau_bang_ward_binh_duong_district">
+            <item>Thị trấn Lai Uyên</item>
+            <item>Thị trấn Tân Hưng</item>
+            <item>Xã Bàu Bàng</item>
+            <item>Xã Cây Trường II</item>
+            <item>Xã Định An</item>
+            <item>Xã Hưng Hòa</item>
+            <item>Xã Lai Hưng</item>
+            <item>Xã Lai Uyên</item>
+            <item>Xã Long Nguyên</item>
+            <item>Xã Tân Bình</item>
+            <item>Xã Tân Hiệp</item>
+            <item>Xã Tân Lập</item>
+            <item>Xã Tân Mỹ</item>
+            <item>Xã Thái Hòa</item>
+            <item>Xã Trừ Văn Thố</item>
+            <item>Xã Vĩnh Tân</item>
+        </string-array>
+
+    // thiếu
 
     <string-array name="array_binh_dinh_district">
         <item>Thành phố Quy Nhơn</item>
@@ -521,6 +1959,437 @@
         <item>Huyện Hóc Môn</item>
         <item>Huyện Nhà Bè</item>
     </string-array>
+
+    <string-array name="array_thu_duc_ward_ho_chi_minh_district">
+        <item>Hiệp Bình Chánh</item>
+        <item>Hiệp Bình Phước</item>
+        <item>Linh Chiểu</item>
+        <item>Linh Đông</item>
+        <item>Linh Tây</item>
+        <item>Linh Trung</item>
+        <item>Lộc Phát</item>
+        <item>Long Bình</item>
+        <item>Long Thạnh Mỹ</item>
+        <item>Phú Hữu</item>
+        <item>Phước Bình</item>
+        <item>Phước Long A</item>
+        <item>Phước Long B</item>
+        <item>Tam Bình</item>
+        <item>Tam Phú</item>
+        <item>Thạnh Mỹ Lợi</item>
+        <item>Thạnh Xuân</item>
+        <item>Trường Thọ</item>
+    </string-array>
+
+    <string-array name="array_quan_1_ward_ho_chi_minh_district">
+        <item>Phường Bến Nghé</item>
+        <item>Phường Bến Thành</item>
+        <item>Phường Cầu Kho</item>
+        <item>Phường Cầu Ông Lãnh</item>
+        <item>Phường Cô Giang</item>
+        <item>Phường Đa Kao</item>
+        <item>Phường Nguyễn Cư Trinh</item>
+        <item>Phường Nguyễn Thái Bình</item>
+        <item>Phường Phạm Ngũ Lão</item>
+        <item>Phường Tân Định</item>
+    </string-array>
+
+    <string-array name="array_quan_2_ward_ho_chi_minh_district">
+        <item>Phường An Khánh</item>
+        <item>Phường An Lợi Đông</item>
+        <item>Phường An Phú</item>
+        <item>Phường Bình An</item>
+        <item>Phường Bình Khánh</item>
+        <item>Phường Cát Lái</item>
+        <item>Phường Thạnh Mỹ Lợi</item>
+        <item>Phường Thảo Điền</item>
+    </string-array>
+
+    <string-array name="array_quan_3_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường 10</item>
+        <item>Phường 11</item>
+        <item>Phường 12</item>
+        <item>Phường 13</item>
+        <item>Phường 14</item>
+    </string-array>
+
+    <string-array name="array_quan_4_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường 10</item>
+        <item>Phường 12</item>
+        <item>Phường 13</item>
+        <item>Phường 14</item>
+        <item>Phường 15</item>
+        <item>Phường 16</item>
+        <item>Phường 18</item>
+    </string-array>
+
+    <string-array name="array_quan_5_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường 10</item>
+        <item>Phường 11</item>
+        <item>Phường 12</item>
+        <item>Phường 13</item>
+        <item>Phường 14</item>
+    </string-array>
+
+    <string-array name="array_quan_6_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường 10</item>
+        <item>Phường 11</item>
+        <item>Phường 12</item>
+        <item>Phường 13</item>
+        <item>Phường 14</item>
+    </string-array>
+
+    <string-array name="array_quan_7_ward_ho_chi_minh_district">
+        <item>Phường Phú Mỹ</item>
+        <item>Phường Tân Hưng</item>
+        <item>Phường Tân Kiểng</item>
+        <item>Phường Tân Phong</item>
+        <item>Phường Tân Phú</item>
+        <item>Phường Tân Quy</item>
+        <item>Phường Tân Thuận Đông</item>
+        <item>Phường Tân Thuận Tây</item>
+    </string-array>
+
+    <string-array name="array_quan_8_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường 10</item>
+        <item>Phường 11</item>
+        <item>Phường 12</item>
+        <item>Phường 13</item>
+        <item>Phường 14</item>
+        <item>Phường 15</item>
+        <item>Phường 16</item>
+        <item>Phường Bình Hưng Hòa</item>
+        <item>Phường Bình Hưng Hòa A</item>
+        <item>Phường Bình Hưng Hòa B</item>
+        <item>Phường Bình Trị Đông</item>
+        <item>Phường Bình Trị Đông A</item>
+        <item>Phường Bình Trị Đông B</item>
+        <item>Phường Tân Hưng Thuận</item>
+        <item>Phường Tân Hưng Thuận A</item>
+        <item>Phường Tân Hưng Thuận B</item>
+        <item>Phường Tân Quý</item>
+        <item>Phường Tân Quý Đông</item>
+        <item>Phường Tân Quý Tây</item>
+    </string-array>
+
+    <string-array name="array_quan_9_ward_ho_chi_minh_district">
+        <item>Phường Hiệp Phú</item>
+        <item>Phường Long Bình</item>
+        <item>Phường Long Phước</item>
+        <item>Phường Long Trường</item>
+        <item>Phường Phú Hữu</item>
+        <item>Phường Phước Bình</item>
+        <item>Phường Phước Long A</item>
+        <item>Phường Phước Long B</item>
+        <item>Phường Tân Phú</item>
+        <item>Phường Tăng Nhơn Phú A</item>
+        <item>Phường Tăng Nhơn Phú B</item>
+        <item>Phường Trường Thạnh</item>
+    </string-array>
+
+    <string-array name="array_quan_10_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường Bình Hưng Hoà</item>
+        <item>Phường Bình Thạnh</item>
+        <item>Phường Đa Kao</item>
+        <item>Phường Hoà Thạnh</item>
+    </string-array>
+
+    <string-array name="array_quan_11_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường 10</item>
+        <item>Phường 11</item>
+        <item>Phường 12</item>
+        <item>Phường 13</item>
+        <item>Phường 14</item>
+        <item>Phường 15</item>
+        <item>Phường 16</item>
+    </string-array>
+
+<!--    <string-array name="array_quan_12_ward_ho_chi_minh_district">-->
+<!--        <ward>Phường Bình Trị Đông</ward>-->
+<!--        <ward>Phường Bình Trị Đông A</ward>-->
+<!--        <ward>Phường Bình Trị Đông B</ward>-->
+<!--        <ward>Phường Tân Chánh Hiệp</ward>-->
+<!--        <ward>Phường Tân Hưng Thuận</ward>-->
+<!--        <ward>Phường Tân Thới Hiệp</ward>-->
+<!--        <ward>Phường Tân Thới Nhất</ward>-->
+<!--        <ward>Phường Thạnh Lộc</ward>-->
+<!--        <ward>Phường Thạnh Xuân</ward>-->
+<!--        <ward>Phường Thới An</ward>-->
+<!--        <ward>Phường Trung Mỹ Tây</ward>-->
+<!--        <ward>Phường Tân Sơn Nhì Đông</ward>-->
+<!--    </string-array>-->
+
+    <string-array name="array_binh_thanh_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 11</item>
+        <item>Phường 12</item>
+        <item>Phường Bình Khánh</item>
+        <item>Phường Bình Trị Đông</item>
+        <item>Phường Bình Trị Đông A</item>
+        <item>Phường Bình Trị Đông B</item>
+        <item>Phường Hiệp Bình Chánh</item>
+        <item>Phường Hiệp Bình Phước</item>
+        <item>Phường Linh Chiểu</item>
+        <item>Phường Linh Đông</item>
+        <item>Phường Linh Tây</item>
+        <item>Phường Linh Trung</item>
+        <item>Phường Long Bình</item>
+        <item>Phường Nguyễn Thái Bình</item>
+        <item>Phường Phú Nhuận</item>
+        <item>Phường Phú Thạnh</item>
+        <item>Phường Phú Trung</item>
+        <item>Phường Tân Định</item>
+        <item>Phường Tân Thành</item>
+        <item>Phường Tăng Nhơn Phú A</item>
+        <item>Phường Tăng Nhơn Phú B</item>
+        <item>Phường Trường Thạnh</item>
+    </string-array>
+
+    <string-array name="array_binh_tan_ward_ho_chi_minh_district">
+        <item>Phường An Lạc</item>
+        <item>Phường An Lạc A</item>
+        <item>Phường Bình Hưng Hòa</item>
+        <item>Phường Bình Hưng Hòa A</item>
+        <item>Phường Bình Hưng Hòa B</item>
+        <item>Phường Bình Trị Đông</item>
+        <item>Phường Bình Trị Đông A</item>
+        <item>Phường Tân Tạo</item>
+        <item>Phường Tân Tạo A</item>
+        <item>Phường Tân Tạo Đông</item>
+        <item>Phường Tân Thành</item>
+        <item>Phường Phú Lãm</item>
+        <item>Phường Phú Lâm</item>
+        <item>Phường Lê Minh Xuân</item>
+        <item>Phường Tân Quý Tây</item>
+        <item>Phường Tân Quý Đông</item>
+        <item>Phường Phạm Văn Hai</item>
+    </string-array>
+
+    <string-array name="array_go_vap_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường 10</item>
+        <item>Phường 11</item>
+        <item>Phường 12</item>
+        <item>Phường 13</item>
+        <item>Phường 14</item>
+        <item>Phường 15</item>
+    </string-array>
+
+    <string-array name="array_phu_nhuan_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường 10</item>
+        <item>Phường 11</item>
+        <item>Phường 13</item>
+        <item>Phường 14</item>
+        <item>Phường 15</item>
+        <item>Phường 17</item>
+    </string-array>
+
+    <string-array name="array_tan_binh_ward_ho_chi_minh_district">
+        <item>Phường 1</item>
+        <item>Phường 2</item>
+        <item>Phường 3</item>
+        <item>Phường 4</item>
+        <item>Phường 5</item>
+        <item>Phường 6</item>
+        <item>Phường 7</item>
+        <item>Phường 8</item>
+        <item>Phường 9</item>
+        <item>Phường 10</item>
+        <item>Phường 11</item>
+        <item>Phường 12</item>
+        <item>Phường Tân Bình</item>
+        <item>Phường Tân Thành</item>
+        <item>Phường Phú Thạnh</item>
+        <item>Phường Phú Trung</item>
+        <item>Phường Hiệp Tân</item>
+        <item>Phường Hoà Thạnh</item>
+    </string-array>
+
+    <string-array name="array_tan_phu_ward_ho_chi_minh_district">
+        <item>Phường Tân Sơn Nhì</item>
+        <item>Phường Tây Thạnh</item>
+        <item>Phường Sơn Kỳ</item>
+        <item>Phường Tân Quý</item>
+        <item>Phường Tân Thành</item>
+        <item>Phường Phú Thọ Hòa</item>
+        <item>Phường Phú Thạnh</item>
+        <item>Phường Phú Trung</item>
+        <item>Phường Hiệp Tân</item>
+        <item>Phường Hoà Thạnh</item>
+        <item>Phường Tân Thới Hòa</item>
+        <item>Phường Phú Thọ Hòa</item>
+        <item>Phường Phú Thọ Hoà</item>
+        <item>Phường Phú Trung</item>
+        <item>Phường Sơn Kỳ</item>
+        <item>Phường Tân Quý</item>
+        <item>Phường Tân Sơn Nhì</item>
+        <item>Phường Tây Thạnh</item>
+        <item>Phường Hiệp Tân</item>
+    </string-array>
+
+    <string-array name="array_binh_chanh_ward_ho_chi_minh_district">
+        <item>Phường Phú Mỹ</item>
+        <item>Phường Phạm Văn Hai</item>
+        <item>Phường Phong Phú</item>
+        <item>Phường Tân Kiên</item>
+        <item>Phường Tân Nhựt</item>
+        <item>Phường Tân Quý Tây</item>
+        <item>Phường Vĩnh Lộc A</item>
+        <item>Phường Vĩnh Lộc B</item>
+        <item>Phường Xuân Thới Sơn</item>
+        <item>Phường Xuân Thới Đông</item>
+        <item>Phường Hưng Long</item>
+        <item>Phường Bình Chánh</item>
+        <item>Phường Đa Phước</item>
+        <item>Phường Lê Minh Xuân</item>
+        <item>Phường Tân Túc</item>
+    </string-array>
+
+    <string-array name="array_can_gio_ward_ho_chi_minh_district">
+        <item>Phường An Thới Đông</item>
+        <item>Phường Bình Khánh</item>
+        <item>Phường Cần Thạnh</item>
+        <item>Phường Long Hòa</item>
+        <item>Phường Lý Nhơn</item>
+        <item>Phường Tam Thôn Hiệp</item>
+        <item>Phường Thạnh An</item>
+        <item>Phường Thạnh Lộc</item>
+        <item>Phường Thạnh Mỹ</item>
+        <item>Phường Tân Thới</item>
+    </string-array>
+
+    <string-array name="array_cu_chi_ward_ho_chi_minh_district">
+        <item>Phường Phú Mỹ Hưng</item>
+        <item>Phường An Phú</item>
+        <item>Phường An Nhơn Tây</item>
+        <item>Phường Bình Mỹ</item>
+        <item>Phường Củ Chi</item>
+        <item>Phường Hòa Phú</item>
+        <item>Phường Nhuận Đức</item>
+        <item>Phường Phạm Văn Cội</item>
+        <item>Phường Phú Hòa Đông</item>
+        <item>Phường Phú Mỹ</item>
+        <item>Phường Phước Hiệp</item>
+        <item>Phường Phước Thạnh</item>
+        <item>Phường Tân An Hội</item>
+        <item>Phường Tân Phú Trung</item>
+        <item>Phường Tân Thạnh Đông</item>
+        <item>Phường Tân Thạnh Tây</item>
+        <item>Phường Tân Thông Hội</item>
+        <item>Phường Thái Mỹ</item>
+        <item>Phường Trung Lập Hạ</item>
+        <item>Phường Trung Lập Thượng</item>
+    </string-array>
+
+    <string-array name="array_hoc_mon_ward_ho_chi_minh_district">
+        <item>Thị Trấn Hóc Môn</item>
+        <item>Xã An Nhơn Tây</item>
+        <item>Xã Bà Điểm</item>
+        <item>Xã Đông Thạnh</item>
+        <item>Xã Tân Hiệp</item>
+        <item>Xã Tân Thới Nhất</item>
+        <item>Xã Thới Tam Thôn</item>
+        <item>Xã Trung Chánh</item>
+        <item>Xã Xuân Thới Đông</item>
+        <item>Xã Xuân Thới Sơn</item>
+    </string-array>
+
+    <string-array name="array_nha_be_ward_ho_chi_minh_district">
+        <item>Xã Phú Xuân</item>
+        <item>Xã Phú Thuận</item>
+        <item>Xã Phước Kiển</item>
+        <item>Xã Phước Lộc</item>
+        <item>Xã Phước Hậu</item>
+        <item>Xã Nhơn Đức</item>
+        <item>Xã Hiệp Phước</item>
+        <item>Xã Long Thới</item>
+        <item>Xã Đông Thạnh</item>
+    </string-array>
+
 
     <string-array name="array_hau_giang_district">
         <item>TP. Vị Thanh</item>

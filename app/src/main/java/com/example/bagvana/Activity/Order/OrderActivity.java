@@ -143,8 +143,6 @@ public class OrderActivity extends AppCompatActivity {
         completeOrder();
 
         calBillCost();
-
-        calVoucherCost();
     }
 
     private void completeOrder() {
@@ -180,7 +178,7 @@ public class OrderActivity extends AppCompatActivity {
                         } else {
                             usedVoucher.put(voucher.getId(), discountCost);
                         }
-                        Log.e("voucher", String.valueOf(usedVoucher.get(voucher.getId())));
+
                     }
 
                     databaseReferenceOrder.child("usedVoucher").setValue(usedVoucher);
@@ -195,14 +193,20 @@ public class OrderActivity extends AppCompatActivity {
                     databaseReferenceOrder.child("userID").setValue(Utils._user.getId());
                     databaseReferenceOrder.child("paymentMethod").setValue(txt_delivery.getText().toString());
 
-
                 }
-
 
 
             }
         });
     }
+
+    public void onDestroy() {
+
+        super.onDestroy();
+        Utils._vouchersOfUser.clear();
+
+    }
+
 
     private void calVoucherCost() {
         voucherCost = 0;
@@ -233,20 +237,24 @@ public class OrderActivity extends AppCompatActivity {
                 } else {
 
                     int discount = billCost * voucher.getRange() / 100;
-                    voucherCost =  voucherCost + discount;
+
                     if(discount > voucher.getMaxValueDiscount()) {
                         discount = voucher.getMaxValueDiscount();
                     }
+
+                    voucherCost =  voucherCost + discount;
                     String money = "-" + discount;
                     discountCost = discount;
                     txt_voucherCost.setText(money);
                 }
             }
 
-            int totalCost = billCost + 30 - voucherCost;
-            txt_totalCost.setText(String.valueOf(totalCost));
-            txt_billCost.setText(txt_totalCost.getText().toString());
+            Log.e(voucher.getId(), String.valueOf(voucherCost));
         }
+        int totalCost = billCost + 30 - voucherCost;
+        Log.e("voucher", String.valueOf(voucherCost));
+        txt_totalCost.setText(String.valueOf(totalCost));
+        txt_billCost.setText(txt_totalCost.getText().toString());
     }
 
     private void showBottomSheetDialog() {
@@ -319,6 +327,7 @@ public class OrderActivity extends AppCompatActivity {
         }
         txt_productCost.setText(String.valueOf(billCost));
         int totalCost = billCost + 30 - voucherCost;
+        Log.e("Totalcost", String.valueOf(totalCost));
         txt_totalCost.setText(String.valueOf(totalCost));
         txt_billCost.setText(txt_totalCost.getText().toString());
     }
