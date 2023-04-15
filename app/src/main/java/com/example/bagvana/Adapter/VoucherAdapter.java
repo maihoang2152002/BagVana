@@ -105,9 +105,11 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.VoucherV
             switch (compareDate(voucher.getStart(),voucher.getEnd())) {
                 case 1:
                     holder.txt_description.setText("Sắp diễn ra");
+                    holder.btn_end.setVisibility(View.VISIBLE);
                     break;
                 case 0:
                     holder.txt_description.setText("Đang diễn ra");
+                    holder.btn_end.setVisibility(View.VISIBLE);
                     break;
                 case -1:
                     holder.txt_description.setText("Đã kết thúc");
