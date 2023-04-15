@@ -18,4 +18,6 @@
 
     <color name="dialog_color_1">#FDD736</color>
     <color name="dialog_color_2">#3B5796</color>
+    <color name="colorAccent">#CDDC39</color>
+    <color name="colorPurple">#4a148c</color>
 </resources>
