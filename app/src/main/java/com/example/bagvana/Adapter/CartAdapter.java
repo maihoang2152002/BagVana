@@ -93,7 +93,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         }
 
         // userID = 1
-        DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance().getReference("Cart").child("1");
+        DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance()
+                .getReference("Cart").child(Utils._user.getId());
         holder.txt_plus.setOnClickListener(new View.OnClickListener(){
 
             @Override
@@ -118,7 +119,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
 
         holder.txt_minus.setOnClickListener(new View.OnClickListener() {
 
-            DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance().getReference("Cart").child("1");
+            DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance().getReference("Cart").child(Utils._user.getId());
             @Override
             public void onClick(View view) {
                 int amountChanged = product.getAmount();

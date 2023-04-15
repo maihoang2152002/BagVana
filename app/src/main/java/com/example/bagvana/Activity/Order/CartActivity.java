@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Adapter.CartAdapter;
 import com.example.bagvana.DTO.EventBus.BillCostEvent;
 import com.example.bagvana.DTO.Product;
@@ -33,7 +35,7 @@ import java.util.ArrayList;
 public class CartActivity extends AppCompatActivity {
     private ArrayList<Product> productList;
     private CartAdapter cartAdapter;
-    private RecyclerView recycview_cart;
+    private RecyclerView recyclerview_cart;
     private TextView txt_billCost;
     private Button btn_order;
 
@@ -42,18 +44,27 @@ public class CartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        recycview_cart = findViewById(R.id.recycview_cart);
+        recyclerview_cart = findViewById(R.id.recycview_cart);
         txt_billCost = findViewById(R.id.txt_billCost);
         btn_order = findViewById(R.id.btn_order);
 
-        recycview_cart.setHasFixedSize(true);
-        recycview_cart.setLayoutManager(new LinearLayoutManager(this));
+        ImageView img_back;
+        img_back = findViewById(R.id.img_back);
+        img_back.setOnClickListener(v -> {
+            Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+
+        });
+
+        recyclerview_cart.setHasFixedSize(true);
+        recyclerview_cart.setLayoutManager(new LinearLayoutManager(this));
 
         productList = new ArrayList<>();
 
         cartAdapter = new CartAdapter(this, productList);
 
-        recycview_cart.setAdapter(cartAdapter);
+        recyclerview_cart.setAdapter(cartAdapter);
 
         initData();
 
@@ -79,7 +90,8 @@ public class CartActivity extends AppCompatActivity {
 
     private void initData() {
         // userID = 1
-        DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance().getReference("Cart").child("1");
+        DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance()
+                .getReference("Cart").child(Utils._user.getId());
         databaseReferenceCart.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

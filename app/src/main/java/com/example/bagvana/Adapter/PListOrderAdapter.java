@@ -36,7 +36,7 @@ public class PListOrderAdapter extends RecyclerView.Adapter<PListOrderAdapter.Ma
     @NonNull
     @Override
     public MainViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.single_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.single_item_delivered, parent, false);
         return new MainViewHolder(view);
     }
 

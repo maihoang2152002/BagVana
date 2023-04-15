@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
 import com.example.bagvana.Adapter.PListOrderAdapter;
+import com.example.bagvana.Adapter.ProductListAdapter;
 import com.example.bagvana.DTO.Order;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
@@ -24,6 +25,7 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
     private Order curOrder;
     private TextView orderID, orderDate, totalPrice, address, status;
     private PListOrderAdapter pListOrderAdapter;
+    private ProductListAdapter productListAdapter;
     private RecyclerView recyclerView;
     private Toolbar toolbar;
     ArrayList<Product> productArrayList;
@@ -47,13 +49,7 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
 
         orderID.setText("Order #" + curOrder.getOrderID());
         orderDate.setText("Date: " + curOrder.getOrderDate());
-        if (curOrder.getStatus().equals("1")) {
-            status.setText("Status: Processing");
-        } else if (curOrder.getStatus().equals("2")) {
-            status.setText("Status: In Delivery");
-        } else {
-            status.setText("Status: Delivered");
-        }
+
         totalPrice.setText("Total price: " + curOrder.getTotalPrice());
         address.setText("Address: " + curOrder.getReceiverInfo().getAddress());
 
@@ -65,10 +61,27 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
             Product temp = curOrder.getItemsOrdered().get(key);
             productArrayList.add(temp);
         }
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        pListOrderAdapter = new PListOrderAdapter(this, productArrayList, this);
 
-        recyclerView.setAdapter(pListOrderAdapter);
+        if (curOrder.getStatus().equals("1")) {
+            status.setText("Status: Processing");
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            productListAdapter = new ProductListAdapter(this, productArrayList, this);
+
+            recyclerView.setAdapter(productListAdapter);
+        } else if (curOrder.getStatus().equals("2")) {
+            status.setText("Status: In Delivery");
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            productListAdapter = new ProductListAdapter(this, productArrayList, this);
+
+            recyclerView.setAdapter(productListAdapter);
+        } else {
+            status.setText("Status: Delivered");
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            pListOrderAdapter = new PListOrderAdapter(this, productArrayList, this);
+
+            recyclerView.setAdapter(pListOrderAdapter);
+        }
+
     }
 
     @Override

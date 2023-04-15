@@ -55,26 +55,26 @@
             android:textColor="@color/black"
             android:textSize="22sp" />
 
-        <ImageView
-            android:id="@+id/tag_free"
-            android:layout_width="67dp"
-            android:layout_height="67dp"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            app:srcCompat="@drawable/tagfree" />
-
-        <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-        <!--            android:id="@+id/btn_rating"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
+        <!--        <ImageView-->
+        <!--            android:id="@+id/tag_free"-->
+        <!--            android:layout_width="67dp"-->
+        <!--            android:layout_height="67dp"-->
         <!--            android:layout_alignParentTop="true"-->
         <!--            android:layout_alignParentRight="true"-->
-        <!--            android:foregroundGravity="bottom|right|left"-->
-        <!--            android:src="@drawable/ic_rate_us"-->
+        <!--            app:srcCompat="@drawable/tagfree" />-->
 
-        <!--            app:pressedTranslationZ="12dp"-->
-        <!--            app:useCompatPadding="true"-->
-        <!--            tools:ignore="SpeakableTextPresentCheck" />-->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btn_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:foregroundGravity="bottom|right|left"
+            android:src="@drawable/ic_rate_us"
+
+            app:pressedTranslationZ="12dp"
+            app:useCompatPadding="true"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </RelativeLayout>
 

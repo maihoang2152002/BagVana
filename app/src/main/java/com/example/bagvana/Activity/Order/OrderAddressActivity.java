@@ -1,6 +1,5 @@
 package com.example.bagvana.Activity.Order;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,9 +28,9 @@ import java.util.ArrayList;
 
 public class OrderAddressActivity extends AppCompatActivity {
 
-    private ArrayList<ReceiverInfo> receiverInfos;
+    private ArrayList<ReceiverInfo> receiverInfo;
     private OrderAddressAdapter orderAddressAdapter;
-    private RecyclerView recycview_receiverInfo;
+    private RecyclerView recyclerview_receiverInfo;
     private LinearLayout linear_newOrderAddress;
     private Toolbar toolbar_order_address;
     @Override
@@ -42,17 +41,17 @@ public class OrderAddressActivity extends AppCompatActivity {
         toolbar_order_address = findViewById(R.id.toolbar_order_address);
         setSupportActionBar(toolbar_order_address);
 
-        recycview_receiverInfo = findViewById(R.id.recycview_receiverInfo);
+        recyclerview_receiverInfo = findViewById(R.id.recycview_receiverInfo);
         linear_newOrderAddress = findViewById(R.id.linear_newOrderAddress);
 
-        recycview_receiverInfo.setHasFixedSize(true);
-        recycview_receiverInfo.setLayoutManager(new LinearLayoutManager(this));
+        recyclerview_receiverInfo.setHasFixedSize(true);
+        recyclerview_receiverInfo.setLayoutManager(new LinearLayoutManager(this));
 
-        receiverInfos = new ArrayList<>();
+        receiverInfo = new ArrayList<>();
 
-        orderAddressAdapter = new OrderAddressAdapter((Context) this, receiverInfos);
+        orderAddressAdapter = new OrderAddressAdapter((Context) this, receiverInfo);
 
-        recycview_receiverInfo.setAdapter(orderAddressAdapter);
+        recyclerview_receiverInfo.setAdapter(orderAddressAdapter);
 
         initData();
 
@@ -71,13 +70,13 @@ public class OrderAddressActivity extends AppCompatActivity {
         databaseReferenceCart.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                receiverInfos.clear();
+                receiverInfo.clear();
                 int max = 1;
 
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
 
                     ReceiverInfo receiverInfo = dataSnapshot.getValue(ReceiverInfo.class);
-                    receiverInfos.add(receiverInfo);
+                    OrderAddressActivity.this.receiverInfo.add(receiverInfo);
                     if(max < Integer.parseInt(receiverInfo.getAddressID())) {
                         max = Integer.parseInt(receiverInfo.getAddressID());
                     }

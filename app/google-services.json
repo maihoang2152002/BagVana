@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "766395389186-70ca1btlr0b212k17795sivpfs453pvq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bagvana",
+            "certificate_hash": "3af7a7b1fbf32d90d30105e03e8a6b3d3f8a3131"
+          }
+        },
+        {
+          "client_id": "766395389186-j88jjpo4qn7qsbcc07kg0vs0n324s4ig.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.bagvana",
+            "certificate_hash": "616e5ea5e80192cb3901aca6b2c2f2c5d2d4dbf9"
+          }
+        },
+        {
           "client_id": "766395389186-0j52mpphufc0q7vt3nauf7rrg90b4ab5.apps.googleusercontent.com",
           "client_type": 3
         }

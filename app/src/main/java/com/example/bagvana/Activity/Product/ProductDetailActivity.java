@@ -3,12 +3,16 @@ package com.example.bagvana.Activity.Product;
 import static com.example.bagvana.Utils.Utils._user;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -22,10 +26,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Adapter.HomeAdapter;
 import com.example.bagvana.Adapter.ReviewAdapter;
 import com.example.bagvana.DTO.Comment;
+import com.example.bagvana.DTO.EventBus.BillCostEvent;
 import com.example.bagvana.DTO.Product;
+import com.example.bagvana.MainActivity;
 import com.example.bagvana.R;
 import com.example.bagvana.Utils.Utils;
 import com.example.bagvana.listeners.ItemListener;
@@ -37,13 +44,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.ArrayList;
 
 public class ProductDetailActivity extends AppCompatActivity implements ItemListener {
-    private ImageView imageSelected;
-    private ImageButton imageBtn_fav;
+    private ImageView imageSelected, txt_minus, txt_plus, btn_add_to_cart;
+    private ImageButton imageBtn_fav, imageBtn_share;
     Product curProduct;
-    TextView name, color, price, description;
+    TextView name, color, price, description, txt_amount;
 
     ArrayList<Comment> listComment;
     private Toolbar toolbar;
@@ -56,7 +65,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
     private HomeAdapter homeAdapter;
     private ArrayList<Product> productList;
 
-
     @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +76,14 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         imageBtn_fav = findViewById(R.id.imageBtn_fav);
-
+        imageBtn_share = findViewById(R.id.imageBtn_share);
 
         imageSelected = findViewById(R.id.img_selected);
+        txt_minus = findViewById(R.id.txt_minus);
+        txt_plus = findViewById(R.id.txt_plus);
+        txt_amount = findViewById(R.id.txt_amount);
+        btn_add_to_cart = findViewById(R.id.btn_add_to_cart);
+
         name = findViewById(R.id.name_product);
         color = findViewById(R.id.color_product);
         price = findViewById(R.id.price_product);
@@ -93,54 +106,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
                         break;
                     }
                 }
-
-//                DatabaseReference databaseReferenceProduct = FirebaseDatabase.getInstance().getReference("Product");
-//                Log.e("ProductID", "123");
-//
-//                databaseReferenceProduct.addValueEventListener(new ValueEventListener() {
-//                    @SuppressLint("NotifyDataSetChanged")
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                        Log.e("ProductID", "123");
-//
-//                        for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//
-//                            Product temp = dataSnapshot.getValue(Product.class);
-//
-//                            if(params[params.length-1].equals(temp.getProductID())) {
-//                                curProduct = temp;
-//                                break;
-//                            }
-//
-//                        }
-//
-////                        homeAdapter.notifyDataSetChanged();
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
-
-//                DatabaseReference databaseReferenceProduct = FirebaseDatabase.getInstance().getReference("Product");
-//                databaseReferenceProduct.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<DataSnapshot> task) {
-//                        Log.e("ProductID", params[params.length-1]);
-//
-//                        if (task.isSuccessful()) {
-//                            for (DataSnapshot ds : task.getResult().getChildren()) {
-//                                String productId_Fb = ds.child("productID").getValue(String.class);
-//                                if(params[params.length-1].equals(productId_Fb)) {
-//                                    curProduct = ds.getValue(Product.class);
-//                                    break;
-//                                }
-//                            }
-//                            Log.e("productName", String.valueOf(curProduct.getPrice()));
-//                        }
-//                    }
-//                });
             }
         }
 
@@ -163,7 +128,14 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
                 databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).removeValue();
             }
         });
-
+        imageBtn_share.setOnClickListener(v -> {
+            final String appPakageName = ProductDetailActivity.this.getPackageName();
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, curProduct.getName() + " : https://example.com/product/" + curProduct.getProductID() );
+            sendIntent.setType("text/plain");
+            ProductDetailActivity.this.startActivity(sendIntent);
+        });
         price.setText("$" + curProduct.getPrice());
         description.setText(curProduct.getDescription());
         name.setText(curProduct.getName());
@@ -173,6 +145,40 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
                 .into(imageSelected);
 
         description.setOnClickListener(v -> toggleTextView(description));
+
+        txt_plus.setOnClickListener(view -> {
+            int amountChanged = Integer.parseInt(String.valueOf(txt_amount.getText()));
+            amountChanged = amountChanged + 1 ;
+            txt_amount.setText(String.valueOf(amountChanged));
+            curProduct.setAmount(amountChanged);
+        });
+
+        txt_minus.setOnClickListener(view -> {
+            int amountChanged = Integer.parseInt(String.valueOf(txt_amount.getText()));
+            if (amountChanged == 1) {
+                return;
+            }
+            else {
+                amountChanged = amountChanged - 1;
+                txt_amount.setText(String.valueOf(amountChanged));
+                curProduct.setAmount(amountChanged); //add to fire-base
+            }
+        });
+
+        btn_add_to_cart.setOnClickListener(view -> {
+            int amount = Integer.parseInt(String.valueOf(txt_amount.getText()));
+
+            curProduct.setAmount(amount);
+
+            FirebaseDatabase database = FirebaseDatabase.getInstance();
+            DatabaseReference myRef = database.getReference("Cart")
+                    .child(_user.getId());
+
+            // Push new data to the database
+//                String data = "Hello, Firebase!";
+            myRef.child(curProduct.getProductID()).setValue(curProduct);
+
+        });
 
         listComment = new ArrayList<>();
 
@@ -235,7 +241,14 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
     public void setSupportActionBar(Toolbar toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(view -> finish());
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProductDetailActivity.this, HomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void toggleTextView(TextView textView) {
