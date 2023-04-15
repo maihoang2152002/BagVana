@@ -32,7 +32,6 @@ import com.example.bagvana.Adapter.ReviewAdapter;
 import com.example.bagvana.DTO.Comment;
 import com.example.bagvana.DTO.EventBus.BillCostEvent;
 import com.example.bagvana.DTO.Product;
-import com.example.bagvana.MainActivity;
 import com.example.bagvana.R;
 import com.example.bagvana.Utils.Utils;
 import com.example.bagvana.listeners.ItemListener;
