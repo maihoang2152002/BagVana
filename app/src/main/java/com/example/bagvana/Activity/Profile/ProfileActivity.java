@@ -23,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.example.bagvana.Activity.OrderList.OrderListActivity;
+import com.example.bagvana.Activity.Product.ProductDetailActivity;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -100,6 +101,7 @@ public class ProfileActivity extends AppCompatActivity {
                             uri = data.getData();
                             img_avatar.setImageURI(uri);
                             saveData();
+
                         } else {
                             Toast.makeText(ProfileActivity.this, "No Image Selected", Toast.LENGTH_SHORT).show();
                         }
@@ -112,6 +114,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent photoPicker = new Intent(Intent.ACTION_PICK);
                 photoPicker.setType("image/*");
                 activityResultLauncher.launch(photoPicker);
+
             }
         });
 
