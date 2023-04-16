@@ -66,7 +66,6 @@ public class SignUpActivity extends AppCompatActivity {
         final CountryCodePicker ccp_su = (CountryCodePicker) findViewById(R.id.ccp);
         ccp_su.registerCarrierNumberEditText(numberPhone);
 
-        Product finalTemp = temp;
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -118,7 +117,10 @@ public class SignUpActivity extends AppCompatActivity {
                                     intent.putExtra("id",id);
                                     intent.putExtra("username", usernameTxt);
                                     intent.putExtra("password", passwordTxt);
-                                    intent.putExtra("GetProductFromDeepLink", finalTemp);
+                                    if (getIntent().hasExtra("GetProductFromDeepLink")) {
+                                        Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+                                        intent.putExtra("GetProductFromDeepLink", temp);
+                                    }
                                     startActivity(intent);
                                 }
                                 else{

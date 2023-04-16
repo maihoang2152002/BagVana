@@ -133,7 +133,7 @@ public class OTPActivity extends AppCompatActivity {
                                     databasReference.child(id).setValue(user);
 
                                     Intent intent = new Intent(OTPActivity.this,SignInActivity.class);
-                                    Product temp = new Product();
+                                    Product temp;
                                     if (getIntent().hasExtra("GetProductFromDeepLink")) {
                                         temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
                                         intent.putExtra("GetProductFromDeepLink", temp);
