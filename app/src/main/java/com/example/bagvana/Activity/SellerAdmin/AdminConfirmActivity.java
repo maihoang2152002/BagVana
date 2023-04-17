@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class AdminConfirmActivity extends AppCompatActivity implements ItemListener {
 
@@ -31,7 +33,6 @@ public class AdminConfirmActivity extends AppCompatActivity implements ItemListe
     private OrderListAdapter orderListAdapter;
     private ArrayList<Order> orderList;
     private Toolbar toolbar;
-    private String status;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,19 +47,24 @@ public class AdminConfirmActivity extends AppCompatActivity implements ItemListe
 
         orderList = new ArrayList<>();
 
-        status = getIntent().getStringExtra("status");
 
         DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Order");
-        databaseReferenceHome.addValueEventListener(new ValueEventListener() {
+        databaseReferenceHome.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                orderList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Order order = dataSnapshot.getValue(Order.class);
                         orderList.add(order);
                 }
-
+                Collections.sort(orderList, new Comparator<Order>() {
+                    @Override
+                    public int compare(Order o1, Order o2) {
+                        return Integer.compare(Integer.parseInt(o1.getStatus()), Integer.parseInt(o2.getStatus()));
+                    }
+                });
                 orderListAdapter.notifyDataSetChanged();
             }
 
@@ -67,6 +73,7 @@ public class AdminConfirmActivity extends AppCompatActivity implements ItemListe
 
             }
         });
+
 
         orderListAdapter = new OrderListAdapter(this, orderList, this);
         recyclerView.setAdapter(orderListAdapter);

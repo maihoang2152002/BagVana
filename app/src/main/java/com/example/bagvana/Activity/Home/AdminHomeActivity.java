@@ -6,7 +6,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.bagvana.Activity.OrderList.OrderDetailActivity;
 import com.example.bagvana.Activity.SellerAdmin.AddProductActivity;
+import com.example.bagvana.Activity.SellerAdmin.AdminConfirmActivity;
 import com.example.bagvana.Activity.SellerAdmin.StatisticsActivity;
 import com.example.bagvana.R;
 
@@ -50,6 +52,8 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         card_confirm.setOnClickListener(v -> {
             // code in here
+            Intent intent = new Intent(AdminHomeActivity.this, AdminConfirmActivity.class);
+            startActivity(intent);
         });
 
         card_settings.setOnClickListener(v -> {
