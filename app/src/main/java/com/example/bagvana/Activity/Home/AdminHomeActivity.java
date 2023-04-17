@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.bagvana.Activity.SellerAdmin.AddProductActivity;
 import com.example.bagvana.Activity.SellerAdmin.StatisticsActivity;
 import com.example.bagvana.R;
 
@@ -34,6 +35,9 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         card_add.setOnClickListener(v -> {
             // code in here
+            Intent myIntent = new Intent(AdminHomeActivity.this, AddProductActivity.class);
+//                myIntent.putExtras(myBundle);
+            startActivity(myIntent);
         });
 
         card_remove.setOnClickListener(v -> {

@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bagvana.Activity.Chatbot.ChatActivity;
+import com.example.bagvana.Activity.Home.AdminHomeActivity;
 import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
 import com.example.bagvana.DTO.Product;
@@ -155,6 +156,10 @@ public class SignInActivity extends AppCompatActivity {
                                 Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
                                 Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
                                 intent.putExtra("product", temp);
+                                startActivity(intent);
+                            }
+                            else if(_user.getTypeUser().equals("2")){
+                                Intent intent = new Intent(SignInActivity.this, AdminHomeActivity.class);
                                 startActivity(intent);
                             }
                             else {

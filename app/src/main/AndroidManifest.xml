@@ -102,6 +102,9 @@
             android:exported="true"/>
 
         <activity
+            android:name=".Activity.Home.AdminHomeActivity"
+            android:exported="true"/>
+        <activity
             android:name=".Activity.SellerAdmin.AddProductActivity"
             android:exported="true"/>
         <activity
@@ -109,6 +112,7 @@
             android:exported="true"/>
 
         <activity
+
             android:name=".Activity.SellerAdmin.CreateVoucherActivity"
             android:exported="true"/>
 

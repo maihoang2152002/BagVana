@@ -8,14 +8,58 @@
     android:orientation="vertical"
     android:background="@color/white"
     tools:context=".Activity.SellerAdmin.AddProductActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar_layout"
+        android:background="@drawable/chat_input_bg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+        <Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_bg"
+            android:elevation="4dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:background="@drawable/toolbar_bg"
+            android:src="@drawable/ic_back"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/textName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_8sdp"
+            android:layout_marginLeft="@dimen/_25sdp"
+            android:layout_marginEnd="@dimen/_8sdp"
+            android:text="Thêm sản phẩm mới"
+            android:textSize="@dimen/_20sdp"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/_25sdp"
+            android:textColor="@color/black" />
+        </Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        app:layout_constraintEnd_toStartOf="@+id/bar_layout"
+        app:layout_constraintTop_toBottomOf="@+id/bar_layout">
+
         <LinearLayout
+            android:layout_marginTop="@dimen/_16sdp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
+
             <RelativeLayout
                 android:id="@+id/imageLayout"
                 android:layout_width="match_parent"
@@ -34,193 +78,150 @@
                     app:maxImageSize="70dp" />
             </RelativeLayout>
 
+            <Button
+                android:id="@+id/selectImageBtn"
+                android:layout_width="176dp"
+                android:layout_height="wrap_content"
+                android:text="Chọn ảnh"
+                android:textAlignment="center" />
 
-            <LinearLayout
-                android:textAlignment="center"
-
-                android:layout_width="350dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginStart="50dp">
-                <Button
-                    android:textAlignment="center"
-
-                    android:id="@+id/selectImageBtn"
-                    android:layout_width="176dp"
-                    android:layout_height="wrap_content"
-                    android:text="Chọn ảnh" />
-
-
-
-            </LinearLayout>
 
             <EditText
                 android:id="@+id/name_product"
-                android:layout_width="350dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/_270sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginStart="50dp"
-                android:paddingStart="5dp"
+                android:background="@drawable/input_bg"
                 android:gravity="start|center_vertical"
                 android:hint="Tên sản phẩm"
                 android:inputType="text"
-                android:textColor="@android:color/black"
-                android:background="@drawable/input_bg"/>
+                android:paddingStart="5dp"
+                android:textColor="@android:color/black" />
 
-<!--            <LinearLayout-->
-<!--                android:layout_width="350dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:layout_marginEnd="50dp"-->
-<!--                android:layout_marginStart="50dp">-->
-<!--                <TextView-->
-<!--                    android:layout_width="100dp"-->
-<!--                    android:layout_height="50dp"-->
-<!--                    android:paddingStart="5dp"-->
-<!--                    android:text="Màu sắc: "-->
-<!--                    android:gravity="start|center_vertical"-->
-<!--                    android:textColor="@android:color/black"-->
-<!--                    android:background="@drawable/input_bg"-->
-<!--                    android:textSize="17dp"/>-->
 
-<!--                <Spinner-->
-<!--                    android:id="@+id/color_product"-->
-<!--                    android:layout_width="250dp"-->
-<!--                    android:layout_height="match_parent"-->
-<!--                    android:paddingStart="100dp"-->
-<!--                    android:gravity="start|center_vertical"-->
-<!--                    android:hint="Category"-->
-<!--                    android:textColor="@android:color/black"-->
-<!--                    android:background="@drawable/input_bg"-->
-<!--                    android:spinnerMode="dropdown"/>-->
-<!--            </LinearLayout>-->
             <EditText
                 android:id="@+id/color_product"
-                android:layout_width="350dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/_270sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginStart="50dp"
-                android:paddingStart="5dp"
+                android:background="@drawable/input_bg"
                 android:gravity="start|center_vertical"
                 android:hint="Màu sắc"
-                android:textColor="@android:color/black"
-                android:background="@drawable/input_bg"/>
+                android:paddingStart="5dp"
+                android:textColor="@android:color/black" />
+
             <LinearLayout
-                android:layout_width="350dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/_270sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginStart="50dp">
+                android:layout_marginEnd="50dp">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="50dp"
+                    android:background="@drawable/input_bg"
+                    android:gravity="start|center_vertical"
                     android:paddingStart="5dp"
                     android:text="Giá tiền: "
-                    android:gravity="start|center_vertical"
                     android:textColor="@android:color/black"
-                    android:background="@drawable/input_bg"
-                    android:textSize="17dp"/>
+                    android:textSize="17dp" />
+
                 <EditText
                     android:id="@+id/price_product"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
 
-                    android:paddingStart="5dp"
+                    android:background="@drawable/input_bg"
+                    android:digits="0123456789"
                     android:gravity="start|center_vertical"
                     android:hint="Giá tiền"
-                    android:text="0"
                     android:inputType="number"
-                    android:digits="0123456789"
-                    android:textColor="@android:color/black"
-                    android:background="@drawable/input_bg"/>
+                    android:paddingStart="5dp"
+                    android:text="0"
+                    android:textColor="@android:color/black" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="350dp"
-                android:layout_height="50dp"
+                android:layout_width="@dimen/_270sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="50dp"
-                android:layout_marginStart="50dp">
+                android:layout_marginEnd="50dp">
+
                 <TextView
                     android:layout_width="100dp"
                     android:layout_height="50dp"
+                    android:background="@drawable/input_bg"
+                    android:gravity="start|center_vertical"
                     android:paddingStart="5dp"
                     android:text="Số lượng : "
-                    android:gravity="start|center_vertical"
                     android:textColor="@android:color/black"
-                    android:background="@drawable/input_bg"
-                    android:textSize="17dp"/>
+                    android:textSize="17dp" />
+
                 <EditText
                     android:id="@+id/quantity_product"
                     android:layout_width="250dp"
                     android:layout_height="50dp"
 
-                    android:text="0"
-                    android:paddingStart="5dp"
+                    android:background="@drawable/input_bg"
+                    android:digits="0123456789"
                     android:gravity="start|center_vertical"
                     android:hint="Số lượng"
                     android:inputType="number"
-                    android:digits="0123456789"
-                    android:textColor="@android:color/black"
-                    android:background="@drawable/input_bg"/>
+                    android:paddingStart="5dp"
+                    android:text="0"
+                    android:textColor="@android:color/black" />
 
             </LinearLayout>
 
             <ScrollView
-                android:scrollbarAlwaysDrawHorizontalTrack="true"
-                android:fillViewport="true"
+                android:layout_width="@dimen/_270sdp"
+                android:layout_height="@dimen/_200sdp"
+                android:layout_marginStart="50dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="50dp"
-                android:layout_marginStart="50dp"
-                android:layout_width="350dp"
-                android:layout_height="@dimen/_250sdp">
+                android:fillViewport="true"
+                android:scrollbarAlwaysDrawHorizontalTrack="true">
 
                 <EditText
                     android:id="@+id/description_product"
                     android:layout_width="350dp"
                     android:layout_height="150dp"
 
-                    android:paddingStart="5dp"
+                    android:background="@drawable/input_bg"
                     android:gravity="start"
                     android:hint="Mô tả sản phẩm"
                     android:inputType="textMultiLine"
-                    android:textColor="@android:color/black"
-                    android:background="@drawable/input_bg"/>
+                    android:paddingStart="5dp"
+                    android:textColor="@android:color/black" />
 
             </ScrollView>
-
-            <RelativeLayout
-                android:id="@+id/btnLayout"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/addBtn"
+                android:layout_width="@dimen/_270sdp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="30dp">
+                android:layout_alignParentStart="true"
+                android:text="Add product"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_18sdp" />
 
-                <Button
-                    android:id="@+id/addBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:text="Add product"
-                    android:textColor="@color/white"
-                    android:textSize="17dp" />
+            <Button
+                android:id="@+id/cancelBtn"
+                android:layout_width="@dimen/_270sdp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Cancel"
+                android:textColor="@color/white"
+                android:textSize="17dp" />
 
-                <Button
-                    android:id="@+id/cancelBtn"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="374dp"
-
-                    android:text="Cancel"
-                    android:textColor="@color/white"
-                    android:textSize="17dp" />
-            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
