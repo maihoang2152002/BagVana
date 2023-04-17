@@ -51,7 +51,7 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
         status = getIntent().getStringExtra("status");
 
         DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Order");
-        databaseReferenceHome.addValueEventListener(new ValueEventListener() {
+        databaseReferenceHome.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
