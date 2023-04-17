@@ -41,7 +41,7 @@ public class ShareProcessingActivity extends AppCompatActivity {
             DatabaseReference databaseReferenceProduct = FirebaseDatabase.getInstance().getReference("Product");
             Log.e("ProductID", "123");
 
-            databaseReferenceProduct.addValueEventListener(new ValueEventListener() {
+            databaseReferenceProduct.addListenerForSingleValueEvent(new ValueEventListener() {
                 @SuppressLint("NotifyDataSetChanged")
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {

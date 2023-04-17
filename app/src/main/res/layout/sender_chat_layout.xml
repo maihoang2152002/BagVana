@@ -2,6 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:layout_marginLeft="50dp"
+    android:layout_marginRight="@dimen/_10sdp"
+    android:outlineSpotShadowColor="@color/black"
     android:padding="2dp">
 
     <RelativeLayout
@@ -9,13 +11,13 @@
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:background="@drawable/sender_chat"
-        android:id="@+id/layoutformessage"
-        >
+
+        android:id="@+id/layoutformessage">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:text="fhsdkfjhdfknkfhsdfkjas"
             android:textSize="18sp"
             android:textColor="@color/black"
             android:paddingLeft="7dp"

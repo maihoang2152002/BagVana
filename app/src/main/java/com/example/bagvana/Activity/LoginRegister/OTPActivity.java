@@ -1,5 +1,7 @@
 package com.example.bagvana.Activity.LoginRegister;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -40,6 +42,7 @@ public class OTPActivity extends AppCompatActivity {
     DatabaseReference databasReference; // = FirebaseDatabase.getInstance().getReferenceFromUrl("https://bagvana-7335c-default-rtdb.firebaseio.com/");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpactivity);
         mAuth = FirebaseAuth.getInstance();
@@ -67,9 +70,6 @@ public class OTPActivity extends AppCompatActivity {
 //                 forgotpassword
                 PhoneAuthCredential credential = PhoneAuthProvider.getCredential(otpid,otp.getText().toString());
                 signInWithPhoneAuthCredential(credential);
-
-
-
 
             }
 
@@ -138,6 +138,8 @@ public class OTPActivity extends AppCompatActivity {
                                         temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
                                         intent.putExtra("GetProductFromDeepLink", temp);
                                     }
+//                                    noticeSuccess();
+
                                     startActivity(intent);
 
                                 } catch (NoSuchAlgorithmException e) {
@@ -160,6 +162,17 @@ public class OTPActivity extends AppCompatActivity {
                     }
                 });
     }
+//    private void noticeSuccess(){
+//        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+//        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//            }
+//        });
+//        alert.setMessage("Tạo tài khoản thành công ");
+//        alert.show();
+//    }
 
 
 

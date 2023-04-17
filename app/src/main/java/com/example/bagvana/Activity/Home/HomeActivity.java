@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import com.andremion.counterfab.CounterFab;
 import com.example.bagvana.Activity.Chatbot.ChatActivity;
 import com.example.bagvana.Activity.LoginRegister.SignInActivity;
 import com.example.bagvana.Activity.Order.CartActivity;
@@ -34,7 +36,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     NavigationView navigationView;
     Toolbar toolbar;
     Menu menu;
+    CounterFab counterFabChat, counterFabCart;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +46,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
+        counterFabChat = (CounterFab) findViewById(R.id.btnChat);
 //        textView = findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
 
@@ -60,7 +65,14 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         menu = navigationView.getMenu();
 //        menu.findItem(R.id.ic_logout).setVisible(false);
 //        menu.findItem(R.id.ic_account).setVisible(false);
-
+        counterFabChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
+//                myIntent.putExtras(myBundle);
+                startActivity(intent);
+            }
+        });
         SearchView searchView = findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

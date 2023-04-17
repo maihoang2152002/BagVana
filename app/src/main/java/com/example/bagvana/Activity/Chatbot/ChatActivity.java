@@ -2,6 +2,8 @@ package com.example.bagvana.Activity.Chatbot;
 
 import static com.example.bagvana.Utils.Utils._user;
 
+import android.annotation.SuppressLint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -13,7 +15,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.bagvana.Activity.SellerAdmin.UpdateProductActivity;
 import com.example.bagvana.R;
+import com.example.bagvana.databinding.ActivityChatBinding;
 import com.example.bagvana.fragments.ChatsFragment;
 import com.example.bagvana.fragments.UsersFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -23,17 +29,21 @@ import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatActivity extends AppCompatActivity {
+    ActivityChatBinding binding;
     CircleImageView profile_avt;
+
     TextView username;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_chat);
-        profile_avt = (CircleImageView) findViewById(R.id.profile_image);
+        profile_avt = (CircleImageView) findViewById(R.id.profileImage);
         username = (TextView) findViewById(R.id.txtNameUser);
 
         username.setText(_user.getFullname());
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());

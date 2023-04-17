@@ -4,49 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_chat"
+    android:background="#F6F6F4"
     tools:context=".Activity.Chatbot.ChatActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/bar_layout"
+        android:background="@drawable/chat_input_bg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolBar"
+        <Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-
-            android:layout_height="wrap_content"/>
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="@dimen/_30sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:id="@+id/profile_image"
-            />
-        <TextView
-            android:id="@+id/textName"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_8sdp"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="1"
+            android:background="@drawable/toolbar_bg"
+            android:elevation="4dp">
 
-            android:textColor="@color/black"
-            android:textStyle="bold"/>
+           <ImageButton
+               android:id="@+id/btnBack"
+               android:background="@drawable/toolbar_bg"
+               android:src="@drawable/ic_back"
+               android:layout_marginRight="@dimen/_16sdp"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"/>
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:src="@drawable/ic_profile"
+                app:civ_border_color="#ccc"
+                app:civ_border_width="@dimen/_1sdp" />
+
+            <TextView
+                android:id="@+id/textName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginLeft="@dimen/_25sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+
+                android:textSize="@dimen/_16sdp"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/_25sdp"
+                android:textColor="@color/black" />
+
+        </Toolbar>
 
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycle_view"
+        android:background="@drawable/toolbar_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/bar_layout"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_16sdp"
         android:layout_above="@+id/bottom"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
         />
 
     <RelativeLayout
@@ -59,18 +78,18 @@
 
         <EditText
             android:id="@+id/inputMessage"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_40sdp"
-
-            android:background="@drawable/chat_input_bg"
+            android:layout_width="342dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="7dp"
+            android:layout_toStartOf="@+id/btn_send"
+            android:background="@drawable/input_message_bg"
             android:importantForAutofill="no"
             android:inputType="text"
             android:paddingStart="@dimen/_16sdp"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/black" />
         <ImageButton
             android:id="@+id/btn_send"
-            android:background="@color/white"
+            android:background="@drawable/chat_input_bg"
             android:layout_alignParentRight="true"
             android:layout_width="@dimen/_40sdp"
             android:layout_height="@dimen/_40sdp"

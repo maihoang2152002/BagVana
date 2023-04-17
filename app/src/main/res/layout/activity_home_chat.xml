@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -10,33 +11,36 @@
         android:layout_height="wrap_content">
 
         <Toolbar
-            android:id ="@+id/toolbar"
-            android:background="@color/blue"
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/profile_image"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/toolbar_bg"
+            android:elevation="4dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/profileImage"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginBottom="@dimen/_8sdp"
                 android:src="@drawable/ic_profile"
-                app:civ_border_width="2dp"
-                app:civ_border_color="#FF000000"/>
+                app:civ_border_color="#ccc"
+                app:civ_border_width="@dimen/_1sdp" />
 
             <TextView
                 android:id="@+id/txtNameUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_25sdp"
-                android:paddingLeft="@dimen/_25sdp"
                 android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginLeft="@dimen/_25sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
+                android:text="sdgsgsfgdsfsdsdf"
+                android:textSize="@dimen/_16sdp"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
-
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
+                android:paddingLeft="@dimen/_25sdp"
+                android:textColor="@color/black" />
 
         </Toolbar>
 
@@ -44,18 +48,19 @@
     </com.google.android.material.appbar.AppBarLayout>
     <com.google.android.material.tabs.TabLayout
         android:id = "@+id/tab_layout"
-        android:background="@color/blue"
-        app:tabSelectedTextColor="@color/white"
-        app:tabIndicatorColor="@color/white"
-        app:tabTextColor="@color/white"
+        android:background="@drawable/toolbar_bg"
+        app:tabSelectedTextColor="#118FFF"
+        app:tabIndicatorColor="#118FFF"
+        app:tabTextColor="@color/blue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/chat_input_bg"
         />
+
 
 </LinearLayout>
