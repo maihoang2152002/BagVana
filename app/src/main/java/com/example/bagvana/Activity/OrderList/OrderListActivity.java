@@ -72,6 +72,8 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
             }
         });
 
+
+
         orderListAdapter = new OrderListAdapter(this, orderList, this);
         recyclerView.setAdapter(orderListAdapter);
     }
