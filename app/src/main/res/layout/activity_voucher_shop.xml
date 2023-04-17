@@ -1,72 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     tools:context=".Activity.SellerAdmin.VoucherShopActivity">
 
-    <android.widget.Toolbar
-        android:id="@+id/toolbar_voucher"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:title="Payment Order">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
+        <android.widget.Toolbar
+            android:id="@+id/toolbar_voucher"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Mã giảm giá của cửa hàng"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
-    </android.widget.Toolbar>
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:title="Payment Order">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/txt_activeVoucher"
-            android:layout_width="205dp"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Mã giảm giá của cửa hàng"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+        </android.widget.Toolbar>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/txt_activeVoucher"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Đang hoạt động"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+            <TextView
+                android:id="@+id/txt_usedVoucher"
+                android:layout_width="205dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Đã kết thúc"
+                android:textColor="@color/black"
+                android:textSize="15sp"/>
+        </LinearLayout>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycview_voucher"
+            android:layout_width="match_parent"
+            android:layout_height="635dp"
+            android:layout_marginTop="5dp"
+            android:background="@color/grey"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="Đang hoạt động"
-            android:textColor="@color/black"
-            android:textSize="15sp"/>
-        <TextView
-            android:id="@+id/txt_usedVoucher"
-            android:layout_width="205dp"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="Đã kết thúc"
-            android:textColor="@color/black"
-            android:textSize="15sp"/>
+            android:layout_margin="2dp"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button
+                android:id="@+id/btn_create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tạo voucher mới"
+                android:backgroundTint="@color/blue"/>
+
+        </LinearLayout>
+
     </LinearLayout>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycview_voucher"
-        android:layout_width="match_parent"
-        android:layout_height="635dp"
-        android:layout_marginTop="5dp"
-        android:background="@color/grey"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/btn_create"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tạo voucher mới"
-            android:backgroundTint="@color/blue"/>
-
-    </LinearLayout>
-
-
-
-</LinearLayout>
+</ScrollView>

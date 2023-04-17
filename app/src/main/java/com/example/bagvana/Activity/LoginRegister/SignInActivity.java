@@ -138,7 +138,7 @@ public class SignInActivity extends AppCompatActivity {
             //            database = FirebaseDatabase.getInstance();
             databasReference = FirebaseDatabase.getInstance().getReference().child("User");
 
-            databasReference.addValueEventListener(new ValueEventListener() {
+            databasReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     boolean existUser = false;
