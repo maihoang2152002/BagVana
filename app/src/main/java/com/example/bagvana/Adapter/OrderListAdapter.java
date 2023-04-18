@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bagvana.DTO.Order;
@@ -51,10 +52,13 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Main
         holder.orderDate.setText("Date: " + order.getOrderDate());
         if (Objects.equals(order.getStatus(), "1")) {
             holder.status.setText("Status: Processing");
+            holder.status.setTextColor(ContextCompat.getColor(context, R.color.yellow));
         } else if (Objects.equals(order.getStatus(), "2")) {
             holder.status.setText("Status: In Delivery");
+            holder.status.setTextColor(ContextCompat.getColor(context, R.color.blue));
         } else {
             holder.status.setText("Status: Delivered");
+            holder.status.setTextColor(ContextCompat.getColor(context, R.color.green));
         }
         holder.totalPrice.setText("Total price: " + order.getTotalPrice());
     }

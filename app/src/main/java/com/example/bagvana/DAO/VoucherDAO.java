@@ -93,11 +93,15 @@ public class VoucherDAO {
                 for(DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     Order order = dataSnapshot.getValue(Order.class);
 
-                    Set<String> voucherIDSet = order.getUsedVoucher().keySet();
-                    for(String voucherID: voucherIDSet) {
-                        if(voucherID.equals(voucher.getId())) {
-                            count += 1;
+                    if (order.getUsedVoucher() != null) {
+
+                        Set<String> voucherIDSet = order.getUsedVoucher().keySet();
+                        for (String voucherID : voucherIDSet) {
+                            if (voucherID.equals(voucher.getId())) {
+                                count += 1;
+                            }
                         }
+
                     }
                 }
 

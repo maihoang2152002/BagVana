@@ -7,7 +7,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.bagvana.Activity.SellerAdmin.AddProductActivity;
+import com.example.bagvana.Activity.SellerAdmin.AdminConfirmActivity;
+import com.example.bagvana.Activity.SellerAdmin.CreateVoucherActivity;
 import com.example.bagvana.Activity.SellerAdmin.StatisticsActivity;
+import com.example.bagvana.Activity.SellerAdmin.UpdateProductActivity;
+import com.example.bagvana.Activity.SellerAdmin.VoucherShopActivity;
 import com.example.bagvana.DTO.EventBus.VoucherCostEvent;
 import com.example.bagvana.R;
 
@@ -47,15 +51,20 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         card_edit.setOnClickListener(v -> {
             // code in here
+            Intent myIntent = new Intent(AdminHomeActivity.this, UpdateProductActivity.class);
+//                myIntent.putExtras(myBundle);
+            startActivity(myIntent);
         });
 
         card_confirm.setOnClickListener(v -> {
             // code in here
+            Intent intent = new Intent(AdminHomeActivity.this, AdminConfirmActivity.class);
+            startActivity(intent);
         });
 
         card_settings.setOnClickListener(v -> {
             // code in here
-            Intent myIntent = new Intent(AdminHomeActivity.this, VoucherCostEvent.class);
+            Intent myIntent = new Intent(AdminHomeActivity.this, VoucherShopActivity.class);
 //                myIntent.putExtras(myBundle);
             startActivity(myIntent);
         });

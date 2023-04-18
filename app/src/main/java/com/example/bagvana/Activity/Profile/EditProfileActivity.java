@@ -67,50 +67,6 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void showUserData() {
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
-//
-//                    String valueOfDataSnapshot = dataSnapshot.getValue().toString();
-//                    switch (dataSnapshot.getKey()){
-//                        case "fullname":
-//                            editTxt_fullName.setText(valueOfDataSnapshot);
-//                            fullnameUser = valueOfDataSnapshot;
-//                            break;
-//                        case "username":
-//                            editTxt_username.setText(valueOfDataSnapshot);
-//                            usernameUser = valueOfDataSnapshot;
-//                            break;
-//                        case "email":
-//                            editTxt_email.setText(valueOfDataSnapshot);
-//                            emailUser = valueOfDataSnapshot;
-//                            break;
-//                        case "dob":
-//                            editTxt_DOB.setText(valueOfDataSnapshot);
-//                            dobUser = valueOfDataSnapshot;
-//                            break;
-//                        case "phone":
-//                            editTxt_phoneNumber.setText(valueOfDataSnapshot);
-//                            phoneUser = valueOfDataSnapshot;
-//                            break;
-//                        case "gender":
-//                            if (Objects.equals(valueOfDataSnapshot, "male")) {
-//                                rgGender.check(R.id.rbMale);
-//                            } else {
-//                                rgGender.check(R.id.rbFemale);
-//                            }
-//                            genderUser = valueOfDataSnapshot;
-//                            break;
-//                    }
-//                }
-//            }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//            }
-//        });
-
         editTxt_fullName.setText(_user.getFullname());
         fullnameUser = _user.getFullname();
         editTxt_username.setText(_user.getUsername());

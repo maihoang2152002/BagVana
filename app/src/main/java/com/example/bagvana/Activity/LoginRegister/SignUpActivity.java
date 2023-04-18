@@ -58,10 +58,6 @@ public class SignUpActivity extends AppCompatActivity {
          conPassword = (EditText) findViewById(R.id.txtConPassword);
          btnSignUp  = (Button) findViewById(R.id.btnSignUp);
 
-        Product temp = new Product();
-        if (getIntent().hasExtra("GetProductFromDeepLink")) {
-            temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
-        }
 
         final CountryCodePicker ccp_su = (CountryCodePicker) findViewById(R.id.ccp);
         ccp_su.registerCarrierNumberEditText(numberPhone);
