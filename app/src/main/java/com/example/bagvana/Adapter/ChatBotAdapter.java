@@ -40,7 +40,13 @@ public class ChatBotAdapter extends RecyclerView.Adapter<ChatBotAdapter.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         User user = mUser.get(position);
-        holder.username.setText(user.getFullname());
+        if(user.getFullname().equals("")){
+            holder.username.setText(user.getUsername());
+        }
+        else{
+            holder.username.setText(user.getFullname());
+
+        }
 
 //        if (user.getAvatar().equals("default")){
 //            holder.image_profile.setImageResource(R.mipmap.ic_launcher);

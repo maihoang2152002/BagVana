@@ -8,6 +8,7 @@ import androidx.cardview.widget.CardView;
 
 import com.example.bagvana.Activity.SellerAdmin.AddProductActivity;
 import com.example.bagvana.Activity.SellerAdmin.StatisticsActivity;
+import com.example.bagvana.DTO.EventBus.VoucherCostEvent;
 import com.example.bagvana.R;
 
 public class AdminHomeActivity extends AppCompatActivity {
@@ -54,6 +55,9 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         card_settings.setOnClickListener(v -> {
             // code in here
+            Intent myIntent = new Intent(AdminHomeActivity.this, VoucherCostEvent.class);
+//                myIntent.putExtras(myBundle);
+            startActivity(myIntent);
         });
 
 

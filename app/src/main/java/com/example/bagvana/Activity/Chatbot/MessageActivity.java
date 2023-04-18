@@ -68,7 +68,13 @@ public class MessageActivity extends AppCompatActivity {
 
 
         }else{
-            fullname.setText(userChat.getFullname());
+            if(userChat.getFullname().equals("")){
+                fullname.setText(userChat.getUsername());
+            }
+            else{
+                fullname.setText(userChat.getFullname());
+            }
+
         }
         readMessage(_user.getId(),userChat.getId(),"anh");
         // body
