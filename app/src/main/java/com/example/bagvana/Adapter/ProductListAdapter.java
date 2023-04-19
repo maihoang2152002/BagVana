@@ -1,9 +1,11 @@
 package com.example.bagvana.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,6 +52,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 .into(holder.img_product);
 
         holder.name.setText(product.getName());
+        holder.txt_color.setText(product.getColor());
+        holder.txt_price.setText(String.valueOf(product.getPrice()));
+        holder.ratingBar.setRating((float) product.getRating());
     }
 
     @Override
@@ -64,8 +69,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
         public CircleImageView img_product;
         public TextView name;
-//        public TextView txt_color;
-//        public TextView txt_price;
+        public TextView txt_color;
+        public TextView txt_price;
+        public RatingBar ratingBar;
 
         public MainViewHolder(@NonNull View itemView) {
 
@@ -73,8 +79,9 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
             img_product = itemView.findViewById(R.id.img_product);
             name = itemView.findViewById(R.id.nameId);
-//            txt_color = itemView.findViewById(R.id.txt_color);
-//            txt_price = itemView.findViewById(R.id.txt_price);
+            txt_color = itemView.findViewById(R.id.color_product);
+            txt_price = itemView.findViewById(R.id.price_product);
+            ratingBar = itemView.findViewById((R.id.ratingBar));
 
             itemView.setOnClickListener(view -> itemListener.OnItemPosition(getAdapterPosition()));
         }

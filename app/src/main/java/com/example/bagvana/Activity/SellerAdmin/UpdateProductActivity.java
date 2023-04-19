@@ -291,6 +291,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         hashMap.put("image",product.getImage());
         hashMap.put("name", product.getName());
         hashMap.put("productID", product.getProductID());
+        hashMap.put("rating", product.getRating());
 
         return hashMap;
     }

@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:text="Rate Our Product"
+                android:text="Đánh Giá Sản Phẩm"
                 android:textColor="#CC000000"
                 android:textSize="25sp"
                 android:textStyle="bold"
@@ -65,7 +65,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
                 android:gravity="center"
-                android:text="If you are enjoy our product. Would you mid rating them in this."
+                android:text="Nếu bạn thích sản phẩm này, đừng quên để lại đánh giá ở phía bên dưới"
                 android:textSize="16sp"
                 tools:ignore="HardcodedText" />
 
@@ -82,11 +82,69 @@
 
             <EditText
                 android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_15sdp"
+                android:hint="Nhập đánh giá"
+                android:minHeight="48dp"
+                android:autofillHints="Sản phẩm tốt" />
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter your comment"
                 android:layout_gravity="center"
-                android:gravity="center" />
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/review1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/ic_cat_bg"
+                    android:gravity="center"
+                    android:text="Sản phẩm tốt"
+                    android:textColor="#616161" />
+
+                <TextView
+                    android:id="@+id/review2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/ic_cat_bg"
+                    android:gravity="center"
+                    android:text="Đạt yêu cầu"
+                    android:textColor="#616161" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/review3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/ic_cat_bg"
+                    android:gravity="center"
+                    android:text="Rất đẹp"
+                    android:textColor="#616161" />
+
+                <TextView
+                    android:id="@+id/review4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5sdp"
+                    android:background="@drawable/ic_cat_bg"
+                    android:gravity="center"
+                    android:text="Chưa hài lòng"
+                    android:textColor="#616161" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
