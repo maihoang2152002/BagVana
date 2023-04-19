@@ -5,7 +5,9 @@ import static com.example.bagvana.Utils.Utils._user;
 import android.annotation.SuppressLint;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +33,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
     CircleImageView profile_avt;
-
+    Toolbar toolbar;
     TextView username;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -39,11 +41,12 @@ public class ChatActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_chat);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         profile_avt = (CircleImageView) findViewById(R.id.profileImage);
         username = (TextView) findViewById(R.id.txtNameUser);
-
         username.setText(_user.getFullname());
-
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -83,5 +86,14 @@ public class ChatActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return titles.get(position);
         }
+    }
+    private void setSupportActionBar(Toolbar toolbar_order) {
+        toolbar_order.setNavigationIcon(R.drawable.ic_back);
+        toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }

@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +32,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class MessageActivity extends AppCompatActivity {
-
+    Toolbar toolbar;
     private TextView fullname;
     private String id,imageUrl;
     private EditText inputMessage;
@@ -47,6 +48,8 @@ public class MessageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         id = getIntent().getStringExtra("userId").toString();
         Log.e("userid",id);
         fullname = (TextView) findViewById(R.id.textName);
@@ -138,5 +141,14 @@ public class MessageActivity extends AppCompatActivity {
 
 
 
+    }
+    private void setSupportActionBar(Toolbar toolbar_order) {
+        toolbar_order.setNavigationIcon(R.drawable.ic_back);
+        toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }
