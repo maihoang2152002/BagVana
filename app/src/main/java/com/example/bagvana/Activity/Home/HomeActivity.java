@@ -1,5 +1,7 @@
 package com.example.bagvana.Activity.Home;
 
+import static com.example.bagvana.Utils.Utils._user;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -124,6 +126,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                 myIntent = new Intent(HomeActivity.this, ChatActivity.class);
 //                myIntent.putExtras(myBundle);
                 startActivity(myIntent);
+                break;
+            case R.id.menu_logout:
+                _user.ResetUser();
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
+                finishAffinity();
                 break;
         }
         return true;

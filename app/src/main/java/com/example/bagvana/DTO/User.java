@@ -113,5 +113,18 @@ public class User {
     public String toString(){
         return avatar + '\n' + dob + '\n' + email + '\n' + fullname + '\n' + gender + '\n' + id + '\n' + password + '\n' + phone + '\n' + typeUser + '\n' + username + '\n';
     }
+
+    public void ResetUser() {
+        this.id = "";
+        this.phone = "";
+        this.username = "";
+        this.password = "";
+        this.dob = "";
+        this.gender = "";
+        this.typeUser = "";
+        this.email = "";
+        this.avatar = "";
+        this.fullname = "";
+    }
 }
 
