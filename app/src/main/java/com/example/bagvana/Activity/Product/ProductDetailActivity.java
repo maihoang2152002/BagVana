@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -74,7 +75,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        imageBtn_fav = findViewById(R.id.imageBtn_fav);
+        imageBtn_fav = findViewById(R.id.imageBtn_fav); imageBtn_fav.setTag("false");
         imageBtn_share = findViewById(R.id.imageBtn_share);
 
         imageSelected = findViewById(R.id.img_selected);
@@ -118,6 +119,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
                 //thêm vào list
                 databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).setValue(curProduct);
+                Toast.makeText(ProductDetailActivity.this, "Add to Favorite successfully", Toast.LENGTH_SHORT).show();
             }
             else {
                 imageBtn_fav.setImageResource(R.drawable.ic_fav);
@@ -125,6 +127,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
                 // xóa khỏi list
                 databaseReferenceWishlist.child(String.valueOf(curProduct.getProductID())).removeValue();
+                Toast.makeText(ProductDetailActivity.this, "Remove from Favorite successfully", Toast.LENGTH_SHORT).show();
             }
         });
         imageBtn_share.setOnClickListener(v -> {

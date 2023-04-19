@@ -10,12 +10,14 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.bagvana.Activity.Profile.EditProfileActivity;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 import com.example.bagvana.listeners.ItemListener;
@@ -63,8 +65,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         holder.txt_color.setText(product.getColor());
         holder.txt_price.setText(String.valueOf(product.getPrice()));
         holder.ratingBar.setRating((float) product.getRating());
-//        holder.imageBtn_fav.setTag(product);
-//        holder.imageBtn_fav.setOnClickListener(view -> OnItemPosition(position));
         DatabaseReference databaseReferenceWishlist = FirebaseDatabase.getInstance().getReference("Wishlist/" + _user.getId() + "/List");
         loadFavIconStatus(holder.imageBtn_fav, databaseReferenceWishlist, product);
         holder.imageBtn_fav.setOnClickListener(v -> {
@@ -74,6 +74,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
                 //thêm vào list
                 databaseReferenceWishlist.child(String.valueOf(product.getProductID())).setValue(product);
+                Toast.makeText(context, "Add to Favorite successfully", Toast.LENGTH_SHORT).show();
             }
             else {
                 holder.imageBtn_fav.setImageResource(R.drawable.ic_fav);
@@ -81,6 +82,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
                 // xóa khỏi list
                 databaseReferenceWishlist.child(String.valueOf(product.getProductID())).removeValue();
+                Toast.makeText(context, "Remove from Favorite successfully", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -130,6 +132,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             txt_price = itemView.findViewById(R.id.price_product);
             ratingBar = itemView.findViewById((R.id.ratingBar));
             imageBtn_fav = itemView.findViewById((R.id.imageBtn_fav));
+            imageBtn_fav.setTag("false");
 
             itemView.setOnClickListener(view -> itemListener.OnItemPosition(getAdapterPosition()));
         }
