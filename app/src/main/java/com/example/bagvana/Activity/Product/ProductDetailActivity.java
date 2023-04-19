@@ -3,8 +3,6 @@ package com.example.bagvana.Activity.Product;
 import static com.example.bagvana.Utils.Utils._user;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,7 +10,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -31,7 +28,6 @@ import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Adapter.HomeAdapter;
 import com.example.bagvana.Adapter.ReviewAdapter;
 import com.example.bagvana.DTO.Comment;
-import com.example.bagvana.DTO.EventBus.BillCostEvent;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 import com.example.bagvana.Utils.Utils;
@@ -44,21 +40,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.ArrayList;
 
 public class ProductDetailActivity extends AppCompatActivity implements ItemListener {
     private ImageView imageSelected, txt_minus, txt_plus, btn_add_to_cart;
     private ImageButton imageBtn_fav, imageBtn_share;
     Product curProduct;
-    TextView name, color, price, description, txt_amount;
+    TextView name, color, price, description, txt_amount, rating_point;
 
     ArrayList<Comment> listComment;
     private Toolbar toolbar;
 
     private RatingBar ratingBar;
-    private Button addToCartButton;
     ListView commentListView;
 
     ReviewAdapter reviewAdapter;
@@ -88,6 +81,8 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         color = findViewById(R.id.color_product);
         price = findViewById(R.id.price_product);
         description = findViewById(R.id.description_product);
+        ratingBar = findViewById(R.id.ratingBar);
+        rating_point = findViewById(R.id.rating_point);
 
         if (getIntent().hasExtra("product")) {
             curProduct = (Product) getIntent().getSerializableExtra("product");
@@ -142,6 +137,9 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         description.setText(curProduct.getDescription());
         name.setText(curProduct.getName());
         color.setText(curProduct.getColor());
+        ratingBar.setRating((float) curProduct.getRating());
+        rating_point.setText(String.valueOf((double) Math.round(curProduct.getRating() * 10) / 10));
+
         Glide.with(this).load(curProduct.getImage())
                 .centerCrop().placeholder(R.drawable.ic_account)
                 .into(imageSelected);
@@ -179,6 +177,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
             // Push new data to the database
 //                String data = "Hello, Firebase!";
             myRef.child(curProduct.getProductID()).setValue(curProduct);
+            Toast.makeText(ProductDetailActivity.this,"Thêm vào giỏ hàng thành công", Toast.LENGTH_LONG).show();
         });
 
         listComment = new ArrayList<>();
@@ -222,6 +221,9 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
 
                     Product product = dataSnapshot.getValue(Product.class);
                     productList.add(product);
+                    if (productList.size() > 3) {
+                        break;
+                    }
                 }
 
                 homeAdapter.notifyDataSetChanged();
