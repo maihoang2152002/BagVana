@@ -12,28 +12,21 @@
         android:orientation="vertical"
         tools:context=".fragment_cart">
 
-        <androidx.appcompat.widget.Toolbar
+        <android.widget.Toolbar
             android:id="@+id/toolbar_cart"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/white">
 
-            <ImageView
-                android:id="@+id/img_back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="0dp"
-                android:padding="0dp"
-                android:src="@drawable/ic_back" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"
                 android:text="Giỏ hàng"
-                android:textColor="@color/black"
-                android:textSize="18sp"/>
-        </androidx.appcompat.widget.Toolbar>
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/_20sdp"/>
+        </android.widget.Toolbar>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,7 +69,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_weight="0"
                     android:text="Tổng tiền:"
-                    android:textColor="#f000"
+                    android:textColor="@color/describe_text"
                     android:textSize="18sp"/>
 
                 <TextView
@@ -94,11 +87,11 @@
                 android:id="@+id/btn_order"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:backgroundTint="#004C90"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:background= "@drawable/btn_bg"
                 android:text="Mua hàng"
-                android:textColor="#FFFFFF"></Button>
+                android:textColor="@color/text_button"></Button>
 
         </LinearLayout>
     </LinearLayout>

@@ -87,7 +87,7 @@
             app:cardCornerRadius="18dp">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn_minus"
+                android:id="@+id/btn_plus"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="9dp"
@@ -98,14 +98,14 @@
                 app:cardCornerRadius="0dp">
 
                 <TextView
-                    android:id="@+id/txt_minus"
+                    android:id="@+id/txt_plus"
                     android:layout_width="18dp"
                     android:layout_height="45dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_marginTop="-31dp"
-                    android:text="-"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginTop="-15dp"
+                    android:text="+"
                     android:textColor="@color/white"
-                    android:textSize="50sp" />
+                    android:textSize="30sp" />
             </androidx.cardview.widget.CardView>
 
             <TextView
@@ -122,7 +122,7 @@
                 android:textSize="20sp" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/btn_plus"
+                android:id="@+id/btn_minus"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_marginLeft="9dp"
@@ -133,14 +133,14 @@
                 app:cardCornerRadius="0dp">
 
                 <TextView
-                    android:id="@+id/txt_plus"
+                    android:id="@+id/txt_minus"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="1dp"
-                    android:layout_marginTop="-14dp"
-                    android:text="+"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="-30dp"
+                    android:text="-"
                     android:textColor="@color/white"
-                    android:textSize="30sp" />
+                    android:textSize="50sp" />
 
             </androidx.cardview.widget.CardView>
 
