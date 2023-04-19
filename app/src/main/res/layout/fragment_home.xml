@@ -14,14 +14,14 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:ignore="MissingConstraints"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="MissingConstraints">
 
             <LinearLayout
+                android:id="@+id/top_navigation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/top_navigation">
+                android:orientation="vertical">
                 <!-- Order online collect in BagVana -->
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -89,23 +89,16 @@
                     android:textStyle="bold"
                     tools:ignore="HardcodedText,SpUsage,TextSizeCheck" />
 
-                <LinearLayout
-                    android:orientation="horizontal"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_home"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_20sdp">
 
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerview_home"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_16sdp"
-                        android:layout_marginEnd="@dimen/_16sdp"
-                        android:layout_marginBottom="@dimen/_20sdp"
-                        android:orientation="horizontal">
+                </androidx.recyclerview.widget.RecyclerView>
 
-                    </androidx.recyclerview.widget.RecyclerView>
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -129,12 +122,11 @@
                         android:layout_width="30dp"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_down_right_arrow"
                         android:contentDescription="TODO"
+                        android:src="@drawable/ic_down_right_arrow"
                         tools:ignore="ContentDescription,HardcodedText" />
 
                 </LinearLayout>
-
 
 
             </LinearLayout>
