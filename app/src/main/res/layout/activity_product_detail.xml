@@ -77,16 +77,25 @@
 
                 </androidx.appcompat.widget.Toolbar>
 
-                <ImageView
-                    android:id="@+id/img_selected"
-                    android:layout_width="285dp"
-                    android:layout_height="305dp"
+                <FrameLayout
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
                     android:layout_marginTop="@dimen/_5sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/toolbar"
-                    app:srcCompat="@drawable/img_balo_tomoc"
-                    tools:ignore="ContentDescription" />
+                    android:id="@+id/frame_img"
+                    android:background="@drawable/image_selector">
+
+                    <ImageView
+                        android:id="@+id/img_selected"
+                        android:layout_width="285dp"
+                        android:layout_height="285dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/img_balo_tomoc"
+                        tools:ignore="ContentDescription" />
+
+                </FrameLayout>
 
                 <TextView
                     android:id="@+id/rating_point"
@@ -100,7 +109,7 @@
                     android:textSize="20sp"
                     app:layout_constraintEnd_toStartOf="@+id/ratingBar"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_selected"
+                    app:layout_constraintTop_toBottomOf="@+id/frame_img"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -122,15 +131,15 @@
                     style="?android:attr/ratingBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:theme="@style/MyRatingBar"
                     android:layout_below="@+id/price_product"
                     android:layout_marginTop="12dp"
                     android:layout_marginEnd="@dimen/_40sdp"
-                    android:theme="@style/MyRatingBar"
                     android:numStars="5"
                     android:rating="3.5"
                     android:stepSize="0.5"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/img_selected"
+                    app:layout_constraintTop_toBottomOf="@+id/frame_img"
                     android:isIndicator="true"
                     tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
@@ -141,6 +150,7 @@
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="VEGITARIAN FOOD"
+                    android:textStyle="bold"
                     android:textColor="#B71C1C"
                     android:textSize="15sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -154,6 +164,7 @@
                     android:layout_marginTop="@dimen/_4sdp"
                     android:text="Float Cake Vietnam"
                     android:textColor="#091020"
+                    android:textStyle="bold"
                     android:textSize="24sp"
                     app:layout_constraintStart_toStartOf="@+id/color_product"
                     app:layout_constraintTop_toBottomOf="@+id/color_product"
