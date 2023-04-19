@@ -5,6 +5,8 @@ import static com.example.bagvana.Utils.Utils._user;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +36,8 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
     private ArrayList<Order> orderList;
     private Toolbar toolbar;
     private String status;
+    private TextView textView_title;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,9 @@ public class OrderListActivity extends AppCompatActivity implements ItemListener
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (getIntent().hasExtra("title")) {
+            toolbar.setTitle(getIntent().getStringExtra("title"));
+        }
 
         recyclerView = findViewById(R.id.recyclerviewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

@@ -2,6 +2,7 @@ package com.example.bagvana.Activity.Profile;
 
 import static com.example.bagvana.Utils.Utils._user;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.bumptech.glide.Glide;
 import com.example.bagvana.Activity.LoginRegister.SignInActivity;
 import com.example.bagvana.Activity.OrderList.OrderListActivity;
+import com.example.bagvana.DTO.Order;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -45,7 +47,8 @@ public class ProfileActivity extends AppCompatActivity {
     LinearLayout linear_editProfile, linear_waitConfirmation,
             linear_waitDelivery, linear_delivered,
             linear_logOut, linear_changePassword;
-    TextView txt_fullName;
+    TextView txt_fullName, txt_amountProcessOrder,
+            txt_amountDeliveryOrder, txt_amountDeliveredOrder;
     Toolbar toolbar;
 
     ImageView img_avatar;
@@ -56,6 +59,54 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        txt_amountProcessOrder = findViewById(R.id.txt_amountProcessOrder);
+        txt_amountDeliveryOrder = findViewById(R.id.txt_amountDeliveryOrder);
+        txt_amountDeliveredOrder = findViewById(R.id.txt_amountDeliveredOrder);
+        DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order");
+        databaseReferenceOrder.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                int countProcess = 0, countDelivery = 0, countDelivered = 0;
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Order order = dataSnapshot.getValue(Order.class);
+                    if (order.getUserID().equals(_user.getId())) {
+                        if (order.getStatus().equals("1")) {
+                            countProcess++;
+                        } else if (order.getStatus().equals("2")) {
+                            countDelivery++;
+                        } else {
+                            countDelivered++;
+                        }
+                    }
+                }
+
+                if (countProcess == 0) {
+                    txt_amountProcessOrder.setVisibility(View.GONE);
+                } else {
+                    txt_amountProcessOrder.setText(String.valueOf(countProcess));
+                }
+
+                if (countDelivery == 0) {
+                    txt_amountDeliveryOrder.setVisibility(View.GONE);
+                } else {
+                    txt_amountDeliveryOrder.setText(String.valueOf(countDelivery));
+                }
+
+                if (countDelivered == 0) {
+                    txt_amountDeliveredOrder.setVisibility(View.GONE);
+                } else {
+                    txt_amountDeliveredOrder.setText(String.valueOf(countDelivered));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
         builder.setCancelable(false);
@@ -156,6 +207,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
                 intent.putExtra("status", "1");
+                intent.putExtra("title", "Đơn hàng chờ xác nhận");
                 startActivity(intent);
             }
         });
@@ -165,6 +217,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
                 intent.putExtra("status", "2");
+                intent.putExtra("title", "Đơn hàng chờ lấy hàng");
                 startActivity(intent);
             }
         });
@@ -174,6 +227,7 @@ public class ProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
                 intent.putExtra("status", "3");
+                intent.putExtra("title", "Đơn hàng đã giao");
                 startActivity(intent);
             }
         });
