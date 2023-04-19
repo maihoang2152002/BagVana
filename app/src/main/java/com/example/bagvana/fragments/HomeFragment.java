@@ -3,7 +3,6 @@ package com.example.bagvana.fragments;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +10,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
 import com.example.bagvana.Activity.ProductList.ProductListActivity;
 import com.example.bagvana.Adapter.HomeAdapter;
@@ -61,8 +58,8 @@ public class HomeFragment extends Fragment implements ItemListener {
         });
 
         recyclerview_home.setHasFixedSize(true);
-        recyclerview_home.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-//        recyclerview_home.setLayoutManager(new GridLayoutManager(this, 2));
+//        recyclerview_home.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerview_home.setLayoutManager(new GridLayoutManager(getContext(), 2));
 //        recyclerview_home.setLayoutManager(new LinearLayoutManager(this));
 
         productList = new ArrayList<>();
@@ -76,7 +73,7 @@ public class HomeFragment extends Fragment implements ItemListener {
 
                     Product product = dataSnapshot.getValue(Product.class);
                     productList.add(product);
-                    if (productList.size() > 2) {
+                    if (productList.size() > 3) {
                         break;
                     }
                 }

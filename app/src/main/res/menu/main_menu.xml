@@ -4,41 +4,37 @@
         <item
             android:id="@+id/menu_home"
             android:icon="@drawable/ic_home"
-            android:title="Home" />
+            android:title="Trang chủ" />
         <item
             android:id="@+id/menu_fav"
             android:icon="@drawable/ic_fav"
-            android:title="Favorite" />
+            android:title="Yêu thích" />
         <item
             android:id="@+id/menu_cart"
             android:icon="@drawable/ic_cart"
-            android:title="Cart" />
+            android:title="Giỏ hàng" />
         <item
             android:id="@+id/menu_chat"
             android:icon="@drawable/ic_chat"
-            android:title="Chat" />
+            android:title="Trò chuyện" />
     </group>
 
     <group android:checkableBehavior="single">
-        <item android:title="Profile">
+        <item android:title="Cá nhân">
             <menu>
-                <item
-                    android:id="@+id/menu_login"
-                    android:icon="@drawable/ic_login"
-                    android:title="Login" />
                 <item
                     android:id="@+id/menu_account"
                     android:icon="@drawable/ic_account"
-                    android:title="Account" />
+                    android:title="Tài khoản" />
                 <item
                     android:id="@+id/menu_logout"
                     android:icon="@drawable/ic_logout"
-                    android:title="Logout" />
+                    android:title="Đăng xuất" />
             </menu>
         </item>
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="Xã hội">
         <menu>
             <item
                 android:id="@+id/menu_gift"
@@ -47,11 +43,11 @@
             <item
                 android:id="@+id/menu_share"
                 android:icon="@drawable/ic_share"
-                android:title="Share" />
+                android:title="Chia sẻ" />
             <item
                 android:id="@+id/menu_rate"
                 android:icon="@drawable/ic_rate_us"
-                android:title="Rate Us" />
+                android:title="Đánh giá" />
         </menu>
     </item>
 </menu>
