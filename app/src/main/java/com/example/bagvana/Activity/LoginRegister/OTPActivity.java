@@ -149,7 +149,10 @@ public class OTPActivity extends AppCompatActivity {
 
                             }
                             else if(type_numbephone.equals("forgotpassword")){
-                                startActivity(new Intent(OTPActivity.this, ChangePasswordActivity.class));
+                                Intent intent = new Intent(OTPActivity.this, ChangePassword.class);
+                                intent.putExtra("numberphone",phoneNumber);
+                                startActivity(intent);
+
                             }
 
                             finish();
