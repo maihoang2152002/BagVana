@@ -44,23 +44,22 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Main
         if (order == null) {
             return;
         }
-//        for (Product product: order.getItemsOrdered()) {
-//            Log.e("order", product.getProductID());
-//            Log.e("order", product.getName());
-//        }
-        holder.orderID.setText("Order #" + order.getOrderID());
-        holder.orderDate.setText("Date: " + order.getOrderDate());
+
+        holder.orderID.setText("Đơn Hàng #" + order.getOrderID());
+        holder.orderDate.setText("Ngày: " + order.getOrderDate());
+        holder.address.setText("Địa Chỉ: " + order.getReceiverInfo().getAddress());
+
         if (Objects.equals(order.getStatus(), "1")) {
-            holder.status.setText("Status: Processing");
+            holder.status.setText("Trạng Thái: Đang Xử Lý");
             holder.status.setTextColor(ContextCompat.getColor(context, R.color.yellow));
         } else if (Objects.equals(order.getStatus(), "2")) {
-            holder.status.setText("Status: In Delivery");
+            holder.status.setText("Trạng Thái: Đang Vận Chuyển");
             holder.status.setTextColor(ContextCompat.getColor(context, R.color.blue));
         } else {
-            holder.status.setText("Status: Delivered");
+            holder.status.setText("Trạng Thái: Đã Giao");
             holder.status.setTextColor(ContextCompat.getColor(context, R.color.green));
         }
-        holder.totalPrice.setText("Total price: " + order.getTotalPrice());
+        holder.totalPrice.setText("Tổng Giá: " + order.getTotalPrice());
     }
 
     @Override
@@ -73,7 +72,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Main
 
     public class MainViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView orderID, orderDate, status, totalPrice;
+        public TextView orderID, orderDate, status, totalPrice, address;
 
         public MainViewHolder(@NonNull View itemView) {
 
@@ -83,6 +82,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Main
             orderDate = itemView.findViewById(R.id.order_date);
             status = itemView.findViewById(R.id.order_status);
             totalPrice = itemView.findViewById(R.id.order_total);
+            address = itemView.findViewById(R.id.order_address);
 
             itemView.setOnClickListener(view -> itemListener.OnItemPosition(getAdapterPosition()));
         }

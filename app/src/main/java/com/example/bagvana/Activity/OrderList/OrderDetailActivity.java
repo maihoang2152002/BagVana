@@ -62,11 +62,11 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
         totalPrice = findViewById(R.id.order_total);
 
 
-        orderID.setText("Order #" + curOrder.getOrderID());
-        orderDate.setText("Date: " + curOrder.getOrderDate());
+        orderID.setText("Đơn Hàng #" + curOrder.getOrderID());
+        orderDate.setText("Ngày: " + curOrder.getOrderDate());
 
-        totalPrice.setText("Total price: " + curOrder.getTotalPrice());
-        address.setText("Address: " + curOrder.getReceiverInfo().getAddress());
+        totalPrice.setText("Tổng Giá: " + curOrder.getTotalPrice());
+        address.setText("Địa Chỉ: " + curOrder.getReceiverInfo().getAddress());
 
         recyclerView = findViewById(R.id.recyclerviewId);
 
@@ -78,24 +78,24 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
         }
 
         if (curOrder.getStatus().equals("1")) {
-            status.setText("Status: Processing");
+            status.setText("Trạng Thái: Đang Xử Lý");
             status.setTextColor(getResources().getColor(R.color.yellow));
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             productListAdapter = new ProductListAdapter(this, productArrayList, this);
 
             recyclerView.setAdapter(productListAdapter);
         } else if (curOrder.getStatus().equals("2")) {
-            status.setText("Status: In Delivery");
+            status.setText("Trạng Thái: Đang Vận Chuyển");
             status.setTextColor(getResources().getColor(R.color.blue));
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             productListAdapter = new ProductListAdapter(this, productArrayList, this);
 
             recyclerView.setAdapter(productListAdapter);
         } else {
-            status.setText("Status: Delivered");
+            status.setText("Trạng Thái: Đã Giao");
             status.setTextColor(getResources().getColor(R.color.green));
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            pListOrderAdapter = new PListOrderAdapter(this, productArrayList, this);
+            pListOrderAdapter = new PListOrderAdapter(this, productArrayList, this, curOrder);
 
             recyclerView.setAdapter(pListOrderAdapter);
         }

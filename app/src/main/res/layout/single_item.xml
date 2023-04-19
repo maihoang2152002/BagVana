@@ -26,42 +26,56 @@
             android:id="@+id/nameId"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/img_product"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/img_product"
             android:text="Product Name"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/CourseName"
+            android:id="@+id/color_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameId"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/img_product"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/img_product"
             android:text="Color"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
+            android:textColor="#757575"
+            android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/emailId"
+            android:id="@+id/price_product"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/CourseName"
-            android:layout_marginLeft="10dp"
-            android:layout_toRightOf="@+id/img_product"
+            android:layout_below="@+id/color_product"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/img_product"
             android:text="Price"
-            android:textColor="@color/black"
-            android:textSize="22sp" />
+            android:textColor="#272670"
+            android:textSize="18sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:theme="@style/MyRatingBar"
+            android:numStars="5"
+            android:stepSize="0.5"
+            android:rating="3.5"
+            android:layout_below="@+id/price_product"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_toEndOf="@+id/img_product"
+            style="?android:attr/ratingBarStyleSmall" />
 
         <ImageView
             android:id="@+id/tag_free"
-            android:layout_width="67dp"
-            android:layout_height="67dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            app:srcCompat="@drawable/tagfree" />
+            android:layout_alignParentEnd="true"
+            app:srcCompat="@drawable/tagfree"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
 
         <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
         <!--            android:id="@+id/btn_rating"-->
