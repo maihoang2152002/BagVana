@@ -2,6 +2,7 @@ package com.example.bagvana.Activity.Order;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -74,7 +75,7 @@ public class OrderActivity extends AppCompatActivity {
         toolbar_order = findViewById(R.id.toolbar_order);
         setSupportActionBar(toolbar_order);
 
-        recyclerview_order = findViewById(R.id.recycview_order);
+        //recyclerview_order = findViewById(R.id.recycview_order);
         txt_productCost = findViewById(R.id.txt_productCost);
         txt_shipCost = findViewById(R.id.txt_shipCost);
         txt_discountShipCost = findViewById(R.id.txt_discountShipCost);
@@ -108,15 +109,16 @@ public class OrderActivity extends AppCompatActivity {
             txt_shipCost.setText("30");
         }
 
+        // Hiển thị danh sách sản phẩm chọn mua
 
-        recyclerview_order.setHasFixedSize(true);
-        recyclerview_order.setLayoutManager(new LinearLayoutManager(this));
-
+//        recyclerview_order.setHasFixedSize(true);
+//        recyclerview_order.setLayoutManager(new LinearLayoutManager(this));
+//
         productList = (ArrayList<Product>) Utils._productList;
-
-        orderAdapter = new OrderAdapter((Context) this, productList);
-
-        recyclerview_order.setAdapter(orderAdapter);
+//
+//        orderAdapter = new OrderAdapter((Context) this, productList);
+//
+//        recyclerview_order.setAdapter(orderAdapter);
 
         linear_orderAddress.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -158,45 +160,68 @@ public class OrderActivity extends AppCompatActivity {
                             .setIcon(android.R.drawable.ic_dialog_alert)
                             .show();
                 } else {
-                    LocalDateTime localDateTime = LocalDateTime.now();
-                    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-                    String formattedDate = localDateTime.format(myFormatObj);
 
-                    DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order").child(formattedDate);
+                    // Hiện thông báo xác nhận thông tin đặt hàng
 
-                    //OrderID
-                    databaseReferenceOrder.child(formattedDate);
+                    new AlertDialog.Builder(view.getContext())
+                            .setMessage("Bạn xác nhận đặt hàng")
+                            .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
 
-                    for (Product product: Utils._productList) {
-                        databaseReferenceOrder.child("itemsOrdered").child(product.getProductID()).setValue(product);
-                    }
+                                    // Thêm vào firebase
+                                    LocalDateTime localDateTime = LocalDateTime.now();
+                                    DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                                    String formattedDate = localDateTime.format(myFormatObj);
 
-                    HashMap<String, Integer> usedVoucher = new HashMap<>();
+                                    DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order").child(formattedDate);
 
-                    for (Voucher voucher: Utils._voucherList) {
-                        if (voucher.getType() == 2) {
-                            usedVoucher.put(voucher.getId(), freeShipCost);
-                        } else {
-                            usedVoucher.put(voucher.getId(), discountCost);
-                        }
+                                    //OrderID
+                                    databaseReferenceOrder.child(formattedDate);
 
-                    }
+                                    for (Product product: Utils._productList) {
+                                        databaseReferenceOrder.child("itemsOrdered").child(product.getProductID()).setValue(product);
+                                    }
 
-                    databaseReferenceOrder.child("usedVoucher").setValue(usedVoucher);
+                                    HashMap<String, Integer> usedVoucher = new HashMap<>();
 
+                                    for (Voucher voucher: Utils._voucherList) {
+                                        if (voucher.getType() == 2) {
+                                            usedVoucher.put(voucher.getId(), freeShipCost);
+                                        } else {
+                                            usedVoucher.put(voucher.getId(), discountCost);
+                                        }
 
-                    // UpdateUserID
-                    databaseReferenceOrder.child("orderID").setValue(formattedDate);
-                    databaseReferenceOrder.child("receiverInfo").setValue(Utils._receiverInfo);
-                    databaseReferenceOrder.child("totalPrice").setValue(Integer.valueOf(txt_totalCost.getText().toString()));
-                    databaseReferenceOrder.child("orderDate").setValue(formattedDate);
-                    databaseReferenceOrder.child("status").setValue("1");
-                    databaseReferenceOrder.child("userID").setValue(Utils._user.getId());
-                    databaseReferenceOrder.child("paymentMethod").setValue(txt_delivery.getText().toString());
+                                    }
 
-                    Intent myIntent = new Intent(OrderActivity.this, CartActivity.class);
-//                myIntent.putExtras(myBundle);
-                    startActivity(myIntent);
+                                    databaseReferenceOrder.child("usedVoucher").setValue(usedVoucher);
+
+                                    // UpdateUserID
+                                    databaseReferenceOrder.child("orderID").setValue(formattedDate);
+                                    databaseReferenceOrder.child("receiverInfo").setValue(Utils._receiverInfo);
+                                    databaseReferenceOrder.child("totalPrice").setValue(Integer.valueOf(txt_totalCost.getText().toString()));
+                                    databaseReferenceOrder.child("orderDate").setValue(formattedDate);
+                                    databaseReferenceOrder.child("status").setValue("1");
+                                    databaseReferenceOrder.child("userID").setValue(Utils._user.getId());
+                                    databaseReferenceOrder.child("paymentMethod").setValue(txt_delivery.getText().toString());
+
+                                    // new layout
+                                    setContentView(R.layout.layout_back_to_homepage);
+
+                                    Button btn_back = findViewById(R.id.btn_back);
+                                    btn_back.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View view) {
+
+                                            Intent intent = new Intent(OrderActivity.this, HomeActivity.class);
+                                            startActivity(intent);
+                                        }
+                                    });
+                                }
+                            })
+                            .setNegativeButton("Hủy", null)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
 
                 }
 

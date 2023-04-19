@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,24 +39,28 @@ public class CartActivity extends AppCompatActivity {
     private RecyclerView recyclerview_cart;
     private TextView txt_billCost;
     private Button btn_order;
+    private Toolbar toolbar_cart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
+        toolbar_cart = findViewById(R.id.toolbar_cart);
+        setSupportActionBar(toolbar_cart);
+
         recyclerview_cart = findViewById(R.id.recycview_cart);
         txt_billCost = findViewById(R.id.txt_billCost);
         btn_order = findViewById(R.id.btn_order);
 
-        ImageView img_back;
-        img_back = findViewById(R.id.img_back);
-        img_back.setOnClickListener(v -> {
-            Intent intent = new Intent(CartActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-
-        });
+//        ImageView img_back;
+//        img_back = findViewById(R.id.img_back);
+//        img_back.setOnClickListener(v -> {
+//            Intent intent = new Intent(CartActivity.this, HomeActivity.class);
+//            startActivity(intent);
+//            finish();
+//
+//        });
 
         recyclerview_cart.setHasFixedSize(true);
         recyclerview_cart.setLayoutManager(new LinearLayoutManager(this));
@@ -84,6 +89,16 @@ public class CartActivity extends AppCompatActivity {
                             .show();
                 }
 
+            }
+        });
+    }
+
+    private void setSupportActionBar(Toolbar toolbar_order) {
+        toolbar_order.setNavigationIcon(R.drawable.ic_back);
+        toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
