@@ -44,13 +44,14 @@ public class ProfileActivity extends AppCompatActivity {
 
     LinearLayout linear_editProfile, linear_waitConfirmation,
             linear_waitDelivery, linear_delivered,
-            linear_logOut;
+            linear_logOut, linear_changePassword;
     TextView txt_fullName;
     Toolbar toolbar;
 
     ImageView img_avatar;
     String imageURL, oldImageURL = "";
     Uri uri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +85,6 @@ public class ProfileActivity extends AppCompatActivity {
         });
 
 
-
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -97,7 +97,7 @@ public class ProfileActivity extends AppCompatActivity {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK){
+                        if (result.getResultCode() == Activity.RESULT_OK) {
                             Intent data = result.getData();
                             uri = data.getData();
                             img_avatar.setImageURI(uri);
@@ -137,6 +137,16 @@ public class ProfileActivity extends AppCompatActivity {
                 finishAffinity();
             }
         });
+
+        linear_changePassword = findViewById(R.id.linear_changePassword);
+        linear_changePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), ChangePasswordActivity.class);
+                startActivity(intent);
+            }
+        });
+
         linear_waitConfirmation = findViewById(R.id.linear_waitConfirmation);
         linear_waitDelivery = findViewById(R.id.linear_waitDelivery);
         linear_delivered = findViewById(R.id.linear_delivered);
@@ -169,7 +179,7 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    public void saveData(){
+    public void saveData() {
         if (uri != null) {
             StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("imagesAvatar")
                     .child(uri.getLastPathSegment());
@@ -182,7 +192,7 @@ public class ProfileActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                    while (!uriTask.isComplete());
+                    while (!uriTask.isComplete()) ;
                     Uri urlImage = uriTask.getResult();
                     imageURL = urlImage.toString();
                     uploadData();
@@ -197,12 +207,13 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
     }
-    public void uploadData(){
+
+    public void uploadData() {
         FirebaseDatabase.getInstance().getReference("User").child(_user.getId()).child("avatar")
                 .setValue(imageURL).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
 //                            if (oldImageURL != "") {
 //                                StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(oldImageURL);
 //                                reference.delete();
@@ -218,6 +229,7 @@ public class ProfileActivity extends AppCompatActivity {
                     }
                 });
     }
+
     public void setSupportActionBar(Toolbar toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(view -> finish());
