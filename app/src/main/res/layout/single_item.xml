@@ -44,16 +44,38 @@
             android:textColor="#757575"
             android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/price_product"
+
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_price_fav"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/color_product"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_toEndOf="@+id/img_product"
-            android:text="Price"
-            android:textColor="#272670"
-            android:textSize="18sp" />
+            android:layout_toEndOf="@+id/img_product">
+
+            <TextView
+                android:id="@+id/price_product"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textColor="#272670"
+                android:textSize="18sp" />
+
+            <ImageButton
+                android:id="@+id/imageBtn_fav"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/price_product"
+                android:layout_alignParentEnd="true"
+                android:background="@android:color/transparent"
+                android:minWidth="30dp"
+                android:minHeight="30dp"
+                android:src="@drawable/ic_fav"
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+        </RelativeLayout>
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -63,7 +85,7 @@
             android:numStars="5"
             android:stepSize="0.5"
             android:rating="3.5"
-            android:layout_below="@+id/price_product"
+            android:layout_below="@+id/relativelayout_price_fav"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_toEndOf="@+id/img_product"
             style="?android:attr/ratingBarStyleSmall" />
