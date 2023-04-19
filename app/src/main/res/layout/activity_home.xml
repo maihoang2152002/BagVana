@@ -9,9 +9,6 @@
     android:fitsSystemWindows="true"
     tools:context=".Activity.Home.HomeActivity"
     tools:openDrawer="start">
-
-
-
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
@@ -31,8 +28,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginEnd="56dp"
-            android:layout_marginBottom="75dp"
+            android:layout_marginEnd="39dp"
+            android:layout_marginBottom="41dp"
             android:src="@drawable/ic_chat"
             android:tint="@color/white"
 

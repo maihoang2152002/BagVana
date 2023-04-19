@@ -20,13 +20,14 @@
             android:background="@drawable/toolbar_bg"
             android:elevation="4dp">
 
-           <ImageButton
-               android:id="@+id/btnBack"
-               android:background="@drawable/toolbar_bg"
-               android:src="@drawable/ic_back"
-               android:layout_marginRight="@dimen/_16sdp"
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"/>
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_16sdp"
+                android:background="@drawable/toolbar_bg"
+                android:src="@drawable/ic_back" />
+
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/profile_image"
                 android:layout_width="@dimen/_40sdp"
@@ -34,7 +35,7 @@
                 android:layout_marginTop="@dimen/_8sdp"
                 android:layout_marginBottom="@dimen/_8sdp"
                 android:src="@drawable/ic_profile"
-                app:civ_border_color="#ccc"
+                app:civ_border_color="@color/blue"
                 app:civ_border_width="@dimen/_1sdp" />
 
             <TextView
@@ -45,12 +46,12 @@
                 android:layout_marginLeft="@dimen/_25sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
 
-                android:textSize="@dimen/_16sdp"
                 android:ellipsize="end"
                 android:gravity="center"
                 android:maxLines="1"
                 android:paddingLeft="@dimen/_25sdp"
-                android:textColor="@color/black" />
+                android:textColor="@color/describe_text"
+                android:textSize="@dimen/_16sdp" />
 
         </Toolbar>
 
@@ -63,7 +64,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/bar_layout"
-        android:layout_marginTop="@dimen/_16sdp"
+        android:layout_marginTop="@dimen/_10sdp"
         android:layout_above="@+id/bottom"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
@@ -74,6 +75,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:background="@drawable/chat_input_bg"
         tools:ignore="MissingConstraints">
 
         <EditText
