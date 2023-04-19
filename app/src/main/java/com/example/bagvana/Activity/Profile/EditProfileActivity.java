@@ -26,21 +26,18 @@ import java.util.Objects;
 
 public class EditProfileActivity extends AppCompatActivity {
 
-    FirebaseDatabase database ;
+    FirebaseDatabase database;
     DatabaseReference databaseReference;
 
     ImageButton imgBtn_pickDate;
-    EditText editTxt_DOB;
-    EditText editTxt_fullName;
-    EditText editTxt_username;
-    EditText editTxt_email;
-    EditText editTxt_phoneNumber;
+    EditText editTxt_DOB, editTxt_fullName, editTxt_username,
+            editTxt_email, editTxt_phoneNumber;
+
     RadioGroup rgGender;
     RadioButton rbMale, rbFemale;
     Button btnUpdateProfile;
     private Toolbar toolbar;
 
-    String fullnameUser, emailUser, usernameUser, dobUser, phoneUser, genderUser;
 
     private void initPickDate() {
         imgBtn_pickDate = (ImageButton) findViewById(R.id.imgBtn_pickDate);
@@ -68,22 +65,17 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void showUserData() {
         editTxt_fullName.setText(_user.getFullname());
-        fullnameUser = _user.getFullname();
         editTxt_username.setText(_user.getUsername());
-        usernameUser = _user.getUsername();
         editTxt_email.setText(_user.getEmail());
-        emailUser = _user.getEmail();
         editTxt_DOB.setText(_user.getDob());
-        dobUser = _user.getDob();
         editTxt_phoneNumber.setText(_user.getPhone());
-        phoneUser = _user.getPhone();
         if (Objects.equals(_user.getGender(), "male")) {
             rgGender.check(R.id.rbMale);
         } else {
             rgGender.check(R.id.rbFemale);
         }
-        genderUser = _user.getGender();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,9 +85,9 @@ public class EditProfileActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("User").child(_user.getId());
-        editTxt_fullName  = findViewById(R.id.editTxt_fullName);
-        editTxt_username  = findViewById(R.id.editTxt_username);
+        databaseReference = database.getReference("User");
+        editTxt_fullName = findViewById(R.id.editTxt_fullName);
+        editTxt_username = findViewById(R.id.editTxt_username);
         editTxt_DOB = findViewById(R.id.editTxt_DOB);
         editTxt_email = findViewById(R.id.editTxt_email);
         editTxt_phoneNumber = findViewById(R.id.editTxt_phoneNumber);
@@ -116,7 +108,7 @@ public class EditProfileActivity extends AppCompatActivity {
         btnUpdateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (isFullnameChanged() || isUsernameChanged() || isEmailChanged() || isDobChanged() || isPhoneChanged() || isGenderChanged()){
+                if (isDataChanged()) {
                     Toast.makeText(EditProfileActivity.this, "Saved", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(EditProfileActivity.this, "No Changes Found", Toast.LENGTH_SHORT).show();
@@ -127,64 +119,77 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
+    private boolean isDataChanged() {
+
+        boolean isFullnameChanged = isFullnameChanged();
+        boolean isUsernameChanged = isUsernameChanged();
+        boolean isEmailChanged = isEmailChanged();
+        boolean isDobChanged = isDobChanged();
+        boolean isPhoneChanged = isPhoneChanged();
+        boolean isGenderChanged = isGenderChanged();
+
+        boolean hasChanges = isFullnameChanged || isUsernameChanged || isEmailChanged || isDobChanged
+                || isPhoneChanged || isGenderChanged;
+
+        if (hasChanges) {
+            databaseReference.child(_user.getId()).setValue(_user);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private boolean isFullnameChanged() {
-        if (!fullnameUser.equals(editTxt_fullName.getText().toString())){
-            databaseReference.child("fullname").setValue(editTxt_fullName.getText().toString());
-            fullnameUser = editTxt_fullName.getText().toString();
+        if (!_user.getFullname().equals(editTxt_fullName.getText().toString())) {
             _user.setFullname(editTxt_fullName.getText().toString());
             return true;
         } else {
             return false;
         }
     }
+
     private boolean isUsernameChanged() {
-        if (!usernameUser.equals(editTxt_username.getText().toString())){
-            databaseReference.child("username").setValue(editTxt_username.getText().toString());
-            usernameUser = editTxt_username.getText().toString();
-            _user.setFullname(editTxt_username.getText().toString());
+        if (!_user.getUsername().equals(editTxt_username.getText().toString())) {
+            _user.setUsername(editTxt_username.getText().toString());
             return true;
         } else {
             return false;
         }
     }
+
     private boolean isEmailChanged() {
-        if (!emailUser.equals(editTxt_email.getText().toString())){
-            databaseReference.child("email").setValue(editTxt_email.getText().toString());
-            emailUser = editTxt_email.getText().toString();
+        if (!_user.getEmail().equals(editTxt_email.getText().toString())) {
             _user.setEmail(editTxt_email.getText().toString());
             return true;
         } else {
             return false;
         }
     }
+
     private boolean isDobChanged() {
-        if (!dobUser.equals(editTxt_DOB.getText().toString())){
-            databaseReference.child("dob").setValue(editTxt_DOB.getText().toString());
-            dobUser = editTxt_DOB.getText().toString();
+        if (!_user.getDob().equals(editTxt_DOB.getText().toString())) {
             _user.setDob(editTxt_DOB.getText().toString());
             return true;
         } else {
             return false;
         }
     }
+
     private boolean isPhoneChanged() {
-        if (!phoneUser.equals(editTxt_phoneNumber.getText().toString())){
-            databaseReference.child("phone").setValue(editTxt_phoneNumber.getText().toString());
-            phoneUser = editTxt_phoneNumber.getText().toString();
+        if (!_user.getPhone().equals(editTxt_phoneNumber.getText().toString())) {
             _user.setPhone(editTxt_phoneNumber.getText().toString());
             return true;
         } else {
             return false;
         }
     }
+
     private boolean isGenderChanged() {
-        String temp ;
+        String temp;
         if (rbMale.isChecked()) temp = "male";
         else temp = "female";
 
-        if (!genderUser.equals(temp)){
-            databaseReference.child("gender").setValue(temp);
-            genderUser = temp;
+        if (!_user.getGender().equals(temp)) {
             _user.setGender(temp);
             return true;
         } else {
