@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:icon="@drawable/ic_home"
         android:id="@+id/menu_home"
-        android:title="Home"/>
+        android:title="Trang chủ"/>
     <item android:icon="@drawable/ic_fav"
         android:id="@+id/menu_fav"
-        android:title="Favorite"/>
+        android:title="Yêu thích"/>
     <item android:icon="@drawable/ic_account"
         android:id="@+id/menu_account"
-        android:title="Account"/>
+        android:title="Tài khoản"/>
     <item android:icon="@drawable/ic_cart"
         android:id="@+id/menu_cart"
-        android:title="Cart"/>
+        android:title="Giỏ hàng"/>
 </menu>

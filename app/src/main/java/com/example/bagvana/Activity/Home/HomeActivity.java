@@ -115,11 +115,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //                myIntent.putExtras(myBundle);
                 startActivity(myIntent);
                 break;
-            case R.id.menu_login:
-                myIntent = new Intent(HomeActivity.this, SignInActivity.class);
-//                myIntent.putExtras(myBundle);
-                startActivity(myIntent);
-                break;
             case R.id.menu_chat:
                 myIntent = new Intent(HomeActivity.this, ChatActivity.class);
 //                myIntent.putExtras(myBundle);
