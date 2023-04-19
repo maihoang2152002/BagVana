@@ -176,7 +176,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
             // Push new data to the database
 //                String data = "Hello, Firebase!";
             myRef.child(curProduct.getProductID()).setValue(curProduct);
-
         });
 
         listComment = new ArrayList<>();

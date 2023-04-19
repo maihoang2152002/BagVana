@@ -11,6 +11,7 @@ public class Product implements Serializable {
     private String description;
     private int amount;
     private int price;
+    private double rating;
 
     private ArrayList<Comment> listComment;
 
@@ -23,6 +24,7 @@ public class Product implements Serializable {
         this.description = "";
         this.amount = 0;
         this.price = 0;
+        this.rating = 0.0;
     }
     public Product(String productID, String name, String image, String color, String description, int amount, int price) {
         this.productID = productID;
@@ -32,7 +34,20 @@ public class Product implements Serializable {
         this.description = description;
         this.amount = amount;
         this.price = price;
+        this.rating = 0.0;
     }
+
+    public Product(String productID, String name, String image, String color, String description, int amount, int price, double rating) {
+        this.productID = productID;
+        this.name = name;
+        this.image = image;
+        this.color = color;
+        this.description = description;
+        this.amount = amount;
+        this.price = price;
+        this.rating = rating;
+    }
+
     public Product(String productID, String name, String image, String color, String description, int amount, int price, ArrayList<Comment> listComment) {
         this.productID = productID;
         this.name = name;
@@ -104,5 +119,9 @@ public class Product implements Serializable {
 
     public boolean hasNameSimilarTo(String text) {
         return this.name.toLowerCase().contains(text.toLowerCase());
+    }
+
+    public double getRating() {
+        return rating;
     }
 }
