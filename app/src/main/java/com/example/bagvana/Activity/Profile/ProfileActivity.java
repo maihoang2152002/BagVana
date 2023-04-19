@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
+import com.example.bagvana.Activity.LoginRegister.SignInActivity;
 import com.example.bagvana.Activity.OrderList.OrderListActivity;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -42,7 +43,8 @@ public class ProfileActivity extends AppCompatActivity {
     ValueEventListener eventListener;
 
     LinearLayout linear_editProfile, linear_waitConfirmation,
-            linear_waitDelivery, linear_delivered;
+            linear_waitDelivery, linear_delivered,
+            linear_logOut;
     TextView txt_fullName;
     Toolbar toolbar;
 
@@ -125,7 +127,16 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        linear_logOut = findViewById(R.id.linear_logOut);
+        linear_logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                _user.ResetUser();
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                startActivity(intent);
+                finishAffinity();
+            }
+        });
         linear_waitConfirmation = findViewById(R.id.linear_waitConfirmation);
         linear_waitDelivery = findViewById(R.id.linear_waitDelivery);
         linear_delivered = findViewById(R.id.linear_delivered);
