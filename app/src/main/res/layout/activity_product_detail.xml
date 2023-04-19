@@ -9,7 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -25,8 +26,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@android:color/transparent"
-                    tools:ignore="MissingConstraints"
-                    app:title="Chi tiết sản phẩm">
+                    app:title="Chi tiết sản phẩm"
+                    tools:ignore="MissingConstraints">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -39,14 +40,14 @@
                             android:padding="10dp"
                             android:text="Chi tiết sản phẩm"
                             android:textColor="@color/black"
-                            android:textSize="30sp"/>
+                            android:textSize="30sp" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal"
                             android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true">
+                            android:layout_centerVertical="true"
+                            android:orientation="horizontal">
 
                             <ImageButton
                                 android:id="@+id/imageBtn_fav"
@@ -56,7 +57,7 @@
                                 android:minWidth="30dp"
                                 android:minHeight="30dp"
                                 android:src="@drawable/ic_fav"
-                                tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+                                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                             <ImageButton
                                 android:id="@+id/imageBtn_share"
@@ -71,7 +72,6 @@
                         </LinearLayout>
 
 
-
                     </RelativeLayout>
 
                 </androidx.appcompat.widget.Toolbar>
@@ -80,12 +80,13 @@
                     android:id="@+id/img_selected"
                     android:layout_width="285dp"
                     android:layout_height="305dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/toolbar"
                     app:srcCompat="@drawable/img_balo_tomoc"
                     tools:ignore="ContentDescription" />
+
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
@@ -99,6 +100,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/img_selected"
                     tools:ignore="HardcodedText" />
+
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
@@ -112,6 +114,7 @@
                     app:layout_constraintStart_toEndOf="@+id/textView3"
                     app:layout_constraintTop_toTopOf="@+id/textView3"
                     tools:ignore="HardcodedText" />
+
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
@@ -130,7 +133,7 @@
                     android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="Rating"
                     android:textColor="#030303"
                     android:textSize="12sp"
@@ -143,7 +146,7 @@
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="Saved"
                     android:textColor="#030303"
                     android:textSize="12sp"
@@ -156,7 +159,7 @@
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="@dimen/_2sdp"
                     android:text="Order"
                     android:textColor="#030303"
                     android:textSize="12sp"
@@ -169,8 +172,8 @@
                     android:id="@+id/color_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:text="VEGITARIAN FOOD"
                     android:textColor="#B71C1C"
                     android:textSize="15sp"
@@ -182,7 +185,7 @@
                     android:id="@+id/name_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginTop="@dimen/_4sdp"
                     android:text="Float Cake Vietnam"
                     android:textColor="#091020"
                     android:textSize="24sp"
@@ -194,7 +197,7 @@
                     android:id="@+id/imageView9"
                     android:layout_width="40dp"
                     android:layout_height="52dp"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="@dimen/_16sdp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/color_product"
                     app:srcCompat="@drawable/tagfree"
@@ -202,18 +205,18 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/description_product"
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="@dimen/_2sdp"
+                    android:maxLines="4"
+                    android:padding="@dimen/_5sdp"
                     android:text="Banh troi are small white balls made of brown sugar, wrapped in glutinous rice flour. The name floating cakes came about from the way it is actually cooked."
                     android:textAlignment="textStart"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginEnd="16dp"
                     android:textColor="#030303"
-                    android:lineSpacingExtra="2dp"
-                    android:padding="10dp"
-                    android:maxLines="4"
-                    android:ellipsize="end"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_product"
@@ -223,8 +226,8 @@
                     android:id="@+id/txt_minus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="21dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginStart="@dimen/_21sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/description_product"
                     app:srcCompat="@drawable/ic_group_400"
@@ -234,8 +237,8 @@
                     android:id="@+id/txt_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="01"
+                    android:layout_marginStart="@dimen/_4sdp"
+                    android:text="1"
                     android:textColor="#272670"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/txt_minus"
@@ -247,7 +250,7 @@
                     android:id="@+id/txt_plus"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginStart="4dp"
+                    android:layout_marginStart="@dimen/_4sdp"
                     app:layout_constraintBottom_toBottomOf="@+id/txt_amount"
                     app:layout_constraintStart_toEndOf="@+id/txt_amount"
                     app:layout_constraintTop_toTopOf="@+id/txt_amount"
@@ -258,7 +261,7 @@
                     android:id="@+id/price_product"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
+                    android:layout_marginEnd="@dimen/_16sdp"
                     android:text="$5.78"
                     android:textColor="#272670"
                     android:textSize="24sp"
@@ -268,21 +271,7 @@
                     tools:ignore="HardcodedText" />
 
 
-
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <ImageView
-                android:id="@+id/btn_add_to_cart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="32dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:srcCompat="@drawable/ic_group_1675"
-                tools:ignore="ContentDescription,ImageContrastCheck" />
 
             <LinearLayout
                 android:id="@+id/recommend"
@@ -296,8 +285,8 @@
                     android:id="@+id/textView15"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Recommend"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="Đề Xuất"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -311,9 +300,9 @@
                         android:id="@+id/recyclerview_home"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="40dp"
+                        android:layout_marginStart="@dimen/_16sdp"
+                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginBottom="0dp"
                         android:orientation="horizontal">
 
                     </androidx.recyclerview.widget.RecyclerView>
@@ -326,15 +315,14 @@
                 android:id="@+id/comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/textView10"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="Comment"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:text="Đánh Giá"
                     android:textColor="#000000"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -344,8 +332,9 @@
                     android:id="@+id/commentListView"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:nestedScrollingEnabled="true"
                     tools:ignore="NestedScrolling" />
 
@@ -353,4 +342,18 @@
 
         </LinearLayout>
     </ScrollView>
+
+    <ImageView
+        android:id="@+id/btn_add_to_cart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_32sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_32sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_group_1675"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
