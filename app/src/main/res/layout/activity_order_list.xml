@@ -11,16 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/white"
+        android:background="@android:color/transparent"
+        app:contentInsetEnd="0dp"
+        app:contentInsetStartWithNavigation="0dp"
+        app:title="Danh sách đơn hàng"
+        app:titleTextAppearance="@style/ToolbarTitleAppearance"
         tools:ignore="MissingConstraints">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp"
-            android:text="Danh sách đơn hàng"
-            android:textColor="@color/black"
-            android:textSize="30sp"/>
     </androidx.appcompat.widget.Toolbar>
 
 
