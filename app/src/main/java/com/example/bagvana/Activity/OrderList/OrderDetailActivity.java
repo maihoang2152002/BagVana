@@ -63,7 +63,7 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
         totalPrice = findViewById(R.id.order_total);
 
 
-        orderID.setText("Đơn Hàng #" + curOrder.getOrderID());
+        orderID.setText("Đơn Hàng: #" + curOrder.getOrderID());
         orderDate.setText("Ngày: " + curOrder.getOrderDate());
 
         totalPrice.setText("Tổng Giá: " + curOrder.getTotalPrice());
@@ -111,7 +111,6 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
             if (!Objects.equals(curOrder.getStatus(), "2")) {
                 btn_confirm.setVisibility(View.GONE);
             } else {
-                btn_confirm.setBackgroundColor(getResources().getColor(R.color.green));
                 btn_confirm.setText("Received");
             }
         }
