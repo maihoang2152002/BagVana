@@ -48,6 +48,10 @@ public class AdminConfirmActivity extends AppCompatActivity implements ItemListe
         orderList = new ArrayList<>();
 
 
+        loadOrderList();
+    }
+
+    private void loadOrderList() {
         DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Order");
         databaseReferenceHome.addListenerForSingleValueEvent(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -80,10 +84,19 @@ public class AdminConfirmActivity extends AppCompatActivity implements ItemListe
     }
 
     @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK ) {
+
+            loadOrderList();
+        }
+    }
+
+    @Override
     public void OnItemPosition(int position) {
         Intent intent = new Intent(this, OrderDetailActivity.class);
         intent.putExtra("order", orderList.get(position));
-        startActivity(intent);
+        startActivityForResult(intent, 1);
     }
     public void setSupportActionBar(Toolbar toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_back);
