@@ -5,20 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_theme"
     android:gravity="center"
     tools:context=".Activity.Profile.ProfileActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/white"
             tools:ignore="MissingConstraints"
             app:title="Thông tin cá nhân">
 
@@ -31,9 +30,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="Thông tin cá nhân"
-                    android:textColor="@color/black"
-                    android:textSize="30sp" />
-
+                    android:theme="@style/ToolbarTitleAppearance"/>
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -44,13 +41,15 @@
             android:orientation="vertical"
             android:layout_below="@+id/toolbar">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_avatar"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginTop="10dp"
-                android:scaleType="fitXY" android:src="@drawable/img_avatar"
+                android:src="@drawable/img_avatar"
+                app:civ_border_color="@color/border"
+                app:civ_border_width="2dp"
                 android:layout_gravity="center"/>
+
 
             <TextView
                 android:id="@+id/txt_fullName"
@@ -59,7 +58,7 @@
                 android:text="Reggie James"
                 android:layout_gravity="center"
                 android:textSize="24sp"
-                android:textColor="@color/black"
+                android:textColor="@color/title_text"
                 android:textStyle="bold"
                 android:gravity="top"/>
 
@@ -90,7 +89,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
                         android:text="Chờ xác nhận"
-                        android:textColor="@color/black"
+                        android:textColor="@color/describe_text"
                         android:textSize="20sp"
                         android:gravity="center"/>
 
@@ -148,7 +147,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
                         android:text="Chờ lấy hàng"
-                        android:textColor="@color/black"
+                        android:textColor="@color/describe_text"
                         android:textSize="20sp"
                         android:gravity="center"/>
 
@@ -205,7 +204,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginLeft="5dp"
                         android:text="Hàng đã giao"
-                        android:textColor="@color/black"
+                        android:textColor="@color/describe_text"
                         android:textSize="20sp"
                         android:gravity="center"/>
 
@@ -257,7 +256,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:text="Cập nhật hồ sơ"
-                    android:textColor="@color/black"
+                    android:textColor="@color/describe_text"
                     android:textSize="20sp"
                     android:gravity="center"/>
 
@@ -294,7 +293,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:text="Đổi mật khẩu"
-                    android:textColor="@color/black"
+                    android:textColor="@color/describe_text"
                     android:textSize="20sp"
                     android:gravity="center"/>
 
@@ -322,14 +321,14 @@
                     android:layout_height="30dp"
                     android:layout_gravity="left|center_vertical"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/ic_log_out" />
+                    android:background="@drawable/ic_logout" />
 
                 <TextView
                     android:layout_width="287dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:text="Đăng xuất"
-                    android:textColor="@color/black"
+                    android:textColor="@color/describe_text"
                     android:textSize="20sp"
                     android:gravity="center"/>
 

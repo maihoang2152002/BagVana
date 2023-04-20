@@ -53,7 +53,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_toEndOf="@+id/img_product"
             android:text="Amount"
-            android:textColor="#272670"
+            android:textColor="@color/describe_text"
             android:textSize="18sp" />
 
 
@@ -61,6 +61,7 @@
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:theme="@style/MyRatingBar"
             android:numStars="5"
             android:stepSize="0.5"
             android:rating="3.5"
@@ -78,7 +79,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:text="Price"
             android:textStyle="bold"
-            android:textColor="#272670"
+            android:textColor="@color/describe_text"
             android:textSize="18sp" />
 
         <ImageButton

@@ -45,7 +45,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<OrderListAdapter.Main
             return;
         }
 
-        holder.orderID.setText("Đơn Hàng #" + order.getOrderID());
+        holder.orderID.setText("Đơn Hàng: #" + order.getOrderID());
         holder.orderDate.setText("Ngày: " + order.getOrderDate());
         holder.address.setText("Địa Chỉ: " + order.getReceiverInfo().getAddress());
 

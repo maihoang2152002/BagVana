@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/primary_theme"
     android:layout_height="match_parent">
 
     <LinearLayout
@@ -14,16 +15,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/white"
             tools:ignore="MissingConstraints">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="10dp"
-                android:text="Chi tiết đơn hàng"
-                android:textColor="@color/black"
-                android:textSize="30sp"/>
+                android:theme="@style/ToolbarTitleAppearance"
+                android:text="Chi tiết đơn hàng" />
         </androidx.appcompat.widget.Toolbar>
 
         <LinearLayout
@@ -75,23 +74,24 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:id="@+id/order_total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Order Total: $20.00"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/order_total"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Order Total: $20.00"
+                    android:textSize="16sp"
+                    android:textStyle="bold"/>
+
+                <TextView
                     android:id="@+id/order_status"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/purple_200"
+                    android:layout_below="@+id/order_total"
+                    android:textColor="@color/title_text"
                     android:text="Processing"
                     android:textSize="16sp"
                     android:textStyle="bold"/>
@@ -101,10 +101,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Confirm"
-                    android:backgroundTint="@color/blue"
-                    android:gravity="center_vertical"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignBaseline="@id/order_status"/>
+                    android:background="@drawable/ic_cat_bg"
+                    android:backgroundTint="@color/button"
+                    android:gravity="center"
+                    android:layout_alignParentEnd="true" />
 
             </RelativeLayout>
 

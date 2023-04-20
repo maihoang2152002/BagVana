@@ -14,12 +14,14 @@
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_product"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
             android:layout_marginTop="@dimen/_2sdp"
+            app:civ_border_color="@color/border"
             android:layout_gravity="center"
+            app:civ_border_width="2dp"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -52,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginBottom="5dp"
-            android:textColor="#5956E9"
+            android:textColor="@color/describe_text"
             android:textSize="17sp">
 
         </TextView>

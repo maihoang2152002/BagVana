@@ -40,6 +40,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ProfileActivity extends AppCompatActivity {
     DatabaseReference databaseReferenceUser;
     ValueEventListener eventListener;
@@ -51,7 +53,7 @@ public class ProfileActivity extends AppCompatActivity {
             txt_amountDeliveryOrder, txt_amountDeliveredOrder;
     Toolbar toolbar;
 
-    ImageView img_avatar;
+    CircleImageView img_avatar;
     String imageURL, oldImageURL = "";
     Uri uri;
 

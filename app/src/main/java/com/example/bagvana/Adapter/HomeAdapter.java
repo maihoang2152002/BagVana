@@ -104,6 +104,8 @@ import com.example.bagvana.listeners.ItemListener;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 
     private final Context context;
@@ -152,7 +154,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     public class HomeViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView img_product;
+        public CircleImageView img_product;
         public TextView txt_name;
         public TextView txt_color;
         public TextView txt_price;

@@ -54,7 +54,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:text="Price"
             android:textStyle="bold"
-            android:textColor="#272670"
+            android:textColor="@color/describe_text"
             android:textSize="18sp" />
 
         <TextView
@@ -65,7 +65,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_toEndOf="@+id/img_product"
             android:text="Amount"
-            android:textColor="#272670"
+            android:textColor="@color/describe_text"
             android:textSize="18sp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -74,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/button"
             android:foregroundGravity="bottom|right|left"
             android:src="@drawable/ic_rate_us"
 
