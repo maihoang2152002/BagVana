@@ -54,7 +54,7 @@ public class ProfileActivity extends AppCompatActivity {
     Toolbar toolbar;
 
     CircleImageView img_avatar;
-    String imageURL, oldImageURL = "";
+    String imageURL;
     Uri uri;
 
     @Override
@@ -65,50 +65,7 @@ public class ProfileActivity extends AppCompatActivity {
         txt_amountProcessOrder = findViewById(R.id.txt_amountProcessOrder);
         txt_amountDeliveryOrder = findViewById(R.id.txt_amountDeliveryOrder);
         txt_amountDeliveredOrder = findViewById(R.id.txt_amountDeliveredOrder);
-        DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order");
-        databaseReferenceOrder.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                int countProcess = 0, countDelivery = 0, countDelivered = 0;
-
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    Order order = dataSnapshot.getValue(Order.class);
-                    if (order.getUserID().equals(_user.getId())) {
-                        if (order.getStatus().equals("1")) {
-                            countProcess++;
-                        } else if (order.getStatus().equals("2")) {
-                            countDelivery++;
-                        } else {
-                            countDelivered++;
-                        }
-                    }
-                }
-
-                if (countProcess == 0) {
-                    txt_amountProcessOrder.setVisibility(View.GONE);
-                } else {
-                    txt_amountProcessOrder.setText(String.valueOf(countProcess));
-                }
-
-                if (countDelivery == 0) {
-                    txt_amountDeliveryOrder.setVisibility(View.GONE);
-                } else {
-                    txt_amountDeliveryOrder.setText(String.valueOf(countDelivery));
-                }
-
-                if (countDelivered == 0) {
-                    txt_amountDeliveredOrder.setVisibility(View.GONE);
-                } else {
-                    txt_amountDeliveredOrder.setText(String.valueOf(countDelivered));
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+        loadOrderAmount();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
         builder.setCancelable(false);
@@ -124,9 +81,6 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String avatarUrl = dataSnapshot.getValue(String.class);
-//                if(oldImageURL == ""){
-//                    oldImageURL = avatarUrl;
-//                }
                 Glide.with(ProfileActivity.this).load(avatarUrl).into(img_avatar);
                 dialog.dismiss();
             }
@@ -220,7 +174,7 @@ public class ProfileActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), OrderListActivity.class);
                 intent.putExtra("status", "2");
                 intent.putExtra("title", "Đơn hàng chờ lấy hàng");
-                startActivity(intent);
+                startActivityForResult(intent, 2);
             }
         });
 
@@ -231,6 +185,56 @@ public class ProfileActivity extends AppCompatActivity {
                 intent.putExtra("status", "3");
                 intent.putExtra("title", "Đơn hàng đã giao");
                 startActivity(intent);
+            }
+        });
+    }
+
+    private void loadOrderAmount() {
+        DatabaseReference databaseReferenceOrder = FirebaseDatabase.getInstance().getReference("Order");
+        databaseReferenceOrder.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                int countProcess = 0, countDelivery = 0, countDelivered = 0;
+
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Order order = dataSnapshot.getValue(Order.class);
+                    if (order.getUserID().equals(_user.getId())) {
+                        if (order.getStatus().equals("1")) {
+                            countProcess++;
+                        } else if (order.getStatus().equals("2")) {
+                            countDelivery++;
+                        } else {
+                            countDelivered++;
+                        }
+                    }
+                }
+
+                if (countProcess == 0) {
+                    txt_amountProcessOrder.setVisibility(View.INVISIBLE);
+                } else {
+                    txt_amountProcessOrder.setVisibility(View.VISIBLE);
+                    txt_amountProcessOrder.setText(String.valueOf(countProcess));
+                }
+
+                if (countDelivery == 0) {
+                    txt_amountDeliveryOrder.setVisibility(View.INVISIBLE);
+                } else {
+                    txt_amountDeliveryOrder.setVisibility(View.VISIBLE);
+                    txt_amountDeliveryOrder.setText(String.valueOf(countDelivery));
+                }
+
+                if (countDelivered == 0) {
+                    txt_amountDeliveredOrder.setVisibility(View.INVISIBLE);
+                } else {
+                    txt_amountDeliveredOrder.setVisibility(View.VISIBLE);
+                    txt_amountDeliveredOrder.setText(String.valueOf(countDelivered));
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
             }
         });
     }
@@ -270,11 +274,6 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-//                            if (oldImageURL != "") {
-//                                StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(oldImageURL);
-//                                reference.delete();
-//                                oldImageURL = "";
-//                            }
                             Toast.makeText(ProfileActivity.this, "Saved Avatar", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -289,6 +288,13 @@ public class ProfileActivity extends AppCompatActivity {
     public void setSupportActionBar(Toolbar toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(view -> finish());
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 2 && resultCode == RESULT_OK) {
+            loadOrderAmount();
+        }
     }
 
 }
