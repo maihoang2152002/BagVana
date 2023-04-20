@@ -112,8 +112,11 @@
             android:exported="true"/>
 
         <activity
-
             android:name=".Activity.SellerAdmin.CreateVoucherActivity"
+            android:exported="true"/>
+
+        <activity
+            android:name=".Activity.SellerAdmin.AdminProductListActivity"
             android:exported="true"/>
 
         <activity
