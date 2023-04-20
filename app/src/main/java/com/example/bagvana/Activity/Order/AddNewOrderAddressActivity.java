@@ -372,17 +372,350 @@ public class AddNewOrderAddressActivity extends AppCompatActivity {
                             selectedDistrict = spinner_district.getSelectedItem().toString();
 
                             int districtID = adapterView.getId();
+                            Log.e("city", selectedCity);
 
                             if(districtID == R.id.spinner_district) {
-                                switch (selectedDistrict) {
-                                    case "Lựa chọn Quận hoặc Huyện":
-                                        wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_default_ward, R.layout.spinner_layout);
-                                        break;
-                                    case "TP. Long Xuyên":
-                                        wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_long_xuyen_ward_an_giang_district, R.layout.spinner_layout);
-                                    default:
-                                        break;
+                                if (selectedDistrict.equals("Lựa chọn Quận hoặc Huyện")) {
+                                    wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_default_ward, R.layout.spinner_layout);
                                 }
+                                if (selectedCity.equals("An Giang")) {
+                                    switch (selectedDistrict) {
+                                        case "TP. Long Xuyên":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_long_xuyen_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "TP. Châu Đốc":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_chau_doc_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Thị xã Tân Châu":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tan_chau_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện An Phú":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_an_phu_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Châu Phú":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_chau_phu_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Châu Thành":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_chau_thanh_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Chợ Mới":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_cho_moi_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Phú Tân":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_phu_tan_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Thoại Sơn":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_thoai_son_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Tịnh Biên":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tinh_bien_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Tri Tôn":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tri_ton_ward_an_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (selectedCity.equals("Bà Rịa-Vũng Tàu")) {
+                                    switch (selectedDistrict) {
+                                        case "TP. Bà Rịa":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_ba_ria_ward_ba_ria_vung_tau_district, R.layout.spinner_layout);
+                                            break;
+                                        case "TP. Vũng Tàu":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_vung_tau_ward_ba_ria_vung_tau_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Thị xã Châu Đức":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_chau_duc_ward_ba_ria_vung_tau_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Thị xã Côn Đảo":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_con_dao_ward_ba_ria_vung_tau_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Thị xã Đất Đỏ":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_dat_do_ward_ba_ria_vung_tau_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Long Điền":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_long_dien_ward_ba_ria_vung_tau_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Tân Thành":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tan_thanh_ward_ba_ria_vung_tau_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Xuyên Mộc":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_xuyen_moc_ward_ba_ria_vung_tau_district, R.layout.spinner_layout);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (selectedCity.equals("Bạc Liêu")) {
+                                    switch (selectedDistrict) {
+                                        case "Thành phố Bạc Liêu":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_bac_lieu_ward_bac_lieu_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Thị xã Giá Rai":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_gia_rai_ward_bac_lieu_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Đông Hải":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_dong_hai_ward_bac_lieu_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Hòa Bình":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_hoa_binh_ward_bac_lieu_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Hồng Dân":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_hong_dan_ward_bac_lieu_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Phước Long":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_phuoc_long_ward_bac_lieu_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Vĩnh Lợi":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_vinh_loi_ward_bac_lieu_district, R.layout.spinner_layout);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (selectedCity.equals("Bắc Kạn")) {
+                                    switch (selectedDistrict) {
+                                        case "TP. Bắc Kạn":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_bac_kan_ward_bac_kan_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Thị xã Ba Bể":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_ba_be_ward_bac_kan_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Bạch Thông":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_bach_thong_ward_bac_kan_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Chợ Đồn":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_cho_don_ward_bac_kan_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Na Rì":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_na_ri_ward_bac_kan_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Ngân Sơn":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_ngan_son_ward_bac_kan_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Pác Nặm":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_pac_nam_ward_bac_kan_district, R.layout.spinner_layout);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (selectedCity.equals("Bắc Giang")) {
+                                    switch (selectedDistrict) {
+                                        case "TP. Bắc Giang":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_bac_giang_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+
+                                        case "Thị xã Yên Dũng":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_yen_dung_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Thị xã Lạng Giang":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_lang_giang_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Hiệp Hoà":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_hiep_hoa_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Lục Nam":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_luc_nam_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Lục Ngạn":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_luc_ngan_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Sơn Động":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_son_dong_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Tân Yên":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tan_yen_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Việt Yên":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_viet_yen_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Hiệp Sơn":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_hiep_son_ward_bac_giang_district, R.layout.spinner_layout);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (selectedCity.equals("Bắc Ninh")) {
+                                    switch (selectedDistrict) {
+                                        case "Thành phố Bắc Ninh":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_bac_ninh_ward_bac_ninh_district, R.layout.spinner_layout);
+                                            break;
+
+                                        case "Thị xã Từ Sơn":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tu_son_ward_bac_ninh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Ân Thi":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_an_thi_ward_bac_ninh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Gia Bình":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_gia_binh_ward_bac_ninh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Quế Võ":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_que_vo_ward_bac_ninh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Tiên Du":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tien_du_ward_bac_ninh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Yên Phong":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_yen_phong_ward_bac_ninh_district, R.layout.spinner_layout);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (selectedCity.equals("Bến Tre")) {
+                                    switch (selectedDistrict) {
+                                        case "Thành phố Bến Tre":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_ben_tre_ward_ben_tre_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Thị xã Ba Tri":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_ba_tri_ward_ben_tre_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Châu Thành":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_chau_thanh_ward_ben_tre_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Chợ Lách":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_cho_lach_ward_ben_tre_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Giồng Trôm":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_giong_trom_ward_ben_tre_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Mỏ Cày Bắc":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_mo_cay_bac_ward_ben_tre_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Mỏ Cày Nam":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_mo_cay_nam_ward_ben_tre_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Thạnh Phú":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_thach_phu_ward_ben_tre_district, R.layout.spinner_layout);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (selectedCity.equals("Bình Dương")) {
+                                    switch (selectedDistrict) {
+                                        case "TP. Bến Cát":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_ben_cat_ward_binh_duong_district, R.layout.spinner_layout);
+                                            break;
+                                        case "TP. Dĩ An":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_di_an_ward_binh_duong_district, R.layout.spinner_layout);
+                                            break;
+                                        case "TP. Tân Uyên":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tan_uyen_ward_binh_duong_district, R.layout.spinner_layout);
+                                            break;
+                                        case "TP. Thuận An":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_thuan_an_ward_binh_duong_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Thị xã Bàu Bàng":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_bau_bang_ward_binh_duong_district, R.layout.spinner_layout);
+                                            break;
+//                                        case "Thị xã Phú Giáo":
+//                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_mo_cay_bac_ward_ben_tre_district, R.layout.spinner_layout);
+//                                            break;
+//                                        case "Huyện Đại Từ":
+//                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_mo_cay_nam_ward_ben_tre_district, R.layout.spinner_layout);
+//                                            break;
+//                                        case "Huyện Định Quán":
+//                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_thach_phu_ward_ben_tre_district, R.layout.spinner_layout);
+//                                            break;
+//                                        case "Huyện Tân Thành":
+//                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_thach_phu_ward_ben_tre_district, R.layout.spinner_layout);
+//                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+
+                                if (selectedCity.equals("TP. Hồ Chí Minh")) {
+                                    switch (selectedDistrict) {
+                                        case "TP. Thủ Đức":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_thu_duc_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 1":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_1_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 2":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_2_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 3":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_3_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 4":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_4_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 5":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_5_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 6":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_6_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 7":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_7_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 8":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_8_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 9":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_9_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 10":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_10_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 11":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_11_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận 12":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_quan_12_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận Bình Tân":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_binh_tan_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận Bình Thạnh":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_binh_thanh_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận Gò Vấp":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_go_vap_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận Phú Nhuận":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_phu_nhuan_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận Tân Bình":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tan_binh_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Quận Tân Phú":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_tan_phu_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Bình Chánh":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_binh_chanh_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Cần Giờ":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_can_gio_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Củ Chi":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_cu_chi_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Hóc Môn":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_hoc_mon_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        case "Huyện Nhà Bè":
+                                            wardAdapter = ArrayAdapter.createFromResource(adapterView.getContext(), R.array.array_nha_be_ward_ho_chi_minh_district, R.layout.spinner_layout);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                }
+                            }
 
                                 wardAdapter.setDropDownViewResource(com.google.android.material.R.layout.support_simple_spinner_dropdown_item);
 
@@ -400,7 +733,6 @@ public class AddNewOrderAddressActivity extends AppCompatActivity {
                                     }
                                 });
                             }
-                        }
 
                         @Override
                         public void onNothingSelected(AdapterView<?> adapterView) {

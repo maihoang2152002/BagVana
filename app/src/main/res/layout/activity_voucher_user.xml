@@ -8,7 +8,7 @@
     tools:context=".Activity.Voucher.VoucherUserActivity">
 
     <android.widget.Toolbar
-        android:id="@+id/toolbar_voucher"
+        android:id="@+id/toolbar_voucher_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
