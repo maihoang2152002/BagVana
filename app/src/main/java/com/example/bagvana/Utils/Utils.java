@@ -22,6 +22,7 @@ public class Utils {
     public static Product _new_product = new Product();
     public static HashMap<String, Integer> _vouchersOfUser = new HashMap<>();
     public static User _user = new User();
+    public static User _user_forgot_password = new User();
 
     public static List<User> _list_user = new ArrayList<>();
 

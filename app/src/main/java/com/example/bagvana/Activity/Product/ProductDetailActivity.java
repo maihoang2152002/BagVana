@@ -134,9 +134,9 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
             ProductDetailActivity.this.startActivity(sendIntent);
         });
         price.setText("$" + curProduct.getPrice());
-        description.setText(curProduct.getDescription());
+        description.setText("Mô tả: " + curProduct.getDescription());
         name.setText(curProduct.getName());
-        color.setText(curProduct.getColor());
+        color.setText("Màu: " + curProduct.getColor());
         ratingBar.setRating((float) curProduct.getRating());
         rating_point.setText(String.valueOf((double) Math.round(curProduct.getRating() * 10) / 10));
 

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="8dp"
-    app:cardCornerRadius="6dp"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="10dp"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/image_selector"
         android:padding="15dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
@@ -24,7 +25,7 @@
 
         <TextView
             android:id="@+id/nameId"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_toEndOf="@+id/img_product"
@@ -35,7 +36,7 @@
 
         <TextView
             android:id="@+id/color_product"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameId"
             android:layout_marginStart="@dimen/_10sdp"
@@ -44,39 +45,17 @@
             android:textColor="#757575"
             android:textSize="18sp" />
 
-
-
-        <RelativeLayout
-            android:id="@+id/relativelayout_price_fav"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/amount_product"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/color_product"
             android:layout_marginStart="@dimen/_10sdp"
-            android:layout_toEndOf="@+id/img_product">
+            android:layout_toEndOf="@+id/img_product"
+            android:text="Amount"
+            android:textColor="@color/describe_text"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/price_product"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Price"
-                android:textColor="#272670"
-                android:textSize="18sp" />
-
-            <ImageButton
-                android:id="@+id/imageBtn_fav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:tag="false"
-                android:layout_alignBaseline="@id/price_product"
-                android:layout_alignParentEnd="true"
-                android:background="@android:color/transparent"
-                android:minWidth="30dp"
-                android:minHeight="30dp"
-                android:src="@drawable/ic_fav"
-                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
-
-
-        </RelativeLayout>
 
         <RatingBar
             android:id="@+id/ratingBar"
@@ -86,10 +65,34 @@
             android:numStars="5"
             android:stepSize="0.5"
             android:rating="3.5"
-            android:layout_below="@+id/relativelayout_price_fav"
+            android:layout_below="@+id/amount_product"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_toEndOf="@+id/img_product"
             style="?android:attr/ratingBarStyleSmall" />
+
+        <TextView
+            android:id="@+id/price_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tag_free"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Price"
+            android:textStyle="bold"
+            android:textColor="@color/describe_text"
+            android:textSize="18sp" />
+
+        <ImageButton
+            android:id="@+id/imageBtn_fav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/nameId"
+            android:background="@android:color/transparent"
+            android:minWidth="30dp"
+            android:minHeight="30dp"
+            android:src="@drawable/ic_fav"
+            android:tag="false"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ImageView
             android:id="@+id/tag_free"
@@ -99,19 +102,6 @@
             android:layout_alignParentEnd="true"
             app:srcCompat="@drawable/tagfree"
             tools:ignore="ContentDescription,ImageContrastCheck" />
-
-        <!--        <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-        <!--            android:id="@+id/btn_rating"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_alignParentTop="true"-->
-        <!--            android:layout_alignParentRight="true"-->
-        <!--            android:foregroundGravity="bottom|right|left"-->
-        <!--            android:src="@drawable/ic_rate_us"-->
-
-        <!--            app:pressedTranslationZ="12dp"-->
-        <!--            app:useCompatPadding="true"-->
-        <!--            tools:ignore="SpeakableTextPresentCheck" />-->
 
     </RelativeLayout>
 

@@ -5,20 +5,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_theme"
     android:gravity="center"
     tools:context=".Activity.Profile.ProfileActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:background="@color/white"
             tools:ignore="MissingConstraints"
             app:title="Thông tin cá nhân">
 
@@ -31,9 +30,7 @@
                     android:layout_height="wrap_content"
                     android:padding="10dp"
                     android:text="Thông tin cá nhân"
-                    android:textColor="@color/black"
-                    android:textSize="30sp" />
-
+                    android:theme="@style/ToolbarTitleAppearance"/>
             </RelativeLayout>
 
         </androidx.appcompat.widget.Toolbar>
@@ -44,12 +41,15 @@
             android:orientation="vertical"
             android:layout_below="@+id/toolbar">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_avatar"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:scaleType="fitXY" android:src="@drawable/img_avatar"
+                android:src="@drawable/img_avatar"
+                app:civ_border_color="@color/border"
+                app:civ_border_width="2dp"
                 android:layout_gravity="center"/>
+
 
             <TextView
                 android:id="@+id/txt_fullName"
@@ -58,7 +58,7 @@
                 android:text="Reggie James"
                 android:layout_gravity="center"
                 android:textSize="24sp"
-                android:textColor="@color/black"
+                android:textColor="@color/title_text"
                 android:textStyle="bold"
                 android:gravity="top"/>
 
@@ -68,7 +68,7 @@
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/rectangle_profile">
 
                 <ImageView
@@ -78,14 +78,37 @@
                     android:background="@drawable/ic_shopping_bag"
                     android:layout_gravity="left|center_vertical"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="287dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:text="Chờ xác nhận"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:gravity="center"/>
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:text="Chờ xác nhận"
+                        android:textColor="@color/describe_text"
+                        android:textSize="20sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/txt_amountProcessOrder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="30dp"
+                        android:minHeight="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/circle_background"
+                        android:text="35"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:padding="2dp"
+                        android:layout_marginLeft="10dp"/>
+                </LinearLayout>
+
 
                 <ImageButton
                     android:id="@+id/imgBtn_wait_confirmation"
@@ -113,14 +136,36 @@
                     android:background="@drawable/ic_truck"
                     android:layout_gravity="left|center_vertical"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="287dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:text="Chờ lấy hàng"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:gravity="center"/>
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:text="Chờ lấy hàng"
+                        android:textColor="@color/describe_text"
+                        android:textSize="20sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/txt_amountDeliveryOrder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="30dp"
+                        android:minHeight="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/circle_background"
+                        android:text="20"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:padding="2dp"
+                        android:layout_marginLeft="10dp"/>
+                </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/imgBtn_wait_goods"
@@ -148,14 +193,36 @@
                     android:background="@drawable/ic_package"
                     android:layout_gravity="left|center_vertical"/>
 
-                <TextView
+                <LinearLayout
                     android:layout_width="287dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:text="Hàng đã giao"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:gravity="center"/>
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:text="Hàng đã giao"
+                        android:textColor="@color/describe_text"
+                        android:textSize="20sp"
+                        android:gravity="center"/>
+
+                    <TextView
+                        android:id="@+id/txt_amountDeliveredOrder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="30dp"
+                        android:minHeight="30dp"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/circle_background"
+                        android:text="30"
+                        android:textColor="@color/white"
+                        android:textAlignment="center"
+                        android:textSize="20sp"
+                        android:padding="2dp"
+                        android:layout_marginLeft="10dp"/>
+                </LinearLayout>
 
                 <ImageButton
                     android:id="@+id/imgBtn_delivered"
@@ -167,13 +234,14 @@
                     tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
+
             <LinearLayout
                 android:id="@+id/linear_editProfile"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/rectangle_profile">
 
                 <ImageView
@@ -188,7 +256,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:text="Cập nhật hồ sơ"
-                    android:textColor="@color/black"
+                    android:textColor="@color/describe_text"
                     android:textSize="20sp"
                     android:gravity="center"/>
 
@@ -202,43 +270,9 @@
                     tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/rectangle_profile">
-
-                <ImageView
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/ic_gift"
-                    android:layout_gravity="left|center_vertical"/>
-
-                <TextView
-                    android:layout_width="287dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:text="Đổi voucher"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:gravity="center"/>
-
-                <ImageButton
-                    android:id="@+id/imgBtn_exchange_voucher"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/ic_right_arrow"
-                    android:contentDescription="This is just the icon"
-                    tools:ignore="TouchTargetSizeCheck" />
-            </LinearLayout
-                >
 
             <LinearLayout
+                android:id="@+id/linear_changePassword"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:layout_marginLeft="20dp"
@@ -259,7 +293,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:text="Đổi mật khẩu"
-                    android:textColor="@color/black"
+                    android:textColor="@color/describe_text"
                     android:textSize="20sp"
                     android:gravity="center"/>
 
@@ -287,14 +321,14 @@
                     android:layout_height="30dp"
                     android:layout_gravity="left|center_vertical"
                     android:layout_marginLeft="20dp"
-                    android:background="@drawable/ic_log_out" />
+                    android:background="@drawable/ic_logout" />
 
                 <TextView
                     android:layout_width="287dp"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="5dp"
                     android:text="Đăng xuất"
-                    android:textColor="@color/black"
+                    android:textColor="@color/describe_text"
                     android:textSize="20sp"
                     android:gravity="center"/>
 

@@ -5,6 +5,7 @@ import static com.example.bagvana.Utils.Utils._user;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -30,6 +31,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -53,7 +55,6 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
         setSupportActionBar(toolbar);
 
         curOrder = (Order) getIntent().getSerializableExtra("order");
-//        Log.e("OrderDate", curOrder.getOrderDate());
 
         orderID = findViewById(R.id.order_number);
         orderDate = findViewById(R.id.order_date);
@@ -62,7 +63,7 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
         totalPrice = findViewById(R.id.order_total);
 
 
-        orderID.setText("Đơn Hàng #" + curOrder.getOrderID());
+        orderID.setText("Đơn Hàng: #" + curOrder.getOrderID());
         orderDate.setText("Ngày: " + curOrder.getOrderDate());
 
         totalPrice.setText("Tổng Giá: " + curOrder.getTotalPrice());
@@ -110,7 +111,6 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
             if (!Objects.equals(curOrder.getStatus(), "2")) {
                 btn_confirm.setVisibility(View.GONE);
             } else {
-                btn_confirm.setBackgroundColor(getResources().getColor(R.color.green));
                 btn_confirm.setText("Received");
             }
         }
@@ -127,8 +127,9 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         Toast.makeText(OrderDetailActivity.this, "Confirm order successfully", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(OrderDetailActivity.this, AdminConfirmActivity.class);
-                                        startActivity(intent);
+
+                                        Intent intent = new Intent();
+                                        setResult(RESULT_OK, intent);
                                         finish();
                                     }
                                 }
@@ -146,9 +147,9 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()){
                                         Toast.makeText(OrderDetailActivity.this, "Confirm received successfully", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(OrderDetailActivity.this, OrderListActivity.class);
+                                        Intent intent = new Intent();
                                         intent.putExtra("status", "2");
-                                        startActivity(intent);
+                                        setResult(RESULT_OK, intent);
                                         finish();
                                     }
                                 }
@@ -176,5 +177,6 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
     public void setSupportActionBar(Toolbar toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(view -> finish());
+
     }
 }

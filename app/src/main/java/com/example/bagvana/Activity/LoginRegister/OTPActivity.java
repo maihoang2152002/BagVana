@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bagvana.Activity.Profile.ChangePasswordActivity;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
@@ -148,7 +149,10 @@ public class OTPActivity extends AppCompatActivity {
 
                             }
                             else if(type_numbephone.equals("forgotpassword")){
-                                startActivity(new Intent(OTPActivity.this,ChangePassword.class));
+                                Intent intent = new Intent(OTPActivity.this, ChangePassword.class);
+                                intent.putExtra("numberphone",phoneNumber);
+                                startActivity(intent);
+
                             }
 
                             finish();

@@ -2,23 +2,26 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="@dimen/_120sdp"
+    android:layout_width="@dimen/_130sdp"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/_16sdp"
+    android:layout_margin="@dimen/_10sdp"
     app:cardBackgroundColor="#ffffff"
     app:cardCornerRadius="16dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/image_selector"
         android:orientation="vertical"
         tools:ignore="MissingConstraints">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_product"
             android:layout_width="@dimen/_100sdp"
             android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_2sdp"
+            app:civ_border_color="@color/border"
             android:layout_gravity="center"
-            android:background="@drawable/ellipse"
+            app:civ_border_width="2dp"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -28,6 +31,7 @@
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="5dp"
+            android:textStyle="bold"
             android:textColor="#000000"
             android:textSize="22sp">
 
@@ -50,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginBottom="5dp"
-            android:textColor="#5956E9"
+            android:textColor="@color/describe_text"
             android:textSize="17sp">
 
         </TextView>
