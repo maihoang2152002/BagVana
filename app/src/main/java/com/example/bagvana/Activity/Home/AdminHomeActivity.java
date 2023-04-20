@@ -1,11 +1,14 @@
 package com.example.bagvana.Activity.Home;
 
+import static com.example.bagvana.Utils.Utils._user;
+
 import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.bagvana.Activity.LoginRegister.SignInActivity;
 import com.example.bagvana.Activity.SellerAdmin.AddProductActivity;
 import com.example.bagvana.Activity.SellerAdmin.AdminConfirmActivity;
 import com.example.bagvana.Activity.SellerAdmin.CreateVoucherActivity;
@@ -17,7 +20,7 @@ import com.example.bagvana.R;
 
 public class AdminHomeActivity extends AppCompatActivity {
 
-    CardView card_statistics, card_add, card_remove, card_edit, card_confirm, card_settings;
+    CardView card_statistics, card_add, card_remove, card_edit, card_confirm, card_settings, card_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         card_edit = findViewById(R.id.card_edit);
         card_confirm = findViewById(R.id.card_confirm);
         card_settings = findViewById(R.id.card_settings);
+        card_logout = findViewById(R.id.card_logout);
 
         card_statistics.setOnClickListener(v -> {
             // code in here
@@ -68,7 +72,13 @@ public class AdminHomeActivity extends AppCompatActivity {
 //                myIntent.putExtras(myBundle);
             startActivity(myIntent);
         });
-
+        card_logout.setOnClickListener(v -> {
+            // code in here
+            _user.ResetUser();
+            Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+            startActivity(intent);
+            finishAffinity();
+        });
 
     }
 }
