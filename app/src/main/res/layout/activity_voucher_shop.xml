@@ -13,7 +13,7 @@
         android:orientation="vertical">
 
         <android.widget.Toolbar
-            android:id="@+id/toolbar_voucher"
+            android:id="@+id/toolbar_voucher_shop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
@@ -23,8 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Mã giảm giá của cửa hàng"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textColor="@color/title_text"
+                android:textSize="@dimen/_20sdp" />
         </android.widget.Toolbar>
 
         <LinearLayout
@@ -36,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="Đang hoạt động"
-                android:textColor="@color/black"
+                android:textColor="@color/blue"
                 android:textSize="15sp"/>
             <TextView
                 android:id="@+id/txt_usedVoucher"

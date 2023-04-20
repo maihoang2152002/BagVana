@@ -18,8 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Tạo voucher cho cửa hàng"
-            android:textColor="@color/black"
-            android:textSize="18sp"/>
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/_20sdp"/>
     </android.widget.Toolbar>
 
     <TextView
@@ -310,7 +310,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:text="1"
-                android:textColor="#272670"
+                android:textColor="@color/describe_text"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
 

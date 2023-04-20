@@ -73,7 +73,7 @@
             android:layout_marginLeft="5dp"
             android:padding="8dp"
             android:text="Lưu"
-            android:backgroundTint="@color/red" />
+            android:background="@drawable/btn_bg" />
 
     </LinearLayout>
 
