@@ -18,13 +18,17 @@ import com.example.bagvana.Adapter.FreeshipVoucherAdapter;
 import com.example.bagvana.DTO.User_Voucher;
 import com.example.bagvana.DTO.Voucher;
 import com.example.bagvana.R;
+import com.example.bagvana.Utils.Utils;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 public class ChooseVoucherActivity extends AppCompatActivity {
@@ -98,7 +102,7 @@ public class ChooseVoucherActivity extends AppCompatActivity {
     private void initData() {
         HashMap<String, Integer> user_vouchers = new HashMap<>();
 
-        DatabaseReference databaseReferenceUser_Voucher = FirebaseDatabase.getInstance().getReference("User_Voucher").child("1");
+        DatabaseReference databaseReferenceUser_Voucher = FirebaseDatabase.getInstance().getReference("User_Voucher").child(Utils._user.getId());
         databaseReferenceUser_Voucher.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -123,26 +127,32 @@ public class ChooseVoucherActivity extends AppCompatActivity {
 
                     if(user_vouchers.containsKey(voucher.getId())) {
 
-                        if(voucher.getType() == 2) {
-                            int count = user_vouchers.get(voucher.getId());
-                            while (count > 0) {
-                                freeShipVouchers.add(voucher);
-                                count -- ;
-                            }
+                        // kiểm tra hạn voucher
+                        // start before day now and end after daynow
 
-                            Log.e("freeship", voucher.getId());
-                        } else {
-                            int count = user_vouchers.get(voucher.getId());
-                            while (count > 0) {
-                                discountVouchers.add(voucher);
-                                count -- ;
+                        try {
+                            if(compareDate(voucher.getStart(), voucher.getEnd()) == 0) {
+                                if(voucher.getType() == 2) {
+                                    int count = user_vouchers.get(voucher.getId());
+                                    while (count > 0) {
+                                        freeShipVouchers.add(voucher);
+                                        count -- ;
+                                    }
+
+                                } else {
+                                    int count = user_vouchers.get(voucher.getId());
+                                    while (count > 0) {
+                                        discountVouchers.add(voucher);
+                                        count -- ;
+                                    }
+
+                                }
                             }
-                            Log.e("discount", voucher.getId());
+                        } catch (ParseException e) {
+                            throw new RuntimeException(e);
                         }
 
                     }
-
-
                 }
 
                 freeshipVoucherAdapter.notifyDataSetChanged();
@@ -154,6 +164,26 @@ public class ChooseVoucherActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public int compareDate(String start, String end) throws ParseException {
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        Date strDateEnd = sdf.parse(end);
+        Date strDateStart = sdf.parse(start);
+
+        // chưa xảy ra
+        if (new Date().before(strDateStart) && new Date().before(strDateEnd)) {
+            return 1;
+        }
+
+        // đã kết thúc
+        if (new Date().after(strDateStart) && new Date().after(strDateEnd)) {
+            return -1;
+        }
+
+        return 0;
     }
 
     public boolean checkDate(Voucher voucher) {

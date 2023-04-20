@@ -5,6 +5,14 @@ public class User_Voucher {
     private String userID;
     private int amount;
 
+    public User_Voucher() {}
+
+    public User_Voucher(String voucherID, String userID, int amount) {
+        this.voucherID = voucherID;
+        this.userID = userID;
+        this.amount = amount;
+    }
+
     public String getVoucherID() {
         return voucherID;
     }

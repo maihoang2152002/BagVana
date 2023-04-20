@@ -5,10 +5,10 @@ import static com.example.bagvana.Utils.Utils._user;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -20,17 +20,16 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import com.andremion.counterfab.CounterFab;
+import com.example.bagvana.Activity.Chatbot.BubbleView;
 import com.example.bagvana.Activity.Chatbot.ChatActivity;
 import com.example.bagvana.Activity.LoginRegister.SignInActivity;
 import com.example.bagvana.Activity.Order.CartActivity;
-import com.example.bagvana.Activity.OrderList.OrderListActivity;
 import com.example.bagvana.Activity.ProductList.ProductListActivity;
 import com.example.bagvana.Activity.Profile.ProfileActivity;
-import com.example.bagvana.R;
+import com.example.bagvana.Activity.Voucher.VoucherUserActivity;
 import com.example.bagvana.Activity.Wishlist.WishlistActivity;
+import com.example.bagvana.R;
 import com.example.bagvana.fragments.HomeFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,9 +47,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        counterFabChat = (CounterFab) findViewById(R.id.btnChat);
-//        textView = findViewById(R.id.textView);
         toolbar = findViewById(R.id.toolbar);
+
+        BubbleView button = (BubbleView) LayoutInflater.from(this).inflate(R.layout.bubble_view, null);
+        RelativeLayout parent = findViewById(R.id.my_layout);
+
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(150, 150);
+        // Set the layout rules
+        params.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, RelativeLayout.TRUE);
+        params.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
+        params.setMargins(30, 30, 30, 30);
+
+        button.setLayoutParams(params);
+        parent.addView(button);
+
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new
@@ -60,21 +70,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.menu_home);
 
-//        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-//        bottomNavigationView.setOnItemSelectedListener(this);
 
         loadFragment(new HomeFragment());
         menu = navigationView.getMenu();
-//        menu.findItem(R.id.ic_logout).setVisible(false);
-//        menu.findItem(R.id.ic_account).setVisible(false);
-        counterFabChat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ChatActivity.class);
-//                myIntent.putExtras(myBundle);
-                startActivity(intent);
-            }
-        });
+
         SearchView searchView = findViewById(R.id.search_view);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -120,6 +119,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_chat:
                 myIntent = new Intent(HomeActivity.this, ChatActivity.class);
 //                myIntent.putExtras(myBundle);
+                startActivity(myIntent);
+                break;
+            case R.id.menu_gift:
+                myIntent = new Intent(HomeActivity.this, VoucherUserActivity.class);
                 startActivity(myIntent);
                 break;
             case R.id.menu_logout:

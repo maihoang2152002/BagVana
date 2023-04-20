@@ -76,6 +76,8 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.VoucherV
         DatabaseReference databaseReferenceVoucher = FirebaseDatabase.getInstance().getReference("Voucher").child(voucher.getId());
 
         VoucherDAO voucherDAO = new VoucherDAO();
+
+        // maybe code lại
         voucherDAO.readCountUsedVoucher(voucher, new VoucherDAO.MyCallback() {
             @Override
             public void onCallback(String voucherID, int value) {
@@ -128,30 +130,19 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.VoucherV
         holder.btn_end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-
-                Date date;
-
-                try {
-                    date = sdf.parse(voucher.getEnd());
-                } catch (ParseException e) {
-                    throw new RuntimeException(e);
-                }
 
                 Calendar c = Calendar.getInstance();
-                c.setTime(date);
-                c.add(Calendar.DATE, -1);
+                c.add(Calendar.DAY_OF_MONTH, -1);
 
-                Date newDate = c.getTime();
-                Log.e("NewDate", newDate.toString());
 
-                int mDay = c.get(Calendar.DATE);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
                 int mMonth = c.get(Calendar.MONTH);
                 int mYear = c.get(Calendar.YEAR);
 
-                String strDate = mDay + "/" + mMonth + "/" + mYear;
+                String strDate = mDay + "/" + (mMonth + 1) + "/" + mYear;
 
                 databaseReferenceVoucher.child("end").setValue(strDate);
+
             }
         });
 

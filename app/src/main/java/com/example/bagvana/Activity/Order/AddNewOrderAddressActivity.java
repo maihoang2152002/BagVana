@@ -134,12 +134,13 @@ public class AddNewOrderAddressActivity extends AppCompatActivity {
                 }
 
                 if(success) {
-                    ReveiverInfoDAO reveiverInfoDAO = new ReveiverInfoDAO("1");
+                    ReveiverInfoDAO reveiverInfoDAO = new ReveiverInfoDAO();
                     String newAddressID = Utils._newAddressID;
 
-                    Log.e("activity", newAddressID);
+                    //kiểm tra default
 
-                    ReceiverInfo receiverInfo = new ReceiverInfo("1", newAddressID, address, name, phone, isDefault);
+                    ReceiverInfo receiverInfo = new ReceiverInfo(Utils._user.getId(), newAddressID, address, name, phone, isDefault);
+
                     reveiverInfoDAO.addReceiverInfoFirebase(receiverInfo);
 
                     Intent intent = new Intent(AddNewOrderAddressActivity.this, OrderAddressActivity.class);

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E5E5E5"
+    android:background="@color/primary_theme"
     tools:context=".Activity.Product.ProductDetailActivity">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="50dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,8 +40,7 @@
                             android:layout_alignParentTop="true"
                             android:padding="10dp"
                             android:text="Chi tiết sản phẩm"
-                            android:textColor="@color/black"
-                            android:textSize="30sp" />
+                            android:theme="@style/ToolbarTitleAppearance" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -56,8 +56,8 @@
                                 android:background="@android:color/transparent"
                                 android:minWidth="30dp"
                                 android:minHeight="30dp"
-                                android:tag="false"
                                 android:src="@drawable/ic_fav"
+                                android:tag="false"
                                 tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                             <ImageButton
@@ -77,25 +77,17 @@
 
                 </androidx.appcompat.widget.Toolbar>
 
-                <FrameLayout
-                    android:layout_width="300dp"
-                    android:layout_height="300dp"
-                    android:layout_marginTop="@dimen/_5sdp"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/img_selected"
+                    android:layout_width="285dp"
+                    android:layout_height="285dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/toolbar"
-                    android:id="@+id/frame_img"
-                    android:background="@drawable/image_selector">
-
-                    <ImageView
-                        android:id="@+id/img_selected"
-                        android:layout_width="285dp"
-                        android:layout_height="285dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/img_balo_tomoc"
-                        tools:ignore="ContentDescription" />
-
-                </FrameLayout>
+                    android:src="@drawable/img_balo_tomoc"
+                    app:civ_border_color="@color/border"
+                    app:civ_border_width="2dp"
+                    tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/rating_point"
@@ -103,13 +95,13 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_40sdp"
                     android:layout_marginTop="12dp"
-                    android:textStyle="bold"
                     android:text="4.8"
-                    android:textColor="#272670"
+                    android:textColor="@color/describe_text"
                     android:textSize="20sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toStartOf="@+id/ratingBar"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/frame_img"
+                    app:layout_constraintTop_toBottomOf="@+id/img_selected"
                     tools:ignore="HardcodedText" />
 
                 <TextView
@@ -117,10 +109,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_2sdp"
-                    android:textStyle="bold"
                     android:text="Rating"
-                    android:textColor="#030303"
+                    android:textColor="@color/describe_text"
                     android:textSize="18sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="@+id/rating_point"
                     app:layout_constraintStart_toStartOf="@+id/rating_point"
                     app:layout_constraintTop_toBottomOf="@+id/rating_point"
@@ -131,16 +123,16 @@
                     style="?android:attr/ratingBarStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:theme="@style/MyRatingBar"
                     android:layout_below="@+id/price_product"
                     android:layout_marginTop="12dp"
                     android:layout_marginEnd="@dimen/_40sdp"
+                    android:isIndicator="true"
                     android:numStars="5"
                     android:rating="3.5"
                     android:stepSize="0.5"
+                    android:theme="@style/MyRatingBar"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/frame_img"
-                    android:isIndicator="true"
+                    app:layout_constraintTop_toBottomOf="@+id/img_selected"
                     tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
                 <TextView
@@ -150,9 +142,9 @@
                     android:layout_marginStart="@dimen/_16sdp"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:text="VEGITARIAN FOOD"
-                    android:textStyle="bold"
-                    android:textColor="#B71C1C"
+                    android:textColor="@color/describe_text"
                     android:textSize="15sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView7"
                     tools:ignore="HardcodedText" />
@@ -163,9 +155,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_4sdp"
                     android:text="Float Cake Vietnam"
-                    android:textColor="#091020"
-                    android:textStyle="bold"
+                    android:textColor="@color/title_text"
                     android:textSize="24sp"
+                    android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/color_product"
                     app:layout_constraintTop_toBottomOf="@+id/color_product"
                     tools:ignore="HardcodedText" />
@@ -193,8 +185,9 @@
                     android:padding="@dimen/_5sdp"
                     android:text="Banh troi are small white balls made of brown sugar, wrapped in glutinous rice flour. The name floating cakes came about from the way it is actually cooked."
                     android:textAlignment="textStart"
-                    android:textColor="#030303"
+                    android:textColor="@color/describe_text"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/name_product"
                     tools:ignore="HardcodedText,VisualLintLongText" />
@@ -216,7 +209,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_4sdp"
                     android:text="1"
-                    android:textColor="#272670"
+                    android:textColor="@color/describe_text"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="@+id/txt_minus"
                     app:layout_constraintStart_toEndOf="@+id/txt_minus"
@@ -240,8 +233,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/_16sdp"
                     android:text="$5.78"
-                    android:textColor="#272670"
+                    android:textColor="@color/describe_text"
                     android:textSize="24sp"
+                    android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="@+id/txt_plus"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/txt_plus"
@@ -264,7 +258,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:text="Đề Xuất"
-                    android:textColor="#000000"
+                    android:textColor="@color/title_text"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
@@ -277,8 +271,8 @@
                         android:id="@+id/recyclerview_home"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_16sdp"
-                        android:layout_marginEnd="@dimen/_16sdp"
+                        android:layout_marginStart="@dimen/_5sdp"
+                        android:layout_marginEnd="@dimen/_5sdp"
                         android:layout_marginBottom="0dp"
                         android:orientation="horizontal">
 
@@ -300,7 +294,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:text="Đánh Giá"
-                    android:textColor="#000000"
+                    android:textColor="@color/title_text"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     tools:ignore="HardcodedText" />
@@ -309,8 +303,8 @@
                     android:id="@+id/commentListView"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:nestedScrollingEnabled="true"
                     tools:ignore="NestedScrolling" />

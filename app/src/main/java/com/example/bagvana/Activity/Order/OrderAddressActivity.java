@@ -66,7 +66,7 @@ public class OrderAddressActivity extends AppCompatActivity {
 
     private void initData() {
         // userID = 1
-        DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance().getReference("ReceiverInfo").child("1");
+        DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance().getReference("ReceiverInfo").child(Utils._user.getId());
         databaseReferenceCart.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

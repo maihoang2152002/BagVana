@@ -82,7 +82,7 @@
                     android:id="@+id/textView5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="@dimen/_2sdp"
                     android:text="Sản phẩm gần đây"
                     android:textColor="#000000"
                     android:textSize="20dp"
@@ -93,10 +93,7 @@
                     android:id="@+id/recyclerview_home"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_16sdp"
-                    android:layout_marginEnd="@dimen/_16sdp"
-                    android:layout_marginBottom="@dimen/_20sdp">
-
+                    android:layout_gravity="center">
                 </androidx.recyclerview.widget.RecyclerView>
 
 

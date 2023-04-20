@@ -25,7 +25,7 @@
 
         <TextView
             android:id="@+id/nameId"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_toEndOf="@+id/img_product"
@@ -36,7 +36,7 @@
 
         <TextView
             android:id="@+id/color_product"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nameId"
             android:layout_marginStart="@dimen/_10sdp"
@@ -47,13 +47,25 @@
 
         <TextView
             android:id="@+id/price_product"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_rating"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:text="Price"
+            android:textStyle="bold"
+            android:textColor="@color/describe_text"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/amount_product"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/color_product"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_toEndOf="@+id/img_product"
-            android:text="Price"
-            android:textColor="#272670"
+            android:text="Amount"
+            android:textColor="@color/describe_text"
             android:textSize="18sp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -62,6 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/button"
             android:foregroundGravity="bottom|right|left"
             android:src="@drawable/ic_rate_us"
 

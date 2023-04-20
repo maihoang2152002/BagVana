@@ -55,6 +55,8 @@ public class VoucherUserActivity extends AppCompatActivity {
         txt_voucherOfShop = findViewById(R.id.txt_voucherOfShop);
         txt_voucherOfUser = findViewById(R.id.txt_voucherOfUser);
 
+        txt_voucherOfShop.setTextColor(getResources().getColor(R.color.blue));
+
         // Freeship Voucher
         recycview_freeshipVoucher.setHasFixedSize(true);
         recycview_freeshipVoucher.setLayoutManager(new LinearLayoutManager(this));
@@ -81,6 +83,8 @@ public class VoucherUserActivity extends AppCompatActivity {
         txt_voucherOfShop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                txt_voucherOfShop.setTextColor(getResources().getColor(R.color.blue));
+                txt_voucherOfUser.setTextColor(getResources().getColor(R.color.black));
                 type = "shop";
                 freeshipShopAdapter.setType(type);
                 discountShopAdapter.setType(type);
@@ -91,6 +95,8 @@ public class VoucherUserActivity extends AppCompatActivity {
         txt_voucherOfUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                txt_voucherOfUser.setTextColor(getResources().getColor(R.color.blue));
+                txt_voucherOfShop.setTextColor(getResources().getColor(R.color.black));
                 type = "user";
                 freeshipShopAdapter.setType(type);
                 discountShopAdapter.setType(type);
@@ -104,8 +110,8 @@ public class VoucherUserActivity extends AppCompatActivity {
     private void initDataOfUser() {
         HashMap<String, Integer> user_vouchers = new HashMap<>();
 
-        DatabaseReference databaseReferenceUser_Voucher = FirebaseDatabase.getInstance().getReference("User_Voucher").child("1");
-        databaseReferenceUser_Voucher.addValueEventListener(new ValueEventListener() {
+        DatabaseReference databaseReferenceUser_Voucher = FirebaseDatabase.getInstance().getReference("User_Voucher").child(Utils._user.getId());
+        databaseReferenceUser_Voucher.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Utils._vouchersOfUser.clear();
@@ -125,8 +131,8 @@ public class VoucherUserActivity extends AppCompatActivity {
     private void setDataVoucherOfUser() {
         HashMap<String, Integer> user_vouchers = new HashMap<>();
 
-        DatabaseReference databaseReferenceUser_Voucher = FirebaseDatabase.getInstance().getReference("User_Voucher").child("1");
-        databaseReferenceUser_Voucher.addValueEventListener(new ValueEventListener() {
+        DatabaseReference databaseReferenceUser_Voucher = FirebaseDatabase.getInstance().getReference("User_Voucher").child(Utils._user.getId());
+        databaseReferenceUser_Voucher.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Utils._vouchersOfUser.clear();
@@ -139,20 +145,28 @@ public class VoucherUserActivity extends AppCompatActivity {
 
                     for(Voucher voucher: vouchers) {
                         if(voucher.getId().equals(user_voucher.getVoucherID())) {
-                            if(voucher.getType() == 2) {
-                                int count = user_vouchers.get(voucher.getId());
-                                while (count > 0) {
-                                    freeshipVouchers.add(voucher);
-                                    count -- ;
-                                }
 
-                            } else {
-                                int count = user_vouchers.get(voucher.getId());
-                                while (count > 0) {
-                                    discountVouchers.add(voucher);
-                                    count -- ;
+                            try {
+                                if(compareDate(voucher.getStart(), voucher.getEnd()) == 0) {
+                                    if(voucher.getType() == 2) {
+                                        int count = user_vouchers.get(voucher.getId());
+                                        while (count > 0) {
+                                            freeshipVouchers.add(voucher);
+                                            count -- ;
+                                        }
+
+                                    } else {
+                                        int count = user_vouchers.get(voucher.getId());
+                                        while (count > 0) {
+                                            discountVouchers.add(voucher);
+                                            count -- ;
+                                        }
+                                    }
                                 }
+                            } catch (ParseException e) {
+                                throw new RuntimeException(e);
                             }
+
                         }
                     }
                 }
@@ -167,26 +181,30 @@ public class VoucherUserActivity extends AppCompatActivity {
         });
     }
 
-    public boolean compareDate(String start, String end) throws  ParseException {
+    public int compareDate(String start, String end) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        Date strDateStart = sdf.parse(start);
-        if (new Date().before(strDateStart)) {
-            return false;
-        }
 
         Date strDateEnd = sdf.parse(end);
-        if (new Date().after(strDateEnd)) {
-            return false;
+        Date strDateStart = sdf.parse(start);
+
+        // chưa xảy ra
+        if (new Date().before(strDateStart) && new Date().before(strDateEnd)) {
+            return 1;
         }
 
-        return true;
+        // đã kết thúc
+        if (new Date().after(strDateStart) && new Date().after(strDateEnd)) {
+            return -1;
+        }
+
+        return 0;
     }
 
     private void initData() {
         vouchers = new ArrayList<>();
         DatabaseReference databaseReferenceVoucher = FirebaseDatabase.getInstance().getReference("Voucher");
-        databaseReferenceVoucher.addValueEventListener(new ValueEventListener() {
+        databaseReferenceVoucher.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 freeshipVouchers.clear();
@@ -197,7 +215,7 @@ public class VoucherUserActivity extends AppCompatActivity {
                     vouchers.add(voucher);
 
                     try {
-                        if(compareDate(voucher.getStart(), voucher.getEnd())) {
+                        if(compareDate(voucher.getStart(), voucher.getEnd()) == 0) {
                             if(voucher.getType() == 2) {
                                 freeshipVouchers.add(voucher);
                             } else {
@@ -207,6 +225,18 @@ public class VoucherUserActivity extends AppCompatActivity {
                     } catch (ParseException e) {
                         throw new RuntimeException(e);
                     }
+
+//                    try {
+//                        if(compareDate(voucher.getStart(), voucher.getEnd())) {
+//                            if(voucher.getType() == 2) {
+//                                freeshipVouchers.add(voucher);
+//                            } else {
+//                                discountVouchers.add(voucher);
+//                            }
+//                        }
+//                    } catch (ParseException e) {
+//                        throw new RuntimeException(e);
+//                    }
 
                 }
 
