@@ -50,15 +50,6 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
         setContentView(R.layout.activity_product_list);
 
         toolbar = findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(AdminProductListActivity.this, AdminHomeActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        });
         setSupportActionBar(toolbar);
 
         recyclerView = findViewById(R.id.recyclerviewId);
@@ -94,7 +85,15 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AdminProductListActivity.this, AdminHomeActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
         getMenuInflater().inflate(R.menu.menu_item,menu);
         MenuItem item = menu.findItem(R.id.searchId);
         SearchView searchView = (SearchView) item.getActionView();

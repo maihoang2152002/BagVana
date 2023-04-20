@@ -9,13 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.bagvana.Activity.LoginRegister.SignInActivity;
-import com.example.bagvana.Activity.SellerAdmin.AddProductActivity;
 import com.example.bagvana.Activity.SellerAdmin.AdminConfirmActivity;
-import com.example.bagvana.Activity.SellerAdmin.CreateVoucherActivity;
+import com.example.bagvana.Activity.SellerAdmin.AdminProductListActivity;
 import com.example.bagvana.Activity.SellerAdmin.StatisticsActivity;
-import com.example.bagvana.Activity.SellerAdmin.UpdateProductActivity;
 import com.example.bagvana.Activity.SellerAdmin.VoucherShopActivity;
-import com.example.bagvana.DTO.EventBus.VoucherCostEvent;
 import com.example.bagvana.R;
 
 public class AdminHomeActivity extends AppCompatActivity {
@@ -42,7 +39,7 @@ public class AdminHomeActivity extends AppCompatActivity {
 
         list_product.setOnClickListener(v -> {
             // code in here
-            Intent myIntent = new Intent(AdminHomeActivity.this, AddProductActivity.class);
+            Intent myIntent = new Intent(AdminHomeActivity.this, AdminProductListActivity.class);
 //                myIntent.putExtras(myBundle);
             startActivity(myIntent);
         });
