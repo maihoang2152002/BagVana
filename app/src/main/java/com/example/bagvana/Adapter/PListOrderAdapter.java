@@ -72,8 +72,9 @@ public class PListOrderAdapter extends RecyclerView.Adapter<PListOrderAdapter.Ma
                 .into(holder.img_product);
 
         holder.name.setText(product.getName());
-        holder.txt_color.setText(product.getColor());
-        holder.txt_price.setText(String.valueOf(product.getPrice()));
+        holder.txt_color.setText("Màu: " + product.getColor());
+        holder.txt_price.setText("Đơn giá: " + String.valueOf(product.getPrice()));
+        holder.txt_amount.setText("Số lượng: " + String.valueOf(product.getAmount()));
 
         holder.product = product;
         holder.order = order;
@@ -110,12 +111,10 @@ public class PListOrderAdapter extends RecyclerView.Adapter<PListOrderAdapter.Ma
     public class MainViewHolder extends RecyclerView.ViewHolder {
 
         public CircleImageView img_product;
-        public TextView name;
+        public TextView name, txt_color, txt_price, txt_amount;
         public FloatingActionButton btn_rating;
         public Product product;
         public Order order;
-        public TextView txt_color;
-        public TextView txt_price;
 
         public MainViewHolder(@NonNull View itemView) {
 
@@ -127,6 +126,7 @@ public class PListOrderAdapter extends RecyclerView.Adapter<PListOrderAdapter.Ma
 
             txt_color = itemView.findViewById(R.id.color_product);
             txt_price = itemView.findViewById(R.id.price_product);
+            txt_amount = itemView.findViewById(R.id.amount_product);
 
             btn_rating.setOnClickListener(v -> {
                 RateDialog rateDialog = new RateDialog(v.getContext(), product, order);

@@ -137,22 +137,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(holder.img_product);
 
-//        Glide.with(context).load(productList.get(position).getImage())
-//                        .centerCrop().placeholder(R.drawable.ic_account)
-//                        .into(new CustomTarget<Drawable>() {
-//                            @Override
-//                            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
-//                                holder.relativeLayout.setBackground(resource);
-//                            }
-//
-//                            @Override
-//                            public void onLoadCleared(@Nullable Drawable placeholder) {
-//
-//                            }
-//                        });
         holder.txt_name.setText(product.getName());
-        holder.txt_price.setText(String.valueOf(price));
-        holder.txt_color.setText(product.getColor());
+        holder.txt_price.setText("Đơn giá: " + String.valueOf(price));
+        holder.txt_color.setText("Màu: " + product.getColor());
     }
 
     @Override

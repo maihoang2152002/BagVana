@@ -62,9 +62,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
                 .into(holder.img_product);
 
         holder.name.setText(product.getName());
-        holder.txt_color.setText(product.getColor());
-        holder.txt_price.setText(String.valueOf(product.getPrice()));
+        holder.txt_color.setText("Màu: " + product.getColor());
+        holder.txt_price.setText("Đơn giá: " + String.valueOf(product.getPrice()));
         holder.ratingBar.setRating((float) product.getRating());
+        holder.txt_amount.setText("Số lượng: " + String.valueOf(product.getAmount()));
+
         DatabaseReference databaseReferenceWishlist = FirebaseDatabase.getInstance().getReference("Wishlist/" + _user.getId() + "/List");
         loadFavIconStatus(holder.imageBtn_fav, databaseReferenceWishlist, product);
         holder.imageBtn_fav.setOnClickListener(v -> {
@@ -116,9 +118,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     public class MainViewHolder extends RecyclerView.ViewHolder {
 
         public CircleImageView img_product;
-        public TextView name;
-        public TextView txt_color;
-        public TextView txt_price;
+        public TextView name, txt_color, txt_price, txt_amount;
         public RatingBar ratingBar;
         public ImageButton imageBtn_fav;
 
@@ -130,6 +130,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
             name = itemView.findViewById(R.id.nameId);
             txt_color = itemView.findViewById(R.id.color_product);
             txt_price = itemView.findViewById(R.id.price_product);
+            txt_amount = itemView.findViewById(R.id.amount_product);
             ratingBar = itemView.findViewById((R.id.ratingBar));
             imageBtn_fav = itemView.findViewById((R.id.imageBtn_fav));
             imageBtn_fav.setTag("false");
