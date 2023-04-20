@@ -88,7 +88,7 @@ public class DiscountShopAdapter extends RecyclerView.Adapter<DiscountShopAdapte
                     }
                     int newAmount = amount + 1;
 
-                    User_Voucher user_voucher = new User_Voucher(voucher.getId(),Utils._user.getId(),1);
+                    User_Voucher user_voucher = new User_Voucher(voucher.getId(),Utils._user.getId(),newAmount);
                     databaseReferenceUser_Voucher.child(voucher.getId()).setValue(user_voucher);
 
                     if(newAmount >= voucher.getAmountOnPerson()) {

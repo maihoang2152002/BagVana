@@ -55,6 +55,8 @@ public class VoucherUserActivity extends AppCompatActivity {
         txt_voucherOfShop = findViewById(R.id.txt_voucherOfShop);
         txt_voucherOfUser = findViewById(R.id.txt_voucherOfUser);
 
+        txt_voucherOfShop.setTextColor(getResources().getColor(R.color.blue));
+
         // Freeship Voucher
         recycview_freeshipVoucher.setHasFixedSize(true);
         recycview_freeshipVoucher.setLayoutManager(new LinearLayoutManager(this));
