@@ -43,11 +43,15 @@ public class VoucherUserActivity extends AppCompatActivity {
     private Toolbar toolbar_voucher;
     private String type = "shop";
     private ArrayList<Voucher> vouchers;
+    private Toolbar toolbar_voucher_user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voucher_user);
+
+        toolbar_voucher_user = findViewById(R.id.toolbar_voucher_user);
+        setSupportActionBar(toolbar_voucher_user);
 
         recycview_freeshipVoucher = findViewById(R.id.recycview_freeshipVoucher);
         recycview_discountVoucher = findViewById(R.id.recycview_discountVoucher);
@@ -247,6 +251,16 @@ public class VoucherUserActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+    }
+
+    private void setSupportActionBar(Toolbar toolbar_chooseVoucher) {
+        toolbar_chooseVoucher.setNavigationIcon(R.drawable.ic_back);
+        toolbar_chooseVoucher.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

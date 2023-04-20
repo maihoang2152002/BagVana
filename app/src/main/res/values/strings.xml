@@ -2166,20 +2166,20 @@
         <item>Phường 16</item>
     </string-array>
 
-<!--    <string-array name="array_quan_12_ward_ho_chi_minh_district">-->
-<!--        <ward>Phường Bình Trị Đông</ward>-->
-<!--        <ward>Phường Bình Trị Đông A</ward>-->
-<!--        <ward>Phường Bình Trị Đông B</ward>-->
-<!--        <ward>Phường Tân Chánh Hiệp</ward>-->
-<!--        <ward>Phường Tân Hưng Thuận</ward>-->
-<!--        <ward>Phường Tân Thới Hiệp</ward>-->
-<!--        <ward>Phường Tân Thới Nhất</ward>-->
-<!--        <ward>Phường Thạnh Lộc</ward>-->
-<!--        <ward>Phường Thạnh Xuân</ward>-->
-<!--        <ward>Phường Thới An</ward>-->
-<!--        <ward>Phường Trung Mỹ Tây</ward>-->
-<!--        <ward>Phường Tân Sơn Nhì Đông</ward>-->
-<!--    </string-array>-->
+    <string-array name="array_quan_12_ward_ho_chi_minh_district">
+        <item>Phường Bình Trị Đông</item>
+        <item>Phường Bình Trị Đông A</item>
+        <item>Phường Bình Trị Đông B</item>
+        <item>Phường Tân Chánh Hiệp</item>
+        <item>Phường Tân Hưng Thuận</item>
+        <item>Phường Tân Thới Hiệp</item>
+        <item>Phường Tân Thới Nhất</item>
+        <item>Phường Thạnh Lộc</item>
+        <item>Phường Thạnh Xuân</item>
+        <item>Phường Thới An</item>
+        <item>Phường Trung Mỹ Tây</item>
+        <item>Phường Tân Sơn Nhì Đông</item>
+    </string-array>
 
     <string-array name="array_binh_thanh_ward_ho_chi_minh_district">
         <item>Phường 1</item>
