@@ -68,4 +68,13 @@ public class ReceiverInfo implements Serializable {
     public void setDefaultAddress(boolean defaultAddress) {
         this.defaultAddress = defaultAddress;
     }
+
+    public void clear() {
+        userID  = null;
+        addressID = null;
+        address = null;
+        fullName = null;
+        phone = null;
+        defaultAddress = false;
+    }
 }

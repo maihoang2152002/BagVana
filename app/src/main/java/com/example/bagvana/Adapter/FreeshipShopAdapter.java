@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bagvana.DTO.User_Voucher;
 import com.example.bagvana.DTO.Voucher;
 import com.example.bagvana.R;
 import com.example.bagvana.Utils.Utils;
@@ -75,7 +76,7 @@ public class FreeshipShopAdapter extends RecyclerView.Adapter<FreeshipShopAdapte
             @Override
             public void onClick(View view) {
                 if(holder.btn_choose.getText().equals("Lưu")) {
-                    DatabaseReference databaseReferenceUser_Voucher = FirebaseDatabase.getInstance().getReference("User_Voucher").child("1");
+                    DatabaseReference databaseReferenceUser_Voucher = FirebaseDatabase.getInstance().getReference("User_Voucher").child(Utils._user.getId());
 
                     int amount = 0;
 
@@ -84,7 +85,8 @@ public class FreeshipShopAdapter extends RecyclerView.Adapter<FreeshipShopAdapte
                     }
 
                     int newAmount = amount + 1;
-                    databaseReferenceUser_Voucher.child(voucher.getId()).child("amount").setValue(newAmount);
+                    User_Voucher user_voucher = new User_Voucher(voucher.getId(),Utils._user.getId(),1);
+                    databaseReferenceUser_Voucher.child(voucher.getId()).setValue(user_voucher);
 
                     if(newAmount >= voucher.getAmountOnPerson()) {
                         holder.btn_choose.setText("Sử dụng");

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.bagvana.DAO.ProductDAO;
 import com.example.bagvana.DTO.EventBus.BillCostEvent;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
@@ -95,25 +96,55 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.CartViewHolder
         // userID = 1
         DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance()
                 .getReference("Cart").child(Utils._user.getId());
+
+        DatabaseReference databaseReferenceProduct = FirebaseDatabase.getInstance()
+                .getReference("Product");
+
+        ProductDAO productDAO = new ProductDAO();
+
         holder.txt_plus.setOnClickListener(new View.OnClickListener(){
 
             @Override
             public void onClick(View view) {
-                int amountChanged = product.getAmount();
-                amountChanged = amountChanged + 1 ;
-                holder.txt_amount.setText(String.valueOf(amountChanged));
-                product.setAmount(amountChanged); //add to fire-base
 
-                int totalChange = product.getPrice() * amountChanged;
-                holder.txt_total.setText(String.valueOf(totalChange));
 
-                databaseReferenceCart.child(product.getProductID()).setValue(product);
-                for(int i = 0; i < Utils._productList.size(); i++) {
-                    if(Utils._productList.get(i).getProductID() == product.getProductID()) {
-                        Utils._productList.get(i).setAmount(amountChanged);
+                productDAO.readData(new ProductDAO.MyCallback() {
+                    @Override
+                    public void onCallback(ArrayList<Product> products) {
+                        int amountChanged = product.getAmount();
+
+
+                        for(Product pd: products) {
+                            if(pd.getProductID().equals(product.getProductID())) {
+                                if(pd.getAmount() <= amountChanged) {
+                                    new AlertDialog.Builder(view.getContext())
+                                            .setMessage("Số lượng hàng trong kho thấp!")
+                                            .setPositiveButton("Đồng ý", null)
+                                            .setIcon(android.R.drawable.ic_dialog_alert)
+                                            .show();
+                                }
+                                else {
+                                    amountChanged = amountChanged + 1 ;
+
+                                    holder.txt_amount.setText(String.valueOf(amountChanged));
+                                    product.setAmount(amountChanged); //add to fire-base
+
+                                    int totalChange = product.getPrice() * amountChanged;
+                                    holder.txt_total.setText(String.valueOf(totalChange));
+
+                                    databaseReferenceCart.child(product.getProductID()).setValue(product);
+                                    for(int i = 0; i < Utils._productList.size(); i++) {
+                                        if(Utils._productList.get(i).getProductID() == product.getProductID()) {
+                                            Utils._productList.get(i).setAmount(amountChanged);
+                                        }
+                                        EventBus.getDefault().postSticky(new BillCostEvent());
+                                    }
+                                }
+
+                            }
+                        }
                     }
-                    EventBus.getDefault().postSticky(new BillCostEvent());
-                }
+                });
             }
         });
 

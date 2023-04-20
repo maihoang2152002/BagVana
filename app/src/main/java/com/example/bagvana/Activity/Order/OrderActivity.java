@@ -19,6 +19,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Adapter.OrderAdapter;
+import com.example.bagvana.DAO.ProductDAO;
+import com.example.bagvana.DAO.User_VoucherDAO;
 import com.example.bagvana.DTO.EventBus.VoucherCostEvent;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.DTO.ReceiverInfo;
@@ -164,7 +166,7 @@ public class OrderActivity extends AppCompatActivity {
                     // Hiện thông báo xác nhận thông tin đặt hàng
 
                     new AlertDialog.Builder(view.getContext())
-                            .setMessage("Bạn xác nhận đặt hàng")
+                            .setMessage("Bạn xác nhận thông tin đặt hàng")
                             .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
@@ -179,8 +181,17 @@ public class OrderActivity extends AppCompatActivity {
                                     //OrderID
                                     databaseReferenceOrder.child(formattedDate);
 
+                                    // Xóa sản phẩm chọn mua thành công
+                                    DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance().getReference("Cart").child(Utils._user.getId());
+
+                                    ProductDAO productDAO = new ProductDAO();
+                                    User_VoucherDAO user_voucherDAO = new User_VoucherDAO();
+
                                     for (Product product: Utils._productList) {
                                         databaseReferenceOrder.child("itemsOrdered").child(product.getProductID()).setValue(product);
+                                        databaseReferenceCart.child(product.getProductID()).removeValue();
+                                        productDAO.setAmount(product);
+
                                     }
 
                                     HashMap<String, Integer> usedVoucher = new HashMap<>();
@@ -191,7 +202,7 @@ public class OrderActivity extends AppCompatActivity {
                                         } else {
                                             usedVoucher.put(voucher.getId(), discountCost);
                                         }
-
+                                        user_voucherDAO.setAmount(voucher.getId());
                                     }
 
                                     databaseReferenceOrder.child("usedVoucher").setValue(usedVoucher);
@@ -204,6 +215,10 @@ public class OrderActivity extends AppCompatActivity {
                                     databaseReferenceOrder.child("status").setValue("1");
                                     databaseReferenceOrder.child("userID").setValue(Utils._user.getId());
                                     databaseReferenceOrder.child("paymentMethod").setValue(txt_delivery.getText().toString());
+
+                                    Utils._productList.clear();
+                                    Utils._voucherList.clear();
+                                    Utils._receiverInfo.clear();
 
                                     // new layout
                                     setContentView(R.layout.layout_back_to_homepage);
@@ -322,7 +337,7 @@ public class OrderActivity extends AppCompatActivity {
         receiverInfo = new ArrayList<>();
 
         // userID = 1
-        DatabaseReference databaseReferenceReceiverInfo = FirebaseDatabase.getInstance().getReference("ReceiverInfo").child("1");
+        DatabaseReference databaseReferenceReceiverInfo = FirebaseDatabase.getInstance().getReference("ReceiverInfo").child(Utils._user.getId());
         databaseReferenceReceiverInfo.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

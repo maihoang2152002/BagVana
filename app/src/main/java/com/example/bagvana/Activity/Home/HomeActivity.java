@@ -26,6 +26,7 @@ import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.Activity.OrderList.OrderListActivity;
 import com.example.bagvana.Activity.ProductList.ProductListActivity;
 import com.example.bagvana.Activity.Profile.ProfileActivity;
+import com.example.bagvana.Activity.Voucher.VoucherUserActivity;
 import com.example.bagvana.R;
 import com.example.bagvana.Activity.Wishlist.WishlistActivity;
 import com.example.bagvana.fragments.HomeFragment;
@@ -120,6 +121,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             case R.id.menu_chat:
                 myIntent = new Intent(HomeActivity.this, ChatActivity.class);
 //                myIntent.putExtras(myBundle);
+                startActivity(myIntent);
+                break;
+            case R.id.menu_gift:
+                myIntent = new Intent(HomeActivity.this, VoucherUserActivity.class);
                 startActivity(myIntent);
                 break;
             case R.id.menu_logout:
