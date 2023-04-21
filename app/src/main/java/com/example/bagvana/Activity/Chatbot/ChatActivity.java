@@ -46,7 +46,13 @@ public class ChatActivity extends AppCompatActivity {
 
         profile_avt = (CircleImageView) findViewById(R.id.profileImage);
         username = (TextView) findViewById(R.id.txtNameUser);
-        username.setText(_user.getFullname());
+        if(_user.getFullname().equals("")){
+            username.setText(_user.getUsername());
+        }
+        else{
+            username.setText(_user.getFullname());
+        }
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         ViewPager viewPager = (ViewPager) findViewById(R.id.view_pager);
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());

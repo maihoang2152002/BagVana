@@ -9,18 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.example.bagvana.Activity.LoginRegister.SignInActivity;
-import com.example.bagvana.Activity.SellerAdmin.AddProductActivity;
 import com.example.bagvana.Activity.SellerAdmin.AdminConfirmActivity;
-import com.example.bagvana.Activity.SellerAdmin.CreateVoucherActivity;
+import com.example.bagvana.Activity.SellerAdmin.AdminProductListActivity;
 import com.example.bagvana.Activity.SellerAdmin.StatisticsActivity;
-import com.example.bagvana.Activity.SellerAdmin.UpdateProductActivity;
 import com.example.bagvana.Activity.SellerAdmin.VoucherShopActivity;
-import com.example.bagvana.DTO.EventBus.VoucherCostEvent;
 import com.example.bagvana.R;
 
 public class AdminHomeActivity extends AppCompatActivity {
 
-    CardView card_statistics, card_add, card_remove, card_edit, card_confirm, card_settings, card_logout;
+    CardView card_statistics,list_product, card_confirm, card_settings, card_logout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +25,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
 
         card_statistics = findViewById(R.id.card_statistics);
-        card_add = findViewById(R.id.card_add);
-        card_remove = findViewById(R.id.card_remove);
-        card_edit = findViewById(R.id.card_edit);
+        list_product = findViewById(R.id.list_product);
         card_confirm = findViewById(R.id.card_confirm);
         card_settings = findViewById(R.id.card_settings);
         card_logout = findViewById(R.id.card_logout);
@@ -42,23 +37,13 @@ public class AdminHomeActivity extends AppCompatActivity {
             startActivity(myIntent);
         });
 
-        card_add.setOnClickListener(v -> {
+        list_product.setOnClickListener(v -> {
             // code in here
-            Intent myIntent = new Intent(AdminHomeActivity.this, AddProductActivity.class);
+            Intent myIntent = new Intent(AdminHomeActivity.this, AdminProductListActivity.class);
 //                myIntent.putExtras(myBundle);
             startActivity(myIntent);
         });
 
-        card_remove.setOnClickListener(v -> {
-            // code in here
-        });
-
-        card_edit.setOnClickListener(v -> {
-            // code in here
-            Intent myIntent = new Intent(AdminHomeActivity.this, UpdateProductActivity.class);
-//                myIntent.putExtras(myBundle);
-            startActivity(myIntent);
-        });
 
         card_confirm.setOnClickListener(v -> {
             // code in here

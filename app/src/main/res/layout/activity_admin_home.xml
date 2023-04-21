@@ -21,15 +21,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/textView"
-        android:layout_margin="20dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
         android:columnCount="2"
         android:rowCount="4">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_statistics"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_80sdp"
             android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_column="0"
@@ -99,46 +101,10 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/card_remove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
-            android:layout_rowWeight="1"
-            android:layout_column="0"
-            android:layout_columnWeight="1"
-            android:layout_gravity="fill"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp"
-            app:cardUseCompatPadding="true">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_statistics" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Xoá"
-                    android:textColor="@color/black"
-                    android:textSize="16sp" />
-
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_row="1"
+            android:id="@+id/list_product"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_row="0"
             android:layout_rowWeight="1"
             android:layout_column="1"
             android:layout_columnWeight="1"
@@ -162,7 +128,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sửa"
+                    android:text="Danh sách sản phẩm"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
@@ -170,10 +136,11 @@
 
         </androidx.cardview.widget.CardView>
 
+
         <androidx.cardview.widget.CardView
             android:id="@+id/card_confirm"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_80sdp"
             android:layout_row="2"
             android:layout_rowWeight="1"
             android:layout_column="0"
@@ -244,8 +211,8 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/card_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_80sdp"
             android:layout_row="3"
             android:layout_rowWeight="1"
             android:layout_column="0"
