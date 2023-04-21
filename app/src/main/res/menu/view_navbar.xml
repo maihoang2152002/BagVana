@@ -11,5 +11,10 @@
         android:title="Tài khoản"/>
     <item android:icon="@drawable/ic_cart"
         android:id="@+id/menu_cart"
+
         android:title="Giỏ hàng"/>
+    <item android:icon="@drawable/ic_add"
+        android:id="@+id/menu_add_new_product"
+        android:visible="false"
+        android:title="Thêm sản phẩm "/>
 </menu>

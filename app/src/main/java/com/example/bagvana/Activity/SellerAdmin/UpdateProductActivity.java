@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -67,7 +68,7 @@ public class UpdateProductActivity extends AppCompatActivity {
     FirebaseDatabase database ;
     DatabaseReference databasReference;
     Product _product_current;
-
+    Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,7 +84,8 @@ public class UpdateProductActivity extends AppCompatActivity {
         quantityProduct = binding.quantityProduct;
         addBtn =binding.addBtn;
         cancelBtn = binding.cancelBtn;
-
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         databasReference = FirebaseDatabase.getInstance().getReference("Product").child("p4");
         databasReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -190,6 +192,15 @@ public class UpdateProductActivity extends AppCompatActivity {
 
         });
 
+    }
+    private void setSupportActionBar(Toolbar toolbar_order) {
+        toolbar_order.setNavigationIcon(R.drawable.ic_back);
+        toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
     private void uploadImage() {
 

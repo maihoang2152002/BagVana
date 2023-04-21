@@ -51,6 +51,7 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+//        setSupportActionBarAdd(toolbar);
 
         recyclerView = findViewById(R.id.recyclerviewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -78,9 +79,16 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
         });
         productListAdapter = new ProductListAdapter(this, productList, this);
         recyclerView.setAdapter(productListAdapter);
+//        BottomNavigationView bottomNavigationViewAdmin = findViewById(R.id.bottom_admin);
+//        bottomNavigationViewAdmin.setOnItemSelectedListener(this);
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setVisibility(View.INVISIBLE);
-//        bottomNavigationView.setOnItemSelectedListener(this);
+        bottomNavigationView.findViewById(R.id.menu_account).setVisibility(View.GONE);
+        bottomNavigationView.findViewById(R.id.menu_cart).setVisibility(View.GONE);
+        bottomNavigationView.findViewById(R.id.menu_fav).setVisibility(View.GONE);
+        bottomNavigationView.findViewById(R.id.menu_home).setVisibility(View.GONE);
+        bottomNavigationView.findViewById(R.id.menu_add_new_product).setVisibility(View.VISIBLE);
+
+        bottomNavigationView.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -151,27 +159,29 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         Fragment fragment = null;
+
+
         switch (item.getItemId()) {
-            case R.id.menu_home:
-                Intent myIntent4 = new Intent(AdminProductListActivity.this, HomeActivity.class);
+            case R.id.menu_add_new_product:
+                Intent myIntent4 = new Intent(AdminProductListActivity.this, AddProductActivity.class);
 //                myIntent.putExtras(myBundle);
                 startActivity(myIntent4);
                 break;
-            case R.id.menu_fav:
-                Intent myIntent3 = new Intent(AdminProductListActivity.this, WishlistActivity.class);
-//                myIntent.putExtras(myBundle);
-                startActivity(myIntent3);
-                break;
-            case R.id.menu_account:
-                Intent myIntent1 = new Intent(AdminProductListActivity.this, ProfileActivity.class);
-//                myIntent.putExtras(myBundle);
-                startActivity(myIntent1);
-                break;
-            case R.id.menu_cart:
-                Intent myIntent = new Intent(AdminProductListActivity.this, CartActivity.class);
-//                myIntent.putExtras(myBundle);
-                startActivity(myIntent);
-                break;
+//            case R.id.menu_fav:
+//                Intent myIntent3 = new Intent(AdminProductListActivity.this, WishlistActivity.class);
+////                myIntent.putExtras(myBundle);
+//                startActivity(myIntent3);
+//                break;
+//            case R.id.menu_account:
+//                Intent myIntent1 = new Intent(AdminProductListActivity.this, ProfileActivity.class);
+////                myIntent.putExtras(myBundle);
+//                startActivity(myIntent1);
+//                break;
+//            case R.id.menu_cart:
+//                Intent myIntent = new Intent(AdminProductListActivity.this, CartActivity.class);
+////                myIntent.putExtras(myBundle);
+//                startActivity(myIntent);
+//                break;
         }
         return true;
     }
@@ -185,5 +195,14 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
             return true;
         }
         return false;
+    }
+    private void setSupportActionBarAdd(android.widget.Toolbar toolbar_order) {
+        toolbar_order.setNavigationIcon(R.drawable.ic_add);
+        toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }
