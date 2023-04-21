@@ -125,7 +125,7 @@ public class UpdateProductActivity extends AppCompatActivity {
         binding.deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                databasReference = FirebaseDatabase.getInstance().getReference("Product").child("p9");
+                databasReference = FirebaseDatabase.getInstance().getReference("Product").child(_product_current.getProductID());
                 databasReference.removeValue();
                 Toast.makeText(UpdateProductActivity.this,"Xoa san pham thanh cong",Toast.LENGTH_LONG).show();
             }
@@ -172,22 +172,7 @@ public class UpdateProductActivity extends AppCompatActivity {
 
                     databasReference = FirebaseDatabase.getInstance().getReference("Product").child(_product_current.getProductID());
 
-                    databasReference.updateChildren(updateValues)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Toast.makeText(getApplicationContext(), "Successful Saved", Toast.LENGTH_SHORT).show();
-                                    noticeSuccess();
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_SHORT).show();
-                                    noticeFail();
-                                }
-                            });
-
+                    databasReference.setValue(updateValues);
 
                 }
                 }
@@ -246,7 +231,7 @@ public class UpdateProductActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 image = uri.toString();
-                                Log.e("link image", image);
+
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -317,6 +302,17 @@ public class UpdateProductActivity extends AppCompatActivity {
             }
         });
         alert.setMessage("Chỉnh sửa sản phẩm thành công ");
+        alert.show();
+    }
+    private void noticeDeleteSuccess(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        alert.setMessage("Xóa sản phẩm thành công ");
         alert.show();
     }
     private void noticeFail(){
