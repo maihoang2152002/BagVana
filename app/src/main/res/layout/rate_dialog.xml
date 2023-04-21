@@ -165,7 +165,7 @@
                     android:background="@drawable/round_back_brown_6"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:text="May Be, later"
+                    android:text="Để sau"
                     android:textAllCaps="false"
                     android:textColor="#CC000000"
                     tools:ignore="HardcodedText,TouchTargetSizeCheck" />
@@ -178,7 +178,7 @@
                     android:background="@drawable/round_back_blue_10"
                     android:paddingStart="20dp"
                     android:paddingEnd="20dp"
-                    android:text="Rate Now"
+                    android:text="Đánh giá ngay"
                     android:textAllCaps="false"
                     android:textColor="#FFFFFF"
                     tools:ignore="HardcodedText,TouchTargetSizeCheck,TextSizeCheck" />
