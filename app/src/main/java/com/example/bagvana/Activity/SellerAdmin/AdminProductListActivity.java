@@ -23,8 +23,11 @@ import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.Activity.Profile.ProfileActivity;
 import com.example.bagvana.Activity.Wishlist.WishlistActivity;
 import com.example.bagvana.Adapter.ProductListAdapter;
+import com.example.bagvana.DTO.EventBus.BillCostEvent;
+import com.example.bagvana.DTO.EventBus.settingBottomEvent;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
+import com.example.bagvana.Utils.Utils;
 import com.example.bagvana.listeners.ItemListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
@@ -33,6 +36,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 
@@ -44,6 +51,16 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
     private String textSearchFirst;
     private Toolbar toolbar;
 
+    public void initBottomNavbar(){
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.findViewById(R.id.menu_account).setVisibility(View.GONE);
+        bottomNavigationView.findViewById(R.id.menu_cart).setVisibility(View.GONE);
+        bottomNavigationView.findViewById(R.id.menu_fav).setVisibility(View.GONE);
+        bottomNavigationView.findViewById(R.id.menu_home).setVisibility(View.GONE);
+        bottomNavigationView.findViewById(R.id.menu_add_new_product).setVisibility(View.VISIBLE);
+
+        bottomNavigationView.setOnItemSelectedListener(AdminProductListActivity.this);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +72,7 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
 
         recyclerView = findViewById(R.id.recyclerviewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
+        initBottomNavbar();
         productList = new ArrayList<>();
 
         DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Product");
@@ -66,7 +83,7 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Product product = dataSnapshot.getValue(Product.class);
-                    productList.add(product);
+                    Utils._productList.add(product);
                 }
 
                 productListAdapter.notifyDataSetChanged();
@@ -77,18 +94,11 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
 
             }
         });
-        productListAdapter = new ProductListAdapter(this, productList, this);
+        productListAdapter = new ProductListAdapter(this, Utils._productList, this);
         recyclerView.setAdapter(productListAdapter);
 //        BottomNavigationView bottomNavigationViewAdmin = findViewById(R.id.bottom_admin);
 //        bottomNavigationViewAdmin.setOnItemSelectedListener(this);
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.findViewById(R.id.menu_account).setVisibility(View.GONE);
-        bottomNavigationView.findViewById(R.id.menu_cart).setVisibility(View.GONE);
-        bottomNavigationView.findViewById(R.id.menu_fav).setVisibility(View.GONE);
-        bottomNavigationView.findViewById(R.id.menu_home).setVisibility(View.GONE);
-        bottomNavigationView.findViewById(R.id.menu_add_new_product).setVisibility(View.VISIBLE);
 
-        bottomNavigationView.setOnItemSelectedListener(this);
     }
 
     @Override
@@ -133,10 +143,10 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
 
         if (TextUtils.isEmpty(str)) {
             productListAdapter.notifyDataSetChanged();
-            productListAdapter = new ProductListAdapter(this, productList, this);
+            productListAdapter = new ProductListAdapter(this, Utils._productList, this);
             recyclerView.setAdapter(productListAdapter);
         } else {
-            for (Product product : productList) {
+            for (Product product : Utils._productList) {
                 if (product.hasNameSimilarTo(str))
                     productListSearch.add(product);
             }
@@ -151,7 +161,7 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
     @Override
     public void OnItemPosition(int position) {
         Intent intent = new Intent(this, UpdateProductActivity.class);
-        intent.putExtra("product", productList.get(position));
+        intent.putExtra("id_product", Utils._productList.get(position).getProductID());
         startActivity(intent);
     }
 
@@ -159,7 +169,6 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         Fragment fragment = null;
-
 
         switch (item.getItemId()) {
             case R.id.menu_add_new_product:
@@ -196,13 +205,36 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
         }
         return false;
     }
-    private void setSupportActionBarAdd(android.widget.Toolbar toolbar_order) {
-        toolbar_order.setNavigationIcon(R.drawable.ic_add);
+    private void setSupportActionBar(android.widget.Toolbar toolbar_order) {
+        toolbar_order.setNavigationIcon(R.drawable.ic_back);
         toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                EventBus.getDefault().postSticky(new settingBottomEvent());
                 finish();
             }
         });
+    }
+    @SuppressLint("MissingSuperCall")
+    @Override
+    protected  void onRestart(){
+        super.onRestart();
+        initBottomNavbar();
+    }
+    protected void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
+    public void settingNarbarBottom(settingBottomEvent event) {
+        if(event != null) {
+            initBottomNavbar();
+        }
     }
 }
