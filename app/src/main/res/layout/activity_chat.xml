@@ -60,6 +60,7 @@
         android:layout_below="@+id/bar_layout"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_above="@+id/bottom"
+        android:backgroundTint="@color/primary_theme"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
 

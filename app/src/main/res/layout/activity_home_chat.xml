@@ -34,7 +34,6 @@
                 android:layout_marginStart="@dimen/_8sdp"
                 android:layout_marginLeft="@dimen/_25sdp"
                 android:layout_marginEnd="@dimen/_8sdp"
-                android:text="sdgsgsfgdsfsdsdf"
                 android:textSize="@dimen/_16sdp"
                 android:ellipsize="end"
                 android:gravity="center"
