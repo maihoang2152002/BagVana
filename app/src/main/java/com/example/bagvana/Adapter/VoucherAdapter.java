@@ -141,6 +141,7 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.VoucherV
 
                 String strDate = mDay + "/" + (mMonth + 1) + "/" + mYear;
 
+                databaseReferenceVoucher.child("start").setValue(strDate);
                 databaseReferenceVoucher.child("end").setValue(strDate);
 
             }

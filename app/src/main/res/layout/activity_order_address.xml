@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_theme"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
@@ -18,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Địa chỉ nhận hàng"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            android:textColor="@color/title_text"
+            android:textSize="@dimen/_20sdp" />
 
     </android.widget.Toolbar>
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -346,6 +347,7 @@ public class CreateVoucherActivity extends AppCompatActivity {
                                         .show();
                             } else {
                                 voucherDAO.addValue(vou);
+                                finish();
                             }
                         }
                     }

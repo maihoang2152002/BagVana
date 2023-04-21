@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import com.example.bagvana.Adapter.CartAdapter;
 import com.example.bagvana.Adapter.VoucherAdapter;
@@ -36,11 +37,15 @@ public class VoucherShopActivity extends AppCompatActivity {
     private TextView txt_usedVoucher;
     private Button btn_create;
     private int type = 0;
+    private Toolbar toolbar_voucher_shop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_voucher_shop);
+
+        toolbar_voucher_shop = findViewById(R.id.toolbar_voucher_shop);
+        setSupportActionBar(toolbar_voucher_shop);
 
         recycview_voucher = findViewById(R.id.recycview_voucher);
 
@@ -140,6 +145,16 @@ public class VoucherShopActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
 
+            }
+        });
+    }
+
+    private void setSupportActionBar(Toolbar toolbar_createVoucher) {
+        toolbar_createVoucher.setNavigationIcon(R.drawable.ic_back);
+        toolbar_createVoucher.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }

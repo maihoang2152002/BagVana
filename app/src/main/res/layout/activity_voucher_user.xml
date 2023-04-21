@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_theme"
     android:orientation="vertical"
     tools:context=".Activity.Voucher.VoucherUserActivity">
 
@@ -18,13 +19,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:text="Trang voucher"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textColor="@color/title_text"
+        android:textSize="@dimen/_20sdp" />
     </android.widget.Toolbar>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@drawable/input_bg">
+
         <TextView
             android:id="@+id/txt_voucherOfShop"
             android:layout_width="205dp"
@@ -32,7 +35,8 @@
             android:gravity="center_horizontal"
             android:text="Voucher của cửa hàng"
             android:textColor="@color/black"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
+
         <TextView
             android:id="@+id/txt_voucherOfUser"
             android:layout_width="205dp"
@@ -40,29 +44,52 @@
             android:gravity="center_horizontal"
             android:text="Voucher của tôi"
             android:textColor="@color/black"
-            android:textSize="15sp"/>
+            android:textSize="15sp" />
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="Ưu đãi phí vận chuyển"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/input_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="Ưu đãi phí vận chuyển"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycview_freeshipVoucher"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:text="Mã giảm giá"
-        android:textColor="@color/black"
-        android:textSize="15sp" />
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/input_bg">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="Mã giảm giá"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycview_discountVoucher"
