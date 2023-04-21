@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,12 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bagvana.Activity.Home.AdminHomeActivity;
-import com.example.bagvana.Activity.Home.HomeActivity;
-import com.example.bagvana.Activity.Order.CartActivity;
-import com.example.bagvana.Activity.Profile.ProfileActivity;
-import com.example.bagvana.Activity.Wishlist.WishlistActivity;
 import com.example.bagvana.Adapter.ProductListAdapter;
-import com.example.bagvana.DTO.EventBus.BillCostEvent;
 import com.example.bagvana.DTO.EventBus.settingBottomEvent;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
@@ -50,6 +44,8 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
     private ArrayList<Product> productList;
     private String textSearchFirst;
     private Toolbar toolbar;
+    private ArrayList<Product> productListSearch;
+
 
     public void initBottomNavbar(){
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -84,9 +80,9 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Product product = dataSnapshot.getValue(Product.class);
-                    Utils._productList.add(product);
+                    productList.add(product);
                 }
-
+                Utils._productList = productList;
                 productListAdapter.notifyDataSetChanged();
             }
 
@@ -140,12 +136,11 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
 
     @SuppressLint("NotifyDataSetChanged")
     private void mySearch(String str) {
-        ArrayList<Product> productListSearch = new ArrayList<>();
+        productListSearch = new ArrayList<>();
 
         if (TextUtils.isEmpty(str)) {
             productListAdapter.notifyDataSetChanged();
-            productListAdapter = new ProductListAdapter(this, Utils._productList, this);
-            recyclerView.setAdapter(productListAdapter);
+            productListSearch = Utils._productList;
         } else {
             for (Product product : Utils._productList) {
                 if (product.hasNameSimilarTo(str))
@@ -153,16 +148,16 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
             }
             productListAdapter.notifyDataSetChanged();
 
-            productListAdapter = new ProductListAdapter(this, productListSearch, this);
-            recyclerView.setAdapter(productListAdapter);
         }
+        productListAdapter = new ProductListAdapter(this, productListSearch, this);
+        recyclerView.setAdapter(productListAdapter);
 
     }
 
     @Override
     public void OnItemPosition(int position) {
         Intent intent = new Intent(this, UpdateProductActivity.class);
-        intent.putExtra("id_product", Utils._productList.get(position).getProductID());
+        intent.putExtra("id_product", productListSearch.get(position).getProductID());
         startActivity(intent);
     }
 
@@ -233,7 +228,7 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void settingNarbarBottom(settingBottomEvent event) {
+    public void settingNavbarBottom(settingBottomEvent event) {
         if(event != null) {
             initBottomNavbar();
         }

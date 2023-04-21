@@ -45,6 +45,8 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
     private String textSearchFirst;
     private Toolbar toolbar;
 
+    private ArrayList<Product> productListSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,13 +118,13 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
 
     @SuppressLint("NotifyDataSetChanged")
     private void mySearch(String str) {
-        ArrayList<Product> productListSearch = new ArrayList<>();
+        productListSearch = new ArrayList<>();
 
         if (TextUtils.isEmpty(str)) {
             productListAdapter.notifyDataSetChanged();
 
-            productListAdapter = new ProductListAdapter(this, productList, this);
-            recyclerView.setAdapter(productListAdapter);
+            productListSearch = productList;
+
         } else {
             for (Product product : productList) {
                 if (product.hasNameSimilarTo(str))
@@ -130,16 +132,16 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
             }
             productListAdapter.notifyDataSetChanged();
 
-            productListAdapter = new ProductListAdapter(this, productListSearch, this);
-            recyclerView.setAdapter(productListAdapter);
         }
+        productListAdapter = new ProductListAdapter(this, productListSearch, this);
+        recyclerView.setAdapter(productListAdapter);
 
     }
 
     @Override
     public void OnItemPosition(int position) {
         Intent intent = new Intent(this, ProductDetailActivity.class);
-        intent.putExtra("product", productList.get(position));
+        intent.putExtra("product", productListSearch.get(position));
         startActivity(intent);
     }
 
