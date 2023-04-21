@@ -149,12 +149,26 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
         Fragment fragment = null;
 
         switch (item.getItemId()) {
-            case R.id.menu_add_new_product:
-                Intent myIntent4 = new Intent(ProductListActivity.this, AddProductActivity.class);
+            case R.id.menu_home:
+                Intent myIntent4 = new Intent(ProductListActivity.this, HomeActivity.class);
 //                myIntent.putExtras(myBundle);
                 startActivity(myIntent4);
                 break;
-
+            case R.id.menu_fav:
+                Intent myIntent3 = new Intent(ProductListActivity.this, WishlistActivity.class);
+//                myIntent.putExtras(myBundle);
+                startActivity(myIntent3);
+                break;
+            case R.id.menu_account:
+                Intent myIntent1 = new Intent(ProductListActivity.this, ProfileActivity.class);
+//                myIntent.putExtras(myBundle);
+                startActivity(myIntent1);
+                break;
+            case R.id.menu_cart:
+                Intent myIntent = new Intent(ProductListActivity.this, CartActivity.class);
+//                myIntent.putExtras(myBundle);
+                startActivity(myIntent);
+                break;
         }
         return true;
     }

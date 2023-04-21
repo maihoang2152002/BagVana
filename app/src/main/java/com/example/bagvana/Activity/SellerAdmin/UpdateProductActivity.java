@@ -30,6 +30,7 @@ import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 
+import com.example.bagvana.Utils.Utils;
 import com.example.bagvana.databinding.ActivityAddProductBinding;
 import com.example.bagvana.databinding.ActivityUpdateProductBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -75,6 +76,7 @@ public class UpdateProductActivity extends AppCompatActivity {
 
         binding = ActivityUpdateProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        String id_product = getIntent().getStringExtra("id_product").toString();
 
         imageProduct = binding.imageProduct;
         nameProduct = binding.nameProduct;
@@ -86,8 +88,8 @@ public class UpdateProductActivity extends AppCompatActivity {
         cancelBtn = binding.cancelBtn;
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        databasReference = FirebaseDatabase.getInstance().getReference("Product").child("p4");
-        databasReference.addValueEventListener(new ValueEventListener() {
+        databasReference = FirebaseDatabase.getInstance().getReference("Product").child(id_product);
+        databasReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                _product_current = snapshot.getValue(Product.class);
@@ -168,7 +170,7 @@ public class UpdateProductActivity extends AppCompatActivity {
 
                     Map<String, Object> updateValues = insertProduct(product);
 
-                    databasReference = FirebaseDatabase.getInstance().getReference("Product").child("p4");
+                    databasReference = FirebaseDatabase.getInstance().getReference("Product").child(_product_current.getProductID());
 
                     databasReference.updateChildren(updateValues)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
