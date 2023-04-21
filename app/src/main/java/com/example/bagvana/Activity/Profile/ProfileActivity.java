@@ -40,6 +40,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.Objects;
+
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -75,22 +77,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         img_avatar = findViewById(R.id.img_avatar);
         // Retrieve Avatar from Firebase and Display
-        databaseReferenceUser = FirebaseDatabase.getInstance().getReference("User").child(_user.getId()).child("avatar");
-        dialog.show();
-        databaseReferenceUser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                String avatarUrl = dataSnapshot.getValue(String.class);
-                Glide.with(ProfileActivity.this).load(avatarUrl).into(img_avatar);
-                dialog.dismiss();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                dialog.dismiss();
-            }
-        });
-
+        if (!Objects.equals(_user.getAvatar(), "")){
+            dialog.show();
+            Glide.with(ProfileActivity.this).load(_user.getAvatar()).into(img_avatar);
+            dialog.dismiss();
+        }
+        dialog.dismiss();
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -131,7 +123,7 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), EditProfileActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 1);
             }
         });
         linear_logOut = findViewById(R.id.linear_logOut);
@@ -294,6 +286,9 @@ public class ProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 2 && resultCode == RESULT_OK) {
             loadOrderAmount();
+        }
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            txt_fullName.setText(_user.getFullname());
         }
     }
 
