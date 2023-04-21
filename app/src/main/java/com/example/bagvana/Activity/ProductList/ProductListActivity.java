@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
 import com.example.bagvana.Activity.Profile.ProfileActivity;
+import com.example.bagvana.Activity.SellerAdmin.AddProductActivity;
 import com.example.bagvana.Activity.Wishlist.WishlistActivity;
 import com.example.bagvana.Adapter.ProductListAdapter;
 import com.example.bagvana.DTO.Product;
@@ -77,8 +79,11 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
         });
         productListAdapter = new ProductListAdapter(this, productList, this);
         recyclerView.setAdapter(productListAdapter);
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.findViewById(R.id.menu_add_new_product).setVisibility(View.GONE);
         bottomNavigationView.setOnItemSelectedListener(this);
+
     }
 
     @Override
@@ -142,27 +147,14 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
         Fragment fragment = null;
+
         switch (item.getItemId()) {
-            case R.id.menu_home:
-                Intent myIntent4 = new Intent(ProductListActivity.this, HomeActivity.class);
+            case R.id.menu_add_new_product:
+                Intent myIntent4 = new Intent(ProductListActivity.this, AddProductActivity.class);
 //                myIntent.putExtras(myBundle);
                 startActivity(myIntent4);
                 break;
-            case R.id.menu_fav:
-                Intent myIntent3 = new Intent(ProductListActivity.this, WishlistActivity.class);
-//                myIntent.putExtras(myBundle);
-                startActivity(myIntent3);
-                break;
-            case R.id.menu_account:
-                Intent myIntent1 = new Intent(ProductListActivity.this, ProfileActivity.class);
-//                myIntent.putExtras(myBundle);
-                startActivity(myIntent1);
-                break;
-            case R.id.menu_cart:
-                Intent myIntent = new Intent(ProductListActivity.this, CartActivity.class);
-//                myIntent.putExtras(myBundle);
-                startActivity(myIntent);
-                break;
+
         }
         return true;
     }

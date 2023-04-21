@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,6 +54,7 @@ public class AddProductActivity extends AppCompatActivity {
     String image ,fileName;
     ProgressDialog progressDialog;
     FirebaseDatabase database ;
+    Toolbar toolbar;
     DatabaseReference databasReference;
 
 
@@ -61,6 +63,8 @@ public class AddProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityAddProductBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         binding.selectImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +125,17 @@ public class AddProductActivity extends AppCompatActivity {
         });
 
     }
+
+    private void setSupportActionBar(Toolbar toolbar_order) {
+        toolbar_order.setNavigationIcon(R.drawable.ic_back);
+        toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
     private void uploadImage() {
 
         progressDialog = new ProgressDialog(this);
