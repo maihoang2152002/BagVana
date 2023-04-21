@@ -3,6 +3,7 @@ package com.example.bagvana.Activity.Profile;
 import static com.example.bagvana.Utils.Utils._user;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -199,6 +200,14 @@ public class EditProfileActivity extends AppCompatActivity {
 
     public void setSupportActionBar(Toolbar toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(view -> finish());
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                setResult(RESULT_OK, intent);
+                finish();
+
+            }
+        });
     }
 }
