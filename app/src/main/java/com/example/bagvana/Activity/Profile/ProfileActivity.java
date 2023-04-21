@@ -266,6 +266,7 @@ public class ProfileActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            _user.setAvatar(imageURL);
                             Toast.makeText(ProfileActivity.this, "Saved Avatar", Toast.LENGTH_SHORT).show();
                         }
                     }
