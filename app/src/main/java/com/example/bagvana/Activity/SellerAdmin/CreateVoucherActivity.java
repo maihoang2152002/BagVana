@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -325,6 +326,8 @@ public class CreateVoucherActivity extends AppCompatActivity {
                                     .show();
                         } else {
                             voucherDAO.addValue(vou);
+                            noticeSuccess();
+                            finish();
                         }
 
                     } else {
@@ -347,16 +350,28 @@ public class CreateVoucherActivity extends AppCompatActivity {
                                         .show();
                             } else {
                                 voucherDAO.addValue(vou);
+                                noticeSuccess();
                                 finish();
                             }
                         }
                     }
                 }
 
+
             }
         });
     }
+    private void noticeSuccess(){
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
+            }
+        });
+        alert.setMessage("Thêm chương trình khuyến mãi thành công ");
+        alert.show();
+    }
     private void setSupportActionBar(Toolbar toolbar_createVoucher) {
         toolbar_createVoucher.setNavigationIcon(R.drawable.ic_back);
         toolbar_createVoucher.setNavigationOnClickListener(new View.OnClickListener() {

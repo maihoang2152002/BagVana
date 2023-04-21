@@ -70,12 +70,13 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         initBottomNavbar();
         productList = new ArrayList<>();
-
         DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Product");
         databaseReferenceHome.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Utils._productList.clear();
+
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Product product = dataSnapshot.getValue(Product.class);

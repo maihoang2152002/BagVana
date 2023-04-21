@@ -81,44 +81,7 @@ public class AddProductActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 uploadImage();
-                boolean check = true;
-                if (binding.nameProduct.getText().toString().trim().isEmpty()) {
-                    binding.nameProduct.setError("Thông tin không được bỏ trống");
-                    check = false;
-                }
-                if (binding.colorProduct.getText().toString().trim().isEmpty()) {
-                    binding.colorProduct.setError("Thông tin không được bỏ trống");
-                    check = false;
-                }
-                if (binding.descriptionProduct.getText().toString().trim().isEmpty()) {
-                    binding.descriptionProduct.setError("Thông tin không được bỏ trống");
-                    check = false;
-                }
-                if (binding.quantityProduct.getText().toString().trim().isEmpty()) {
-                    binding.quantityProduct.setError("Thông tin không được bỏ trống");
-                    check = false;
-                }
 
-
-                imageProduct = binding.imageProduct;
-                nameProduct = binding.nameProduct;
-                colorProduct = binding.colorProduct;
-                priceProduct = binding.priceProduct;
-                descriptionProduct = binding.descriptionProduct;
-                quantityProduct = binding.quantityProduct;
-                addBtn =binding.addBtn;
-                cancelBtn = binding.cancelBtn;
-
-
-                String id = Integer.toString(_productList.size()+1);
-                if(check){
-                    Product product =  new Product("p"+id,nameProduct.getText().toString().trim(),_new_product.getImage(),
-                            colorProduct.getText().toString().trim(),descriptionProduct.getText().toString().trim(),
-                            Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()));
-                    Map<String,Object> hashMap = insertProduct(product);
-                    databasReference.child("p"+id).setValue(hashMap);
-                    noticeSuccess();
-                }
 
 
             }
@@ -178,7 +141,47 @@ public class AddProductActivity extends AppCompatActivity {
                             @Override
                             public void onSuccess(Uri uri) {
                                 image = uri.toString();
-                                _new_product.setImage(image);
+
+                                boolean check = true;
+                                if (binding.nameProduct.getText().toString().trim().isEmpty()) {
+                                    binding.nameProduct.setError("Thông tin không được bỏ trống");
+                                    check = false;
+                                }
+                                if (binding.colorProduct.getText().toString().trim().isEmpty()) {
+                                    binding.colorProduct.setError("Thông tin không được bỏ trống");
+                                    check = false;
+                                }
+                                if (binding.descriptionProduct.getText().toString().trim().isEmpty()) {
+                                    binding.descriptionProduct.setError("Thông tin không được bỏ trống");
+                                    check = false;
+                                }
+                                if (binding.quantityProduct.getText().toString().trim().isEmpty()) {
+                                    binding.quantityProduct.setError("Thông tin không được bỏ trống");
+                                    check = false;
+                                }
+
+
+                                imageProduct = binding.imageProduct;
+                                nameProduct = binding.nameProduct;
+                                colorProduct = binding.colorProduct;
+                                priceProduct = binding.priceProduct;
+                                descriptionProduct = binding.descriptionProduct;
+                                quantityProduct = binding.quantityProduct;
+                                addBtn =binding.addBtn;
+                                cancelBtn = binding.cancelBtn;
+
+
+                                String id = Integer.toString(_productList.size()+1);
+                                if(check){
+                                    Product product =  new Product("p"+id,nameProduct.getText().toString().trim(),image,
+                                            colorProduct.getText().toString().trim(),descriptionProduct.getText().toString().trim(),
+                                            Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()));
+                                    Map<String,Object> hashMap = insertProduct(product);
+                                    databasReference.child("p"+id).setValue(hashMap);
+                                    noticeSuccess();
+                                }
+
+
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -246,7 +249,7 @@ public class AddProductActivity extends AppCompatActivity {
 
             }
         });
-        alert.setMessage("Chỉnh sửa sản phẩm thành công ");
+        alert.setMessage("Them sản phẩm thành công ");
         alert.show();
     }
     private void noticeFail(){
@@ -260,5 +263,6 @@ public class AddProductActivity extends AppCompatActivity {
         alert.setMessage("Thất bại");
         alert.show();
     }
+
 
 }
