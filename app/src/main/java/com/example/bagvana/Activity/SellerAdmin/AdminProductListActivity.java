@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -80,9 +79,9 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Product product = dataSnapshot.getValue(Product.class);
-                    Utils._productList.add(product);
+                    productList.add(product);
                 }
-
+                Utils._productList = productList;
                 productListAdapter.notifyDataSetChanged();
             }
 
@@ -228,7 +227,7 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
     }
 
     @Subscribe(sticky = true, threadMode = ThreadMode.MAIN)
-    public void settingNarbarBottom(settingBottomEvent event) {
+    public void settingNavbarBottom(settingBottomEvent event) {
         if(event != null) {
             initBottomNavbar();
         }
