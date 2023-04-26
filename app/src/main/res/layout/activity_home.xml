@@ -30,6 +30,37 @@
             android:theme="?attr/actionBarTheme"
             app:navigationIcon="@drawable/ic_filter">
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraint_layout"
+                android:layout_width="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/ic_cart"
+                    android:backgroundTint="@color/primary_theme"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_cart"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="ContentDescription,MissingConstraints" />
+
+                <com.nex3z.notificationbadge.NotificationBadge
+                    android:id="@+id/shopping_badge"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@+id/ic_cart"
+                    app:layout_constraintEnd_toEndOf="@+id/ic_cart"
+                    app:layout_constraintStart_toStartOf="@+id/ic_cart"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:nbMaxTextLength="2" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/search_view"
                 android:layout_width="wrap_content"
@@ -39,9 +70,12 @@
                 android:queryHint="Tìm kiếm"
                 app:showAsAction="always" />
 
-
         </androidx.appcompat.widget.Toolbar>
 
+        <!--            <searchable xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--                android:label="@string/app_label"-->
+        <!--                android:hint="@string/search_hint" >-->
+        <!--            </searchable>-->
 
         <FrameLayout
             android:id="@+id/fragment_container"
