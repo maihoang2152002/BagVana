@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -25,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.bagvana.Activity.Home.HomeActivity;
+import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.Adapter.HomeAdapter;
 import com.example.bagvana.Adapter.ReviewAdapter;
 import com.example.bagvana.DTO.Comment;
@@ -39,12 +39,14 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.ArrayList;
 
 public class ProductDetailActivity extends AppCompatActivity implements ItemListener {
     private ImageView imageSelected, txt_minus, txt_plus, btn_add_to_cart;
-    private ImageButton imageBtn_fav, imageBtn_share;
+    private NotificationBadge shopping_badge;
+    private ImageButton imageBtn_fav, imageBtn_share, cart_button;
     Product curProduct;
     TextView name, color, price, description, txt_amount, rating_point;
 
@@ -64,8 +66,6 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
-
-
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         imageBtn_fav = findViewById(R.id.imageBtn_fav); imageBtn_fav.setTag("false");
@@ -76,6 +76,7 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         txt_plus = findViewById(R.id.txt_plus);
         txt_amount = findViewById(R.id.txt_amount);
         btn_add_to_cart = findViewById(R.id.btn_add_to_cart);
+        shopping_badge = findViewById(R.id.shopping_badge);
 
         name = findViewById(R.id.name_product);
         color = findViewById(R.id.color_product);
@@ -165,19 +166,48 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
             }
         });
 
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Cart")
+                .child(_user.getId());
+        myRef.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int count = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    Product product = dataSnapshot.getValue(Product.class);
+                    count += product.getAmount();
+                }
+
+                if (count != 0) {
+                    shopping_badge.setNumber(count);
+                } else {
+//                    shopping_badge.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         btn_add_to_cart.setOnClickListener(view -> {
             int amount = Integer.parseInt(String.valueOf(txt_amount.getText()));
 
             curProduct.setAmount(amount);
 
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
-            DatabaseReference myRef = database.getReference("Cart")
-                    .child(_user.getId());
-
-            // Push new data to the database
-//                String data = "Hello, Firebase!";
             myRef.child(curProduct.getProductID()).setValue(curProduct);
             Toast.makeText(ProductDetailActivity.this,"Thêm vào giỏ hàng thành công", Toast.LENGTH_LONG).show();
+        });
+
+        cart_button = findViewById(R.id.ic_cart);
+
+        cart_button.setOnClickListener(v -> {
+            Intent myIntent = new Intent(ProductDetailActivity.this, CartActivity.class);
+//                myIntent.putExtras(myBundle);
+            startActivity(myIntent);
         });
 
         listComment = new ArrayList<>();

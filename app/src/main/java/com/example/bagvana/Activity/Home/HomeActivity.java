@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -28,16 +30,25 @@ import com.example.bagvana.Activity.ProductList.ProductListActivity;
 import com.example.bagvana.Activity.Profile.ProfileActivity;
 import com.example.bagvana.Activity.Voucher.VoucherUserActivity;
 import com.example.bagvana.Activity.Wishlist.WishlistActivity;
+import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 import com.example.bagvana.fragments.HomeFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.nex3z.notificationbadge.NotificationBadge;
 
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     NavigationView navigationView;
     Toolbar toolbar;
     Menu menu;
-    CounterFab counterFabChat, counterFabCart;
+    NotificationBadge shopping_badge;
+    ImageButton cart_button;
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -61,7 +72,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         button.setLayoutParams(params);
         parent.addView(button);
 
-
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new
                 ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -70,6 +80,39 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.menu_home);
 
+        shopping_badge = findViewById(R.id.shopping_badge);
+        cart_button = findViewById(R.id.ic_cart);
+
+        cart_button.setOnClickListener(v -> {
+            Intent myIntent = new Intent(HomeActivity.this, CartActivity.class);
+//                myIntent.putExtras(myBundle);
+            startActivity(myIntent);
+        });
+
+        DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Cart").child(_user.getId());
+        databaseReferenceHome.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int count = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    Product product = dataSnapshot.getValue(Product.class);
+                    count += product.getAmount();
+                }
+
+                if (count != 0) {
+                    shopping_badge.setNumber(count);
+                } else {
+                    shopping_badge.setVisibility(View.INVISIBLE);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         loadFragment(new HomeFragment());
         menu = navigationView.getMenu();

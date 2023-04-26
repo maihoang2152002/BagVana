@@ -92,5 +92,6 @@ dependencies {
     implementation 'com.github.andremion:counterfab:1.2.2'
     implementation 'androidx.coordinatorlayout:coordinatorlayout'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.nex3z:notification-badge:1.0.4'
 
 }
