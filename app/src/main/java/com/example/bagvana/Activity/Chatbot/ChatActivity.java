@@ -3,6 +3,7 @@ package com.example.bagvana.Activity.Chatbot;
 import static com.example.bagvana.Utils.Utils._user;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.bagvana.Activity.Profile.ProfileActivity;
 import com.example.bagvana.Activity.SellerAdmin.UpdateProductActivity;
 import com.example.bagvana.R;
 import com.example.bagvana.databinding.ActivityChatBinding;
@@ -27,6 +29,7 @@ import com.example.bagvana.fragments.UsersFragment;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -44,13 +47,18 @@ public class ChatActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        profile_avt = (CircleImageView) findViewById(R.id.profileImage);
+        profile_avt = (CircleImageView) findViewById(R.id.profileImage) ;
         username = (TextView) findViewById(R.id.txtNameUser);
         if(_user.getFullname().equals("")){
             username.setText(_user.getUsername());
         }
         else{
             username.setText(_user.getFullname());
+        }
+        if(!_user.getAvatar().equals("")){
+            Glide.with(ChatActivity.this)
+                    .load(_user.getAvatar())
+                    .into(profile_avt);
         }
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);

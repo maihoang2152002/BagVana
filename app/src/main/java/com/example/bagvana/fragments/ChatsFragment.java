@@ -57,13 +57,10 @@ public class ChatsFragment extends Fragment {
                 usersList.clear();
                 for(DataSnapshot snapshot: dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
-//                    if(chat.getSender().equals(_user.getId())){
-//                        usersList.add(chat.getReceiver());
-//                        Log.e("receiver",chat.getReceiver());
-//                    }
+
                     if(chat.getReceiver().equals(_user.getId())){
                         usersList.add(chat.getSender());
-                        Log.e("sender",chat.getSender());
+
 
                     }
                 }

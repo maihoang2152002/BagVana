@@ -17,10 +17,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.bagvana.Adapter.MessageAdapter;
 import com.example.bagvana.DTO.Chat;
 import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
+import com.example.bagvana.databinding.ActivityChatBinding;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -31,9 +33,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MessageActivity extends AppCompatActivity {
+    ActivityChatBinding binding;
     Toolbar toolbar;
     private TextView fullname;
+    CircleImageView circleImageView;
     private String id,imageUrl;
     private EditText inputMessage;
     private ImageButton btn_send;
@@ -51,7 +57,8 @@ public class MessageActivity extends AppCompatActivity {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         id = getIntent().getStringExtra("userId").toString();
-        Log.e("userid",id);
+
+        circleImageView = (CircleImageView) findViewById(R.id.profileImage);
         fullname = (TextView) findViewById(R.id.textName);
         inputMessage = (EditText)findViewById(R.id.inputMessage);
         btn_send = (ImageButton) findViewById(R.id.btn_send);
@@ -77,9 +84,17 @@ public class MessageActivity extends AppCompatActivity {
             else{
                 fullname.setText(userChat.getFullname());
             }
+            if(!userChat.getAvatar().equals("")){
+                Glide.with(MessageActivity.this)
+                        .load(userChat.getAvatar())
+                        .into(circleImageView);
+            }
+            else {
+                circleImageView.setImageResource(R.drawable.ic_user);
+            }
 
         }
-        readMessage(_user.getId(),userChat.getId(),"anh");
+        readMessage(_user.getId(),userChat.getId());
         // body
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,7 +126,7 @@ public class MessageActivity extends AppCompatActivity {
 
         reference.child("Chats").push().setValue(hashMap);
     }
-    public void readMessage(String myId, String receiverId, String imageUrl){
+    public void readMessage(String myId, String receiverId){
         mchat = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
         reference.addValueEventListener(new ValueEventListener() {
@@ -127,7 +142,7 @@ public class MessageActivity extends AppCompatActivity {
                     {
                         mchat.add(chat);
                     }
-                    messageAdapter = new MessageAdapter(MessageActivity.this,mchat,imageUrl);
+                    messageAdapter = new MessageAdapter(MessageActivity.this,mchat);
 
                     recyclerView.setAdapter(messageAdapter);
 

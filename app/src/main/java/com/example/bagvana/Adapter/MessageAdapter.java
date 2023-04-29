@@ -23,15 +23,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public static final int MSG_RECEIVER = 1;
     private Context mcontext;
     private List<Chat> mChat;
-    private String imageUrl;
+
 //    private
 
 
-    public MessageAdapter(@NonNull Context context, @NonNull List<Chat> chats, String imageUrl) {
+    public MessageAdapter(@NonNull Context context, @NonNull List<Chat> chats) {
 //        super(context,users);
         this.mcontext = context;
         this.mChat = chats;
-        this.imageUrl = imageUrl;
+
     }
 
     @NonNull
@@ -54,7 +54,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Chat chat = mChat.get(position);
         holder.show_message.setText(chat.getMessage());
-//        if()
+
     }
 
     @Override
@@ -65,12 +65,10 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     public  class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView show_message;
-        public ImageView image_profile;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             show_message = itemView.findViewById(R.id.show_message);
-//            image_profile = itemView.findViewById(R.id.image_profile);
         }
     }
 

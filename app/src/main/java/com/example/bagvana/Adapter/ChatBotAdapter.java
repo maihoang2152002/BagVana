@@ -1,5 +1,7 @@
 package com.example.bagvana.Adapter;
 
+import static com.example.bagvana.Utils.Utils._user;
+
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.example.bagvana.Activity.Chatbot.ChatActivity;
 import com.example.bagvana.Activity.Chatbot.MessageActivity;
 import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
@@ -47,19 +51,22 @@ public class ChatBotAdapter extends RecyclerView.Adapter<ChatBotAdapter.ViewHold
             holder.username.setText(user.getFullname());
 
         }
+        if(!user.getAvatar().equals("")){
+            Glide.with(mcontext)
+                    .load(user.getAvatar())
+                    .into(holder.image_profile);
+        }
+        else {
+            holder.image_profile.setImageResource(R.drawable.ic_user);
+        }
 
-//        if (user.getAvatar().equals("default")){
-//            holder.image_profile.setImageResource(R.mipmap.ic_launcher);
-//        }else
-//        {
-//            Glide.with(mcontext).load(user.getAvatar()).into(holder.image_profile);
-//        }
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mcontext, MessageActivity.class);
                 intent.putExtra("userId",user.getId());
-                Log.e("ID user chat", ""+user.getId());
+
                 mcontext.startActivity(intent);
             }
         });
