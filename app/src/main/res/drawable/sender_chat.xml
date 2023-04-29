@@ -2,10 +2,10 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 
 
-    <solid android:color="#fff"></solid>
+    <solid android:color="@color/title_text"></solid>
 
     <corners android:radius="@dimen/_5sdp"></corners>
-    <stroke android:color="#fff"
+    <stroke android:color="@color/bg_chat"
         android:width="@dimen/_1sdp"/>
 
 

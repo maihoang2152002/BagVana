@@ -1,6 +1,7 @@
 package com.example.bagvana.fragments;
 
 import static com.example.bagvana.Utils.Utils._list_user;
+import static com.example.bagvana.Utils.Utils._user;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bagvana.Adapter.ChatBotAdapter;
+import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class UsersFragment extends Fragment {
@@ -39,9 +44,11 @@ public class UsersFragment extends Fragment {
     }
 
     private void readUsers() {
+
+        int index = _list_user.indexOf(_user);
+        _list_user.remove(index);
         userAdapter = new ChatBotAdapter(getContext(),_list_user);
         recyclerView.setAdapter(userAdapter);
-        Log.e("list user","");
 
     }
 }
