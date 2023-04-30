@@ -7,10 +7,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +35,8 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText password ;
     private EditText conPassword ;
     private Button btnSignUp;
+    ImageView visible;
+    boolean checkedVisibles = true;
 
     FirebaseDatabase database ;
     DatabaseReference databasReference;
@@ -46,6 +51,7 @@ public class SignUpActivity extends AppCompatActivity {
         alert.setMessage("Số điện thoại đã được đăng ký. Vui lòng nhập lại số điện thoại");
         alert.show();
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -57,10 +63,31 @@ public class SignUpActivity extends AppCompatActivity {
          password = (EditText) findViewById(R.id.txtPassword);
          conPassword = (EditText) findViewById(R.id.txtConPassword);
          btnSignUp  = (Button) findViewById(R.id.btnSignUp);
-
+        visible = (ImageView) findViewById(R.id.btn_visible);
 
         final CountryCodePicker ccp_su = (CountryCodePicker) findViewById(R.id.ccp);
         ccp_su.registerCarrierNumberEditText(numberPhone);
+
+        // hide password
+        visible.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkedVisibles){
+                    visible.setImageResource(R.drawable.ic_visibility_off);
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    conPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                    checkedVisibles = false;
+                }
+                else{
+                    visible.setImageResource(R.drawable.ic_see_password);
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    conPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    checkedVisibles = true;
+
+                }
+            }
+        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

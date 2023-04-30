@@ -1,5 +1,6 @@
 package com.example.bagvana.Activity.LoginRegister;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -35,12 +36,13 @@ import java.util.concurrent.TimeUnit;
 
 public class OTPActivity extends AppCompatActivity {
     Button btnVerify;
-    TextView txtErrorOtp;
+    TextView txtErrorOtp, sendAgain;
     EditText otp;
     String phoneNumber, phone_forgotpass,type_numbephone,otpid;
     FirebaseAuth mAuth;
     FirebaseDatabase database ;
     DatabaseReference databasReference; // = FirebaseDatabase.getInstance().getReferenceFromUrl("https://bagvana-7335c-default-rtdb.firebaseio.com/");
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -59,10 +61,17 @@ public class OTPActivity extends AppCompatActivity {
         otp = (EditText) findViewById(R.id.editOTP);
         btnVerify = (Button) findViewById(R.id.btnVerrify);
         txtErrorOtp = (TextView) findViewById(R.id.txtErrorOtp);
+        sendAgain = (TextView) findViewById(R.id.sendAgainOTP);
 
 //        phoneNumber = phone_signup;
 
         initOTP();
+        sendAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                initOTP();
+            }
+        });
         txtErrorOtp.setText("");
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +84,6 @@ public class OTPActivity extends AppCompatActivity {
             }
 
         });
-
 
     }
 
