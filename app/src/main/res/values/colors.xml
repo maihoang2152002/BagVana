@@ -30,6 +30,8 @@
 
     <color name="title_text">#137EFF</color>
     <color name="bg_chat">#ccc</color>
+    <color name="text_hint">#2B6BA3</color>
+
     <color name="border_input_text">#CFCECE</color>
     <color name="primary_theme">#F7F6F6</color> N
     <color name="button">#137EFF</color>

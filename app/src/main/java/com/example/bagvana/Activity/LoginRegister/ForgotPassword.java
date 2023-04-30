@@ -6,6 +6,7 @@ import static com.example.bagvana.Utils.Utils._user_forgot_password;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -17,7 +18,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import com.example.bagvana.Activity.Home.AdminHomeActivity;
 import com.example.bagvana.Activity.Home.HomeActivity;
@@ -42,14 +42,15 @@ public class ForgotPassword extends AppCompatActivity {
     EditText phone ;
     CountryCodePicker ccp;
     DatabaseReference databaseReference;
-    Toolbar toolbar;
+//    Toolbar toolbar;
+    androidx.appcompat.widget.Toolbar toolbar;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forgot_password);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (androidx.appcompat.widget.Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         phone = (EditText) findViewById(R.id.inputPhone) ;
         ccp = (CountryCodePicker) findViewById(R.id.ccp);
@@ -132,7 +133,7 @@ public class ForgotPassword extends AppCompatActivity {
 
     }
 
-    private void setSupportActionBar(Toolbar toolbar_order) {
+    public void setSupportActionBar(Toolbar toolbar_order) {
         toolbar_order.setNavigationIcon(R.drawable.ic_back);
         toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

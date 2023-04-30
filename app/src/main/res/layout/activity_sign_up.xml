@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="132dp"
@@ -83,9 +84,11 @@
             android:layout_height="match_parent"
             android:layout_marginEnd="24dp"
             android:layout_weight="1"
+            android:textColorHint="@color/text_hint"
             android:ems="10"
             android:hint="Số điện thoại"
-            android:inputType="textPersonName"
+            android:digits="0123456789"
+            android:inputType="number"
             android:paddingLeft="5dp" />
 
     </LinearLayout>
@@ -101,7 +104,7 @@
         android:paddingLeft="5dp"
         android:pointerIcon="wait"
         android:textAlignment="viewStart"
-        android:textColor="#004C90"
+        android:textColorHint="@color/text_hint"
         android:textColorLink="#1E88E5"
         android:textDirection="firstStrongRtl"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -111,36 +114,77 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="0.057" />
 
+    <LinearLayout
+        android:id="@+id/linearLayout_password"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="50dp"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:background="@drawable/input_bg"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txtUsername"
+        app:layout_constraintStart_toStartOf="@+id/txtUsername"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsername"
+        app:layout_constraintVertical_bias="0.06999999">
+
     <EditText
         android:id="@+id/txtPassword"
-        android:layout_width="330dp"
+        android:layout_width="@dimen/_230sdp"
         android:layout_height="50dp"
-        android:layout_marginTop="12dp"
         android:background="@drawable/input_bg"
         android:ems="10"
         android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:paddingLeft="5dp"
-        app:layout_constraintEnd_toEndOf="@+id/txtUsername"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtUsername"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsername" />
-
-    <EditText
-        android:id="@+id/txtConPassword"
-        android:layout_width="330dp"
-        android:layout_height="50dp"
-        android:background="@drawable/input_bg"
-        android:ems="10"
-        android:hint="Nhập lại mật khẩu"
-        android:inputType="textPassword"
-        android:paddingLeft="5dp"
+        android:inputType="text|textPassword"
+        android:paddingLeft="@dimen/_5sdp"
+        android:singleLine="false"
+        android:textColorHint="@color/text_hint"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/txtPassword"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.06999999" />
+    <ImageView
+        android:id="@+id/btn_visible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/_5sdp"
+        android:src="@drawable/ic_see_password"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout_password_again"
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="50dp"
+        android:baselineAligned="false"
+        android:gravity="center"
+        android:background="@drawable/input_bg"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout_password"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout_password"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_password"
+        app:layout_constraintVertical_bias="0.06999999">
+
+        <EditText
+            android:id="@+id/txtConPassword"
+            android:layout_width="@dimen/_260sdp"
+            android:layout_height="50dp"
+            android:background="@drawable/input_bg"
+            android:ems="10"
+            android:hint="Nhập lại mật khẩu"
+
+            android:inputType="text|textPassword"
+            android:paddingLeft="@dimen/_5sdp"
+            android:singleLine="false"
+            android:textColorHint="@color/text_hint"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.06999999" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSignUp"
@@ -152,7 +196,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtConPassword"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout_password_again"
         app:layout_constraintVertical_bias="0.196" />
 
     <TextView

@@ -64,9 +64,23 @@
         android:text="Xác thực"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editOTP"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editOTP"
         app:layout_constraintTop_toBottomOf="@+id/txtErrorOtp"
-        app:layout_constraintVertical_bias="0.163" />
+        app:layout_constraintVertical_bias="0.06999999" />
+
+    <TextView
+        android:id="@+id/sendAgainOTP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hoặc Gửi lại "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btnVerrify"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="@+id/btnVerrify"
+        app:layout_constraintTop_toBottomOf="@+id/btnVerrify"
+        app:layout_constraintVertical_bias="0.13"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editOTP"

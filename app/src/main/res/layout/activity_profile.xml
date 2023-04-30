@@ -71,8 +71,8 @@
                 android:background="@drawable/rectangle_profile">
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="left|center_vertical"
                     android:layout_marginLeft="20dp"
                     android:background="@drawable/ic_shopping_bag" />

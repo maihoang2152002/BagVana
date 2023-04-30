@@ -7,10 +7,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,9 +46,11 @@ public class SignInActivity extends AppCompatActivity {
     EditText password;
     Button loginButton;
     TextView signUp, forgotPass;
+    ImageView visible;
 
     FirebaseDatabase database ;
     DatabaseReference databasReference;
+    boolean checkedVisibles = true;
 
     private void noticeNotExitUser(){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -118,10 +124,29 @@ public class SignInActivity extends AppCompatActivity {
 
         });
     }
+    private void initVisiblePassword(){
+        visible = (ImageView) findViewById(R.id.btn_visible);
+        visible.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(checkedVisibles){
+                    visible.setImageResource(R.drawable.ic_visibility_off);
+                    password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    checkedVisibles = false;
+                }
+                else{
+                    visible.setImageResource(R.drawable.ic_see_password);
+                    password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    checkedVisibles = true;
+
+                }
+            }
+        });
+
+    }
 
     private void checkUser(){
-        numberPhone = (EditText) findViewById(R.id.inputNumberPhone);
-        password = (EditText) findViewById(R.id.inputPassword);
+
         final CountryCodePicker ccp_su = (CountryCodePicker) findViewById(R.id.ccp);
         ccp_su.registerCarrierNumberEditText(numberPhone);
         String phone = ccp_su.getFullNumberWithPlus().replace(" ", "");
@@ -186,10 +211,12 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-
+        numberPhone = (EditText) findViewById(R.id.inputNumberPhone);
+        password = (EditText) findViewById(R.id.inputPassword);
         initForgotPass();
         initSignUp();
         initLogin();
+        initVisiblePassword();
     }
 
     @Override
