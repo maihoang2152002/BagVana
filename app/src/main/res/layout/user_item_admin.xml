@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/linearLayout_password"
+    android:baselineAligned="false"
+    android:gravity="center"
+    android:padding="@dimen/_5sdp"
+    android:background="@drawable/chat_input_bg"
+    android:layout_marginBottom="@dimen/_5sdp"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:orientation="horizontal"
+    android:layout_height="@dimen/_50sdp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="@dimen/_40sdp"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:id="@+id/image_profile"
+        android:src="@drawable/ic_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        />
+
+    <TextView
+        android:id="@+id/username"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="wrap_content"
+
+        android:paddingLeft="@dimen/_10sdp"
+        android:text="Buif Thi Dung"
+        android:textSize="@dimen/_16sdp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="RtlHardcoded" />
+    <ImageView
+        android:id="@+id/btnEditUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_edit_profile"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+    <ImageView
+        android:id="@+id/btnLockUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:src="@drawable/ic_lock_person"/>
+
+
+</LinearLayout>
