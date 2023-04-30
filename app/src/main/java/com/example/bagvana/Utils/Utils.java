@@ -25,6 +25,7 @@ public class Utils {
     public static User _user_forgot_password = new User();
 
     public static List<User> _list_user = new ArrayList<>();
+    public static List<User> _admin_list_user = new ArrayList<>();
 
 
 }

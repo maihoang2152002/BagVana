@@ -60,8 +60,6 @@ public class ChatsFragment extends Fragment {
 
                     if(chat.getReceiver().equals(_user.getId())){
                         usersList.add(chat.getSender());
-
-
                     }
                 }
                 readChats();
