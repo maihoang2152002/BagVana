@@ -6,6 +6,7 @@ import static com.example.bagvana.Utils.Utils._user;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.text.method.HideReturnsTransformationMethod;
@@ -13,6 +14,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -47,12 +49,14 @@ public class SignInActivity extends AppCompatActivity {
     Button loginButton;
     TextView signUp, forgotPass;
     ImageView visible;
+    CheckBox checkSave;
 
-    FirebaseDatabase database ;
+    FirebaseDatabase database;
     DatabaseReference databasReference;
+    String saveUser = "phone_password";
     boolean checkedVisibles = true;
 
-    private void noticeNotExitUser(int type){
+    private void noticeNotExitUser(int type) {
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
@@ -60,15 +64,15 @@ public class SignInActivity extends AppCompatActivity {
 
             }
         });
-        if(type == 1){
+        if (type == 1) {
             alert.setMessage("Số điện thoại hoặc mật khẩu không đúng. Vui lòng nhập lại");
-        }
-        else{
+        } else {
             alert.setMessage("Tài khoản đã bị khóa. Xin vui lòng đăng ký tài khoản mới");
         }
 
         alert.show();
     }
+
     private String convertHashToString(String text) {
         MessageDigest md = null;
         try {
@@ -85,19 +89,23 @@ public class SignInActivity extends AppCompatActivity {
 
 
     }
-    private void initLogin(){
+
+    private void initLogin() {
         loginButton = (Button) findViewById(R.id.btnSignIn);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             checkUser();
-             Log.e("nhan","");
+                checkUser();
+                Log.e("nhan", "");
             }
 
         });
-    };
-    private void initSignUp(){
-        signUp= (TextView) findViewById(R.id.textSignUp);
+    }
+
+    ;
+
+    private void initSignUp() {
+        signUp = (TextView) findViewById(R.id.textSignUp);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,8 +115,7 @@ public class SignInActivity extends AppCompatActivity {
                     temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
                     intent.putExtra("GetProductFromDeepLink", temp);
                     startActivity(intent);
-                }
-                else {
+                } else {
 
                     startActivity(intent);
 
@@ -116,10 +123,12 @@ public class SignInActivity extends AppCompatActivity {
             }
 
         });
-    };
+    }
 
-    private void initForgotPass(){
-        forgotPass= (TextView) findViewById(R.id.forgotPass);
+    ;
+
+    private void initForgotPass() {
+        forgotPass = (TextView) findViewById(R.id.forgotPass);
         forgotPass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -130,17 +139,17 @@ public class SignInActivity extends AppCompatActivity {
 
         });
     }
-    private void initVisiblePassword(){
+
+    private void initVisiblePassword() {
         visible = (ImageView) findViewById(R.id.btn_visible);
         visible.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(checkedVisibles){
+                if (checkedVisibles) {
                     visible.setImageResource(R.drawable.ic_visibility_off);
                     password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     checkedVisibles = false;
-                }
-                else{
+                } else {
                     visible.setImageResource(R.drawable.ic_see_password);
                     password.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     checkedVisibles = true;
@@ -151,20 +160,18 @@ public class SignInActivity extends AppCompatActivity {
 
     }
 
-    private void checkUser(){
+    private void checkUser() {
 
         final CountryCodePicker ccp_su = (CountryCodePicker) findViewById(R.id.ccp);
         ccp_su.registerCarrierNumberEditText(numberPhone);
         String phone = ccp_su.getFullNumberWithPlus().replace(" ", "");
         String pass = password.getText().toString();
-        if( pass.isEmpty() ){
+        if (pass.isEmpty()) {
             password.setError("Mật khẩu không được bỏ trống");
-        }
-        else if(phone.isEmpty()){
+        } else if (phone.isEmpty()) {
             numberPhone.setError("Số điện thoại không thể trống");
 
-        }
-        else{
+        } else {
 
             //            database = FirebaseDatabase.getInstance();
             databasReference = FirebaseDatabase.getInstance().getReference().child("User");
@@ -174,32 +181,34 @@ public class SignInActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     boolean existUser = false;
                     int typeUser = 1;
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         User user = dataSnapshot.getValue(User.class);
 //                        String passFB = dataSnapshot.child("password").getValue(String.class);
                         String pass_convert = convertHashToString(pass);
                         _list_user.add(user);
 
-                        if(phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
-                            if(user.getStatus().equals("0"))
-                            {
+                        if (phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
+                            if (user.getStatus().equals("0")) {
                                 typeUser = 0;
-                            }
-                            else{
+                            } else {
+                                SharedPreferences sharedPreferences = getSharedPreferences(saveUser, MODE_PRIVATE);
+                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                editor.putString("numberPhone", phone);
+                                editor.putString("password", pass);
+                                editor.putBoolean("Save", checkSave.isChecked());
+                                editor.commit();
                                 existUser = true;
                                 _user = user;
-                                Log.e("user",_user.toString());
+                                Log.e("user", _user.toString());
                                 if (getIntent().hasExtra("GetProductFromDeepLink")) {
                                     Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
                                     Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
                                     intent.putExtra("product", temp);
                                     startActivity(intent);
-                                }
-                                else if(_user.getTypeUser().equals("2")){
+                                } else if (_user.getTypeUser().equals("2")) {
                                     Intent intent = new Intent(SignInActivity.this, AdminHomeActivity.class);
                                     startActivity(intent);
-                                }
-                                else {
+                                } else {
                                     Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
                                     startActivity(intent);
 
@@ -225,8 +234,7 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     private void initComponents() {
-        numberPhone = (EditText) findViewById(R.id.inputNumberPhone);
-        password = (EditText) findViewById(R.id.inputPassword);
+
         initForgotPass();
         initSignUp();
         initLogin();
@@ -237,6 +245,23 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        numberPhone = (EditText) findViewById(R.id.inputNumberPhone);
+        password = (EditText) findViewById(R.id.inputPassword);
+        checkSave = (CheckBox) findViewById(R.id.checkBox);
         initComponents();
+    }
+
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences(saveUser, MODE_PRIVATE);
+        String phone = sharedPreferences.getString("numberPhone", "");
+        String pass = sharedPreferences.getString("password", "");
+
+        boolean save = sharedPreferences.getBoolean("Save", false);
+        if (save == true) {
+            checkSave.setChecked(true);
+            numberPhone.setText(phone);
+            password.setText(pass);
+        }
     }
 }
