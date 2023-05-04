@@ -49,8 +49,8 @@ public class ListUserActivity extends AppCompatActivity {
         ListUserActivity.ViewPagerAdapter viewPagerAdapter = new ListUserActivity.ViewPagerAdapter(getSupportFragmentManager());
 
 
-        viewPagerAdapter.addFragment(new UserBlockedFragment(),"Bị khóa");
         viewPagerAdapter.addFragment(new AdminAllUserFragment(), "Tất cả");
+        viewPagerAdapter.addFragment(new UserBlockedFragment(),"Bị khóa");
 
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

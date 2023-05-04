@@ -8,11 +8,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -36,7 +36,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
     CircleImageView profile_avt;
-    Toolbar toolbar;
+    androidx.appcompat.widget.Toolbar toolbar;
     TextView username;
     @SuppressLint("MissingInflatedId")
     @Override
@@ -44,7 +44,7 @@ public class ChatActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_chat);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         profile_avt = (CircleImageView) findViewById(R.id.profileImage) ;
@@ -101,7 +101,7 @@ public class ChatActivity extends AppCompatActivity {
             return titles.get(position);
         }
     }
-    private void setSupportActionBar(Toolbar toolbar_order) {
+    public void setSupportActionBar(Toolbar toolbar_order) {
         toolbar_order.setNavigationIcon(R.drawable.ic_back);
         toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
