@@ -164,7 +164,6 @@ public class SignUpActivity extends AppCompatActivity {
         text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(SignUpActivity.this,"dang nhan text", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(SignUpActivity.this, SignInActivity.class);
                 startActivity(intent);
             }

@@ -52,7 +52,7 @@ public class SignInActivity extends AppCompatActivity {
     DatabaseReference databasReference;
     boolean checkedVisibles = true;
 
-    private void noticeNotExitUser(){
+    private void noticeNotExitUser(int type){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
         alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
@@ -60,7 +60,13 @@ public class SignInActivity extends AppCompatActivity {
 
             }
         });
-        alert.setMessage("Số điện thoại hoặc mật khẩu không đúng. Vui lòng nhập lại");
+        if(type == 1){
+            alert.setMessage("Số điện thoại hoặc mật khẩu không đúng. Vui lòng nhập lại");
+        }
+        else{
+            alert.setMessage("Tài khoản đã bị khóa. Xin vui lòng đăng ký tài khoản mới");
+        }
+
         alert.show();
     }
     private String convertHashToString(String text) {
@@ -167,6 +173,7 @@ public class SignInActivity extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     boolean existUser = false;
+                    int typeUser = 1;
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                         User user = dataSnapshot.getValue(User.class);
 //                        String passFB = dataSnapshot.child("password").getValue(String.class);
@@ -174,30 +181,37 @@ public class SignInActivity extends AppCompatActivity {
                         _list_user.add(user);
 
                         if(phone.equals(user.getPhone()) && pass_convert.equals(user.getPassword())) {
-                            existUser = true;
-                            _user = user;
-                            Log.e("user",_user.toString());
-                            if (getIntent().hasExtra("GetProductFromDeepLink")) {
-                                Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
-                                Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
-                                intent.putExtra("product", temp);
-                                startActivity(intent);
+                            if(user.getStatus().equals("0"))
+                            {
+                                typeUser = 0;
                             }
-                            else if(_user.getTypeUser().equals("2")){
-                                Intent intent = new Intent(SignInActivity.this, AdminHomeActivity.class);
-                                startActivity(intent);
-                            }
-                            else {
-                                Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
-                                startActivity(intent);
+                            else{
+                                existUser = true;
+                                _user = user;
+                                Log.e("user",_user.toString());
+                                if (getIntent().hasExtra("GetProductFromDeepLink")) {
+                                    Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+                                    Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
+                                    intent.putExtra("product", temp);
+                                    startActivity(intent);
+                                }
+                                else if(_user.getTypeUser().equals("2")){
+                                    Intent intent = new Intent(SignInActivity.this, AdminHomeActivity.class);
+                                    startActivity(intent);
+                                }
+                                else {
+                                    Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+                                    startActivity(intent);
 
+                                }
                             }
+
                         }
 
                     }
                     if (existUser == false) {
 
-                        noticeNotExitUser();
+                        noticeNotExitUser(typeUser);
                     }
                 }
 

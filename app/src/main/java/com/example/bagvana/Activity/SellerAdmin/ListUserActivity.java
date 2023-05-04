@@ -35,7 +35,6 @@ import java.util.List;
 public class ListUserActivity extends AppCompatActivity {
     androidx.appcompat.widget.Toolbar toolbar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
