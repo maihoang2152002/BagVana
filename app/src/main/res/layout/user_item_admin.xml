@@ -49,16 +49,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
     <ImageView
         android:id="@+id/btnLockUser"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="244dp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:src="@drawable/ic_lock_person"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        android:layout_marginStart="@dimen/_10sdp"
-        android:src="@drawable/ic_lock_person"/>
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 
 </LinearLayout>

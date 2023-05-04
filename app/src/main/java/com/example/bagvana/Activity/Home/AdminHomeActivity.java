@@ -30,7 +30,7 @@ import java.util.ArrayList;
 public class AdminHomeActivity extends AppCompatActivity {
 
     CardView card_statistics,list_product, card_confirm, card_settings, card_logout, card_list_user;
-    DatabaseReference databasReference;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,24 +44,7 @@ public class AdminHomeActivity extends AppCompatActivity {
         card_logout = findViewById(R.id.card_logout);
         card_list_user = findViewById(R.id.list_user);
 
-        databasReference = FirebaseDatabase.getInstance().getReference().child("User");
 
-        Utils._admin_list_user = new ArrayList<>();
-        databasReference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Utils._admin_list_user.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    User user = dataSnapshot.getValue(User.class);
-                    Utils._admin_list_user.add(user);
-
-                }
-            }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
         card_statistics.setOnClickListener(v -> {
             // code in here
             Intent myIntent = new Intent(AdminHomeActivity.this, StatisticsActivity.class);

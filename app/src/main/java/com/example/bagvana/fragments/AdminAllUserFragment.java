@@ -35,6 +35,7 @@ public class AdminAllUserFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private ListUserAdapter userAdapter;
+    private List<User> listAllUsers = new ArrayList<>();
 
 
 
@@ -49,8 +50,26 @@ public class AdminAllUserFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        DatabaseReference databasReference = FirebaseDatabase.getInstance().getReference().child("User");
 
-        readUsers();
+
+        databasReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                listAllUsers.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    User user = dataSnapshot.getValue(User.class);
+                    listAllUsers.add(user);
+                }
+                userAdapter = new ListUserAdapter(getContext(), listAllUsers);
+                recyclerView.setAdapter(userAdapter);
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
 
         return view;
     }
@@ -58,8 +77,7 @@ public class AdminAllUserFragment extends Fragment {
     @SuppressLint("UseRequireInsteadOfGet")
     private void readUsers() {
 
-        userAdapter = new ListUserAdapter(Objects.requireNonNull(getContext()), Utils._admin_list_user);
-        recyclerView.setAdapter(userAdapter);
+
 
     }
 }
