@@ -1,16 +1,13 @@
-package com.example.bagvana.Activity.Home;
+package com.example.bagvana.Activity.Dialog;
 
-import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
-import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
@@ -36,7 +33,7 @@ public class FullscreenDialog extends DialogFragment  {
     private int progressValue = 0;
     private Toolbar toolbar_cart;
 
-    static FullscreenDialog newInstance() {
+    public static FullscreenDialog newInstance() {
         return new FullscreenDialog();
     }
 
@@ -53,7 +50,7 @@ public class FullscreenDialog extends DialogFragment  {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.activity_sort_filter, container, false);
+        View view = inflater.inflate(R.layout.dialog_filter, container, false);
 
 
 
