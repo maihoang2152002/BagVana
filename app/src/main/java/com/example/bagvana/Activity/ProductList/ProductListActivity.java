@@ -12,10 +12,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bagvana.Activity.Dialog.FullscreenDialog;
 import com.example.bagvana.Activity.Home.HomeActivity;
 import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.Activity.Product.ProductDetailActivity;
@@ -109,6 +111,18 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
 //                mySearch(newText);
                 return true;
             }
+        });
+
+        MenuItem item2 = menu.findItem(R.id.filterId);
+        item2.setOnMenuItemClickListener(v -> {
+            DialogFragment dialog = FullscreenDialog.newInstance();
+            ((FullscreenDialog) dialog).setCallback(new FullscreenDialog.Callback() {
+                @Override
+                public void onActionClick(String content) {
+                }
+            });
+            dialog.show(getSupportFragmentManager(), "tag");
+            return super.onCreateOptionsMenu(menu);
         });
 
         return super.onCreateOptionsMenu(menu);

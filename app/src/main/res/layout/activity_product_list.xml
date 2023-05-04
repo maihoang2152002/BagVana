@@ -45,19 +45,4 @@
 
         tools:ignore="VisualLintBottomNav" />
 
-<!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/bottom_navigation_admin"-->
-<!--        android:background="@drawable/bottom_bg"-->
-<!--        app:menu="@menu/view_add_new_product"-->
-<!--        app:itemTextColor="@color/black"-->
-<!--        app:itemIconTint="@color/black"-->
-<!--        app:layout_constraintBottom_toBottomOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:labelVisibilityMode="labeled"-->
-<!--        android:visibility="invisible"-->
-<!--        tools:ignore="VisualLintBottomNav" />-->
-
 </androidx.constraintlayout.widget.ConstraintLayout>

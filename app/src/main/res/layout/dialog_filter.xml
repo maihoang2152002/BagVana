@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.MaterialComponents.Chip.Filter"
+    android:background="@color/primary_theme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -11,16 +12,14 @@
         android:id="@+id/toolbar_cart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@color/white">
+        android:layout_gravity="center" >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
             android:text="Sắp xếp và lọc"
-            android:textColor="@color/title_text"
-            android:textSize="@dimen/_25sdp" />
+            android:theme="@style/ToolbarTitleAppearance"/>
     </android.widget.Toolbar>
 
     <TextView
