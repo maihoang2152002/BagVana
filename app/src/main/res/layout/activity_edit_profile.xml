@@ -77,10 +77,11 @@
 
                 <EditText
                     android:id="@+id/editTxt_DOB"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/_50sdp"
                     android:background="@null"
                     android:hint="Birthday"
                     android:inputType="text"
@@ -94,8 +95,8 @@
                 <ImageButton
                     android:id="@+id/imgBtn_pickDate"
                     android:layout_gravity="end|center_vertical"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_marginRight="15dp"
                     android:background="@drawable/ic_calendar"
                     android:contentDescription="Email" />
@@ -113,8 +114,9 @@
 
                 <EditText
                     android:id="@+id/editTxt_email"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/_50sdp"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:background="@null"
@@ -129,8 +131,8 @@
 
                 <ImageButton
                     android:layout_gravity="end|center_vertical"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_marginRight="15dp"
                     android:background="@drawable/ic_email"
                     android:contentDescription="Email" />
@@ -147,11 +149,12 @@
 
                 <EditText
                     android:id="@+id/editTxt_phoneNumber"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
                     android:background="@null"
+                    android:layout_marginRight="@dimen/_50sdp"
                     android:hint="PhoneNumber"
                     android:inputType="text"
                     android:minHeight="48dp"
@@ -163,8 +166,8 @@
 
                 <ImageButton
                     android:layout_gravity="end|center_vertical"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_marginRight="15dp"
                     android:background="@drawable/ic_phone_call"
                     android:contentDescription="Email" />

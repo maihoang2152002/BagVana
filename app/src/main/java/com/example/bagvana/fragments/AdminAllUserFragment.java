@@ -61,6 +61,7 @@ public class AdminAllUserFragment extends Fragment {
                     User user = dataSnapshot.getValue(User.class);
                     listAllUsers.add(user);
                 }
+                Utils._admin_list_user = listAllUsers;
                 userAdapter = new ListUserAdapter(getContext(), listAllUsers);
                 recyclerView.setAdapter(userAdapter);
             }
@@ -74,10 +75,4 @@ public class AdminAllUserFragment extends Fragment {
         return view;
     }
 
-    @SuppressLint("UseRequireInsteadOfGet")
-    private void readUsers() {
-
-
-
-    }
 }

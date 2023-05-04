@@ -17,6 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.bagvana.Activity.Chatbot.MessageActivity;
 import com.example.bagvana.Activity.Home.AdminHomeActivity;
+import com.example.bagvana.Activity.Profile.EditProfileActivity;
+import com.example.bagvana.Activity.SellerAdmin.AdminEditProfileUserActivity;
 import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
 import com.google.firebase.database.DatabaseReference;
@@ -92,7 +94,7 @@ public class ListUserAdapter extends RecyclerView.Adapter<ListUserAdapter.ViewHo
         holder.editUserProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mcontext, AdminHomeActivity.class);
+                Intent intent = new Intent(mcontext, AdminEditProfileUserActivity.class);
                 intent.putExtra("userId",user.getId());
                 mcontext.startActivity(intent);
             }
