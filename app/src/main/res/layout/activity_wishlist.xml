@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_theme"
     tools:context=".Activity.ProductList.ProductListActivity">
 
     <androidx.appcompat.widget.Toolbar
@@ -11,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/white"
         tools:ignore="MissingConstraints">
 
         <TextView
@@ -19,8 +19,8 @@
             android:layout_height="match_parent"
             android:padding="10dp"
             android:text="Danh sách yêu thích"
-            android:textColor="@color/black"
-            android:textSize="30sp"/>
+            android:theme="@style/ToolbarTitleAppearance"/>
+
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
