@@ -91,13 +91,14 @@
             android:paddingLeft="5dp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/linearLayout_password"
         android:layout_width="@dimen/_260sdp"
         android:layout_height="50dp"
+        android:background="@drawable/input_bg"
         android:baselineAligned="false"
         android:gravity="center"
-        android:background="@drawable/input_bg"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/linearLayout"
@@ -121,13 +122,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout"
             app:layout_constraintVertical_bias="0.06999999" />
+
         <ImageView
             android:id="@+id/btn_visible"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="@dimen/_5sdp"
-            android:src="@drawable/ic_see_password"/>
-
+            android:src="@drawable/ic_see_password" />
 
 
     </LinearLayout>
@@ -147,6 +148,29 @@
         app:layout_constraintStart_toStartOf="@+id/linearLayout_password"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout_password"
         app:layout_constraintVertical_bias="0.100000024" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="51dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/btnSignIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout_password"
+        tools:ignore="MissingConstraints">
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Lưu đăng nhập" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnSignIn"
