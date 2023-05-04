@@ -1,7 +1,7 @@
 package com.example.bagvana.DTO;
 
 public class User {
-    private String id, phone, username, password, dob, gender, typeUser, email, avatar, fullname;
+    private String id, phone, username, password, dob, gender, typeUser, email, avatar, fullname,status;
 
 
     public User() {
@@ -15,9 +15,10 @@ public class User {
         this.email = "";
         this.avatar = "";
         this.fullname = "";
+        this.status = "1";
     }
 
-    public User(String id, String phone, String username, String password, String dob, String gender, String typeUser, String email, String avatar, String fullname) {
+    public User(String id, String phone, String username, String password, String dob, String gender, String typeUser, String email, String avatar, String fullname, String status) {
         this.id = id;
         this.phone = phone;
         this.username = username;
@@ -28,6 +29,7 @@ public class User {
         this.email = email;
         this.avatar = avatar;
         this.fullname = fullname;
+        this.status = status;
     }
 
     public String getId() {
@@ -110,6 +112,14 @@ public class User {
         this.fullname = fullname;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public String toString(){
         return avatar + '\n' + dob + '\n' + email + '\n' + fullname + '\n' + gender + '\n' + id + '\n' + password + '\n' + phone + '\n' + typeUser + '\n' + username + '\n';
     }
@@ -125,6 +135,7 @@ public class User {
         this.email = "";
         this.avatar = "";
         this.fullname = "";
+        this.status = "";
     }
 }
 

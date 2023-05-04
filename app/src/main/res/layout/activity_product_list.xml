@@ -31,18 +31,35 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation"
         android:background="@drawable/bottom_bg"
-        app:menu="@menu/view_navbar"
-        app:itemTextColor="@color/black"
         app:itemIconTint="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:itemTextColor="@color/black"
         app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
 
+        app:menu="@menu/view_navbar"
         tools:ignore="VisualLintBottomNav" />
+
+
+    <!--    <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/bottom_navigation_admin"-->
+<!--        android:background="@drawable/bottom_bg"-->
+<!--        app:menu="@menu/view_add_new_product"-->
+<!--        app:itemTextColor="@color/black"-->
+<!--        app:itemIconTint="@color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:labelVisibilityMode="labeled"-->
+<!--        android:visibility="invisible"-->
+<!--        tools:ignore="VisualLintBottomNav" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
