@@ -3,32 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.MaterialComponents.Chip.Filter"
-    android:background="@color/primary_theme"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_theme"
     android:orientation="vertical">
 
     <android.widget.Toolbar
         android:id="@+id/toolbar_cart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" >
+        android:layout_gravity="center">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
             android:text="Sắp xếp và lọc"
-            android:theme="@style/ToolbarTitleAppearance"/>
+            android:theme="@style/ToolbarTitleAppearance" />
     </android.widget.Toolbar>
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
         android:text="Sắp xếp theo"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="25sp" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cgSort"
@@ -74,61 +74,62 @@
         android:id="@+id/textView9"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
         android:text="Giá"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="25sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="30dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="30dp">
 
-    <TextView
-        android:id="@+id/txt_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
-        android:gravity="center_horizontal"
-        android:text="0"
-        android:textSize="30sp" />
-
-    <ProgressBar
-        android:id="@+id/progress"
-        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="100"
-        android:progress="0"
-        android:progressDrawable="@drawable/custom_progressbar" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btn_plus"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/txt_count"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/text"
-            android:text="+"
-            android:textSize="30sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/blue"/>
+            android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal"
+            android:text="0"
+            android:textSize="30sp" />
 
-        <Button
-            android:id="@+id/btn_minus"
-            android:layout_width="wrap_content"
+        <ProgressBar
+            android:id="@+id/progress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:text="-"
-            android:textSize="30sp"
-            android:textColor="@color/white"
-            app:backgroundTint="@color/blue"/>
-    </LinearLayout>
+            android:max="100"
+            android:progress="0"
+            android:progressDrawable="@drawable/custom_progressbar" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="-"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:backgroundTint="@color/blue" />
+
+            <Button
+                android:id="@+id/btn_plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/text"
+                android:layout_marginLeft="5dp"
+                android:text="+"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                app:backgroundTint="@color/blue" />
+
+        </LinearLayout>
     </LinearLayout>
 
 
@@ -136,9 +137,9 @@
         android:id="@+id/textView12"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
         android:text="Màu"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:textSize="25sp" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/cgColor"
