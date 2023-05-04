@@ -15,178 +15,247 @@
         android:layout_gravity="center">
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:padding="10dp"
             android:text="Sắp xếp và lọc"
-            android:theme="@style/ToolbarTitleAppearance" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtApply"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:padding="10dp"
+            android:text="Áp dụng"
+            android:textColor="@color/title_text"
+            android:textSize="18sp" />
     </android.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/textView3"
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sắp xếp theo"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="25sp" />
-
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/cgSort"
-        style="@style/Widget.MaterialComponents.Chip.Filter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipRating"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:checkable="true"
-            android:text="Đánh giá" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/cgPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:singleSelection="true">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipLowToHigh"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Giá thấp đến cao" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipHighToLow"
-                style="@style/CustomChipStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:text="Giá cao đến thấp" />
-        </com.google.android.material.chip.ChipGroup>
-
-    </com.google.android.material.chip.ChipGroup>
-
-    <TextView
-        android:id="@+id/textView9"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Giá"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="25sp" />
+        android:layout_height="1dp"
+        android:layout_marginBottom="16dp"
+        android:background="@android:color/darker_gray"
+        android:elevation="4dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="30dp">
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Sắp xếp theo"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgSort"
+            style="@style/Widget.MaterialComponents.Chip.Filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipRating"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:checkable="true"
+                    android:text="Đánh giá"
+                    app:chipStrokeColor="@color/medium_grey"
+                    app:chipStrokeWidth="3px" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/cgPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipLowToHigh"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Giá tăng dần"
+                        app:chipStrokeColor="@color/medium_grey"
+                        app:chipStrokeWidth="3px" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipHighToLow"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Giá giảm dần"
+                        app:chipStrokeColor="@color/medium_grey"
+                        app:chipStrokeWidth="3px" />
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+        </com.google.android.material.chip.ChipGroup>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Giá"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp" />
+
 
         <TextView
             android:id="@+id/txt_count"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
             android:gravity="center_horizontal"
             android:text="0"
-            android:textSize="30sp" />
-
-        <ProgressBar
-            android:id="@+id/progress"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:max="100"
-            android:progress="0"
-            android:progressDrawable="@drawable/custom_progressbar" />
-
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn_minus"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="-"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                app:backgroundTint="@color/blue" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:text="0"
+                android:textSize="20sp" />
 
-            <Button
-                android:id="@+id/btn_plus"
+            <SeekBar
+                android:id="@+id/seekBar"
+                style="@style/Widget.AppCompat.SeekBar"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:max="300"
+                android:progress="50"
+                android:progressDrawable="@drawable/custom_progressbar"
+                android:thumb="@drawable/thumb" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/text"
-                android:layout_marginLeft="5dp"
-                android:text="+"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                app:backgroundTint="@color/blue" />
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="10dp"
+                android:text="300"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </LinearLayout>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/darker_gray" />
 
-    <TextView
-        android:id="@+id/textView12"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Màu"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        android:textSize="25sp" />
+        android:layout_marginLeft="16dp"
+        android:orientation="vertical">
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/cgColor"
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="Màu"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textSize="20sp" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cgColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipColorBlack"
+                style="@style/CustomChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:checkable="true"
+                android:text="Đen"
+                app:chipStrokeColor="@color/medium_grey"
+                app:chipStrokeWidth="3px" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipColorWhite"
+                style="@style/CustomChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:checkable="true"
+                android:text="Trắng"
+                app:chipStrokeColor="@color/medium_grey"
+                app:chipStrokeWidth="3px" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chipColorBlue"
+                style="@style/CustomChipStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:checkable="true"
+                android:text="Xanh"
+                app:chipStrokeColor="@color/medium_grey"
+                app:chipStrokeWidth="3px" />
+        </com.google.android.material.chip.ChipGroup>
+    </LinearLayout>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="1dp"
+        android:layout_margin="16dp"
+        android:background="@android:color/darker_gray" />
 
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipColorBlack"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:checkable="true"
-            android:text="Đen" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipColorWhite"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:checkable="true"
-            android:text="Trắng" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chipColorBlue"
-            style="@style/CustomChipStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:checkable="true"
-            android:text="Xanh" />
-    </com.google.android.material.chip.ChipGroup>
-
-
-    <Button
-        android:id="@+id/btnApply"
-        android:layout_width="match_parent"
-        android:layout_height="52dp"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="18dp"
-        android:background="@drawable/rectangle_profile"
-        android:elevation="4dp"
-        android:gravity="center"
-        android:text="ÁP DỤNG"
-        android:textColor="@color/white"
-        app:backgroundTint="@color/blue" />
+    <TextView
+        android:id="@+id/txtReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:padding="10dp"
+        android:text="Thiếp lập lại"
+        android:textColor="@color/title_text"
+        android:textSize="18sp" />
 
 </LinearLayout>

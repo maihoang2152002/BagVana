@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toolbar;
 
@@ -19,16 +20,15 @@ import com.google.android.material.chip.Chip;
 
 import java.util.ArrayList;
 
-public class FullscreenDialog extends DialogFragment  {
+public class FullscreenDialog extends DialogFragment {
 
     private Callback callback;
     private Chip chipRating, chipLowToHigh, chipHighToLow,
             chipColorBlack, chipColorWhite, chipColorBlue;
-    private Button btnApply, btnPlus, btnMinus;
     private ArrayList<String> selectedChipData;
 
-    private ProgressBar progress;
-    private TextView txtCount;
+    private SeekBar seekBar;
+    private TextView txtCount, txtApply, txtReset;
     private int progressValue = 0;
     private Toolbar toolbar;
 
@@ -60,53 +60,105 @@ public class FullscreenDialog extends DialogFragment  {
         chipColorBlack = view.findViewById(R.id.chipColorBlack);
         chipColorWhite = view.findViewById(R.id.chipColorWhite);
         chipColorBlue = view.findViewById(R.id.chipColorBlue);
-        btnApply = view.findViewById(R.id.btnApply);
+        txtApply = view.findViewById(R.id.txtApply);
+        txtReset = view.findViewById(R.id.txtReset);
         txtCount = view.findViewById(R.id.txt_count);
-        progress = view.findViewById(R.id.progress);
-        btnPlus = view.findViewById(R.id.btn_plus);
-        btnMinus = view.findViewById(R.id.btn_minus);
+        seekBar = view.findViewById(R.id.seekBar);
 
         selectedChipData = new ArrayList<>();
 
-        CompoundButton.OnCheckedChangeListener checkedChangeListener = new CompoundButton.OnCheckedChangeListener() {
+        chipRating.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     selectedChipData.add(buttonView.getText().toString());
+                    chipRating.setChipStrokeWidth(0);
                 } else {
                     selectedChipData.remove(buttonView.getText().toString());
-                }
-            }
-        };
-
-        chipRating.setOnCheckedChangeListener(checkedChangeListener);
-        chipLowToHigh.setOnCheckedChangeListener(checkedChangeListener);
-        chipHighToLow.setOnCheckedChangeListener(checkedChangeListener);
-        chipColorBlack.setOnCheckedChangeListener(checkedChangeListener);
-        chipColorWhite.setOnCheckedChangeListener(checkedChangeListener);
-        chipColorBlue.setOnCheckedChangeListener(checkedChangeListener);
-
-        btnPlus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (progressValue < 100) {
-                    progressValue += 10;
-                    progress.setProgress(progressValue);
-                    txtCount.setText(String.valueOf(progressValue));
+                    chipRating.setChipStrokeWidth(3);
                 }
             }
         });
-        btnMinus.setOnClickListener(new View.OnClickListener() {
+        chipLowToHigh.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
-                if (progressValue > 0) {
-                    progressValue -= 10;
-                    progress.setProgress(progressValue);
-                    txtCount.setText(String.valueOf(progressValue));
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    selectedChipData.add(buttonView.getText().toString());
+                    chipLowToHigh.setChipStrokeWidth(0);
+                } else {
+                    selectedChipData.remove(buttonView.getText().toString());
+                    chipLowToHigh.setChipStrokeWidth(3);
                 }
             }
         });
-        btnApply.setOnClickListener(new View.OnClickListener() {
+        chipHighToLow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    selectedChipData.add(buttonView.getText().toString());
+                    chipHighToLow.setChipStrokeWidth(0);
+                } else {
+                    selectedChipData.remove(buttonView.getText().toString());
+                    chipHighToLow.setChipStrokeWidth(3);
+                }
+            }
+        });
+        chipColorBlack.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    selectedChipData.add(buttonView.getText().toString());
+                    chipColorBlack.setChipStrokeWidth(0);
+                } else {
+                    selectedChipData.remove(buttonView.getText().toString());
+                    chipColorBlack.setChipStrokeWidth(3);
+                }
+            }
+        });
+        chipColorWhite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    selectedChipData.add(buttonView.getText().toString());
+                    chipColorWhite.setChipStrokeWidth(0);
+                } else {
+                    selectedChipData.remove(buttonView.getText().toString());
+                    chipColorWhite.setChipStrokeWidth(3);
+                }
+            }
+        });
+        chipColorBlue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    selectedChipData.add(buttonView.getText().toString());
+                    chipColorBlue.setChipStrokeWidth(0);
+                } else {
+                    selectedChipData.remove(buttonView.getText().toString());
+                    chipColorBlue.setChipStrokeWidth(3);
+                }
+            }
+        });
+
+        seekBar.setProgress(0);
+        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressValue = progress;
+                txtCount.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        txtApply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (progressValue != 0) {
@@ -116,11 +168,28 @@ public class FullscreenDialog extends DialogFragment  {
                 dismiss();
             }
         });
+
+        txtReset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                chipRating.setChecked(false);
+                chipLowToHigh.setChecked(false);
+                chipHighToLow.setChecked(false);
+                chipColorBlack.setChecked(false);
+                chipColorWhite.setChecked(false);
+                chipColorBlue.setChecked(false);
+
+                seekBar.setProgress(0);
+                progressValue = 0;
+
+            }
+        });
         return view;
     }
-    private void setSupportActionBar(Toolbar toolbar_order) {
-        toolbar_order.setNavigationIcon(R.drawable.ic_close);
-        toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
+
+    private void setSupportActionBar(Toolbar toolbar) {
+        toolbar.setNavigationIcon(R.drawable.ic_close);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dismiss();
