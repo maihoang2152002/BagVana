@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.bagvana.DTO.Order;
+import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -39,7 +40,7 @@ import java.util.Locale;
 public class StatisticsFragment extends Fragment {
 
     TextView txt_order_processing, txt_order_delivering, txt_order_delivered,
-            txt_total_revenue;
+            txt_total_revenue, txt_inventory;
     String status;
 
     public StatisticsFragment(String status) {
@@ -60,6 +61,7 @@ public class StatisticsFragment extends Fragment {
         txt_order_delivering = view.findViewById(R.id.txt_order_delivering);
         txt_order_delivered = view.findViewById(R.id.txt_order_delivered);
         txt_total_revenue = view.findViewById(R.id.txt_total_revenue);
+        txt_inventory = view.findViewById(R.id.txt_inventory);
 
         ArrayList<Order> orderListProcessing = new ArrayList<>();
         ArrayList<Order> orderListDelivering = new ArrayList<>();
@@ -143,6 +145,28 @@ public class StatisticsFragment extends Fragment {
 
                 barChart.invalidate();
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        DatabaseReference databaseReferenceHome2 = FirebaseDatabase.getInstance().getReference("Product");
+        databaseReferenceHome2.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int temp = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    Product product = dataSnapshot.getValue(Product.class);
+                    assert product != null;
+                    temp += product.getAmount();
+                }
+
+                txt_inventory.setText((NumberFormat.getNumberInstance(Locale.US).format(temp)));
             }
 
             @Override
