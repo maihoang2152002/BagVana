@@ -1,6 +1,7 @@
 package com.example.bagvana.Activity.SellerAdmin;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,9 +37,24 @@ public class StatisticsActivity extends AppCompatActivity {
             startActivity(myIntent);
         });
 
-        total.setOnClickListener(v -> loadFragment(new StatisticsFragment("0")));
-        now.setOnClickListener(v -> loadFragment(new StatisticsFragment("1")));
-        yesterday.setOnClickListener(v -> loadFragment(new StatisticsFragment("-1")));
+        total.setOnClickListener(v -> {
+            loadFragment(new StatisticsFragment("0"));
+            total.setTextColor(Color.parseColor("#ffffff"));
+            now.setTextColor(Color.parseColor("#B2AFAF"));
+            yesterday.setTextColor(Color.parseColor("#B2AFAF"));
+        });
+        now.setOnClickListener(v -> {
+            loadFragment(new StatisticsFragment("1"));
+            now.setTextColor(Color.parseColor("#ffffff"));
+            total.setTextColor(Color.parseColor("#B2AFAF"));
+            yesterday.setTextColor(Color.parseColor("#B2AFAF"));
+        });
+        yesterday.setOnClickListener(v -> {
+            loadFragment(new StatisticsFragment("-1"));
+            yesterday.setTextColor(Color.parseColor("#ffffff"));
+            now.setTextColor(Color.parseColor("#B2AFAF"));
+            total.setTextColor(Color.parseColor("#B2AFAF"));
+        });
 
     }
 
