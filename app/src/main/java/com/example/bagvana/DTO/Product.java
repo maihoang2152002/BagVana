@@ -12,6 +12,7 @@ public class Product implements Serializable {
     private int amount;
     private int price;
     private double rating;
+    private String status;
 
     private ArrayList<Comment> listComment;
 
@@ -25,8 +26,9 @@ public class Product implements Serializable {
         this.amount = 0;
         this.price = 0;
         this.rating = 0.0;
+        this.status = "1";
     }
-    public Product(String productID, String name, String image, String color, String description, int amount, int price) {
+    public Product(String productID, String name, String image, String color, String description, int amount, int price, String status) {
         this.productID = productID;
         this.name = name;
         this.image = image;
@@ -35,7 +37,9 @@ public class Product implements Serializable {
         this.amount = amount;
         this.price = price;
         this.rating = 0.0;
+        this.status = status;
     }
+
 
     public Product(String productID, String name, String image, String color, String description, int amount, int price, double rating) {
         this.productID = productID;
@@ -123,5 +127,13 @@ public class Product implements Serializable {
 
     public double getRating() {
         return rating;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

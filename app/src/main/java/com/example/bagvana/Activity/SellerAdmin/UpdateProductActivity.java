@@ -166,7 +166,7 @@ public class UpdateProductActivity extends AppCompatActivity {
                 if(check){
                     Product product = new Product(_product_current.getProductID(),nameProduct.getText().toString().trim(),image,
                             colorProduct.getText().toString().trim(),descriptionProduct.getText().toString().trim(),
-                            Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()));
+                            Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()),"1");
 
                     Map<String, Object> updateValues = insertProduct(product);
 
@@ -290,6 +290,8 @@ public class UpdateProductActivity extends AppCompatActivity {
         hashMap.put("name", product.getName());
         hashMap.put("productID", product.getProductID());
         hashMap.put("rating", product.getRating());
+        hashMap.put("status", product.getStatus());
+
 
         return hashMap;
     }

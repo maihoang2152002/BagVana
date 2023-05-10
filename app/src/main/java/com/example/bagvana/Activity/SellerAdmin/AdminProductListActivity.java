@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bagvana.Activity.Home.AdminHomeActivity;
+import com.example.bagvana.Adapter.AdminProductListAdapter;
 import com.example.bagvana.Adapter.ProductListAdapter;
 import com.example.bagvana.DTO.EventBus.settingBottomEvent;
 import com.example.bagvana.DTO.Product;
@@ -40,7 +41,7 @@ import java.util.ArrayList;
 public class AdminProductListActivity extends AppCompatActivity implements ItemListener, NavigationBarView.OnItemSelectedListener {
 
     private RecyclerView recyclerView;
-    private ProductListAdapter productListAdapter;
+    private AdminProductListAdapter productListAdapter;
     private ArrayList<Product> productList;
     private String textSearchFirst;
     private Toolbar toolbar;
@@ -65,6 +66,8 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 //        setSupportActionBarAdd(toolbar);
+
+
 
         recyclerView = findViewById(R.id.recyclerviewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -91,7 +94,7 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
 
             }
         });
-        productListAdapter = new ProductListAdapter(this, Utils._productList, this);
+        productListAdapter = new AdminProductListAdapter(this, Utils._productList, this);
         recyclerView.setAdapter(productListAdapter);
 //        BottomNavigationView bottomNavigationViewAdmin = findViewById(R.id.bottom_admin);
 //        bottomNavigationViewAdmin.setOnItemSelectedListener(this);
@@ -149,7 +152,7 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
             productListAdapter.notifyDataSetChanged();
 
         }
-        productListAdapter = new ProductListAdapter(this, productListSearch, this);
+        productListAdapter = new AdminProductListAdapter(this, productListSearch, this);
         recyclerView.setAdapter(productListAdapter);
 
     }
