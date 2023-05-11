@@ -32,7 +32,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ChatActivity extends AppCompatActivity {
     ActivityChatBinding binding;
     CircleImageView profile_avt;
-    androidx.appcompat.widget.Toolbar toolbar;
+    Toolbar toolbar;
     TextView username;
     @SuppressLint("MissingInflatedId")
     @Override

@@ -46,9 +46,12 @@ public class UsersFragment extends Fragment {
     private void readUsers() {
 
         int index = _list_user.indexOf(_user);
-        _list_user.remove(index);
-        userAdapter = new ChatBotAdapter(getContext(),_list_user);
-        recyclerView.setAdapter(userAdapter);
+        if(index != -1){
+            _list_user.remove(index);
+            userAdapter = new ChatBotAdapter(getContext(),_list_user);
+            recyclerView.setAdapter(userAdapter);
+        }
+
 
     }
 }
