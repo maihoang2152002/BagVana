@@ -21,18 +21,26 @@ import com.example.bagvana.Activity.Product.ProductDetailActivity;
 import com.example.bagvana.Activity.SellerAdmin.AdminConfirmActivity;
 import com.example.bagvana.Adapter.PListOrderAdapter;
 import com.example.bagvana.Adapter.ProductListAdapter;
+import com.example.bagvana.DAO.UserDAO;
+import com.example.bagvana.DTO.Notification;
 import com.example.bagvana.DTO.Order;
 import com.example.bagvana.DTO.Product;
+import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
 import com.example.bagvana.listeners.ItemListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Set;
 
 public class OrderDetailActivity extends AppCompatActivity implements ItemListener {
@@ -111,7 +119,7 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
             if (!Objects.equals(curOrder.getStatus(), "2")) {
                 btn_confirm.setVisibility(View.GONE);
             } else {
-                btn_confirm.setText("Received");
+                btn_confirm.setText("Đã nhận");
             }
         }
         btn_confirm.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +138,10 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
 
                                         Intent intent = new Intent();
                                         setResult(RESULT_OK, intent);
+
+                                        // Add notification đơn hàng
+                                        notificationUpdateOrder(curOrder);
+
                                         finish();
                                     }
                                 }
@@ -165,6 +177,45 @@ public class OrderDetailActivity extends AppCompatActivity implements ItemListen
 
             }
         });
+
+    }
+
+    private void notificationUpdateOrder(Order order) {
+
+
+        String title = "Đã được xác nhận và vận chuyển";
+
+        String message = "Đơn hàng " + order.getOrderID() +" đã được xác nhận. Vui lòng thanh toán và xác nhận nhận hàng khi đơn hàng được giao đến.";
+
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+
+        String time = mHour + ":" + mMinute + " " + mDay + "/" + (mMonth + 1) + "/" + mYear;
+
+        HashMap<String, Product> itemsOrdered = order.getItemsOrdered();
+
+        Map.Entry<String, Product> firstEntry = itemsOrdered.entrySet().iterator().next();
+
+        Product firstValue = firstEntry.getValue();
+
+        String image = firstValue.getImage();
+
+        Notification notification = new Notification(order.getOrderID(),title, message, image, time, "0");
+
+        Map<String, Object> notificationValues = notification.toMap();
+
+        Map<String, Object> childUpdates = new HashMap<>();
+
+        childUpdates.put(order.getOrderID(), notificationValues);
+
+        DatabaseReference databasReferenceNotification = FirebaseDatabase.getInstance().getReference().child("Notification").child("UpdateOrder");
+
+        databasReferenceNotification.child(order.getUserID()).updateChildren(childUpdates);
 
     }
 

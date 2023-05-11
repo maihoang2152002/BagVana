@@ -10,10 +10,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -157,7 +157,7 @@ public class MessageActivity extends AppCompatActivity {
 
 
     }
-    private void setSupportActionBar(Toolbar toolbar_order) {
+    public void setSupportActionBar(Toolbar toolbar_order) {
         toolbar_order.setNavigationIcon(R.drawable.ic_back);
         toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

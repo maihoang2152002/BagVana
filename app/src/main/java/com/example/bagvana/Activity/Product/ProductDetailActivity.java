@@ -277,8 +277,8 @@ public class ProductDetailActivity extends AppCompatActivity implements ItemList
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ProductDetailActivity.this, HomeActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(ProductDetailActivity.this, HomeActivity.class);
+//                startActivity(intent);
                 finish();
             }
         });

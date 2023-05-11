@@ -100,7 +100,7 @@
                     android:id="@+id/btn_confirm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Confirm"
+                    android:text="Xác nhận"
                     android:background="@drawable/ic_cat_bg"
                     android:backgroundTint="@color/button"
                     android:gravity="center"

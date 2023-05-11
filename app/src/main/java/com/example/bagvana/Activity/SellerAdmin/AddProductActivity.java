@@ -23,13 +23,19 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.bagvana.DAO.UserDAO;
+import com.example.bagvana.DTO.Notification;
 import com.example.bagvana.DTO.Product;
+import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
 import com.example.bagvana.databinding.ActivityAddProductBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -38,10 +44,13 @@ import com.google.firebase.storage.UploadTask;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Random;
 
 public class AddProductActivity extends AppCompatActivity {
     ActivityAddProductBinding binding;
@@ -179,6 +188,9 @@ public class AddProductActivity extends AppCompatActivity {
                                     Map<String,Object> hashMap = insertProduct(product);
                                     databasReference.child("p"+id).setValue(hashMap);
                                     noticeSuccess();
+
+                                    //Notification new product
+                                    notificationNewProduct(product);
                                 }
 
 
@@ -205,6 +217,59 @@ public class AddProductActivity extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    private void notificationNewProduct(Product product) {
+
+        ArrayList<String> titles = new ArrayList<>();
+        titles.add("Sản phẩm mới");
+        titles.add("Mới! mới! mới!");
+        titles.add("Xem sản phẩm nào bạn ơi!");
+        titles.add("BagVana ra mắt sản phẩm mới");
+        titles.add("Mua sắm ngay!");
+        titles.add("Sản phẩm độc đáo");
+
+        Random  randomGenerator = new Random();
+        int index = randomGenerator.nextInt(titles.size());
+        String title = titles.get(index);
+
+        String message = product.getName() + " mới ra mắt tại BagVana. Nhấn xem để chi tiết thông sản phẩm";
+
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+
+        int mHour = c.get(Calendar.HOUR_OF_DAY);
+        int mMinute = c.get(Calendar.MINUTE);
+
+        String time = mHour + ":" + mMinute + ":"  + " " + mDay + "/" + (mMonth + 1) + "/" + mYear;
+
+        Notification notification = new Notification(product.getProductID(),title, message, product.getImage(), time, "0");
+
+        DatabaseReference databasReferenceNotification = FirebaseDatabase.getInstance().getReference().child("Notification").child("NewProduct");
+
+        UserDAO userDAO = new UserDAO();
+
+        userDAO.readUser(new UserDAO.MyCallback() {
+
+            @Override
+            public void onCallback(ArrayList<User> users) {
+
+                Map<String, Object> notificationValues = notification.toMap();
+
+                Map<String, Object> childUpdates = new HashMap<>();
+
+                childUpdates.put(product.getProductID(), notificationValues);
+
+                for(int i = 0; i < users.size(); i++) {
+                    if(users.get(i).getTypeUser().equals("1")) {
+                        String id = users.get(i).getId();
+                        databasReferenceNotification.child(id).updateChildren(childUpdates);
+                    }
+                }
+            }
+        });
     }
 
     private void selectImage() {

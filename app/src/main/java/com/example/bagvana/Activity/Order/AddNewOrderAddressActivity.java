@@ -143,8 +143,7 @@ public class AddNewOrderAddressActivity extends AppCompatActivity {
 
                     reveiverInfoDAO.addReceiverInfoFirebase(receiverInfo);
 
-                    Intent intent = new Intent(AddNewOrderAddressActivity.this, OrderAddressActivity.class);
-                    startActivity(intent);
+                    finish();
                 }
             }
         });

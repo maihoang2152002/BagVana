@@ -25,11 +25,13 @@ import com.andremion.counterfab.CounterFab;
 import com.example.bagvana.Activity.Chatbot.BubbleView;
 import com.example.bagvana.Activity.Chatbot.ChatActivity;
 import com.example.bagvana.Activity.LoginRegister.SignInActivity;
+import com.example.bagvana.Activity.Notification.NotificationActivity;
 import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.Activity.ProductList.ProductListActivity;
 import com.example.bagvana.Activity.Profile.ProfileActivity;
 import com.example.bagvana.Activity.Voucher.VoucherUserActivity;
 import com.example.bagvana.Activity.Wishlist.WishlistActivity;
+import com.example.bagvana.DAO.NotificationDAO;
 import com.example.bagvana.DTO.Product;
 import com.example.bagvana.R;
 import com.example.bagvana.fragments.HomeFragment;
@@ -48,6 +50,9 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     Menu menu;
     NotificationBadge shopping_badge;
     ImageButton cart_button;
+
+    NotificationBadge notification_badge;
+    ImageButton notify_button;
 
 
     @SuppressLint("MissingInflatedId")
@@ -89,6 +94,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             startActivity(myIntent);
         });
 
+        // notification + check status seen or not
+        notification_badge = findViewById(R.id.notification_badge);
+        notify_button = findViewById(R.id.ic_notification);
+
+        notify_button.setOnClickListener(v -> {
+            Intent myIntent = new Intent(HomeActivity.this, NotificationActivity.class);
+            startActivity(myIntent);
+        });
+
+        // gán số thông báo mới
+        loadNotificationBadge();
+
         DatabaseReference databaseReferenceHome = FirebaseDatabase.getInstance().getReference("Cart").child(_user.getId());
         databaseReferenceHome.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
@@ -114,6 +131,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
+
         loadFragment(new HomeFragment());
         menu = navigationView.getMenu();
 
@@ -132,6 +151,20 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             public boolean onQueryTextChange(String newText) {
                 // Handle search query text changes
                 return true;
+            }
+        });
+    }
+
+    private void loadNotificationBadge() {
+        NotificationDAO notificationDAO = new NotificationDAO();
+        notificationDAO.readNotificationOfUpdateOrder(new NotificationDAO.MyCallback() {
+            @Override
+            public void onCallback(long newNotification) {
+                if (newNotification != 0) {
+                    notification_badge.setNumber((int) newNotification);
+                } else {
+                    notification_badge.setVisibility(View.INVISIBLE);
+                }
             }
         });
     }
@@ -201,5 +234,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public void onPointerCaptureChanged(boolean hasCapture) {
         super.onPointerCaptureChanged(hasCapture);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        loadNotificationBadge();
     }
 }
