@@ -2,6 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/btnChat"
-    android:layout_width="@dimen/_50sdp"
-    android:layout_height="@dimen/_50sdp"
+    android:layout_width="@dimen/_30sdp"
+    android:layout_height="@dimen/_30sdp"
     android:src="@drawable/ic_bubble_chat"/>
