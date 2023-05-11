@@ -175,7 +175,7 @@ public class AddProductActivity extends AppCompatActivity {
                                 if(check){
                                     Product product =  new Product("p"+id,nameProduct.getText().toString().trim(),image,
                                             colorProduct.getText().toString().trim(),descriptionProduct.getText().toString().trim(),
-                                            Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()));
+                                            Integer.parseInt(quantityProduct.getText().toString().trim()),Integer.parseInt(priceProduct.getText().toString().trim()),"1");
                                     Map<String,Object> hashMap = insertProduct(product);
                                     databasReference.child("p"+id).setValue(hashMap);
                                     noticeSuccess();
@@ -238,6 +238,7 @@ public class AddProductActivity extends AppCompatActivity {
         hashMap.put("image",product.getImage());
         hashMap.put("name", product.getName());
         hashMap.put("productID", product.getProductID());
+        hashMap.put("status", product.getStatus());
 
         return hashMap;
     }

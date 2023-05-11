@@ -72,10 +72,13 @@ public class HomeFragment extends Fragment implements ItemListener {
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Product product = dataSnapshot.getValue(Product.class);
-                    productList.add(product);
-                    if (productList.size() > 3) {
-                        break;
+                    if(product.getStatus().equals("1")){
+                        productList.add(product);
+                        if (productList.size() > 3) {
+                            break;
+                        }
                     }
+
                 }
 
                 homeAdapter.notifyDataSetChanged();
