@@ -96,7 +96,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkUser();
-                Log.e("nhan", "");
+
             }
 
         });
@@ -181,8 +181,10 @@ public class SignInActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     boolean existUser = false;
                     int typeUser = 1;
+                    _list_user.clear();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         User user = dataSnapshot.getValue(User.class);
+
 //                        String passFB = dataSnapshot.child("password").getValue(String.class);
                         String pass_convert = convertHashToString(pass);
                         _list_user.add(user);

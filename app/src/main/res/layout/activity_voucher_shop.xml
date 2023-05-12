@@ -52,7 +52,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycview_voucher"
             android:layout_width="match_parent"
-            android:layout_height="635dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@color/grey"/>
 
@@ -67,6 +67,8 @@
                 android:id="@+id/btn_create"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/_10sdp"
                 android:text="Tạo voucher mới"
                 android:backgroundTint="@color/blue"/>
 

@@ -132,23 +132,26 @@
 
             <Button
                 android:id="@+id/btn_detail"
-                android:layout_width="160dp"
+                android:textColor="@color/white"
+                android:layout_width="@dimen/_130sdp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue"
                 android:text="Xem" />
 
             <Space
-                android:layout_width="0dp"
+                android:layout_width="@dimen/_10sdp"
                 android:layout_height="0dp"
                 android:layout_weight="1" />
 
             <Button
                 android:id="@+id/btn_end"
-                android:layout_width="160dp"
+                android:layout_width="@dimen/_130sdp"
+
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue"
                 android:text="Kết thúc"
-                android:textSize="15sp" />
+                android:textColor="@color/white"
+                 />
 
         </LinearLayout>
 

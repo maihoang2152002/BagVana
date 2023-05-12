@@ -309,18 +309,18 @@ public class AddProductActivity extends AppCompatActivity {
     }
     private void noticeSuccess(){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+        alert.setNegativeButton("Quay lại", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 
             }
         });
-        alert.setMessage("Them sản phẩm thành công ");
+        alert.setMessage("Thêm sản phẩm thành công ");
         alert.show();
     }
     private void noticeFail(){
         AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+        alert.setPositiveButton("Hủy", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 

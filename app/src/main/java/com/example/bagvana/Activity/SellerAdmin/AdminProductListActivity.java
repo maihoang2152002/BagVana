@@ -86,7 +86,7 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
                     productList.add(product);
                 }
                 Utils._productList = productList;
-                productListAdapter.notifyDataSetChanged();
+
             }
 
             @Override
@@ -94,7 +94,9 @@ public class AdminProductListActivity extends AppCompatActivity implements ItemL
 
             }
         });
+
         productListAdapter = new AdminProductListAdapter(this, Utils._productList, this);
+        productListAdapter.notifyDataSetChanged();
         recyclerView.setAdapter(productListAdapter);
 //        BottomNavigationView bottomNavigationViewAdmin = findViewById(R.id.bottom_admin);
 //        bottomNavigationViewAdmin.setOnItemSelectedListener(this);

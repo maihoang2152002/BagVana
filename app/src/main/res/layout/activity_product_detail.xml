@@ -65,13 +65,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentTop="true"
-                            android:padding="10dp"
-                            android:text="Chi tiết sản phẩm"
-                            android:theme="@style/ToolbarTitleAppearance" />
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -116,7 +109,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/toolbar"
                     android:src="@drawable/img_balo_tomoc"
-                    app:civ_border_color="@color/border"
+                    app:civ_border_color="@color/blue"
                     app:civ_border_width="2dp"
                     tools:ignore="ContentDescription" />
 

@@ -59,14 +59,13 @@ public class ChatBotAdapter extends RecyclerView.Adapter<ChatBotAdapter.ViewHold
         else {
             holder.image_profile.setImageResource(R.drawable.ic_user);
         }
-
-
+        Log.e("ddddd","");
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mcontext, MessageActivity.class);
                 intent.putExtra("userId",user.getId());
-
+                Log.e("MessageActivity","");
                 mcontext.startActivity(intent);
             }
         });
@@ -86,6 +85,8 @@ public class ChatBotAdapter extends RecyclerView.Adapter<ChatBotAdapter.ViewHold
             super(itemView);
             username = itemView.findViewById(R.id.username);
             image_profile = itemView.findViewById(R.id.image_profile);
+
+
         }
     }
 }

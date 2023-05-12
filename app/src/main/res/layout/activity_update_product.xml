@@ -73,6 +73,7 @@
                 android:layout_width="176dp"
                 android:layout_height="wrap_content"
                 android:text="Chọn ảnh"
+                android:textColor="@color/white"
                 android:textAlignment="center" />
 
             <EditText
@@ -138,7 +139,7 @@
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:paddingStart="5dp"
-                    android:text="Category: "
+                    android:text="Giá tiền: "
                     android:gravity="start|center_vertical"
                     android:textColor="@android:color/black"
                     android:background="@drawable/input_bg"
@@ -169,7 +170,7 @@
                     android:layout_width="100dp"
                     android:layout_height="50dp"
                     android:paddingStart="5dp"
-                    android:text="Giá tiền : "
+                    android:text="Số lượng : "
                     android:gravity="start|center_vertical"
                     android:textColor="@android:color/black"
                     android:background="@drawable/input_bg"
@@ -219,16 +220,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_alignParentStart="true"
-                android:text="Update product"
-                android:textColor="@color/white"
-                android:textSize="17dp" />
-            <Button
-                android:id="@+id/deleteBtn"
-                android:layout_width="@dimen/_270sdp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_alignParentStart="true"
-                android:text="Delete product"
+                android:text="Cập nhật sản phẩm"
                 android:textColor="@color/white"
                 android:textSize="17dp" />
 
@@ -238,7 +230,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:text="Cancel"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:text="Hủy"
                 android:textColor="@color/white"
                 android:textSize="17dp" />
         </LinearLayout>

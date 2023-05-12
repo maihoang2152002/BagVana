@@ -122,14 +122,7 @@ public class UpdateProductActivity extends AppCompatActivity {
                 selectImage();
             }
         });
-        binding.deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                databasReference = FirebaseDatabase.getInstance().getReference("Product").child(_product_current.getProductID());
-                databasReference.removeValue();
-                Toast.makeText(UpdateProductActivity.this,"Xoa san pham thanh cong",Toast.LENGTH_LONG).show();
-            }
-        });
+
         binding.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
