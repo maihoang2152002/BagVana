@@ -1,12 +1,12 @@
 package com.example.bagvana.Activity.Dialog;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.ProgressBar;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toolbar;
@@ -17,7 +17,10 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.bagvana.R;
 import com.google.android.material.chip.Chip;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class FullscreenDialog extends DialogFragment {
@@ -30,7 +33,9 @@ public class FullscreenDialog extends DialogFragment {
     private SeekBar seekBar;
     private TextView txtCount, txtApply, txtReset;
     private int progressValue = 0;
+    private String sortFilter = "";
     private Toolbar toolbar;
+    SharedPreferences preferences;
 
     public static FullscreenDialog newInstance() {
         return new FullscreenDialog();
@@ -67,80 +72,107 @@ public class FullscreenDialog extends DialogFragment {
 
         selectedChipData = new ArrayList<>();
 
-        chipRating.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    selectedChipData.add(buttonView.getText().toString());
-                    chipRating.setChipStrokeWidth(0);
-                } else {
-                    selectedChipData.remove(buttonView.getText().toString());
-                    chipRating.setChipStrokeWidth(3);
+        preferences = getContext().getSharedPreferences("MyPreferences", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = preferences.getString("colorFilter", "");
+        Type type = new TypeToken<ArrayList<String>>() {}.getType();
+        ArrayList<String> myList = gson.fromJson(json, type);
+        sortFilter = preferences.getString("sortFilter", "");
+        progressValue = preferences.getInt("progressValue", 0);
+
+        if (myList != null) {
+            if (!myList.isEmpty()) {
+                for (String str : myList) {
+                    if (str.equals(chipColorBlack.getText().toString())) {
+                        selectedChipData.add(str);
+                        chipColorBlack.setChipStrokeWidth(0);
+                        chipColorBlack.setChecked(true);
+                    } else if (str.equals(chipColorWhite.getText().toString())) {
+                        selectedChipData.add(str);
+                        chipColorWhite.setChipStrokeWidth(0);
+                        chipColorWhite.setChecked(true);
+                    } else if (str.equals(chipColorBlue.getText().toString())) {
+                        selectedChipData.add(str);
+                        chipColorBlue.setChipStrokeWidth(0);
+                        chipColorBlue.setChecked(true);
+                    }
                 }
             }
-        });
-        chipLowToHigh.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    selectedChipData.add(buttonView.getText().toString());
-                    chipLowToHigh.setChipStrokeWidth(0);
-                } else {
-                    selectedChipData.remove(buttonView.getText().toString());
-                    chipLowToHigh.setChipStrokeWidth(3);
-                }
+        }
+
+        switch (sortFilter) {
+            case "Rating":
+                chipRating.setChipStrokeWidth(0);
+                chipRating.setChecked(true);
+                break;
+            case "UpPrice":
+                chipLowToHigh.setChipStrokeWidth(0);
+                chipLowToHigh.setChecked(true);
+                break;
+            case "DownPrice":
+                chipHighToLow.setChipStrokeWidth(0);
+                chipHighToLow.setChecked(true);
+                break;
+        }
+
+        chipRating.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                sortFilter = "Rating";
+                chipRating.setChipStrokeWidth(0);
+            } else {
+                sortFilter = "";
+                chipRating.setChipStrokeWidth(3);
             }
         });
-        chipHighToLow.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    selectedChipData.add(buttonView.getText().toString());
-                    chipHighToLow.setChipStrokeWidth(0);
-                } else {
-                    selectedChipData.remove(buttonView.getText().toString());
-                    chipHighToLow.setChipStrokeWidth(3);
-                }
+        chipLowToHigh.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                sortFilter = "UpPrice";
+                chipLowToHigh.setChipStrokeWidth(0);
+            } else {
+                sortFilter = "";
+                chipLowToHigh.setChipStrokeWidth(3);
             }
         });
-        chipColorBlack.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    selectedChipData.add(buttonView.getText().toString());
-                    chipColorBlack.setChipStrokeWidth(0);
-                } else {
-                    selectedChipData.remove(buttonView.getText().toString());
-                    chipColorBlack.setChipStrokeWidth(3);
-                }
+        chipHighToLow.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                sortFilter = "DownPrice";
+                chipHighToLow.setChipStrokeWidth(0);
+            } else {
+                sortFilter = "";
+                chipHighToLow.setChipStrokeWidth(3);
             }
         });
-        chipColorWhite.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    selectedChipData.add(buttonView.getText().toString());
-                    chipColorWhite.setChipStrokeWidth(0);
-                } else {
-                    selectedChipData.remove(buttonView.getText().toString());
-                    chipColorWhite.setChipStrokeWidth(3);
-                }
+        chipColorBlack.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedChipData.add(buttonView.getText().toString());
+                chipColorBlack.setChipStrokeWidth(0);
+            } else {
+                selectedChipData.remove(buttonView.getText().toString());
+                chipColorBlack.setChipStrokeWidth(3);
             }
         });
-        chipColorBlue.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked) {
-                    selectedChipData.add(buttonView.getText().toString());
-                    chipColorBlue.setChipStrokeWidth(0);
-                } else {
-                    selectedChipData.remove(buttonView.getText().toString());
-                    chipColorBlue.setChipStrokeWidth(3);
-                }
+        chipColorWhite.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedChipData.add(buttonView.getText().toString());
+                chipColorWhite.setChipStrokeWidth(0);
+            } else {
+                selectedChipData.remove(buttonView.getText().toString());
+                chipColorWhite.setChipStrokeWidth(3);
+            }
+        });
+        chipColorBlue.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                selectedChipData.add(buttonView.getText().toString());
+                chipColorBlue.setChipStrokeWidth(0);
+            } else {
+                selectedChipData.remove(buttonView.getText().toString());
+                chipColorBlue.setChipStrokeWidth(3);
             }
         });
 
-        seekBar.setProgress(0);
+        seekBar.setProgress(progressValue);
+        txtCount.setText(String.valueOf(progressValue));
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -158,48 +190,35 @@ public class FullscreenDialog extends DialogFragment {
 
             }
         });
-        txtApply.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (progressValue != 0) {
-                    selectedChipData.add(String.valueOf(progressValue));
-                }
-                callback.onActionClick(selectedChipData.toString());
-                dismiss();
-            }
+        txtApply.setOnClickListener(v -> {
+
+            callback.onActionClick(sortFilter, progressValue, selectedChipData);
+            dismiss();
         });
 
-        txtReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chipRating.setChecked(false);
-                chipLowToHigh.setChecked(false);
-                chipHighToLow.setChecked(false);
-                chipColorBlack.setChecked(false);
-                chipColorWhite.setChecked(false);
-                chipColorBlue.setChecked(false);
+        txtReset.setOnClickListener(v -> {
+            chipRating.setChecked(false);
+            chipLowToHigh.setChecked(false);
+            chipHighToLow.setChecked(false);
+            chipColorBlack.setChecked(false);
+            chipColorWhite.setChecked(false);
+            chipColorBlue.setChecked(false);
 
-                seekBar.setProgress(0);
-                progressValue = 0;
+            seekBar.setProgress(0);
+            progressValue = 0;
 
-            }
         });
         return view;
     }
 
     private void setSupportActionBar(Toolbar toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_close);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismiss();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> dismiss());
     }
 
     public interface Callback {
 
-        void onActionClick(String content);
+        void onActionClick(String sortFilter, int progressValue, ArrayList<String> colorFilter);
 
     }
 
