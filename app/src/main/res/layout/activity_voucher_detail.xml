@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Thông tin chi tiết của voucher"
+            android:text="Chi tiết của voucher"
             android:textColor="@color/title_text"
             android:textSize="@dimen/_20sdp"/>
     </android.widget.Toolbar>

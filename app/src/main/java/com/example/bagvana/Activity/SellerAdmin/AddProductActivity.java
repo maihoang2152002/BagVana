@@ -233,7 +233,7 @@ public class AddProductActivity extends AppCompatActivity {
         int index = randomGenerator.nextInt(titles.size());
         String title = titles.get(index);
 
-        String message = product.getName() + " mới ra mắt tại BagVana. Nhấn xem để chi tiết thông sản phẩm";
+        String message = product.getName() + " mới ra mắt tại BagVana. Nhấn xem để chi tiết thông tin sản phẩm";
 
         final Calendar c = Calendar.getInstance();
         int mYear = c.get(Calendar.YEAR);
@@ -243,7 +243,7 @@ public class AddProductActivity extends AppCompatActivity {
         int mHour = c.get(Calendar.HOUR_OF_DAY);
         int mMinute = c.get(Calendar.MINUTE);
 
-        String time = mHour + ":" + mMinute + ":"  + " " + mDay + "/" + (mMonth + 1) + "/" + mYear;
+        String time = mHour + ":" + mMinute + " " + mDay + "/" + (mMonth + 1) + "/" + mYear;
 
         Notification notification = new Notification(product.getProductID(),title, message, product.getImage(), time, "0");
 

@@ -69,6 +69,7 @@ public class HomeFragment extends Fragment implements ItemListener {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                productList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Product product = dataSnapshot.getValue(Product.class);

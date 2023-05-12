@@ -26,7 +26,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ProductNotificationActivity extends AppCompatActivity implements ItemListener {
 
@@ -60,7 +64,13 @@ public class ProductNotificationActivity extends AppCompatActivity implements It
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Notification notification = dataSnapshot.getValue(Notification.class);
 
-                    notifications.add(notification);
+                    try {
+                        if(compareDate(notification.getTime())) {
+                            notifications.add(notification);
+                        }
+                    } catch (ParseException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
 
                 notificationAdapter.notifyDataSetChanged();
@@ -75,6 +85,34 @@ public class ProductNotificationActivity extends AppCompatActivity implements It
 
         notificationAdapter = new NotificationAdapter(this, notifications, this);
         recycview_newProductNotification.setAdapter(notificationAdapter);
+    }
+    public boolean compareDate(String inputDate) throws ParseException {
+
+        // Ép kiểu
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+
+        SimpleDateFormat inputDateFormat = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+
+        Date date = inputDateFormat.parse(inputDate);
+
+        SimpleDateFormat outputDateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        String outputDate = outputDateFormat.format(date);
+
+        Date today = sdf.parse(outputDate);
+
+        // So sánh
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.DAY_OF_YEAR, -7);
+
+        Date oneWeekAgo = calendar.getTime();
+
+        if (today.compareTo(oneWeekAgo) > 0) {
+            return false;
+        }
+
+        return true;
     }
 
     @Override
@@ -104,6 +142,7 @@ public class ProductNotificationActivity extends AppCompatActivity implements It
             }
         });
     }
+
 
     public void setSupportActionBar(androidx.appcompat.widget.Toolbar toolbar) {
         toolbar.setNavigationIcon(R.drawable.ic_back);

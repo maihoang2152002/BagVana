@@ -161,6 +161,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             @Override
             public void onCallback(long newNotification) {
                 if (newNotification != 0) {
+                    notification_badge.setVisibility(View.VISIBLE);
                     notification_badge.setNumber((int) newNotification);
                 } else {
                     notification_badge.setVisibility(View.INVISIBLE);
