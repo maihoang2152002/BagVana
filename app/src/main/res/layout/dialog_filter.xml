@@ -69,22 +69,22 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chipRating"
-                    style="@style/CustomChipStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:checkable="true"
-                    android:text="Đánh giá"
-                    app:chipStrokeColor="@color/medium_grey"
-                    app:chipStrokeWidth="3px" />
-
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/cgPrice"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chipRating"
+                        style="@style/CustomChipStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:checkable="true"
+                        android:text="Đánh giá"
+                        app:chipStrokeColor="@color/medium_grey"
+                        app:chipStrokeWidth="3px" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipLowToHigh"
@@ -163,7 +163,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:max="300"
+                android:max="1000"
                 android:progress="50"
                 android:progressDrawable="@drawable/custom_progressbar"
                 android:thumb="@drawable/thumb" />
@@ -173,7 +173,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginRight="10dp"
-                android:text="300"
+                android:text="1k"
                 android:textSize="20sp" />
 
         </LinearLayout>

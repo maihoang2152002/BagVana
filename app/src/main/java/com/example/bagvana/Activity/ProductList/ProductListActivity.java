@@ -2,6 +2,7 @@ package com.example.bagvana.Activity.ProductList;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -12,8 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -34,8 +33,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class ProductListActivity extends AppCompatActivity implements ItemListener, NavigationBarView.OnItemSelectedListener {
 
@@ -46,6 +47,8 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
     private Toolbar toolbar;
 
     private ArrayList<Product> productListSearch;
+    private ArrayList<Product> productListFilter;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +71,7 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
                     Product product = dataSnapshot.getValue(Product.class);
+                    assert product != null;
                     if(product.getStatus().equals("1")){
                         productList.add(product);
                     }
@@ -91,6 +95,7 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -105,24 +110,76 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+//                Toast.makeText(ProductListActivity.this, query, Toast.LENGTH_SHORT).show();
                 mySearch(query);
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-//                mySearch(newText);
+                if (newText.isEmpty()) {
+                    mySearch(newText);
+                }
                 return true;
             }
         });
 
         MenuItem item2 = menu.findItem(R.id.filterId);
         item2.setOnMenuItemClickListener(v -> {
-            DialogFragment dialog = FullscreenDialog.newInstance();
-            ((FullscreenDialog) dialog).setCallback(new FullscreenDialog.Callback() {
-                @Override
-                public void onActionClick(String content) {
+            FullscreenDialog dialog = FullscreenDialog.newInstance();
+            dialog.setCallback((sortFilter, progressValue, colorFilter) -> {
+                productListFilter = new ArrayList<>();
+                productListFilter.addAll(productListSearch);
+
+                if (progressValue != 0) {
+                    for (int i = productListFilter.size() - 1; i >= 0; i--) {
+                        if (productListFilter.get(i).getPrice() > progressValue) {
+                            productListFilter.remove(i);
+                        }
+                    }
                 }
+
+                if (!colorFilter.isEmpty()) {
+                    for (int i = 0; i < productListFilter.size(); i++) {
+                        boolean check = false;
+                        for (String color : colorFilter) {
+                            if (productListFilter.get(i).getColor().equals(color)) {
+                                check = true;
+                                break;
+                            }
+                        }
+                        if (!check) {
+                            productListFilter.remove(i);
+                            i--;
+                        }
+                    }
+                }
+
+                switch (sortFilter) {
+                    case "Rating":
+                        productListFilter.sort((p1, p2) -> Double.compare(p2.getRating(), p1.getRating()));
+                        break;
+                    case "UpPrice":
+                        productListFilter.sort(Comparator.comparingInt(Product::getPrice));
+                        break;
+                    case "DownPrice":
+                        productListFilter.sort((p1, p2) -> Integer.compare(p2.getPrice(), p1.getPrice()));
+                        break;
+                }
+
+                preferences = getSharedPreferences("MyPreferences", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("sortFilter", sortFilter);
+                editor.putInt("progressValue", progressValue);
+                Gson gson = new Gson();
+                String json = gson.toJson(colorFilter);
+                editor.putString("colorFilter", json);
+
+                editor.apply();
+
+                productListAdapter.notifyDataSetChanged();
+                productListAdapter = new ProductListAdapter(this, productListFilter, this);
+                recyclerView.setAdapter(productListAdapter);
             });
             dialog.show(getSupportFragmentManager(), "tag");
             return super.onCreateOptionsMenu(menu);
@@ -136,10 +193,9 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
         productListSearch = new ArrayList<>();
 
         if (TextUtils.isEmpty(str)) {
+            productListSearch.addAll(productList);
+
             productListAdapter.notifyDataSetChanged();
-
-            productListSearch = productList;
-
         } else {
             for (Product product : productList) {
                 if (product.hasNameSimilarTo(str))
@@ -160,10 +216,9 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
         startActivity(intent);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-        Fragment fragment = null;
 
         switch (item.getItemId()) {
             case R.id.menu_home:
@@ -188,16 +243,5 @@ public class ProductListActivity extends AppCompatActivity implements ItemListen
                 break;
         }
         return true;
-    }
-
-    private boolean loadFragment(Fragment fragment) {
-        if (fragment != null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragment_container, fragment)
-                    .commit();
-            return true;
-        }
-        return false;
     }
 }

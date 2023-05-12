@@ -94,5 +94,6 @@ dependencies {
     implementation 'androidx.coordinatorlayout:coordinatorlayout'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'com.nex3z:notification-badge:1.0.4'
+    implementation 'com.google.code.gson:gson:2.8.7'
 
 }
