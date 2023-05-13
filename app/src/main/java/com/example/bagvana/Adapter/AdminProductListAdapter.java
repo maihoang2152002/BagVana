@@ -116,7 +116,7 @@ public class AdminProductListAdapter extends RecyclerView.Adapter<AdminProductLi
                 else{
 
                     product.setStatus("1");
-                    holder.btnLocked.setImageResource(R.drawable.ic_lock_person);
+                    holder.btnLocked.setImageResource(R.drawable.ic_lock_open);
                 }
 
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Product");
