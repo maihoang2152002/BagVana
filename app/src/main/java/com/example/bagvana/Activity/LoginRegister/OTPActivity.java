@@ -48,6 +48,7 @@ public class OTPActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpactivity);
+        FirebaseAuth.getInstance().signOut();
         mAuth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         databasReference = database.getReference("User");

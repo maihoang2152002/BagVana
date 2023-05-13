@@ -171,8 +171,16 @@ public class UpdateProductActivity extends AppCompatActivity {
                 }
 
         });
+        binding.cancelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(UpdateProductActivity.this, AdminProductListActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
+
     private void setSupportActionBar(Toolbar toolbar_order) {
         toolbar_order.setNavigationIcon(R.drawable.ic_back);
         toolbar_order.setNavigationOnClickListener(new View.OnClickListener() {
