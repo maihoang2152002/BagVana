@@ -140,10 +140,10 @@ public class NotificationActivity extends AppCompatActivity implements ItemListe
         Date oneWeekAgo = calendar.getTime();
 
         if (today.compareTo(oneWeekAgo) > 0) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     @Override
