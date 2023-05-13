@@ -66,15 +66,18 @@ public class DiscountShopAdapter extends RecyclerView.Adapter<DiscountShopAdapte
         holder.txt_description.setText(description);
         holder.txt_endDate.setText(voucher.getEnd());
 
-        if(Utils._vouchersOfUser.get(voucher.getId()) != null && (Utils._vouchersOfUser.get(voucher.getId()) >= voucher.getAmountOnPerson())) {
-            holder.btn_choose.setText("Sử dụng");
-        }
-
         if(this.type.equals("user")) {
             holder.btn_choose.setText("Sử dụng");
         } else {
-            holder.btn_choose.setText("Lưu");
+
+            if(Utils._vouchersOfUser.get(voucher.getId()) != null && (Utils._vouchersOfUser.get(voucher.getId()) >= voucher.getAmountOnPerson())) {
+                holder.btn_choose.setText("Sử dụng");
+            } else {
+                holder.btn_choose.setText("Lưu");
+            }
         }
+
+
 
         holder.btn_choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,10 +89,18 @@ public class DiscountShopAdapter extends RecyclerView.Adapter<DiscountShopAdapte
                     if(Utils._vouchersOfUser.get(voucher.getId()) != null) {
                         amount = Utils._vouchersOfUser.get(voucher.getId());
                     }
+
                     int newAmount = amount + 1;
 
                     User_Voucher user_voucher = new User_Voucher(voucher.getId(),Utils._user.getId(),newAmount);
                     databaseReferenceUser_Voucher.child(voucher.getId()).setValue(user_voucher);
+
+                    if(Utils._vouchersOfUser.get(voucher.getId()) != null) {
+                        Utils._vouchersOfUser.remove(voucher.getId());
+                        Utils._vouchersOfUser.put(voucher.getId(), newAmount);
+                    } else {
+                        Utils._vouchersOfUser.put(voucher.getId(),newAmount);
+                    }
 
                     if(newAmount >= voucher.getAmountOnPerson()) {
                         holder.btn_choose.setText("Sử dụng");

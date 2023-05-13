@@ -230,18 +230,6 @@ public class VoucherUserActivity extends AppCompatActivity {
                         throw new RuntimeException(e);
                     }
 
-//                    try {
-//                        if(compareDate(voucher.getStart(), voucher.getEnd())) {
-//                            if(voucher.getType() == 2) {
-//                                freeshipVouchers.add(voucher);
-//                            } else {
-//                                discountVouchers.add(voucher);
-//                            }
-//                        }
-//                    } catch (ParseException e) {
-//                        throw new RuntimeException(e);
-//                    }
-
                 }
 
                 freeshipShopAdapter.notifyDataSetChanged();

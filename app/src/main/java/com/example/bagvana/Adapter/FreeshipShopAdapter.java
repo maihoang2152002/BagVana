@@ -1,6 +1,7 @@
 package com.example.bagvana.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.bagvana.Activity.Order.CartActivity;
 import com.example.bagvana.DTO.User_Voucher;
 import com.example.bagvana.DTO.Voucher;
 import com.example.bagvana.R;
@@ -62,14 +64,15 @@ public class FreeshipShopAdapter extends RecyclerView.Adapter<FreeshipShopAdapte
         holder.txt_description.setText(description);
         holder.txt_endDate.setText(voucher.getEnd());
 
-        if(Utils._vouchersOfUser.get(voucher.getId()) != null && (Utils._vouchersOfUser.get(voucher.getId()) >= voucher.getAmountOnPerson())) {
-            holder.btn_choose.setText("Sử dụng");
-        }
-
         if(this.type.equals("user")) {
             holder.btn_choose.setText("Sử dụng");
         } else {
-            holder.btn_choose.setText("Lưu");
+
+            if(Utils._vouchersOfUser.get(voucher.getId()) != null && (Utils._vouchersOfUser.get(voucher.getId()) >= voucher.getAmountOnPerson())) {
+                holder.btn_choose.setText("Sử dụng");
+            } else {
+                holder.btn_choose.setText("Lưu");
+            }
         }
 
         holder.btn_choose.setOnClickListener(new View.OnClickListener() {
@@ -88,12 +91,21 @@ public class FreeshipShopAdapter extends RecyclerView.Adapter<FreeshipShopAdapte
                     User_Voucher user_voucher = new User_Voucher(voucher.getId(),Utils._user.getId(),newAmount);
                     databaseReferenceUser_Voucher.child(voucher.getId()).setValue(user_voucher);
 
+                    if(Utils._vouchersOfUser.get(voucher.getId()) != null) {
+                        Utils._vouchersOfUser.remove(voucher.getId());
+                        Utils._vouchersOfUser.put(voucher.getId(), newAmount);
+                    } else {
+                        Utils._vouchersOfUser.put(voucher.getId(),newAmount);
+                    }
+
                     if(newAmount >= voucher.getAmountOnPerson()) {
                         holder.btn_choose.setText("Sử dụng");
                     }
 
                 } else {
-                    // intent qua trang mua hàng
+                    Intent intent = new Intent(context, CartActivity.class);
+
+
                 }
             }
         });
