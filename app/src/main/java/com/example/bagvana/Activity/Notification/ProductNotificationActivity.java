@@ -109,10 +109,10 @@ public class ProductNotificationActivity extends AppCompatActivity implements It
         Date oneWeekAgo = calendar.getTime();
 
         if (today.compareTo(oneWeekAgo) > 0) {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     @Override
