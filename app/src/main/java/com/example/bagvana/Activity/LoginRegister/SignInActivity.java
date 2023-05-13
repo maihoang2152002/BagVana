@@ -206,7 +206,7 @@ public class SignInActivity extends AppCompatActivity {
                                     Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
                                     Intent intent = new Intent(SignInActivity.this, ProductDetailActivity.class);
                                     intent.putExtra("product", temp);
-                                    startActivity(intent);
+                                    startActivityForResult(intent, 1);
                                 } else if (_user.getTypeUser().equals("2")) {
                                     Intent intent = new Intent(SignInActivity.this, AdminHomeActivity.class);
                                     startActivity(intent);
@@ -264,6 +264,14 @@ public class SignInActivity extends AppCompatActivity {
             checkSave.setChecked(true);
             numberPhone.setText(phone);
             password.setText(pass);
+        }
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            Intent intent = new Intent(SignInActivity.this, HomeActivity.class);
+            startActivity(intent);
         }
     }
 }
