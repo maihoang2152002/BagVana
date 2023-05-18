@@ -126,12 +126,11 @@ public class UpdateProductActivity extends AppCompatActivity {
         binding.addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-         ;
                 if (imageUri == null) {
                     image = _product_current.getImage();
-
+                } else {
+                    uploadImage();
                 }
-                uploadImage();
                 boolean check = true;
                 if (binding.nameProduct.getText().toString().trim().isEmpty()) {
                     binding.nameProduct.setError("Thông tin không được bỏ trống");
@@ -166,9 +165,13 @@ public class UpdateProductActivity extends AppCompatActivity {
                     databasReference = FirebaseDatabase.getInstance().getReference("Product").child(_product_current.getProductID());
 
                     databasReference.setValue(updateValues);
-
+                    if (imageUri == null) {
+                        finish();
+                        Intent intent = new Intent(UpdateProductActivity.this, AdminProductListActivity.class);
+                        startActivity(intent);
+                    }
                 }
-                }
+            }
 
         });
         binding.cancelBtn.setOnClickListener(new View.OnClickListener() {
@@ -211,7 +214,7 @@ public class UpdateProductActivity extends AppCompatActivity {
 
                         binding.imageProduct.setImageURI(null);
                         if (progressDialog.isShowing())
-                            progressDialog.dismiss();
+                            progressDialog.  dismiss();
                         Toast.makeText(UpdateProductActivity.this,"Successfully Uploaded",Toast.LENGTH_SHORT).show();
 
                         File localFile;
