@@ -116,7 +116,7 @@ public class OrderActivity extends AppCompatActivity {
 //        recyclerview_order.setHasFixedSize(true);
 //        recyclerview_order.setLayoutManager(new LinearLayoutManager(this));
 //
-        productList = (ArrayList<Product>) Utils._productList;
+        productList = (ArrayList<Product>) Utils._productListCart;
 //
 //        orderAdapter = new OrderAdapter((Context) this, productList);
 //
@@ -187,7 +187,7 @@ public class OrderActivity extends AppCompatActivity {
                                     ProductDAO productDAO = new ProductDAO();
                                     User_VoucherDAO user_voucherDAO = new User_VoucherDAO();
 
-                                    for (Product product: Utils._productList) {
+                                    for (Product product: Utils._productListCart) {
                                         databaseReferenceOrder.child("itemsOrdered").child(product.getProductID()).setValue(product);
                                         databaseReferenceCart.child(product.getProductID()).removeValue();
                                         productDAO.setAmount(product);
@@ -216,7 +216,7 @@ public class OrderActivity extends AppCompatActivity {
                                     databaseReferenceOrder.child("userID").setValue(Utils._user.getId());
                                     databaseReferenceOrder.child("paymentMethod").setValue(txt_delivery.getText().toString());
 
-                                    Utils._productList.clear();
+                                    Utils._productListCart.clear();
                                     Utils._voucherList.clear();
                                     Utils._receiverInfo.clear();
 
@@ -367,8 +367,8 @@ public class OrderActivity extends AppCompatActivity {
 
     private void calBillCost() {
         billCost = 0;
-        for(int i = 0; i < Utils._productList.size(); i++) {
-            billCost += Utils._productList.get(i).getAmount() * Utils._productList.get(i).getPrice();
+        for(int i = 0; i < Utils._productListCart.size(); i++) {
+            billCost += Utils._productListCart.get(i).getAmount() * Utils._productListCart.get(i).getPrice();
         }
         txt_productCost.setText(String.valueOf(billCost));
         int totalCost = billCost + 30 - voucherCost;

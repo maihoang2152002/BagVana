@@ -15,6 +15,7 @@ public class Utils {
 
     // Order
     public static ArrayList<Product> _productList = new ArrayList<>(); // sản phẩm chọn mua
+    public static ArrayList<Product> _productListCart = new ArrayList<>(); // sản phẩm chọn mua
     public static ReceiverInfo _receiverInfo = new ReceiverInfo(); // địa chỉ mua hàng (để mặc định cho đến khi khách hàng thay đổi)
     public static String _newAddressID; // id dể tạo địa chỉ mới
     public static ArrayList<Voucher> _voucherList = new ArrayList<>(); // voucher được áp dụng cho đơn hàng

@@ -78,7 +78,7 @@ public class CartActivity extends AppCompatActivity {
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(Utils._productList.size() != 0) {
+                if(Utils._productListCart.size() != 0) {
                     Intent intent = new Intent(CartActivity.this, OrderActivity.class);
                     startActivity(intent);
                 } else {
@@ -104,6 +104,8 @@ public class CartActivity extends AppCompatActivity {
     }
 
     private void initData() {
+        Utils._productListCart.clear();
+
         // userID = 1
         DatabaseReference databaseReferenceCart = FirebaseDatabase.getInstance()
                 .getReference("Cart").child(Utils._user.getId());
@@ -128,8 +130,8 @@ public class CartActivity extends AppCompatActivity {
 
     private void calBillCost() {
         int billCost = 0;
-        for(int i = 0; i < Utils._productList.size(); i++) {
-            billCost += Utils._productList.get(i).getAmount() * Utils._productList.get(i).getPrice();
+        for(int i = 0; i < Utils._productListCart.size(); i++) {
+            billCost += Utils._productListCart.get(i).getAmount() * Utils._productListCart.get(i).getPrice();
         }
         txt_billCost.setText(String.valueOf(billCost));
     }
