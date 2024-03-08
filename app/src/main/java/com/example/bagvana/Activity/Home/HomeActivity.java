@@ -65,7 +65,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
 
-        BubbleView button = (BubbleView) LayoutInflater.from(this).inflate(R.layout.bubble_view, null);
+//        BubbleView button = (BubbleView) LayoutInflater.from(this).inflate(R.layout.bubble_view, null);
         RelativeLayout parent = findViewById(R.id.my_layout);
 
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(150, 150);
@@ -74,8 +74,8 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         params.addRule(RelativeLayout.ALIGN_PARENT_END, RelativeLayout.TRUE);
         params.setMargins(30, 30, 30, 30);
 
-        button.setLayoutParams(params);
-        parent.addView(button);
+//        button.setLayoutParams(params);
+//        parent.addView(button);
 
         navigationView.bringToFront();
         ActionBarDrawerToggle toggle = new
@@ -193,11 +193,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 //                myIntent.putExtras(myBundle);
                 startActivity(myIntent);
                 break;
-            case R.id.menu_chat:
-                myIntent = new Intent(HomeActivity.this, ChatActivity.class);
-//                myIntent.putExtras(myBundle);
-                startActivity(myIntent);
-                break;
+//            case R.id.menu_chat:
+//                myIntent = new Intent(HomeActivity.this, ChatActivity.class);
+////                myIntent.putExtras(myBundle);
+//                startActivity(myIntent);
+//                break;
             case R.id.menu_gift:
                 myIntent = new Intent(HomeActivity.this, VoucherUserActivity.class);
                 startActivity(myIntent);
