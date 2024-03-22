@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bagvana.DTO.Product;
+import com.example.bagvana.DTO.User;
 import com.example.bagvana.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +27,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hbb20.CountryCodePicker;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -132,18 +136,32 @@ public class SignUpActivity extends AppCompatActivity {
                                     count++;
                                 }
                                 if(!exitUser){
-                                    Intent intent = new Intent(SignUpActivity.this, OTPActivity.class);
-                                    intent.putExtra("mobile",ccp_su.getFullNumberWithPlus().replace(" ", ""));
-                                    String phoneNumber = ccp_su.getFullNumberWithPlus().replace(" ", "");
+//                                    Intent intent = new Intent(SignUpActivity.this, OTPActivity.class);
+//                                    intent.putExtra("mobile",ccp_su.getFullNumberWithPlus().replace(" ", ""));
+//                                    String phoneNumber = ccp_su.getFullNumberWithPlus().replace(" ", "");
+//                                    String id = Integer.toString(count);
+//                                    intent.putExtra("type_numberphone","signup");
+//                                    intent.putExtra("id",id);
+//                                    intent.putExtra("username", usernameTxt);
+//                                    intent.putExtra("password", passwordTxt);
+//                                    if (getIntent().hasExtra("GetProductFromDeepLink")) {
+//                                        Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
+//                                        intent.putExtra("GetProductFromDeepLink", temp);
+//                                    }
+//                                    startActivity(intent);
+                                    String resultUsername =  usernameTxt;
+                                    String resultPass =  passwordTxt;
                                     String id = Integer.toString(count);
-                                    intent.putExtra("type_numberphone","signup");
-                                    intent.putExtra("id",id);
-                                    intent.putExtra("username", usernameTxt);
-                                    intent.putExtra("password", passwordTxt);
-                                    if (getIntent().hasExtra("GetProductFromDeepLink")) {
-                                        Product temp = (Product) getIntent().getSerializableExtra("GetProductFromDeepLink");
-                                        intent.putExtra("GetProductFromDeepLink", temp);
+                                    String pass_convert = null;
+                                    try {
+                                        pass_convert = convertHashToString(resultPass);
+                                    } catch (NoSuchAlgorithmException e) {
+                                        throw new RuntimeException(e);
                                     }
+
+                                    User user = new User(id, numberPhoneTxt, resultUsername,pass_convert,"","","1","","","","1");
+                                    databasReference.child(id).setValue(user);
+                                    Intent intent = new Intent(SignUpActivity.this,SignInActivity.class);
                                     startActivity(intent);
                                 }
                                 else{
@@ -170,5 +188,15 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private String convertHashToString(String text) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        byte[] hashInBytes = md.digest(text.getBytes(StandardCharsets.UTF_8));
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hashInBytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
     }
 }

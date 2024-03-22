@@ -1,53 +1,27 @@
 {
   "project_info": {
-    "project_number": "766395389186",
-    "firebase_url": "https://bagvana-7335c-default-rtdb.firebaseio.com",
-    "project_id": "bagvana-7335c",
-    "storage_bucket": "bagvana-7335c.appspot.com"
+    "project_number": "946679238040",
+    "firebase_url": "https://bagvana-20545-default-rtdb.firebaseio.com",
+    "project_id": "bagvana-20545",
+    "storage_bucket": "bagvana-20545.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:766395389186:android:0ea6bd21a06f1235a25e1b",
+        "mobilesdk_app_id": "1:946679238040:android:d9b84d495c4fc47d552fed",
         "android_client_info": {
           "package_name": "com.example.bagvana"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "766395389186-70ca1btlr0b212k17795sivpfs453pvq.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.bagvana",
-            "certificate_hash": "3af7a7b1fbf32d90d30105e03e8a6b3d3f8a3131"
-          }
-        },
-        {
-          "client_id": "766395389186-j88jjpo4qn7qsbcc07kg0vs0n324s4ig.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.bagvana",
-            "certificate_hash": "616e5ea5e80192cb3901aca6b2c2f2c5d2d4dbf9"
-          }
-        },
-        {
-          "client_id": "766395389186-0j52mpphufc0q7vt3nauf7rrg90b4ab5.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyD2efT2Z2Vp595gD4IPV6fM1Xcy5YZ-nNY"
+          "current_key": "AIzaSyCkDLRyd7TLUg4GO2a0mlbQXQs-hq7uIM4"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "766395389186-0j52mpphufc0q7vt3nauf7rrg90b4ab5.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
